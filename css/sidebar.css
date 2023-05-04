@@ -18,3 +18,14 @@ body{
     justify-content: space-around;
     align-items: center;
 }
+
+.sidebar-element{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 30px;
+}
+
+.sidebar-element span{
+    cursor: pointer;
+}
