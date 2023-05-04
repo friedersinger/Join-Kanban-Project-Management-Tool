@@ -1,0 +1,9 @@
+.sidebar-container{
+    grid-column: span 2;
+    grid-row: span 10;
+    background: rgb(42, 54, 71);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
