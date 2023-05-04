@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Page</title>
+    <style>
+      /* necessary styling here */
+    </style>
+  </head>
+  <body>
+    <!-- Header section with logo and "Not a User?" button -->
+    <header>
+      <img src="assets/img/logo.png" alt="JOIN" />
+      <a href="#">Not a User?</a>
+      <button>Sign up</button>
+    </header>
+
+    <!-- Login form -->
+    <main>
+      <h1>Login</h1>
+      <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <label>
+          <input type="checkbox" name="remember-me" />
+          Remember me
+        </label>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <!-- Forget password link -->
+      <a href="#">Forget Password?</a>
+
+      <!-- Guest login button -->
+      <button type="button">Guest Login</button>
+    </main>
+  </body>
+</html>
