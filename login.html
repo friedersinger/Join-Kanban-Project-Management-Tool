@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>Login Page</title>
-    <style>
-      /* necessary styling here */
-    </style>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/login.css" />
   </head>
   <body>
     <!-- Header section with logo and "Not a User?" button -->
@@ -17,13 +17,24 @@
 
     <!-- Login form -->
     <main>
-      <h1>Login</h1>
-      <form>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+      <div class="login-field">
+        <h1>Login</h1>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="E-Mail:"
+        />
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Password:"
+        />
 
         <label>
           <input type="checkbox" name="remember-me" />
@@ -31,13 +42,13 @@
         </label>
 
         <button type="submit">Login</button>
-      </form>
 
-      <!-- Forget password link -->
-      <a href="#">Forget Password?</a>
+        <!-- Forget password link -->
+        <a href="#">Forget Password?</a>
 
-      <!-- Guest login button -->
-      <button type="button">Guest Login</button>
+        <!-- Guest login button -->
+        <button type="button">Guest Login</button>
+      </div>
     </main>
   </body>
 </html>
