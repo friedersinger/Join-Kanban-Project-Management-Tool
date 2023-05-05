@@ -1,3 +1,7 @@
+* {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
 /*body vorher rauslöschen!*/
 body {
   margin: 0;
@@ -22,9 +26,16 @@ body {
     display: flex;
     flex-direction: column;
     color: white;
-    gap: 30px;
+    
 }
 
 .sidebar-element span{
     cursor: pointer;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.sidebar-element span:hover{
+    background-color: lightgrey;
+    transition: all 225ms ease-in-out;
 }
