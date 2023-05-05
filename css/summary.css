@@ -1,0 +1,32 @@
+.summary-container{
+    grid-column: 3/11;
+    grid-row: 2/11;
+}
+
+.button{
+    grid-column: 4;
+    grid-row: 4;
+}
+
+.headline{
+    display: flex;
+    align-items: center;
+}
+
+.headline-text{
+    margin-bottom: 0 !important;
+}
+
+.headline-text-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headline-text-border{
+    padding-right: 20px;
+    border-right: 2px solid rgb(41,171,226);
+}
+.headline-text-border-padding{
+    padding-left: 20px;
+}
