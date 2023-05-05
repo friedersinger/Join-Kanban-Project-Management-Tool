@@ -5,7 +5,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  background-color: white;
 }
 
 body {
@@ -17,6 +17,11 @@ body {
   height: 100vh;
 }
 
-.header-headline-container {
-  background-color: black;
+.header-logo {
+  height: 60px;
+  margin-left: 40px;
+}
+
+.header-right {
+  margin-right: 20px;
 }
