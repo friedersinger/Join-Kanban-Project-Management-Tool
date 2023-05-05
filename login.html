@@ -16,18 +16,22 @@
     </header>
 
     <!-- Login form -->
+    <form>
     <div class="login-container">
       <div class="login-field">
         <h1>Login</h1>
-
+       
+        <div class="inputfield">
         <input
           type="email"
           id="email"
           name="email"
           required
           placeholder="E-Mail:"
-        />
+        />  
+        </div>
 
+        <div class="inputfield">
         <input
           type="password"
           id="password"
@@ -35,6 +39,7 @@
           required
           placeholder="Password:"
         />
+      </div>
 
         <label>
           <input type="checkbox" name="remember-me" />
@@ -48,7 +53,7 @@
 
         <!-- Guest login button -->
         <button type="button">Guest Login</button>
-
+      </form>
       </div>
     </div>
   </body>
