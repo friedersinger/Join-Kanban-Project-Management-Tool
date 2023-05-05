@@ -1,4 +1,4 @@
-header {
+.navbar-container {
   grid-column: span 8;
   grid-row: span 1;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 15%);
