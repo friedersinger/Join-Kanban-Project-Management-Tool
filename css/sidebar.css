@@ -12,19 +12,37 @@
   align-items: center;
 }
 
+.logo{
+  width: 120px;
+}
+
 .sidebar-element{
     display: flex;
     flex-direction: column;
     color: white;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-object{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-object:hover{
+  background-color: #091931;
 }
 
 .sidebar-element span{
-    cursor: pointer;
     border-radius: 20px;
     padding: 20px;
 }
 
-.sidebar-element span:hover{
-    background-color: lightgrey;
-    transition: all 225ms ease-in-out;
+.mini-logo{
+  height: 20px;
+  margin-left: 80px;
 }
+
