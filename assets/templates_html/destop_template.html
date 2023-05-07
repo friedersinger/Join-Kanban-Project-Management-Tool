@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/templates/destop_template_style.css">
+    <link rel="shortcut icon" href="assets/img/Join_background.png" type="image/x-icon">
+
+    <script src="mini_backend.js"></script>
+    <script src="script.js"></script>
+    
+</head>
+
+<body>
+    <div class="nav-bar">
+        <img src="assets/img/logo_lefter.svg">
+        <a href="summary.html">
+            <div class="content-section" style="margin-top: 100px;" id="summary-section">
+                <div>
+                    <img src="assets/img/icon-summary.svg">
+                </div>
+                <span>Summary</span>
+            </div>
+        </a>
+        <a href="board.html">
+            <div class="content-section" id="board-section">
+                <div>
+                    <img src="assets/img/icon-board.svg">
+                </div>
+                <span>Board</span>
+            </div>
+        </a>
+        <a href="add_task.html">
+            <div class="content-section" id="addtask-section">
+                <div>
+                    <img src="assets/img/icon-addtask.svg">
+                </div>
+                <span>Add Task</span>
+            </div>
+        </a>
+        <a href="contacts.html">
+            <div class="content-section" id="contacts-section">
+                <div>
+                    <img src="assets/img/icon-contacts.svg">
+                </div>
+                <span>Contacts</span>
+            </div>
+        </a>
+        <a href="legal_notice.html">
+            <div class="content-section" style="position: absolute; bottom: 24px" id="legalnotice-section">
+                <div>
+                    <img src="assets/img/icon-info.svg">
+                </div>
+                <span>Legal notice</span>
+            </div>
+        </a>
+    </div>
+    <div class="topper">
+        <span style="font-size: small;">Kanban Project Management Tool</span>
+        <div class="img-topper">
+            <img src="assets/img/questionmark_topper.svg" onclick="showHelp()" id="help-button"
+                class="questionmark-topper">
+            <span onclick="showLogout()" class="topper-name-destop" id="topper-name-destop"></span>
+        </div>
+    </div>
+    <div class="logout-button d-none" id="logout-button" onclick="hideLogout()">
+        <a href="index.html"><div>Log out</div></a>
+    </div>
+</body>
+
+</html>

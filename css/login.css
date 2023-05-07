@@ -1,58 +1,636 @@
-body {
-  margin: 0;
-}
-
 input {
-  border-width: 0px;
-  outline: 0;
+  padding-right: 35px;
 }
 
+.d-none {
+  display: none;
+}
 
-.inputfield {
-  /* Frame 14 */
+.df-w {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
+.hover-dark:hover {
+  cursor: pointer;
+  background-color: rgb(41, 171, 226);
+}
 
-  box-sizing: border-box;
-  /* Auto layout */
+.hover-bright:hover {
+  cursor: pointer;
+  border: 2px solid rgb(41, 171, 226);
+  color: rgb(41, 171, 226);
+}
+
+.complete-page {
+  position: relative;
+  background-color: rgb(246, 247, 248);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-join-logo {
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 7;
+  background: none;
+  left: 50px;
+  top: 50px;
+  width: 90px;
+  height: 90px;
+
+  animation: showJoinLogo;
+  animation-duration: 2s;
+}
+
+.start-join-logo img {
+  height: 90px;
+}
+
+@keyframes showJoinLogo {
+  0% {
+    background: white;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  50% {
+    background: rgb(246, 247, 248);
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  100% {
+    background: none;
+    left: 50px;
+    top: 50px;
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.headline {
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+
+.headline h1 {
+  font-size: 42px;
+  font-weight: 650;
+}
+
+.headline-underline {
+  width: 18%;
+  height: 3px;
+  background-color: rgb(41, 171, 226);
+  margin-bottom: 5%;
+}
+
+.name-field {
+  width: 65%;
+  margin-bottom: 6%;
+}
+
+.name-field input {
+  height: 40px;
+  font-size: 15px;
+}
+
+.email-field {
+  width: 65%;
+  margin-bottom: 6%;
+  display: flex;
+  position: relative;
+}
+
+.email-field input {
+  height: 40px;
+  font-size: 15px;
+  padding-right: 35px;
+}
+
+.password-field {
+  width: 65%;
+  display: flex;
+  position: relative;
+}
+
+.password-field input {
+  height: 40px;
+  font-size: 15px;
+  padding-right: 35px;
+}
+
+.signup-name-field {
+  width: 65%;
+  margin-bottom: 6%;
+  display: flex;
+  position: relative;
+}
+
+.signup-name-field input {
+  height: 40px;
+  font-size: 15px;
+  padding-right: 35px;
+}
+
+.signup-email-field {
+  width: 65%;
+  margin-bottom: 6%;
+  display: flex;
+  position: relative;
+}
+
+.signup-email-field input {
+  height: 40px;
+  font-size: 15px;
+  padding-right: 35px;
+}
+
+.signup-password-field {
+  width: 65%;
+  display: flex;
+  position: relative;
+}
+
+.signup-password-field input {
+  height: 40px;
+  font-size: 15px;
+  padding-right: 35px;
+}
+
+.button {
+  padding-left: 22px;
+  padding-right: 22px;
+  height: 36px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(42, 54, 71);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.button button {
+  padding-left: 22px;
+  padding-right: 22px;
+  height: 36px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(42, 54, 71);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.info-div {
+  width: 75%;
+  margin-bottom: 3%;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Design for Log in Area*/
+
+.login-display {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-head {
+  position: absolute;
+  top: 6%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding-right: 6%;
+}
+
+.login-head button {
+  width: 87px;
+  height: 37px;
+  font-size: 12px;
+  background-color: rgb(42, 54, 71);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  margin-left: 22px;
+  border: none;
+  font-weight: 600;
+}
+
+.login-area {
+  height: 400px;
+  width: 550px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-control {
+  height: 35px;
+}
+
+.form-style {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rememberMe-forgotPassword {
+  width: 57%;
+  height: 40px;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 13px 21px;
-  gap: 10px;
-  margin-bottom: 30px;
-  width: 422px;
-  height: 51px;
-  background: #FFFFFF;
-  /* Style */
-  border: 1px solid #D1D1D1;
-  border-radius: 10px;
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+  font-size: 12px;
+  margin-top: 7px;
 }
 
+.remember-me {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-right: 10px;
+}
 
-.login-container {
+.remember-me input {
+  height: 12px;
+  width: 12px;
+  margin-right: 10px;
+}
+
+.forgot-password a {
+  text-decoration: none;
+}
+
+.login-guestlogin {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}
+
+.guestLogin-button {
+  width: 120px;
+  height: 36px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(148, 154, 163);
+  color: rgb(42, 54, 71);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 26px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Design for Sign Up Area*/
+.signUp-display {
+  width: 100%;
+  justify-content: center;
+}
+
+.signUp-area {
+  position: relative;
+  width: 450px;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 35px 0px;
-  gap: 35px;
+}
+
+.arrow {
   position: absolute;
-  width: 652px;
-  height: 513px;
-  left: 394px;
-  margin-bottom: 100px;
-  /* white */
-  background: #FFFFFF;
-  /* shadoe backlog box */
-  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-  border-radius: 30px;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
 }
 
-.login-field{
+.arrow img {
+  height: 18px;
+}
+
+/* Design for forgot-password Area*/
+
+.forgot-password-area {
+  position: relative;
+  width: 550px;
+  height: 300px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: 3px 6px 6px lightgray;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+}
+
+.forgot-password-email-field {
+  width: 55%;
+  margin-bottom: 5%;
+  position: relative;
+}
+
+/* Design for reset-password Area*/
+
+.reset-password-area {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: 3px 6px 6px lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reset-password-field {
+  width: 55%;
+  margin-bottom: 5%;
+  display: flex;
+  position: relative;
+}
+
+.continue-button {
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(42, 54, 71);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+}
+
+.forgot-pw-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 550px) {
+  .login-head-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .start-join-logo img {
+    height: 60px;
+  }
+
+  .start-join-logo {
+    top: 10px;
+    left: 10px;
+    z-index: 6;
+  }
+
+  @keyframes showJoinLogo {
+    0% {
+      background: rgb(42, 54, 71);
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    50% {
+      background: rgb(42, 54, 71);
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    100% {
+      background: none;
+      left: 10px;
+      top: 10px;
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  .login-head {
+    display: none;
+  }
+
+  .login-head-mobile {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-right: 6%;
+    font-size: 17px;
+  }
+
+  .login-head-mobile button {
+    width: 75px;
+    height: 45px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: rgb(42, 54, 71);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-left: 5%;
+    border: none;
+  }
+
+  .headline {
+    margin-top: 8%;
+  }
+
+  .headline-underline {
+    margin-bottom: 8%;
+  }
+
+  .email-field {
+    margin-bottom: 8%;
+  }
+
+  .login-display {
+    margin-top: 0;
+    min-height: 200px;
+  }
+
+  .login-area {
+    height: 90%;
+    width: 90%;
+    padding-bottom: 30px;
+    margin-top: 35px;
+  }
+
+  .rememberMe-forgotPassword {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    height: 80px;
+    width: 62%;
+    margin-top: 6%;
+  }
+
+  .remember-me {
+    margin-top: 10px;
+  }
+
+  .login-guestlogin {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6%;
+  }
+
+  .button {
+    margin-bottom: 20px;
+    width: 160px !important;
+    height: 43px;
+  }
+
+  .guestLogin-button {
+    width: 160px;
+    margin-left: 0;
+    height: 43px;
+  }
+
+  /* Sign up Area*/
+
+  .signUp-area {
+    height: 460px;
+    width: 90%;
+    margin-top: 50px;
+  }
+
+  .headline h1 {
+    font-size: 30px;
+  }
+
+  .signup-name-field {
+    width: 80%;
+    margin-bottom: 11%;
+  }
+
+  .signup-email-field {
+    width: 80%;
+    margin-bottom: 11%;
+  }
+
+  .signup-password-field {
+    width: 80%;
+    margin-bottom: 4%;
+  }
+
+  /* Forgot Password*/
+
+  .forgot-password-area {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    justify-content: center;
+    height: 350px;
+  }
+
+  .headline {
+    text-align: center;
+  }
+
+  .headline h2 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .forgot-password-email-field {
+    width: 80%;
+  }
+}
+
+/* LOGIN FORM ICONS */
+
+.mail-icon {
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  z-index: 5;
+  height: 17px;
+}
+
+.password-icon {
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  z-index: 5;
+  height: 20px;
+}
+
+.forgot-password-icon {
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  z-index: 5;
+  height: 17px;
+}
+
+.name-signup-icon {
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  z-index: 5;
+  height: 17px;
+}
+
+.mail-signup-icon {
+  position: absolute;
+  right: 11px;
+  top: 12px;
+  z-index: 5;
+  height: 15px;
+}
+
+.password-signup-icon {
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  z-index: 5;
+  height: 17px;
+}
+
+/* USER NOT FOUND */
+
+.user-not-found {
+  color: red;
+  font-size: 14px;
+  margin-top: 12px;
+  transition: all 225ms ease-in-out;
 }
