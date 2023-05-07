@@ -5,7 +5,6 @@
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .button {
@@ -19,13 +18,28 @@
 }
 
 .headline-text {
-    margin-bottom: 0 !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+}
+
+.headline-subtext {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    /* or 32px */
+
+
+    color: #2A3647;
 }
 
 .headline-text-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-block-start: 0;
 }
 
 .headline-text-border {
@@ -67,7 +81,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 25px 0px;
     gap: 13px;
 
     width: 170px;
@@ -93,7 +106,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 25px 0px;
     gap: 13px;
 
     width: 180px;
@@ -124,10 +136,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 28px 48px;
     gap: 61px;
 
-    width: 580px;
+    width: 100%;
     height: 150px;
 
     /* white */
@@ -156,7 +167,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 28px 48px;
     gap: 61px;
 
     width: 590px;
@@ -178,7 +188,7 @@
 }
 
 .summary-content {
-    height: 100%;
+    height: 80%;
 }
 
 .summary-content-left {
@@ -186,6 +196,7 @@
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+    width: 60%;
 }
 
 .bottom-card-body {
@@ -195,7 +206,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 38px 19px;
     gap: 18px;
 
     width: 272.5px;
@@ -212,7 +222,6 @@
     /* Inside auto layout */
 
     flex: none;
-    order: 0;
     flex-grow: 0;
 }
 
@@ -221,32 +230,22 @@
 
     /* Auto layout */
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 38px 19px;
-    gap: 18px;
-
     width: 282.5px;
     height: 160px;
 
     background: #2A3647;
     /* stronger */
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-
     /* Inside auto layout */
 
     flex: none;
-    order: 1;
     flex-grow: 0;
 
     transition: 100ms all ease-in-out;
 }
 
-.row-3 {
-    gap: 20px;
+.row {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
