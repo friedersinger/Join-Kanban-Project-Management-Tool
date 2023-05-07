@@ -252,13 +252,13 @@
     gap:30px;
 }
 
-.flex{
+.flex-urgent{
     display: flex;
     gap:20px;
     align-items: center;
 }
 
-.flex-column{
+.flex-column-urgent{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -273,4 +273,15 @@
 .border{
     border-right: 2px solid #D1D1D1;
     height: 60%
+}
+
+.flex-column-date{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px
+}
+
+.urgent-date-span{
+    font-weight: 700;
 }
