@@ -2,7 +2,7 @@
     grid-column: 3/11;
     grid-row: 2/11;
     margin-left: 100px;
-    margin-top: 40px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
 }
@@ -15,23 +15,23 @@
 .headline {
     display: flex;
     align-items: center;
+    margin-bottom: 60px;
 }
 
 .headline-text {
     font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 46px;
     line-height: 120%;
+    text-align: center;
 }
 
 .headline-subtext {
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
+    font-size: 20px;
     line-height: 120%;
     /* or 32px */
-
-
     color: #2A3647;
 }
 
@@ -51,10 +51,6 @@
     padding-left: 20px;
 }
 
-.row-1 {
-    display: flex;
-    gap: 20px;
-}
 
 .card-body {
     display: flex;
@@ -64,7 +60,7 @@
 }
 
 .card-counter {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 64px;
     line-height: 120%;
 }
@@ -72,6 +68,7 @@
 .card-subtitle {
     font-weight: 400;
     font-size: 21px;
+    text-align: center;
 }
 
 .card {
@@ -108,8 +105,8 @@
     align-items: center;
     gap: 13px;
 
-    width: 180px;
-    height: 180px;
+    color: white;
+
 
     background: #2A3647;
     /* stronger */
@@ -168,9 +165,9 @@
     justify-content: center;
     align-items: center;
     gap: 61px;
+    color: white;
 
-    width: 590px;
-    height: 160px;
+    
 
     background: #2A3647;
     /* stronger */
@@ -188,15 +185,19 @@
 }
 
 .summary-content {
-    height: 80%;
+    display: flex;
 }
 
 .summary-content-left {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
-    width: 60%;
+    flex-direction: column;   
+}
+
+.summary-content-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
 }
 
 .bottom-card-body {
@@ -230,8 +231,7 @@
 
     /* Auto layout */
 
-    width: 282.5px;
-    height: 160px;
+   color: white;
 
     background: #2A3647;
     /* stronger */
@@ -248,4 +248,29 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 30px;
+    gap:30px;
+}
+
+.flex{
+    display: flex;
+    gap:20px;
+    align-items: center;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px
+}
+
+.urgent-counter{
+    font-size: 40px;
+}
+
+.border{
+    border-right: 2px solid #D1D1D1;
+    height: 60%
 }
