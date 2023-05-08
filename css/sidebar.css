@@ -32,6 +32,16 @@
   width: 100%;
 }
 
+.sidebar-object a{
+   display: flex;
+    flex-direction: column;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 .sidebar-object:hover{
   background-color: #091931;
 }

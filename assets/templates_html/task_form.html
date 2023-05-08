@@ -1,79 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
 
     <link rel="stylesheet" href="/css/sidebar.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/task_form.css"/>
+    <link rel="stylesheet" href="/css/task_form.css" />
     <script src="/js/script.js"></script>
-</head>
-<body onload="includeHTML()">
+  </head>
+  <body onload="includeHTML()">
     <div
-    class="sidebar-container"
-    w3-include-html="/assets/templates_html/sidebar_template.html"
-  ></div>
-  <div
-    class="navbar-container"
-    w3-include-html="/assets/templates_html/navbar_template.html"
-  ></div>
+      class="sidebar-container"
+      w3-include-html="/assets/templates_html/sidebar_template.html"
+    ></div>
+    <div
+      class="navbar-container"
+      w3-include-html="/assets/templates_html/navbar_template.html"
+    ></div>
 
+    <div class="task-card">
+      <div class="margin-bottom-60"><span class="headline-text">Add Task</span></div>
+      <form class="column-container">
+        <div class="column-left">
+          <label>Title</label>
 
-  <div class="task-card">
-    <h1>Add Task</h1>
-    <form class="column-container">
+          <input type="text" id="title" placeholder="Enter a title" />
 
-    <div class="column-left">
-        <label>Title</label>
+          <label>Description</label>
 
-        <input type="text" id="title" placeholder="Enter a title">
+          <textarea
+            id="description"
+            placeholder="Enter a description"
+          ></textarea>
 
-        <label>Description</label>
+          <label>Category</label>
 
-        <textarea id="description" placeholder="Enter a description"></textarea>
+          <div></div>
 
-        <label>Category</label>
+          <label>Assigned to</label>
+        </div>
+        <div class="border"></div>
 
-        <div></div>
+        <div class="column-right">
+          <label>Due Date</label>
 
-        <label>Assigned to</label>
+          <input min="2023-05-08" id="datePicker" type="date" placeholder="Enter a description" /><br /><br />
 
-        <div></div>
-    </div>
+          <label>Prio</label>
 
-    <div class="column-right">
-        <label>Due Date</label>
-
-        <input min="2023-05-08">
-
-        <label>Prio</label>
-
-        <div id="prio" class="prio">
-
-            <div class="prio-btn">Urgent
-              <img src="" alt="">
+          <div id="prio" class="prio">
+            <div class="prio-btn">
+              Urgent
+              <img src="/assets/img/icon_up.png" alt="" />
             </div>
-            <div class="prio-btn">Medium
-              <img src="" alt="">
+            <div class="prio-btn">
+              Medium
+              <img src="/assets/img/icon_medium.png" alt="" />
             </div>
-            <div class="prio-btn">Low
-              <img src="" alt="">
+            <div class="prio-btn">
+              Low
+              <img src="/assets/img/icon_down.png" alt="" />
             </div>
           </div>
 
           <label>Subtasks</label>
 
           <div></div>
+        </div>
+      </form>
     </div>
-    </form>
-
-  </div>
-
-  
-
-    
-</body>
+  </body>
 </html>
