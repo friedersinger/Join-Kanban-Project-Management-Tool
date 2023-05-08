@@ -1,3 +1,6 @@
+
+
+
 .column-container {
     display: flex; /* Verwende Flexbox-Layout */
     flex-direction: row; /* Spalten nebeneinander */
@@ -9,12 +12,6 @@
     flex-basis: 40%; /* Breite der Spalten */
     display: flex;
     flex-direction: column;
-  }
-  
-  .column-left {
-  }
-  
-  .column-right {
   }
   
   /* Füge Abstand zwischen den Inhalten hinzu */
@@ -211,4 +208,24 @@ input[type="date"] {
     outline: none;
     font-size: 21px;
   }
+
+  .btn{
+    width: 100%;
+  }
+
+  .btn-secondary{
+    --bs-btn-bg: #ffffff !important;
+    --bs-btn-color: rgb(0, 0, 0) !important;
+    --bs-btn-hover-bg: #ffffff !important;
+    --bs-btn-hover-color: rgb(0, 0, 0) !important;
+    --bs-btn-active-bg:#ffffff !important;
+    --bs-btn-active-color: rgb(0, 0, 0) !important;
+    --bs-btn-border-color: #D1D1D1 !important;
+    --bs-btn-hover-border-color: #D1D1D1 !important;
+    --bs-btn-active-border-color: #D1D1D1 !important;
+
+  }
   
+  .dropdown-menu{
+    width: 100%;
+  }
