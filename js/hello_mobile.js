@@ -15,3 +15,20 @@ async function renderGreetingHello() {
     window.location.href = "summary.html";
   }, 3000);
 }
+
+/**
+ * checks the time and depending on that return a greeting
+ * @returns {string} greeting - greeting sentence
+ */
+function getDaytimeGreeting() {
+  let hour = new Date().getHours();
+  if (3 <= hour && hour <= 11) {
+    return "Good morning";
+  }
+  if (11 < hour && hour <= 19) {
+    return "Good afternoon";
+  }
+  if (19 < hour || hour < 3) {
+    return "Good evening";
+  }
+}
