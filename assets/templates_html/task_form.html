@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/task_form.css"/>
+    <script src="/js/script.js"></script>
+</head>
+<body onload="includeHTML()">
+    <div
+    class="sidebar-container"
+    w3-include-html="/assets/templates_html/sidebar_template.html"
+  ></div>
+  <div
+    class="navbar-container"
+    w3-include-html="/assets/templates_html/navbar_template.html"
+  ></div>
+
+
+  <div class="task-card">
+    <h1>Add Task</h1>
+    <form class="column-container">
+
+    <div class="column-left">
+        <label>Title</label>
+
+        <input type="text" id="title" placeholder="Enter a title">
+
+        <label>Description</label>
+
+        <textarea id="description" placeholder="Enter a description"></textarea>
+
+        <label>Category</label>
+
+        <div></div>
+
+        <label>Assigned to</label>
+
+        <div></div>
+    </div>
+
+    <div class="column-right">
+        <label>Due Date</label>
+
+        <input min="2023-05-08">
+
+        <label>Prio</label>
+
+        <div id="prio" class="prio">
+
+            <div class="prio-btn">Urgent
+              <img src="" alt="">
+            </div>
+            <div class="prio-btn">Medium
+              <img src="" alt="">
+            </div>
+            <div class="prio-btn">Low
+              <img src="" alt="">
+            </div>
+          </div>
+
+          <label>Subtasks</label>
+
+          <div></div>
+    </div>
+    </form>
+
+  </div>
+
+  
+
+    
+</body>
+</html>

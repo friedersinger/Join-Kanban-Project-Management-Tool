@@ -1,0 +1,35 @@
+.column-container {
+    display: flex; /* Verwende Flexbox-Layout */
+    flex-direction: row; /* Spalten nebeneinander */
+    justify-content: space-between; /* Abstand zwischen Spalten */
+  }
+  
+  .column-left,
+  .column-right {
+    flex-basis: 48%; /* Breite der Spalten */
+  }
+  
+  .column-left {
+    order: 1; /* Reihenfolge der Spalten */
+  }
+  
+  .column-right {
+    order: 2;
+  }
+  
+  /* Füge Abstand zwischen den Inhalten hinzu */
+  .column-left > * + *,
+  .column-right > * + * {
+    margin-top: 10px;
+  }
+  
+.prio {
+    display: flex;
+}
+
+.task-card {
+    display: block; /* Zurücksetzen auf Block-Display */
+    width: 80%; /* Breite der Karte */
+    max-width: 600px; /* Maximale Breite der Karte */
+    padding: 20px; /* Abstand um den Inhalt */
+  }
