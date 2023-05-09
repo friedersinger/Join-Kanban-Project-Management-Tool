@@ -1,0 +1,122 @@
+.content-mobile {
+  display: none;
+}
+
+.inner-content {
+  background-color: #f6f7f8;
+  position: absolute;
+  grid: span 8;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.content-container {
+  grid-row: span 1;
+  display: grid;
+  justify-content: flex-start;
+  margin-top: 32px;
+  position: relative;
+}
+
+.main-heading {
+  font-size: 61px;
+  font-weight: 700;
+}
+
+.sub-heading {
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.back-overlay-btn {
+  height: 35px;
+  width: 35px;
+  position: fixed;
+  right: 22px;
+  top: 170px;
+  cursor: pointer;
+}
+
+.content-mobile {
+  display: flex;
+  justify-content: center;
+  margin-top: 89px;
+}
+
+.small-heading-mobile {
+  font-size: 18px;
+}
+
+/* ********* Scrollbar CSS ********* */
+/* Firefox */
+.inner-content {
+  scrollbar-width: auto;
+  scrollbar-color: #2a3647 #f6f7f8;
+}
+
+/* Chrome, Edge, and Safari */
+.inner-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.inner-content::-webkit-scrollbar-track {
+  background: #f6f7f8;
+}
+
+.inner-content::-webkit-scrollbar-thumb {
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .content-destop {
+    display: none;
+  }
+
+  .content-mobile {
+    display: flex;
+  }
+
+  .content-container {
+    padding-bottom: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .main-heading {
+    font-size: 44px;
+  }
+
+  .content-container {
+    width: 95%;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 450px) {
+  .main-heading {
+    font-size: 37px;
+  }
+}
+
+@media (max-width: 450px) {
+  .back-overlay-btn {
+    position: fixed;
+    right: 0px;
+    top: 88px;
+  }
+
+  .sub-heading {
+    font-size: 23px;
+    text-overflow: ellipsis " [..]";
+  }
+}
