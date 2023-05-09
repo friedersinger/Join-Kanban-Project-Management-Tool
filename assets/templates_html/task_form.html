@@ -16,6 +16,7 @@
 
 
     <script src="/js/script.js"></script>
+    <script src="/js/add_task.js"></script>
   </head>
   <body onload="includeHTML()" style="background-color: #f5f5f5;">
     <div
@@ -94,9 +95,24 @@
             </div>
           </div>
 
-          <label>Subtasks</label>
+          <label class="subtask">Subtasks</label>
+          <div class="subtask-container">
+          <input type="text" id="subtask-input-content">
 
-          <div></div>
+          <div id="subtaskOninput" style="display: flex;">
+            <img src="/assets/img/X.png" id="clearSubtaskInput">
+            <div class="border-subtask"></div>
+            <img src="/assets/img/icon_check.svg" id="finishEditingSubtask">
+          </div>
+
+          </div>
+
+          <div id="subtask-content"></div>
+
+          <div class="action-button-container">
+            <img id="clearTask" src="/assets/img/Secondary V1.png">
+            <img id="addTask" src="/assets/img/Primary check button V1.png">
+          </div>
         </div>
     </form>
 

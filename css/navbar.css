@@ -41,6 +41,7 @@ body {
   align-items: center;
   margin-top: 0;
   margin-bottom: 0;
+  font-weight: 600;
 }
 .logout-button {
   z-index: 999;
@@ -73,4 +74,24 @@ body {
 
 .d-none {
   display: none;
+}
+
+.subtask-input{
+  box-sizing: border-box;
+
+  /* Auto layout */
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 21px;
+  gap: 10px;
+  
+  height: 51px;
+  
+  background: #FFFFFF;
+  /* Style */
+  
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
 }
