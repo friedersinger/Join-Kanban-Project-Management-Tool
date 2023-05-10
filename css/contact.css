@@ -7,6 +7,21 @@
   display: none;
 }
 
+.headline {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.headline-text-border {
+  padding-right: 20px;
+  border-right: 3px solid rgb(41, 171, 226);
+}
+
+.headline-text-border-padding {
+  padding-left: 20px;
+}
+
 .headline-text {
   font-style: normal;
   font-weight: 700;
@@ -16,27 +31,31 @@
   margin-bottom: 60px;
 }
 
-.content-desktop {
+.contact-main-container {
   grid-column: 3/11;
   grid-row: 2/11;
-  padding-left: 100px;
-  padding-top: 60px;
   display: flex;
-  flex-direction: column;
-  padding-bottom: 60px;
+
 }
 
 .inner-content {
   display: flex;
-  width: 30%;
+  width: 31.5%;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
+  padding-left: 3%;
+  padding-right: 3%;
+  /* white */
+  background: #FFFFFF;
+  box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
 }
 
 .content-container {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+  width: 100%;
 }
 
 .headline-container {
@@ -56,8 +75,9 @@
 }
 
 .contacts-text {
-  width: 90%;
+  background-color: white;
   text-align: justify;
+
 }
 
 .contacts-text p {
@@ -85,13 +105,82 @@
 
 .contact-right {
   display: flex;
+  flex-direction: column;
+  margin-left: 4.2vw;
+  margin-top: 5.9vh;
+  flex: 1;
 }
+
+.contact-letter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-single-letter{
+  text-align: start;
+  border-bottom: 1px solid #D1D1D1;
+  padding-bottom: 10px;
+  margin-bottom: 35px;
+  padding-left: calc(25px + 1vw);
+  font-size: 21px;
+  line-height: 120%;
+  font-weight: 400;
+}
+
+.initials-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  border-radius: 100%;
+  width: 42px;
+  height: 42px;
+  font-size: 12px;
+  line-height: 14.4px;
+}
+
+.contact-letter-container{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;;
+}
+
+.contact-letter-container:hover{
+  background-color: #2A3647;
+  color: white;
+}
+
+.contact-name-mail{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap:5px;
+}
+
+
+#contactMail{
+  text-decoration: none;
+  color: #007CEE;
+}
+
+#contactName{
+  font-size: 21px;
+  line-height: 120%;
+}
+
+
+
 
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
 .inner-content {
   scrollbar-width: auto;
-  scrollbar-color: #2a3647 #f6f7f8;
+  scrollbar-color: #FFFFFF;
 }
 
 /* Chrome, Edge, and Safari */
@@ -99,12 +188,8 @@
   width: 10px;
 }
 
-.inner-content::-webkit-scrollbar-track {
-  background: #f6f7f8;
-}
-
 .inner-content::-webkit-scrollbar-thumb {
-  background-color: #2a3647;
+  background-color: #A8A8A8;
   border-radius: 10px;
   border: 1px solid #ffffff;
 }

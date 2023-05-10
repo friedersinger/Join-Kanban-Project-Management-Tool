@@ -48,12 +48,12 @@
 }
 
 .board-task-card {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 18px 19px;
-  gap: 10px;
+  gap: 40px;
 
   height: 23.3vh;
   /* white */
@@ -135,6 +135,7 @@
   /* Auto layout */
 
   display: flex;
+  cursor: pointer;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -158,6 +159,7 @@
 
 .add-task-btn-board button {
   color: white;
+  cursor: pointer;
   font-weight: 700;
   font-size: 21px;
   background-color: unset;
@@ -191,3 +193,6 @@
   width: 100%;
   outline: none;
 }
+
+
+

@@ -289,3 +289,13 @@ body {
 .urgent-date-span {
   font-weight: 700;
 }
+
+
+/*Responsive Design*/
+
+@media screen and (max-width: 1175px){
+
+  .summary-content-right{
+    display: none;
+  }
+}

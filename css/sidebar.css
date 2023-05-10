@@ -53,3 +53,53 @@
   height: 20px;
   margin-left: 80px;
 }
+
+
+/*Responsive Design*/
+
+@media screen and (max-width: 1200px){
+
+  .mini-logo{
+    margin-left: 61px;
+  }
+}
+
+@media screen and (max-width: 1080px){
+
+  .mini-logo{
+    margin-left: 42px;
+  }
+}
+
+@media screen and (max-width: 950px){
+
+  .mini-logo{
+    margin-left: 35px;
+  }
+}
+
+@media screen and (max-width: 860px){
+
+  .mini-logo{
+    margin-left: 25px;
+  }
+}
+
+
+@media screen and (max-width: 756px){
+
+  .logo{
+    display: none;
+  }
+
+  .sidebar-container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    grid-column: unset;
+    grid-row: unset;
+    flex-direction: row !important;
+    z-index: 100000;
+    justify-content: center;
+  }
+}
