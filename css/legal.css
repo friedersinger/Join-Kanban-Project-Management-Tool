@@ -2,6 +2,11 @@
   display: none;
 }
 
+#legal-link {
+  /* styles for legal notice link */
+  background-color: #091931;
+}
+
 .headline-text {
   font-style: normal;
   font-weight: 700;
@@ -34,7 +39,7 @@
   flex-direction: column;
 }
 
-.headline-container{
+.headline-container {
   display: flex;
   justify-content: space-between;
   width: 90%;
@@ -50,12 +55,12 @@
   font-weight: 700;
 }
 
-.legal-text{
+.legal-text {
   width: 90%;
   text-align: justify;
 }
 
-.legal-text p{
+.legal-text p {
   line-height: 20px;
 }
 

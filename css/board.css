@@ -2,6 +2,11 @@
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
+#board-link {
+  /* styles for board link */
+  background-color: #091931;
+}
+
 .board-main-container {
   grid-column: 3/11;
   grid-row: 2/11;
@@ -32,14 +37,14 @@
   justify-content: space-between;
   width: 90%;
   height: 100%;
-  gap: 20px
+  gap: 20px;
 }
 
 .board-content-element {
   display: flex;
   flex-direction: column;
   width: calc(20% + 38px);
-  gap: 30px
+  gap: 30px;
 }
 
 .board-task-card {
@@ -65,7 +70,7 @@
   flex-grow: 0;
 }
 
-.task-type{
+.task-type {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,16 +83,16 @@
   font-weight: 500;
 }
 
-.task-type svg:hover{
+.task-type svg:hover {
   cursor: pointer;
 }
 
-.svg:hover path{
-  stroke: #29ABE2;
+.svg:hover path {
+  stroke: #29abe2;
 }
 
-.svg:hover rect{
-  stroke: #29ABE2;
+.svg:hover rect {
+  stroke: #29abe2;
 }
 
 .inputTask {
@@ -122,45 +127,42 @@
   align-items: center;
 }
 
-
 .add-task-btn-board {
   /* Secondary plus v1 */
 
+  box-sizing: border-box;
 
-box-sizing: border-box;
+  /* Auto layout */
 
-/* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  gap: 10px;
+  margin-left: 30px;
 
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 18px 10px;
-gap: 10px;
-margin-left: 30px;
+  width: 157px;
+  height: 51px;
 
-width: 157px;
-height: 51px;
+  background: #2a3647;
+  border: 1px solid #2a3647;
+  border-radius: 10px;
 
-background: #2A3647;
-border: 1px solid #2A3647;
-border-radius: 10px;
+  /* Inside auto layout */
 
-/* Inside auto layout */
-
-flex: none;
-order: 1;
-flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
-.add-task-btn-board button{
-color: white;
-font-weight: 700;
-font-size: 21px;
-background-color: unset;
-border: none;
+.add-task-btn-board button {
+  color: white;
+  font-weight: 700;
+  font-size: 21px;
+  background-color: unset;
+  border: none;
 }
-
 
 .border-subtask {
   border-right: 2px solid #d1d1d1;
@@ -184,7 +186,7 @@ border: none;
   flex-grow: 0;
 }
 
-.subtask-container input{
+.subtask-container input {
   border: none;
   width: 100%;
   outline: none;

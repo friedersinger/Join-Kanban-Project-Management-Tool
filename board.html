@@ -1,105 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
 
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="/css/sidebar.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-
-
+    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
 
     <script src="js/script.js"></script>
     <script src="js/board.js"></script>
-
-
-</head>
-<body onload="includeHTML()">
-
-    <div class="sidebar-container" w3-include-html="assets/templates_html/sidebar_template.html"></div>
-    <div class="navbar-container" w3-include-html="assets/templates_html/navbar_template.html"></div>
+  </head>
+  <body onload="includeHTML()">
+    <div
+      class="sidebar-container"
+      w3-include-html="assets/templates_html/sidebar_template.html"
+    ></div>
+    <div
+      class="navbar-container"
+      w3-include-html="assets/templates_html/navbar_template.html"
+    ></div>
 
     <div class="board-main-container">
+      <div class="headline-container">
+        <span class="headline-text headline-text-container">Board</span>
+        <div class="board-headline-right">
+          <div class="subtask-container">
+            <input id="search-input" />
 
-        <div class="headline-container">
-                <span class="headline-text headline-text-container">Board</span>
-                <div class="board-headline-right">
-                    <div class="subtask-container">
+            <div id="search-input-images" style="display: flex">
+              <div class="border-subtask"></div>
+              <img
+                src="/assets/img/search-icon.png"
+                id="finishEditingSubtask"
+              />
+            </div>
+          </div>
 
-                        <input id="search-input">
-              
-                        <div id="search-input-images" style="display: flex;">
-                          <div class="border-subtask"></div>
-                          <img src="/assets/img/search-icon.png" id="finishEditingSubtask">
-                        </div>
-    
-                        </div>
-
-                <div class="add-task-btn-board">
-                    <button>Add Task</button>
-                    <img src="/assets/img/plus-icon.svg" alt="">
-                </div>
-                </div>
-                
+          <div class="add-task-btn-board">
+            <button>Add Task</button>
+            <img src="/assets/img/plus-icon.svg" alt="" />
+          </div>
         </div>
+      </div>
 
-
-
-        <div class="board-content">
-
-            <div class="board-content-element">
-                <div class="task-type">
-                    <span>To Do</span>
-                    <svg class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="board-task-card"></div>
-            </div>
-            <div class="board-content-element">
-                <div class="task-type">
-                    <span>In progress</span>
-                    <svg class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="board-task-card"></div>
-            </div>
-            <div class="board-content-element">
-                <div class="task-type">
-                    <span>Awaiting feedback</span>
-                    <svg class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="board-task-card"></div>
-            </div>
-            <div class="board-content-element">
-                <div class="task-type">
-                    <span>Done</span>
-                    <svg class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="board-task-card"></div>
-            </div>
-
-
+      <div class="board-content">
+        <div class="board-content-element">
+          <div class="task-type">
+            <span>To Do</span>
+            <svg
+              class="svg"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="board-task-card"></div>
         </div>
-
+        <div class="board-content-element">
+          <div class="task-type">
+            <span>In progress</span>
+            <svg
+              class="svg"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="board-task-card"></div>
+        </div>
+        <div class="board-content-element">
+          <div class="task-type">
+            <span>Awaiting feedback</span>
+            <svg
+              class="svg"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="board-task-card"></div>
+        </div>
+        <div class="board-content-element">
+          <div class="task-type">
+            <span>Done</span>
+            <svg
+              class="svg"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="board-task-card"></div>
+        </div>
+      </div>
     </div>
-
-    
-</body>
+  </body>
 </html>

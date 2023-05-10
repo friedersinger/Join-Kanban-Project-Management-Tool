@@ -1,5 +1,10 @@
-body{
+body {
   line-height: unset !important;
+}
+
+#add-task-link {
+  /* styles for add task link */
+  background-color: #091931;
 }
 
 .column-container {
@@ -166,7 +171,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 input[type="date"]::-webkit-datetime-edit-fields-wrapper {
-  color:  #d1d1d1;
+  color: #d1d1d1;
 }
 
 input[type="date"] {
