@@ -1,5 +1,8 @@
 * {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  overflow: -moz-scrollbars-vertical;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {
