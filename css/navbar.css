@@ -108,3 +108,13 @@ body {
   border: 1px solid #d1d1d1;
   border-radius: 10px;
 }
+
+/*Responsive Design*/
+
+@media screen and (max-width: 756px){
+
+  .navbar-container {
+    grid-column: 1/11;
+  }
+
+}

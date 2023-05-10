@@ -1,6 +1,10 @@
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 
+/**
+ * this function is for previewing the contact list. It can be deleted when the right data gets loaded 
+ */
+
 function giveAlphabet(){
     let contactBox = document.getElementById('contactBox');
 
@@ -9,6 +13,10 @@ function giveAlphabet(){
         contactBox.innerHTML += giveContactListHTML(letter); //
     }
 }
+
+/**
+ * This function returns the HTML for a single letter in the contact list
+ */
 
 function giveContactListHTML(letter){
     return `

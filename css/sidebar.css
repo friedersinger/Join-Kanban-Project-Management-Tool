@@ -54,6 +54,31 @@
   margin-left: 80px;
 }
 
+.sidebar-element-legal{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sidebar-element-legal a{
+  display: flex;
+  color: white;
+  text-decoration: none;
+  justify-content: center;
+  width: 100%;
+}
+
+.sidebar-element-legal:hover{
+  background-color: #0e2951ac;
+}
+
+.sidebar-element-legal span{
+  border-radius: 20px;
+  padding: 20px;
+  
+}
+
 
 /*Responsive Design*/
 
@@ -92,13 +117,35 @@
     display: none;
   }
 
+  .sidebar-element{
+    flex-direction: unset;
+  }
+
+  .sidebar-element-legal{
+    display: none;
+  }
+
+  .sidebar-object {
+    flex-direction: column;
+  }
+
+  .sidebar-object a{
+    flex-direction: column;
+  }
+
+  .mini-logo{
+    margin-left: none;
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+
   .sidebar-container{
     position: fixed;
     bottom: 0;
     width: 100%;
+    display: flex;
     grid-column: unset;
     grid-row: unset;
-    flex-direction: row !important;
     z-index: 100000;
     justify-content: center;
   }
