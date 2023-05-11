@@ -298,4 +298,58 @@ body {
   .summary-content-right{
     display: none;
   }
+
+  .summary-main-container{
+    margin-left: 170px;
+  }
+}
+
+
+@media screen and (max-width: 1000px){
+  .summary-main-container{
+    margin-left: 130px;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .summary-main-container{
+    margin-left: 70px;
+  }
+}
+
+@media screen and (max-width: 830px){
+  .summary-main-container{
+    margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 756px){
+  .summary-main-container{
+    margin-left: -60px;
+  }
+
+  .headline-subtext{
+    display: none;
+  }
+
+  .headline-text-border{
+    border: unset;
+  }
+
+  .headline{
+    display: unset;
+  }
+
+}
+
+@media screen and (max-width: 660px){
+  .summary-main-container{
+    margin-left: -85px;
+  }
+}
+
+@media screen and (max-width: 620px){
+  .summary-main-container{
+    margin-left: -100px;
+  }
 }
