@@ -14,6 +14,7 @@ body {
   margin-top: 60px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 .button {
@@ -354,7 +355,7 @@ body {
   /* from here on the cards getting smaller */
 
   .summary-main-container {
-    margin-left: -100px;
+    margin-left: -66px;
   }
 
   .card {
