@@ -18,6 +18,7 @@ body {
   background-color: white;
   overflow: hidden; /* Verstecken des Inhalts, der das Header-Element überschneidet */
 }
+
 .header-logo {
   height: 60px;
   margin-left: 40px;
@@ -56,8 +57,12 @@ body {
   font-weight: 600;
 }
 
+.mobile-nav-logo {
+  display: none;
+}
+
 .logout-button {
-  z-index: 999;
+  z-index: 99999;
   position: absolute;
   top: 100%;
   left: 50%;
@@ -116,5 +121,21 @@ body {
 @media screen and (max-width: 756px) {
   .navbar-container {
     grid-column: 1/11;
+  }
+
+  .header-headline-container {
+    margin-left: 60px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 450px) {
+  .header-headline-container {
+    display: none;
+  }
+
+  .mobile-nav-logo {
+    display: flex;
+    margin-left: 50px;
   }
 }
