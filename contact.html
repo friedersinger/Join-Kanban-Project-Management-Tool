@@ -78,7 +78,7 @@
 
       </div>
 
-      <div class="add-contact-btn">
+      <div class="add-contact-btn" onclick="showCard()">
         <span>New Contact</span>
         <img src="assets/img/add_contact_icon.svg" alt="">
       </div>
@@ -89,7 +89,7 @@
 
   </div>
 
-  <div class="overlay-bg">
+  <div id="overlay-bg" class="overlay-bg d-none">
     <div id="overlay">
       <div class="overlay-left">
         <img src="assets/img/logo.svg" alt="">
@@ -98,15 +98,41 @@
         <div class="border-overlay"></div>
       </div>
       <div class="overlay-right">
-        <div class="close-btn">X</div>
-        <div class="flex-row">
-          <img src="assets/img/" class="avatar">
-          <div class="form"></div>
+        <div class="justify-end">
+          <div class="close-btn cursor-pointer" onclick="hideCard()">
+          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.9614 7.65381L7.65367 22.9616" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22.8169 23.106L7.50914 7.7982" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="flex-row align-center justify-between">
+          <img src="assets/img/avatar_img.svg" class="avatar">
+          <div class="form">
+            <form action="">
+              <div><input type="text" id="addName" placeholder="Name" /></div>
+              <div><input type="email" id="addMail" placeholder="Email" /></div>
+              <div><input type="tel" id="addTel" placeholder="Phone" /></div>
+            </form>
+          </div>
         </div>
         <div class="add-close-btn-container">
-          <img src="" alt="">
-          <img src="" alt="">
+          <div class="cancel-btn" onclick="hideCard()">
+            <span class="font-size-21">Cancel</span>
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.9614 7.65381L7.65367 22.9616" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22.8169 23.106L7.50914 7.7982" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              
+          </div>
+          <div class="create-btn">
+            <span class="font-weight-700 font-size-21">Create contact</span>
+            <img src="assets/img/add_contact_icon.svg" alt="">
+          </div>
         </div>
+        
+
+      
         
 
       </div>

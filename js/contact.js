@@ -1,6 +1,5 @@
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-
 /**
  * this function is for previewing the contact list. It can be deleted when the right data gets loaded 
  */
@@ -12,6 +11,16 @@ function giveAlphabet(){
         const letter = alphabet[i];
         contactBox.innerHTML += giveContactListHTML(letter); //
     }
+}
+
+function showCard(){
+  let overlay = document.getElementById('overlay-bg');
+  overlay.classList.remove('d-none');
+}
+
+function hideCard(){
+  let overlay = document.getElementById('overlay-bg');
+  overlay.classList.add('d-none');
 }
 
 /**
