@@ -322,6 +322,12 @@ body {
 
 @media screen and (max-width: 756px) {
   .summary-main-container {
+    grid-column: 2/11;
+    display: flex;
+    align-items: center;
+  }
+
+  .summary-main-container {
     margin-left: -60px;
   }
 
@@ -345,42 +351,25 @@ body {
 }
 
 @media screen and (max-width: 620px) {
+  /* from here on the cards getting smaller */
+
   .summary-main-container {
     margin-left: -100px;
   }
-}
 
-@media only screen and (max-width: 600px) {
-  .summary-main-container {
-    margin: 10px;
-  }
-
-  .headline {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .headline-text {
-    font-size: 36px;
-  }
-
-  .headline-subtext {
-    font-size: 16px;
-  }
-
-  .summary-content {
-    flex-direction: column;
-  }
-
-  .summary-content-left {
-    width: 100%;
-  }
-
-  .row {
-    flex-direction: column;
+  .card {
+    gap: 6px;
+    width: 150px;
+    height: 150px;
+    order: 1;
+    flex-grow: 0;
   }
 
   .bottom-card-body {
-    margin-bottom: 20px;
+    width: 240px;
   }
+}
+
+@media only screen and (max-width: 550px) {
+  /* r */
 }
