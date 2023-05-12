@@ -14,7 +14,9 @@ body {
   margin-top: 60px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
+
 
 .button {
   grid-column: 4;
