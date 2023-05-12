@@ -170,6 +170,84 @@
   line-height: 120%;
 }
 
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.align-center{
+  align-items: center;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.gap-5{
+  gap: 5px;
+}
+
+.gap-15{
+  gap: 15px;
+}
+
+.gap-30{
+  gap: 30px;
+}
+
+.gap-50{
+  gap: 50px;
+}
+
+#nameCircle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  padding: 1px;
+  background-color: orange;
+  font-size: 47px;
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+}
+
+#nameDetailCard{
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+}
+
+#contactMailDetail {
+  text-decoration: none;
+  color: #007cee;
+}
+
+.font-size-27{
+  font-size: 27px;
+}
+
+.font-size-21{
+  font-size: 21px;
+}
+
+.font-weight-700{
+  font-weight: 700;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+#phoneDetail{
+  text-decoration: none;
+  color: black;
+}
+
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
 .inner-content {
