@@ -1,6 +1,10 @@
 function showLogout() {
   var logoutButton = document.getElementById("logout-button");
-  logoutButton.classList.remove("d-none");
+  if (logoutButton.classList.contains("d-none")) {
+    logoutButton.classList.remove("d-none");
+  } else {
+    logoutButton.classList.add("d-none");
+  }
 }
 
 function hideLogout() {
