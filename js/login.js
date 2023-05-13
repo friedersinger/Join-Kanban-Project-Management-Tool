@@ -12,7 +12,7 @@ async function login() {
   );
 
   if (user) {
-    await localStorage.setItem("activeUser", JSON.stringify(user.name)); // saving active user in local storage
+    await localStorage.setItem("activeUser", JSON.stringify(user.name)); // saving active user in local storage  //await has no effect in an if-statement!
     checkViewPortAndRedirect();
   } else {
     document.getElementById("user-not-found").classList.remove("d-none");
