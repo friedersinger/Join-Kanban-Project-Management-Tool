@@ -128,7 +128,7 @@ body {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .header-headline-container {
     display: none;
   }
