@@ -21,9 +21,8 @@
   grid-row: 2/11;
   margin-left: 100px;
   margin-top: 60px;
-  display: flex;
-  flex-direction: column;
   padding-bottom: 60px;
+  display: flex;
 }
 
 .inner-content {
@@ -106,22 +105,15 @@
 }
 
 @media (max-width: 1024px) {
-  .content-desktop {
-    display: none;
-  }
-
-  .content-mobile {
-    display: flex;
-  }
-
   .content-container {
     padding-bottom: 80px;
   }
 }
 
-@media (min-width: 1024px) {
-  .content-mobile {
-    display: none;
+@media (max-width: 756px) {
+  .content-desktop {
+    grid-column: 1/11;
+    margin-left: 20px;
   }
 }
 
@@ -137,7 +129,7 @@
 }
 
 @media (max-width: 450px) {
-  .main-heading {
+  .headline-text {
     font-size: 37px;
   }
 }

@@ -1,144 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact</title>
+    <link rel="stylesheet" href="/css/contact.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
 
-  <link rel="stylesheet" href="/css/contact.css">
-  <link rel="stylesheet" href="/css/sidebar.css">
-  <link rel="stylesheet" href="/css/navbar.css">
+    <script src="/js/navbar.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+  </head>
 
-  <script src="/js/navbar.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/contact.js"></script>
+  <body onload="includeHTML();giveAlphabet()">
+    <div
+      class="sidebar-container"
+      w3-include-html="assets/templates_html/sidebar_template.html"
+    ></div>
+    <div
+      class="navbar-container"
+      w3-include-html="assets/templates_html/navbar_template.html"
+    ></div>
 
-
-</head>
-
-<body onload="includeHTML();giveAlphabet()">
-
-  <div class="sidebar-container" w3-include-html="assets/templates_html/sidebar_template.html"></div>
-  <div class="navbar-container" w3-include-html="assets/templates_html/navbar_template.html"></div>
-
-
-  <div class="contact-main-container">
-    <div class="inner-content" id="inner-content">
-      <div class="content-container">
-        <div class="contacts-text" id="contactBox"></div>
-      </div>
-    </div>
-
-
-    <div class="contact-right">
-
-      <div class="headline">
-        <div class="headline-text-border">
-          <span class="headline-text headline-text-container">Contacts</span>
-        </div>
-        <div class="headline-text-border-padding">
-          <span class="headline-subtext headline-text-container font-size-27">
-            Better with a team
-          </span>
+    <div class="contact-main-container">
+      <div class="inner-content" id="inner-content">
+        <div class="content-container">
+          <div class="contacts-text" id="contactBox"></div>
         </div>
       </div>
 
-      <div class="flex-column gap-50">
-        <div class="flex-row gap-30 align-center">
-          <div id="nameCircle">
-            AM
+      <div class="contact-right">
+        <div class="headline">
+          <div class="headline-text-border">
+            <span class="headline-text headline-text-container">Contacts</span>
           </div>
-          <div class="flex-column">
-            <span id="nameDetailCard">Anton Mayer</span>
-            <div>
-              <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer">
+          <div class="headline-text-border-padding">
+            <span class="headline-subtext headline-text-container font-size-27">
+              Better with a team
+            </span>
+          </div>
+        </div>
+
+        <div class="flex-column gap-50">
+          <div class="flex-row gap-30 align-center">
+            <div id="nameCircle">AM</div>
+            <div class="flex-column">
+              <span id="nameDetailCard">Anton Mayer</span>
+              <div>
+                <img
+                  src="assets/img/add_task_contacts.svg"
+                  alt=""
+                  class="cursor-pointer"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-row gap-30 align-center">
+            <span class="font-size-21">Contact Information</span>
+            <div class="flex-row gap-5 align-center">
+              <img
+                src="assets/img/pen_black.svg"
+                alt=""
+                class="cursor-pointer"
+              />
+              <span class="cursor-pointer">Edit Contact</span>
+            </div>
+          </div>
+
+          <div class="flex-column gap-15">
+            <span class="font-weight-700">Email</span>
+            <div id="mail">
+              <a href="mailto:anton@gmail.com" id="contactMailDetail"
+                >anton@gmail.com</a
+              >
+            </div>
+          </div>
+
+          <div class="flex-column gap-15">
+            <span class="font-weight-700">Phone</span>
+            <div id="phone">
+              <a href="+49 1111 1111 11" id="phoneDetail">+49 1111 1111 11</a>
             </div>
           </div>
         </div>
 
-        <div class="flex-row gap-30 align-center">
-          <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center">
-            <img src="assets/img/pen_black.svg" alt="" class="cursor-pointer">
-            <span class="cursor-pointer">Edit Contact</span>
-          </div>
+        <div class="add-contact-btn" onclick="showCard()">
+          <span>New Contact</span>
+          <img src="assets/img/add_contact_icon.svg" alt="" />
         </div>
-
-        <div class="flex-column gap-15">
-          <span class="font-weight-700">Email</span>
-          <div id="mail"><a href="mailto:anton@gmail.com" id="contactMailDetail">anton@gmail.com</a></div>
-        </div>
-
-        <div class="flex-column gap-15">
-          <span class="font-weight-700">Phone</span>
-          <div id="phone"><a href="+49 1111 1111 11" id="phoneDetail">+49 1111 1111 11</a></div>
-        </div>
-
       </div>
-
-      <div class="add-contact-btn" onclick="showCard()">
-        <span>New Contact</span>
-        <img src="assets/img/add_contact_icon.svg" alt="">
-      </div>
-
     </div>
 
-    
-
-  </div>
-
-  <div id="overlay-bg" class="overlay-bg d-none">
-    <div id="overlay">
-      <div class="overlay-left">
-        <img src="assets/img/logo.svg" alt="">
-        <span class="font-size-61 font-weight-700">Add contact</span>
-        <span class="font-size-27">Tasks are better with a team!</span>
-        <div class="border-overlay"></div>
-      </div>
-      <div class="overlay-right">
-        <div class="justify-end">
-          <div class="close-btn cursor-pointer" onclick="hideCard()">
-          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.9614 7.65381L7.65367 22.9616" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-            <path d="M22.8169 23.106L7.50914 7.7982" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
+    <div id="overlay-bg" class="overlay-bg d-none">
+      <div id="overlay">
+        <div class="overlay-left">
+          <img src="assets/img/logo.svg" alt="" />
+          <span class="font-size-61 font-weight-700">Add contact</span>
+          <span class="font-size-27">Tasks are better with a team!</span>
+          <div class="border-overlay"></div>
         </div>
-        <div class="flex-row align-center justify-between">
-          <img src="assets/img/avatar_img.svg" class="avatar">
-          <div class="form">
-            <form action="">
-              <div><input type="text" id="addName" placeholder="Name" /></div>
-              <div><input type="email" id="addMail" placeholder="Email" /></div>
-              <div><input type="tel" id="addTel" placeholder="Phone" /></div>
-            </form>
-          </div>
-        </div>
-        <div class="add-close-btn-container">
-          <div class="cancel-btn" onclick="hideCard()">
-            <span class="font-size-21">Cancel</span>
-            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.9614 7.65381L7.65367 22.9616" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-              <path d="M22.8169 23.106L7.50914 7.7982" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+        <div class="overlay-right">
+          <div class="justify-end">
+            <div class="close-btn cursor-pointer" onclick="hideCard()">
+              <svg
+                width="31"
+                height="31"
+                viewBox="0 0 31 31"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22.9614 7.65381L7.65367 22.9616"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M22.8169 23.106L7.50914 7.7982"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
               </svg>
-              
+            </div>
           </div>
-          <div class="create-btn">
-            <span class="font-weight-700 font-size-21">Create contact</span>
-            <img src="assets/img/add_contact_icon.svg" alt="">
+          <div class="flex-row align-center justify-between">
+            <img src="assets/img/avatar_img.svg" class="avatar" />
+            <div class="form">
+              <form action="">
+                <div><input type="text" id="addName" placeholder="Name" /></div>
+                <div>
+                  <input type="email" id="addMail" placeholder="Email" />
+                </div>
+                <div><input type="tel" id="addTel" placeholder="Phone" /></div>
+              </form>
+            </div>
+          </div>
+          <div class="add-close-btn-container">
+            <div class="cancel-btn" onclick="hideCard()">
+              <span class="font-size-21">Cancel</span>
+              <svg
+                width="31"
+                height="31"
+                viewBox="0 0 31 31"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22.9614 7.65381L7.65367 22.9616"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M22.8169 23.106L7.50914 7.7982"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="create-btn">
+              <span class="font-weight-700 font-size-21">Create contact</span>
+              <img src="assets/img/add_contact_icon.svg" alt="" />
+            </div>
           </div>
         </div>
-        
-
-      
-        
-
       </div>
     </div>
-  </div>
-
-</body>
-
+  </body>
 </html>
