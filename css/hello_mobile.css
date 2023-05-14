@@ -1,0 +1,40 @@
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+.content-mobile {
+  background-color: #f6f7f8;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-mobile span {
+  color: #2a3647;
+  font-size: 46px;
+}
+
+.content-mobile div {
+  display: flex;
+}
+
+.greeting-name {
+  color: #29abe2;
+  font-weight: 700;
+  font-size: 54px;
+}
+
+@media (max-width: 420px) {
+  .content-mobile span {
+    font-size: 32px;
+  }
+
+  .greeting-name {
+    font-size: 46px;
+  }
+}

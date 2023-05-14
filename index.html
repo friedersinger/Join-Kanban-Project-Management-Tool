@@ -13,31 +13,20 @@
 
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
-    <script src="contact.html"></script>
-    <script src="legal.html"></script>
-    <script src="board.html"></script>
-    <script src="summary.html"></script>
-
-    <script src="./assets/templates_html/desktop_template.html"></script>
-    <script src="./assets/templates_html/mobile_template.html"></script>
-    <script src="./assets/templates_html/task_form.html"></script>
-
     <script src="./js/script.js"></script>
     <script src="./mini_backend.js"></script>
     <script src="./js/login.js"></script>
-    y
+
     <script src="./js/index.js"></script>
     <link rel="./stylesheet" href="./css/navbar.css" />
 
     <script src="./js/navbar.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="css/login.css" />
 
     <title>JOIN</title>
   </head>
 
-  <!-- after backend is implemented showRememberMeContact() -->
   <body onload="init(); showRememberMeContact()">
     <div class="complete-page">
       <div id="start-join-logo" class="start-join-logo">
@@ -277,7 +266,7 @@
             <form
               onsubmit="checkIfUserExists(event)"
               class="forgot-pw-form"
-              action="https://gruppe-557.developerakademie.net/Join-1.0/JOIN/send_mail.php"
+              action="https://gruppe-557.developerakademie.net/send_mail.php"
               method="POST"
             >
               <input

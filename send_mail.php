@@ -12,7 +12,7 @@ $redirect = 'success_forget_pw.html';                 //setting redirection to s
 #   SENDING PERSONALIZED EMAIL TO USER
 #
 ##############################################
-
+// http://gruppe-557.developerakademie.net/reset_password.html
 switch ($_SERVER['REQUEST_METHOD']) {
     case ("OPTIONS"): //Allow preflighting to take place.
         header("Access-Control-Allow-Origin: *");
@@ -26,7 +26,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $message = "Hello,\n                            
         \nFollow this link to reset the password for your Join account.\n
-        \nhttps://gruppe-557.developerakademie.net/Join-1.0/index.html?email={$email}\n   
+        \nhttp://gruppe-557.developerakademie.net/reset_password.html?email={$email}\n   
         \nIgnore this email if you did not ask to reset your password.\n
         \nThank you,\n
         \nJoin team\n";

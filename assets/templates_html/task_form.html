@@ -10,18 +10,21 @@
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/task_form.css" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
 
     <script src="/js/script.js"></script>
     <script src="/js/add_task.js"></script>
     <script src="/js/navbar.js"></script>
-
-
   </head>
-  <body onload="includeHTML()" style="background-color: #f5f5f5;">
+  <body onload="includeHTML()" style="background-color: #f5f5f5">
     <div
       class="sidebar-container"
       w3-include-html="/assets/templates_html/sidebar_template.html"
@@ -30,10 +33,11 @@
       class="navbar-container"
       w3-include-html="/assets/templates_html/navbar_template.html"
     ></div>
-    
-    
+
     <div class="task-card">
-      <div class="margin-bottom-60"><span class="headline-text">Add Task</span></div>
+      <div class="margin-bottom-60">
+        <span class="headline-text">Add Task</span>
+      </div>
       <form class="column-container">
         <div class="column-left">
           <label>Title</label>
@@ -50,7 +54,17 @@
           <label>Category</label>
 
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;justify-content: space-between;">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
               Select task category
             </button>
             <ul class="dropdown-menu">
@@ -59,12 +73,21 @@
               <li><a class="dropdown-item" href="#">Backoffice</a></li>
             </ul>
           </div>
-  
 
           <label>Assigned to</label>
 
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;justify-content: space-between;">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
               Select contacts to assign
             </button>
             <ul class="dropdown-menu">
@@ -79,7 +102,12 @@
         <div class="column-right">
           <label>Due Date</label>
 
-          <input min="2023-05-08" id="datePicker" type="date" placeholder="Enter a description" /><br /><br />
+          <input
+            min="2023-05-08"
+            id="datePicker"
+            type="date"
+            placeholder="Enter a description"
+          /><br /><br />
 
           <label>Prio</label>
 
@@ -100,27 +128,23 @@
 
           <label class="subtask">Subtasks</label>
           <div class="subtask-container">
-          <input type="text" id="subtask-input-content">
+            <input type="text" id="subtask-input-content" />
 
-          <div id="subtaskOninput" style="display: flex;">
-            <img src="/assets/img/X.png" id="clearSubtaskInput">
-            <div class="border-subtask"></div>
-            <img src="/assets/img/icon_check.svg" id="finishEditingSubtask">
-          </div>
-
+            <div id="subtaskOninput" style="display: flex">
+              <img src="/assets/img/X.png" id="clearSubtaskInput" />
+              <div class="border-subtask"></div>
+              <img src="/assets/img/icon_check.svg" id="finishEditingSubtask" />
+            </div>
           </div>
 
           <div id="subtask-content"></div>
 
           <div class="action-button-container">
-            <img id="clearTask" src="/assets/img/cancel-task.svg">
-            <img id="addTask" src="/assets/img/create-task.svg">
+            <img id="clearTask" src="/assets/img/cancel-task.svg" />
+            <img id="addTask" src="/assets/img/create-task.svg" />
           </div>
         </div>
-    </form>
-
+      </form>
     </div>
-    
-
   </body>
 </html>

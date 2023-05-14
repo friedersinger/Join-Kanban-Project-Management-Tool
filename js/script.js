@@ -8,7 +8,7 @@ let activeUser;
  * Initializes global variables and fetches data from server to populate arrays.
  */
 async function init() {
-  setURL("https://gruppe-557.developerakademie.net/JOIN/smallest_backend_ever");
+  setURL("https://gruppe-557.developerakademie.net/smallest_backend_ever");
   await downloadFromServer();
   users = JSON.parse(backend.getItem("users")) || [];
 
@@ -26,6 +26,13 @@ function showRememberMeContact() {
 
   rememberMeEmailField.value = localStorage.getItem("rememberMeEmail");
   rememberMePasswordField.value = localStorage.getItem("rememberMePassword");
+}
+
+/**
+ *  waiting
+ */
+async function renderWithoutActiveSection() {
+  await includeHTML();
 }
 
 async function includeHTML() {
