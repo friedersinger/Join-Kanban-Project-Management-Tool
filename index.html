@@ -13,11 +13,9 @@
 
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
-    <script src="./js/script.js"></script>
-    <script src="./mini_backend.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="/backend_new/storage_new.js"></script>
+    <script src="/js/login_new.js"></script>
 
-    <script src="./js/index.js"></script>
     <link rel="./stylesheet" href="./css/navbar.css" />
 
     <script src="./js/navbar.js"></script>
@@ -27,12 +25,12 @@
     <title>JOIN</title>
   </head>
 
-  <body onload="init(); showRememberMeContact()">
+  <body onload="init()">
     <div class="complete-page">
-      <div id="start-join-logo" class="start-join-logo">
+      <div id="startJoinLogo" class="start-join-logo">
         <img src="./assets/img/Capa 2join-logo.png" alt="" />
       </div>
-      <div id="signUp-button" class="login-head">
+      <div id="signUpButton" class="login-head">
         <span
           class="hover-bright"
           style="border: none"
@@ -57,7 +55,7 @@
             <form class="form-style" onsubmit="login(); return false">
               <div class="email-field">
                 <input
-                  id="email-login"
+                  id="emailLogin"
                   required
                   type="email"
                   class="form-control"
@@ -73,8 +71,8 @@
 
               <div class="password-field">
                 <input
-                  onfocus="checkInputType('password-login', 'login')"
-                  id="password-login"
+                  onfocus="checkInputType('passwordLogin', 'login')"
+                  id="passwordLogin"
                   required
                   type="password"
                   class="form-control"
@@ -82,28 +80,28 @@
                   aria-label="First name"
                 />
                 <img
-                  id="pw-icon-login"
+                  id="pwIconLogin"
                   class="password-icon bg-white"
                   src="./assets/img/password-icon.svg"
                   alt=""
                 />
                 <img
                   onclick="changePwToText('password-login', 'login')"
-                  id="pw-no-show-login"
+                  id="pwNoShowLogin"
                   class="password-icon d-none bg-white"
                   src="./assets/img/pw-no-show-icon.svg"
                   style="cursor: pointer"
                 />
                 <img
                   onclick="changeTextToPw('password-login', 'login')"
-                  id="pw-show-login"
+                  id="pwShowLogin"
                   class="password-icon d-none bg-white"
                   src="./assets/img/pw-show-icon.svg"
                   style="cursor: pointer"
                 />
               </div>
 
-              <span id="user-not-found" class="user-not-found d-none"
+              <span id="userNotFound" class="user-not-found d-none"
                 >User not found. Try again</span
               >
 
@@ -132,12 +130,12 @@
           </div>
         </div>
       </div>
-      <div id="signUp-mobile-button" class="login-head-mobile">
+      <div id="signUpMobileButton" class="login-head-mobile">
         <span class="hover-bright" style="border: none">Not a Join user?</span>
         <button class="hover-dark" onclick="openSignUp()">Sign up</button>
       </div>
 
-      <div id="sign-up" class="signUp-display d-none">
+      <div id="signUp" class="signUp-display d-none">
         <div class="df-w">
           <div
             class="signUp-area"
@@ -155,7 +153,7 @@
             <form onsubmit="checkSignUp(); return false" class="form-style">
               <div class="signup-name-field">
                 <input
-                  id="name-signup"
+                  id="nameSignup"
                   required
                   type="text"
                   class="form-control"
@@ -171,7 +169,7 @@
 
               <div class="signup-email-field">
                 <input
-                  id="email-signup"
+                  id="emailSignup"
                   required
                   type="email"
                   class="form-control"
@@ -187,8 +185,7 @@
 
               <div class="signup-password-field">
                 <input
-                  id="password-signup"
-                  onfocus="checkInputType('password-signup', 'signup')"
+                  id="passwordSignup"
                   required
                   type="password"
                   class="form-control"
@@ -196,7 +193,7 @@
                   aria-label="First name"
                 />
                 <img
-                  id="pw-icon-signup"
+                  id="pwIconSignup"
                   class="password-signup-icon bg-white"
                   src="./assets/img/password-icon.svg"
                   alt=""
@@ -210,7 +207,7 @@
                 />
                 <img
                   onclick="changeTextToPw('password-signup', 'signup')"
-                  id="pw-show-signup"
+                  id="pwShowSignup"
                   class="password-icon d-none bg-white"
                   src="./assets/img/pw-show-icon.svg"
                   style="cursor: pointer"
@@ -242,7 +239,7 @@
         </div>
       </div>
 
-      <div id="forgot-password" class="forgot-password-display d-none">
+      <div id="forgotPassword" class="forgot-password-display d-none">
         <div class="forgot-password-area">
           <div class="arrow" onclick="closeForgotPassword()">
             <img src="./assets/img/arrow-121-32.png" />
@@ -270,7 +267,7 @@
               method="POST"
             >
               <input
-                id="forgot-pw-mail"
+                id="forgotPwMail"
                 required
                 name="email"
                 type="email"
@@ -285,7 +282,7 @@
                 alt=""
               />
 
-              <span id="forgot-user-not-found" class="user-not-found d-none"
+              <span id="forgotUserNotFound" class="user-not-found d-none"
                 >User not found. Try again!</span
               >
 
