@@ -7,43 +7,41 @@
 
     <!-- Bootstrap -->
     <link
-      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
-    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
     <script src="contact.html"></script>
     <script src="legal.html"></script>
     <script src="board.html"></script>
     <script src="summary.html"></script>
 
-    <script src="assets/templates_html/desktop_template.html"></script>
-    <script src="assets/templates_html/mobil_template.html"></script>
-    <script src="assets/templates_html/task_form.html"></script>
+    <script src="./assets/templates_html/desktop_template.html"></script>
+    <script src="./assets/templates_html/mobile_template.html"></script>
+    <script src="./assets/templates_html/task_form.html"></script>
 
-    <script src="/js/script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./mini_backend.js"></script>
+    <script src="./js/login.js"></script>
+    y
+    <script src="./js/index.js"></script>
+    <link rel="./stylesheet" href="./css/navbar.css" />
 
-    <script src="/js/login.js"></script>
-    <script src="/js/index.js"></script>
-    <link rel="stylesheet" href="/css/navbar.css" />
-
-    <script src="/js/navbar.js"></script>
+    <script src="./js/navbar.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="css/login.css" />
 
     <title>JOIN</title>
-
-   
-
   </head>
 
   <!-- after backend is implemented showRememberMeContact() -->
-  <body onload="init(), showRememberMeContact()">
+  <body onload="init(); showRememberMeContact()">
     <div class="complete-page">
       <div id="start-join-logo" class="start-join-logo">
-        <img src="assets/img/Capa 2join-logo.png" alt="" />
+        <img src="./assets/img/Capa 2join-logo.png" alt="" />
       </div>
       <div id="signUp-button" class="login-head">
         <span
@@ -79,7 +77,7 @@
                 />
                 <img
                   class="mail-icon bg-white"
-                  src="assets/img/mail-icon.svg"
+                  src="./assets/img/mail-icon.svg"
                   alt=""
                 />
               </div>
@@ -97,21 +95,21 @@
                 <img
                   id="pw-icon-login"
                   class="password-icon bg-white"
-                  src="assets/img/password-icon.svg"
+                  src="./assets/img/password-icon.svg"
                   alt=""
                 />
                 <img
                   onclick="changePwToText('password-login', 'login')"
                   id="pw-no-show-login"
                   class="password-icon d-none bg-white"
-                  src="assets/img/pw-no-show-icon.svg"
+                  src="./assets/img/pw-no-show-icon.svg"
                   style="cursor: pointer"
                 />
                 <img
                   onclick="changeTextToPw('password-login', 'login')"
                   id="pw-show-login"
                   class="password-icon d-none bg-white"
-                  src="assets/img/pw-show-icon.svg"
+                  src="./assets/img/pw-show-icon.svg"
                   style="cursor: pointer"
                 />
               </div>
@@ -157,7 +155,7 @@
             style="box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)"
           >
             <div class="arrow" onclick="closeSignUp()">
-              <img src="assets/img/arrow-121-32.png" />
+              <img src="./assets/img/arrow-121-32.png" />
             </div>
 
             <div class="headline">
@@ -177,7 +175,7 @@
                 />
                 <img
                   class="name-signup-icon bg-white"
-                  src="assets/img/name-icon.svg"
+                  src="./assets/img/name-icon.svg"
                   alt=""
                 />
               </div>
@@ -193,7 +191,7 @@
                 />
                 <img
                   class="mail-signup-icon bg-white"
-                  src="assets/img/mail-icon.svg"
+                  src="./assets/img/mail-icon.svg"
                   alt=""
                 />
               </div>
@@ -211,21 +209,21 @@
                 <img
                   id="pw-icon-signup"
                   class="password-signup-icon bg-white"
-                  src="assets/img/password-icon.svg"
+                  src="./assets/img/password-icon.svg"
                   alt=""
                 />
                 <img
                   onclick="changePwToText('password-signup', 'signup')"
                   id="pw-no-show-signup"
                   class="password-icon d-none bg-white"
-                  src="assets/img/pw-no-show-icon.svg"
+                  src="./assets/img/pw-no-show-icon.svg"
                   style="cursor: pointer"
                 />
                 <img
                   onclick="changeTextToPw('password-signup', 'signup')"
                   id="pw-show-signup"
                   class="password-icon d-none bg-white"
-                  src="assets/img/pw-show-icon.svg"
+                  src="./assets/img/pw-show-icon.svg"
                   style="cursor: pointer"
                 />
               </div>
@@ -258,7 +256,7 @@
       <div id="forgot-password" class="forgot-password-display d-none">
         <div class="forgot-password-area">
           <div class="arrow" onclick="closeForgotPassword()">
-            <img src="assets/img/arrow-121-32.png" />
+            <img src="./assets/img/arrow-121-32.png" />
           </div>
 
           <div class="headline">
@@ -294,7 +292,7 @@
 
               <img
                 class="forgot-password-icon bg-white"
-                src="assets/img/mail-icon.svg"
+                src="./assets/img/mail-icon.svg"
                 alt=""
               />
 
