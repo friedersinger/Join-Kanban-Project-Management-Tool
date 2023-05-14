@@ -12,7 +12,7 @@ $redirect = 'success_forget_pw.html';                 //setting redirection to s
 #   SENDING PERSONALIZED EMAIL TO USER
 #
 ##############################################
-// http://gruppe-557.developerakademie.net/reset_password.html
+
 switch ($_SERVER['REQUEST_METHOD']) {
     case ("OPTIONS"): //Allow preflighting to take place.
         header("Access-Control-Allow-Origin: *");
@@ -25,12 +25,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $email = $_POST['email'];           //getting email from inputfield and putting it in a variable
 
         $message = "Hello,\n                            
-        \nFollow this link to reset the password for your Join account.\n
+        \nPlease click the following link to reset your password for your Join account:\n
         \nhttp://gruppe-557.developerakademie.net/reset_password.html?email={$email}\n   
-        \nIgnore this email if you did not ask to reset your password.\n
-        \nThank you,\n
+        \nIf you didn't request to reset your password, please disregard this email.\n
+        \nBest regards,\n
         \nJoin team\n";
                        // message for the user with personilzed link to reset password
+     
 
         $recipient = $email;                // setting recipient to the email from inputfield
         $subject = "Join - Reset password";

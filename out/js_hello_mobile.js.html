@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: js/hello_mobile.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,52 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: js/hello_mobile.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * On mobile, users are greeted for 3 seconds and shown the topper and footer
+ * as data is fetched. A personalized greeting with the user's name is then
+ * displayed, followed by a quick 3-second redirect to summary.html.
+ */
+async function renderGreetingHello() {
+  await init();
+  renderWithoutActiveSection();
+  document.getElementById("greeting-time-hello").innerText =
+    getDaytimeGreeting();
+  if (activeUser != "Guest") {
+    document.getElementById("greeting-name-mobile").innerText = activeUser;
+  }
+  setTimeout(() => {
+    window.location.href = "summary.html";
+  }, 3000);
+}
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * checks the time and depending on that return a greeting
+ * @returns {string} greeting - greeting sentence
+ */
+function getDaytimeGreeting() {
+  let hour = new Date().getHours();
+  if (3 &lt;= hour &amp;&amp; hour &lt;= 11) {
+    return "Good morning";
+  }
+  if (11 &lt; hour &amp;&amp; hour &lt;= 19) {
+    return "Good afternoon";
+  }
+  if (19 &lt; hour || hour &lt; 3) {
+    return "Good evening";
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
