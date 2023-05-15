@@ -1,5 +1,4 @@
 let users = [];
-let contacts = [];
 
 async function init() {
   loadUsers();
@@ -29,7 +28,8 @@ async function login() {
 
   if (user) {
     await localStorage.setItem("activeUser", JSON.stringify(user.name));
-    window.location.href = "summary.html";
+    checkViewPortAndRedirect();
+    //window.location.href = "summary.html";
   } else {
     document.getElementById("userNotFound").classList.remove("d-none");
     email.value = "";
@@ -39,15 +39,53 @@ async function login() {
 }
 
 /**
+ * Stores the email and password in local storage for remembering the user login,
+ * or removes them if the remember me checkbox is not checked.
+ *
+ * @param {HTMLElement} email - Input field for Email
+ * @param {HTMLElement} password - Input field for Password
+ */
+function rememberMe(email, password) {
+  let checkbox = document.getElementById("checkbox");
+  if (checkbox.checked) {
+    localStorage.setItem("rememberMeEmail", email.value);
+    localStorage.setItem("rememberMePassword", password.value);
+  } else if (!checkbox.checked) {
+    localStorage.removeItem("rememberMeEmail");
+    localStorage.removeItem("rememberMePassword");
+  }
+}
+
+/**
+ * Redirects to a certain page depending on the viewport width
+ *
+ */
+function checkViewPortAndRedirect() {
+  if (document.body.clientWidth > 1024) {
+    window.location.href = "summary.html";
+  } else {
+    window.location.href = "hello_mobile.html";
+  }
+}
+
+/**
  * Log in as a guest user for demo purposes and save it as active user in local storage
  *
  */
 async function guestLogin() {
   let guest = { name: "Guest" };
   await localStorage.setItem("activeUser", JSON.stringify(guest.name));
-  window.location.href = "summary.html";
+  if (document.body.clientWidth > 1024) {
+    window.location.href = "summary.html";
+  } else {
+    window.location.href = "/out/hello_mobile.js.html";
+  }
 }
 
+/**
+ * This function adds a new user to the database by getting the user details from the signup form.
+ *
+ */
 async function signUpNewUser() {
   let name = document.getElementById("nameSignup");
   let email = document.getElementById("emailSignup");
@@ -61,23 +99,31 @@ async function signUpNewUser() {
   resetForm(name, email, password);
 }
 
-
-
 function resetForm(name, email, password) {
   email.value = "";
   password.value = "";
   name.value = "";
+
+  window.location.href = "success_signup.html";
 }
 
 /**
- * This function displays the "sign up" section and hides the login section on the login screen
+ * This function checks if the user with the provided email exists in the database before sending a reset password email.
+ * If the user exists, it returns true. If not, it prevents the default action and shows an error message.
  *
+ * @param {Event} e - The event parameter is used to prevent sending the email if the user does not exist in the database.
  */
-function openSignUp() {
-  document.getElementById("login").classList.add("d-none");
-  document.getElementById("signUp").classList.remove("d-none");
-  document.getElementById("signUpMobileButton").classList.add("d-none");
-  document.getElementById("signUpButton").classList.add("d-none");
+function checkIfUserExists(e) {
+  let email = document.getElementById("forgotPwMail");
+  let user = users.find((u) => u.email === email.value);
+  if (user) {
+    return true;
+  } else {
+    e.preventDefault();
+    document.getElementById("forgotUserNotFound").classList.remove("d-none");
+    email.value = "";
+    return false;
+  }
 }
 
 /**
@@ -102,6 +148,16 @@ function checkSignUp() {
   }
 }
 
+// --------------- LOGIN SCREEN: SHOW AND HIDE SECTION  ----------------------
+
+/**
+ * Redirects the user to the login page.
+ *
+ */
+function goToLogin() {
+  window.location.href = "index.html";
+}
+
 /**
  * This function hides the "sign up" section and shows the login section on the login screen
  *
@@ -122,4 +178,130 @@ function openForgotPassword() {
   document.getElementById("login").classList.add("d-none");
   document.getElementById("signUpMobileButton").classList.add("d-none");
   document.getElementById("signUpButton").classList.add("d-none");
+}
+
+/**
+ * This function displays the "sign up" section and hides the login section on the login screen
+ *
+ */
+function openSignUp() {
+  document.getElementById("login").classList.add("d-none");
+  document.getElementById("signUp").classList.remove("d-none");
+  document.getElementById("signUpMobileButton").classList.add("d-none");
+  document.getElementById("signUpButton").classList.add("d-none");
+  document.getElementById("forgotPassword").classList.add("d-none");
+}
+
+/**
+ * This function hides the "forgot password" section and shows the login and sign-up sections on the login screen
+ *
+ */
+function closeForgotPassword() {
+  document.getElementById("forgotPassword").classList.add("d-none");
+  document.getElementById("login").classList.remove("d-none");
+  document.getElementById("signUpMobileButton").classList.remove("d-none");
+  document.getElementById("signUpButton").classList.remove("d-none");
+}
+
+/**
+ * This function redirects to the login page
+ *
+ */
+function openIndex() {
+  window.location.href = "index.html";
+}
+
+// ---------------- PASSWORD SHOW AND HIDE FUNCTIONS -------------------------
+
+/**
+ * This function retrieves the user's email from the URL and changes the password for that specific user.
+ *
+ */
+function changePassword() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const email = urlParams.get("email");
+  let newPassword = document.getElementById("new-password");
+  let newPasswordConfirm = document.getElementById("new-password-confirm");
+  let findMailInUsers = users.find((u) => u.email == email);
+  if (newPassword.value == newPasswordConfirm.value) {
+    settingNewPassword(newPassword, newPasswordConfirm, findMailInUsers);
+  } else {
+    document.getElementById("user-not-found").classList.remove("d-none");
+    newPassword.value = "";
+    newPasswordConfirm.value = "";
+  }
+}
+
+/**
+ * This function is used to change the password icon to an eye icon when the password input field is focused
+ *
+ * @param  {string} id - The ID of the element to be targeted.
+ * @param  {string} name -  The name of the section to be targeted (choose from: login, signup, reset, confirm).
+ */
+function checkInputType(id, name) {
+  let typeIsPassword = document.getElementById(id).type == "password";
+  if (typeIsPassword == true) changePwIconToEye(name);
+}
+
+/**
+ * This function is used to set a new password for the user and update it in the database.
+ *
+ * @param {HTMLElement} newPassword - Input field for the new password
+ * @param {HTMLElement} newPasswordConfirm - Input field to confirm the new password
+ * @param {Object} findMailInUsers - The user object that contains the email address
+ */
+async function settingNewPassword(
+  newPassword,
+  newPasswordConfirm,
+  findMailInUsers
+) {
+  findMailInUsers.password = newPassword.value;
+  await backend.setItem("users", JSON.stringify(users));
+  window.location.href = "success_reset_pw.html";
+  newPassword.value = "";
+  newPasswordConfirm.value = "";
+}
+
+/**
+ * Redirects the user to the login page.
+ *
+ */
+function goToLogin() {
+  window.location.href = "index.html";
+}
+
+/**
+ * This function toggles the password icon to a show/hide button for better user experience.
+ *
+ * @param  {string} name -  The name of the section to be targeted (choose from: login, signup, reset, confirm).
+ */
+function changePwIconToEye(name) {
+  console.log("pwNoShow" + name);
+  document.getElementById(`pwNoShow${name}`).classList.remove("d-none");
+  document.getElementById(`pwIcon${name}`).classList.add("d-none");
+  document.getElementById(`pwShow${name}`).classList.add("d-none");
+}
+
+/**
+ * This function changes the type of the targeted input field from password to text, while also changing the toggle button.
+ *
+ * @param  {string} id - The ID of the element you want to target.
+ * @param  {string} name - The name of the section to be targeted (choose from: login, signup, reset, confirm).
+ */
+function changePwToText(id, name) {
+  document.getElementById(`pwNoShow${name}`).classList.add("d-none");
+  document.getElementById(`pwShow${name}`).classList.remove("d-none");
+  document.getElementById(id).type = "text";
+}
+
+/**
+ * This function changes the type of the targeted input field from text to password, while also changing the toggle button.
+ *
+ * @param  {string} id - The ID of the element you want to target.
+ * @param  {string} name - The name of the section to be targeted (choose from: login, signup, reset, confirm).
+ */
+function changeTextToPw(id, name) {
+  document.getElementById(`pwNoShow${name}`).classList.remove("d-none");
+  document.getElementById(`pwShow${name}`).classList.add("d-none");
+  document.getElementById(id).type = "password";
 }
