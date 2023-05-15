@@ -25,8 +25,18 @@
     ></div>
 
     <div class="board-main-container">
+      <span id="headline-mobile" class="headline-text-mobile"
+        >Kanban Project Management Tool</span
+      >
       <div class="headline-container">
-        <span class="headline-text headline-text-container">Board</span>
+        <div class="headline-left">
+          <span class="headline-text headline-text-container">Board</span>
+          <div id="add-task-btn-board-mobile" class="add-task-btn-board-mobile">
+            <button>
+              <img src="/assets/img/plus-icon.svg" alt="" />
+            </button>
+          </div>
+        </div>
         <div class="board-headline-right">
           <div class="subtask-container">
             <input id="search-input" />
@@ -40,7 +50,7 @@
             </div>
           </div>
 
-          <div class="add-task-btn-board">
+          <div id="add-task-btn-board" class="add-task-btn-board">
             <button>Add Task</button>
             <img src="/assets/img/plus-icon.svg" alt="" />
           </div>
@@ -82,8 +92,7 @@
               />
             </svg>
           </div>
-          <div class="board-task-card">
-          </div>
+          <div class="board-task-card"></div>
         </div>
         <div class="board-content-element">
           <div class="task-type">
