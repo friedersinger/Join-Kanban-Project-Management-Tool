@@ -246,6 +246,28 @@
   flex-grow: 0;
 }
 
+/* ********* Scrollbar CSS ********* */
+/* Firefox */
+.inner-content {
+  scrollbar-width: auto;
+  scrollbar-color: #2a3647 #f6f7f8;
+}
+
+/* Chrome, Edge, and Safari */
+.inner-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.inner-content::-webkit-scrollbar-track {
+  background: #f6f7f8;
+}
+
+.inner-content::-webkit-scrollbar-thumb {
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
 .subtask-container input {
   border: none;
   width: 100%;
