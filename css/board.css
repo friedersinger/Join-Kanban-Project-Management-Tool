@@ -16,6 +16,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
+  margin-bottom: 150px;
 }
 
 .headline-container {
@@ -248,6 +250,28 @@
   border: none;
   width: 100%;
   outline: none;
+}
+
+/* ********* Scrollbar CSS ********* */
+/* Firefox */
+.inner-content {
+  scrollbar-width: auto;
+  scrollbar-color: #2a3647 #f6f7f8;
+}
+
+/* Chrome, Edge, and Safari */
+.inner-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.inner-content::-webkit-scrollbar-track {
+  background: #f6f7f8;
+}
+
+.inner-content::-webkit-scrollbar-thumb {
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
 }
 
 @media only screen and (max-width: 1400px) {
