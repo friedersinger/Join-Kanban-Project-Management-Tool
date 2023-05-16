@@ -1,5 +1,6 @@
 * {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 .sidebar-container {
@@ -54,14 +55,14 @@
   margin-left: 80px;
 }
 
-.sidebar-element-legal{
+.sidebar-element-legal {
   cursor: pointer;
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-.sidebar-element-legal a{
+.sidebar-element-legal a {
   display: flex;
   color: white;
   text-decoration: none;
@@ -69,59 +70,51 @@
   width: 100%;
 }
 
-.sidebar-element-legal:hover{
+.sidebar-element-legal:hover {
   background-color: #0e2951ac;
 }
 
-.sidebar-element-legal span{
+.sidebar-element-legal span {
   border-radius: 20px;
   padding: 20px;
-  
 }
-
 
 /*Responsive Design*/
 
-@media screen and (max-width: 1200px){
-
-  .mini-logo{
+@media screen and (max-width: 1200px) {
+  .mini-logo {
     margin-left: 61px;
   }
 }
 
-@media screen and (max-width: 1080px){
-
-  .mini-logo{
+@media screen and (max-width: 1080px) {
+  .mini-logo {
     margin-left: 42px;
   }
 }
 
-@media screen and (max-width: 950px){
-
-  .mini-logo{
+@media screen and (max-width: 950px) {
+  .mini-logo {
     margin-left: 35px;
   }
 }
 
-@media screen and (max-width: 860px){
-
-  .mini-logo{
+@media screen and (max-width: 860px) {
+  .mini-logo {
     margin-left: 25px;
   }
 }
 
-
-@media screen and (max-width: 756px){
-
-  .logo{
+@media screen and (max-width: 756px) {
+  .logo {
     display: none;
   }
 
-  .sidebar-element{
+  .sidebar-element {
     flex-direction: unset;
   }
 
-  .sidebar-element-legal{
+  .sidebar-element-legal {
     display: none;
   }
 
@@ -129,17 +122,17 @@
     flex-direction: column;
   }
 
-  .sidebar-object a{
+  .sidebar-object a {
     flex-direction: column;
   }
 
-  .mini-logo{
+  .mini-logo {
     margin-left: none;
     margin-right: 20px;
     margin-top: 15px;
   }
 
-  .sidebar-container{
+  .sidebar-container {
     position: fixed;
     bottom: 0;
     width: 100%;
