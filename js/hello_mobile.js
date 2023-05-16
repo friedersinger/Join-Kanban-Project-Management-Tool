@@ -3,26 +3,6 @@
  * as data is fetched. A personalized greeting with the user's name is then
  * displayed, followed by a quick 3-second redirect to summary.html.
  */
-// async function renderGreetingHello() {
-//   await init();
-//   renderWithoutActiveSection();
-
-//   // Set the greeting time
-//   const greetingTimeEl = document.getElementById("greeting-time-hello");
-//   greetingTimeEl.innerText = getDaytimeGreeting();
-//   greetingTimeEl.classList.add("animate__fadeIn");
-
-//   // Set the user's name
-//   const greetingNameEl = document.getElementById("greeting-name-mobile");
-//   greetingNameEl.innerText = activeUser || "Guest";
-//   greetingNameEl.classList.add("animate__fadeIn", "animate__delay-1s");
-
-//   // Redirect to summary.html after 4 seconds
-//   setTimeout(() => {
-//     window.location.href = "summary.html";
-//   }, 4000);
-// }
-
 async function renderGreetingHello() {
   await init();
   renderWithoutActiveSection();
