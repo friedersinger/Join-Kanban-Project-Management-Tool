@@ -24,7 +24,21 @@ async function addNewTask() {
     taskSub: taskSub.value,
   });
   await setItem("tasks", JSON.stringify(tasks));
+
+  async function clearTaskForm();
 }
+
+async function clearTaskForm() {
+  document.getElementById("title").value = '';
+  document.getElementById("description").value = '';
+  document.getElementById("category").value = '';
+  document.getElementById("color").value = '';
+  document.getElementById("assignments").value = '';
+  document.getElementById("datePicker").value = '';
+  document.getElementById("priority").value = '';
+  document.getElementById("subtaskContent").value = '';
+}
+
 
 async function loadTasks() {
   try {
