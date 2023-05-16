@@ -80,7 +80,7 @@ function showRememberContact() {
  *
  */
 function checkViewPortAndRedirect() {
-  if (document.body.clientWidth > 1024) {
+  if (document.body.clientWidth > 756) {
     window.location.href = "summary.html";
   } else {
     window.location.href = "hello_mobile.html";
@@ -97,7 +97,7 @@ async function guestLogin() {
   if (document.body.clientWidth > 1024) {
     window.location.href = "summary.html";
   } else {
-    window.location.href = "/out/hello_mobile.js.html";
+    window.location.href = "hello_mobile.html";
   }
 }
 

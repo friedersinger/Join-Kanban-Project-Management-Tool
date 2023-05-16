@@ -8,10 +8,6 @@ let activeUser;
  * Initializes global variables and fetches data from server to populate arrays.
  */
 async function init() {
-  setURL("https://gruppe-557.developerakademie.net/smallest_backend_ever");
-  await downloadFromServer();
-  users = JSON.parse(backend.getItem("users")) || [];
-
   activeUser = JSON.parse(localStorage.getItem("activeUser")) || [];
   console.log("Active user:", activeUser);
 }

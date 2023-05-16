@@ -3,11 +3,32 @@
  * as data is fetched. A personalized greeting with the user's name is then
  * displayed, followed by a quick 3-second redirect to summary.html.
  */
+// async function renderGreetingHello() {
+//   await init();
+//   renderWithoutActiveSection();
+
+//   // Set the greeting time
+//   const greetingTimeEl = document.getElementById("greeting-time-hello");
+//   greetingTimeEl.innerText = getDaytimeGreeting();
+//   greetingTimeEl.classList.add("animate__fadeIn");
+
+//   // Set the user's name
+//   const greetingNameEl = document.getElementById("greeting-name-mobile");
+//   greetingNameEl.innerText = activeUser || "Guest";
+//   greetingNameEl.classList.add("animate__fadeIn", "animate__delay-1s");
+
+//   // Redirect to summary.html after 4 seconds
+//   setTimeout(() => {
+//     window.location.href = "summary.html";
+//   }, 4000);
+// }
+
 async function renderGreetingHello() {
   await init();
   renderWithoutActiveSection();
   document.getElementById("greeting-time-hello").innerText =
     getDaytimeGreeting();
+  document.getElementById("greeting-name-mobile").innerText = `Guest`;
   if (activeUser != "Guest") {
     document.getElementById("greeting-name-mobile").innerText = activeUser;
   }
@@ -17,18 +38,25 @@ async function renderGreetingHello() {
 }
 
 /**
+ *  waiting
+ */
+async function renderWithoutActiveSection() {
+  await includeHTML();
+}
+
+/**
  * checks the time and depending on that return a greeting
  * @returns {string} greeting - greeting sentence
  */
 function getDaytimeGreeting() {
   let hour = new Date().getHours();
-  if (3 <= hour && hour <= 11) {
-    return "Good morning";
+  if (4 <= hour && hour <= 11) {
+    return "Good morning,";
   }
   if (11 < hour && hour <= 19) {
-    return "Good afternoon";
+    return "Good afternoon,";
   }
-  if (19 < hour || hour < 3) {
-    return "Good evening";
+  if (19 < hour || hour < 4) {
+    return "Good evening,";
   }
 }
