@@ -1,7 +1,7 @@
 let users = [];
 
 async function init() {
-  loadUsers();
+  await loadUsers();
 }
 
 async function loadUsers() {
@@ -53,6 +53,25 @@ function rememberMe(email, password) {
   } else if (!checkbox.checked) {
     localStorage.removeItem("rememberMeEmail");
     localStorage.removeItem("rememberMePassword");
+  }
+}
+
+/**
+ * Displays the previously remembered contact information stored in local storage.
+ *
+ */
+function showRememberContact() {
+  let rememberMeEmailField = document.getElementById("emailLogin");
+  let rememberMePasswordField = document.getElementById("passwordLogin");
+
+  let storedEmail = localStorage.getItem("rememberMeEmail");
+  if (storedEmail) {
+    rememberMeEmailField.value = storedEmail;
+  }
+
+  let storedPassword = localStorage.getItem("rememberMePassword");
+  if (storedPassword) {
+    rememberMePasswordField.value = storedPassword;
   }
 }
 

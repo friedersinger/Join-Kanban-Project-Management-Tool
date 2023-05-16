@@ -46,6 +46,18 @@ function rememberMe(email, password) {
 }
 
 /**
+ * function shows the remembered contact from local storage
+ *
+ */
+function showRememberContact() {
+  let rememberMeEmailField = document.getElementById("email-login");
+  let rememberMePasswordField = document.getElementById("password-login");
+
+  rememberMeEmailField.value = localStorage.getItem("rememberMeEmail");
+  rememberMePasswordField.value = localStorage.getItem("rememberMePassword");
+}
+
+/**
  * Log in as a guest user for demo purposes and save it as active user in local storage
  *
  */

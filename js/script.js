@@ -17,18 +17,6 @@ async function init() {
 }
 
 /**
- * Displays the contact information of the user that was remembered from local storage
- *
- */
-function showRememberMeContact() {
-  let rememberMeEmailField = document.getElementById("email-login");
-  let rememberMePasswordField = document.getElementById("password-login");
-
-  rememberMeEmailField.value = localStorage.getItem("rememberMeEmail");
-  rememberMePasswordField.value = localStorage.getItem("rememberMePassword");
-}
-
-/**
  *  waiting
  */
 async function renderWithoutActiveSection() {
