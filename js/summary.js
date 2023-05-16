@@ -25,20 +25,40 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function getGreeting() {
-  let hour = new Date().getHours();
-  if (3 <= hour && hour <= 11) {
-    return "Good morning";
-  }
-  if (11 < hour && hour <= 19) {
-    return "Good afternoon";
-  }
-  if (19 < hour || hour < 3) {
-    return "Good evening";
+// /**
+//  * shows name of logged in user at greeting
+//  */
+// function renderGreeting() {
+//   document.getElementById("greeting-sentence").innerText = getDaytimeGreeting();
+//   document.getElementById("greeting_name").innerText = "Guest";
+//   if (activeUser != "Guest") {
+//     document.getElementById("greeting_name").innerText = activeUser;
+//   }
+// }
+
+async function renderGreeting() {
+  document.getElementById("greeting_sentence").innerText = getDaytimeGreeting();
+  document.getElementById("greeting_name").innerText = `Guest`;
+  activeUser = JSON.parse(localStorage.getItem("activeUser")) || [];
+  console.log("Active user:", activeUser);
+  if (activeUser != "Guest") {
+    document.getElementById("greeting_name").innerText = activeUser;
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const greetingSpan = document.getElementById("greeting");
-  greetingSpan.innerText = getGreeting();
-});
+/**
+ * checks the time and depending on that return a greeting
+ * @returns {string} greeting - greeting sentence
+ */
+function getDaytimeGreeting() {
+  let hour = new Date().getHours();
+  if (4 <= hour && hour <= 11) {
+    return "Good morning,";
+  }
+  if (11 < hour && hour <= 19) {
+    return "Good afternoon,";
+  }
+  if (19 < hour || hour < 4) {
+    return "Good evening,";
+  }
+}

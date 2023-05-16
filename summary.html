@@ -16,7 +16,7 @@
     <script src="js/tasks.js"></script>
   </head>
 
-  <body onload="includeHTML()">
+  <body onload="includeHTML(), renderGreeting()">
     <div
       class="sidebar-container"
       w3-include-html="assets/templates_html/sidebar_template.html"
@@ -108,8 +108,13 @@
         </div>
         <!-- Greetings -->
         <div class="summary-content-right">
-          <span class="headline-text"
-            ><span id="greeting"></span>, <br />Guest
+          <span class="headline-text">
+            <span id="greeting_sentence"></span>
+            <span
+              class="greeting_name"
+              id="greeting_name"
+              style="color: rgb(41, 171, 226)"
+            ></span>
           </span>
         </div>
       </div>
