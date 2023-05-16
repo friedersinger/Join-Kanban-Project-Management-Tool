@@ -17,6 +17,7 @@ async function init() {
  */
 async function renderWithoutActiveSection() {
   await includeHTML();
+  renderUsername();
 }
 
 async function includeHTML() {
