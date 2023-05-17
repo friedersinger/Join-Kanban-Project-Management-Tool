@@ -290,3 +290,11 @@ label {
   margin-left: 20px;
   cursor: pointer;
 }
+
+
+.taskAdded {
+  position: absolute;
+  right: 650px;
+  top: 800px;
+  z-index: 10000;
+}

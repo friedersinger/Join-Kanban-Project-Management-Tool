@@ -34,6 +34,14 @@ async function addNewTask() {
   //taskPriority.value = '';
   //taskSub.value = '';
 
+  const taskAddedElement = document.getElementById('taskAdded');
+  taskAddedElement.classList.remove('d-none'); // Entferne die Klasse "d-none", um das Element anzuzeigen
+
+  setTimeout(() => {
+  taskAddedElement.classList.add('d-none'); // Füge die Klasse "d-none" hinzu, um das Element auszublenden
+}, 3000); // Warte drei Sekunden (3000 Millisekunden) und führe dann den Code im setTimeout-Callback aus
+
+
   await setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -55,9 +63,23 @@ function getSelectedOption() {
 
 
 async function subTaskAddToJson() {
-  let taskSub = document.getElementById("subtask-input-content");
+  let task = document.getElementById("subtask-input-content");
 
   subtasks.push({
-    taskSub: taskSub.value,
+    task: task.value,
   });
+
+  addNewSubTask();
+}
+
+
+async function addNewSubTask() {
+  let subtaskContent = document.getElementById('subtaskContent');
+
+  for (let i = 0; i < subtasks.length; i++) {
+    let task = subtasks[i];
+    subtaskContent.innerHTML += `
+    
+    <div>${task}</div>`;
+  }
 }
