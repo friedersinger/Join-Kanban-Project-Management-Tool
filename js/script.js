@@ -1,7 +1,6 @@
 /**
  * defining global variables
  */
-let users = [];
 let activeUser;
 
 /**

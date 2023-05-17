@@ -1,4 +1,5 @@
 let users = [];
+let currentUserID = 0;
 
 async function init() {
   await loadUsers();
@@ -109,13 +110,27 @@ async function signUpNewUser() {
   let name = document.getElementById("nameSignup");
   let email = document.getElementById("emailSignup");
   let password = document.getElementById("passwordSignup");
+  await setNewID();
   users.push({
     name: name.value,
     email: email.value,
     password: password.value,
+    id: currentUserID
   });
   await setItem("users", JSON.stringify(users));
   resetForm(name, email, password);
+}
+
+async function setNewID(){
+  let res = JSON.parse(await getItem("currentUserID"));
+  if(res){
+    currentUserID = res + 1;
+    await setItem("currentUserID", JSON.stringify(currentUserID));
+  }
+  else{
+    currentUserID = 1; //problem: if some network error occurs, the current user id is set to 1 --> try/catch? // alternative: if(users.length <=1 ....)
+    await setItem("currentUserID", JSON.stringify(currentUserID));
+  }
 }
 
 function resetForm(name, email, password) {

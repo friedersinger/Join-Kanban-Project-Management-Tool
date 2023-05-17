@@ -1,10 +1,3 @@
-let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-/**
- * this function is for previewing the contact list. It can be deleted when the right data gets loaded 
- */
-
-getContacts();
 
 function giveAlphabet(){
     let contactBox = document.getElementById('contactBox');
@@ -33,6 +26,16 @@ async function getContacts(){
     const name = users[i]['name'];
     const mail = users[i]['email'];
     contactBox.innerHTML += giveContactListHTML(name, mail);
+  }
+}
+
+async function deleteAllUsersFromServer(){
+  try {
+    users = JSON.parse(await getItem("users"));
+    users = [];
+    await setItem("users", JSON.stringify(users));
+  } catch (e) {
+    console.error("Loading error:", e);
   }
 }
 
