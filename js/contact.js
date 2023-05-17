@@ -4,6 +4,8 @@ let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
  * this function is for previewing the contact list. It can be deleted when the right data gets loaded 
  */
 
+getContacts();
+
 function giveAlphabet(){
     let contactBox = document.getElementById('contactBox');
 
@@ -11,6 +13,7 @@ function giveAlphabet(){
         const letter = alphabet[i];
         contactBox.innerHTML += giveContactListHTML(letter); //
     }
+   
 }
 
 function showCard(){
@@ -23,21 +26,32 @@ function hideCard(){
   overlay.classList.add('d-none');
 }
 
+async function getContacts(){
+  let contactBox = document.getElementById('contactBox');
+  await loadUsers();
+  for (let i = 0; i < users.length; i++) {
+    const name = users[i]['name'];
+    const mail = users[i]['email'];
+    contactBox.innerHTML += giveContactListHTML(name, mail);
+  }
+}
+
+
 /**
  * This function returns the HTML for a single letter in the contact list
  */
 
-function giveContactListHTML(letter){
+function giveContactListHTML(name, mail){
     return `
     <div class="contact-letter">
-    <span class="contact-single-letter">${letter}</span>
+    <span class="contact-single-letter">A</span>
     <div class="contact-letter-container" id="letter">
         <div class="initials-image" id="contactInitials">
           AM
         </div>
         <div class="contact-name-mail">
-          <span id="contactName">Anton Mayer</span>
-          <a href="mailto:anton@gmail.com" id="contactMail">anton@gmail.com</a>
+          <span id="contactName">${name}</span>
+          <a href="mailto:${mail}" id="contactMail">${mail}</a>
         </div>
     </div>
   </div>

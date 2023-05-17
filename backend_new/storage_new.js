@@ -21,3 +21,11 @@ async function getItem(key) {
       throw `Could not find data with key "${key}".`;
     });
 }
+
+async function deleteAllUsersFromServer(key, value) {
+  const payload = { key, value, token: STORAGE_TOKEN };
+  return fetch(STORAGE_URL, {
+    method: "DELETE",
+    body: JSON.stringify(payload),
+  }).then((res) => res.json());
+}
