@@ -29,6 +29,17 @@ async function getContacts(){
   }
 }
 
+
+
+
+function renderContactCard(){
+  
+}
+
+
+
+
+
 async function deleteAllUsersFromServer(){
   try {
     users = JSON.parse(await getItem("users"));
