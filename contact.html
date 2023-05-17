@@ -22,7 +22,7 @@
 
 </head>
 
-<body onload="includeHTML(); loadUsers(); getContacts();deleteAllUsersFromServer()">
+<body onload="includeHTML(); loadUsers(); getContacts()">
   <div class="sidebar-container" w3-include-html="./assets/templates_html/sidebar_template.html"></div>
   <div class="navbar-container" w3-include-html="./assets/templates_html/navbar_template.html"></div>
 
@@ -45,39 +45,21 @@
         </div>
       </div>
 
-      <div class="flex-column gap-50">
-        <div class="flex-row gap-30 align-center">
-          <div id="nameCircle">AM</div>
-          <div class="flex-column">
-            <span id="nameDetailCard">Anton Mayer</span>
-            <div>
-              <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
-            </div>
-          </div>
-        </div>
 
-        <div class="flex-row gap-30 align-center">
-          <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center">
-            <img src="assets/img/pen_black.svg" alt="" class="cursor-pointer" />
-            <span class="cursor-pointer">Edit Contact</span>
-          </div>
-        </div>
 
-        <div class="flex-column gap-15">
-          <span class="font-weight-700">Email</span>
-          <div id="mail">
-            <a href="mailto:anton@gmail.com" id="contactMailDetail">anton@gmail.com</a>
-          </div>
-        </div>
 
-        <div class="flex-column gap-15">
-          <span class="font-weight-700">Phone</span>
-          <div id="phone">
-            <a href="+49 1111 1111 11" id="phoneDetail">+49 1111 1111 11</a>
-          </div>
-        </div>
+
+
+
+      <div class="flex-column gap-50" id="contactDetails">
+        
       </div>
+
+
+
+
+
+
 
       <div class="add-contact-btn" onclick="showCard()">
         <span>New Contact</span>
@@ -106,12 +88,12 @@
         <div class="flex-row align-center justify-between">
           <img src="assets/img/avatar_img.svg" class="avatar" />
           <div class="form">
-            <form action="">
-              <div><input type="text" id="addName" placeholder="Name" /></div>
+            <form onsubmit="createNewContact(); return false">
+              <div><input required type="text" id="addName" placeholder="Name" /></div>
               <div>
-                <input type="email" id="addMail" placeholder="Email" />
+                <input required type="email" id="addMail" placeholder="Email" />
               </div>
-              <div><input type="tel" id="addTel" placeholder="Phone" /></div>
+              <div><input required type="tel" id="addTel" placeholder="Phone" /></div>
             </form>
           </div>
         </div>
@@ -123,7 +105,7 @@
               <path d="M22.8169 23.106L7.50914 7.7982" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             </svg>
           </div>
-          <div class="create-btn">
+          <div class="create-btn" onclick="createNewContact()">
             <span class="font-weight-700 font-size-21">Create contact</span>
             <img src="assets/img/add_contact_icon.svg" alt="" />
           </div>

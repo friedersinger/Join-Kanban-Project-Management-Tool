@@ -117,7 +117,13 @@ async function signUpNewUser() {
     password: password.value,
     id: currentUserID
   });
+  contacts.push({
+    name: name.value,
+    email: email.value,
+    id: currentUserID
+  })
   await setItem("users", JSON.stringify(users));
+  await setItem("contacts", JSON.stringify(contacts));
   resetForm(name, email, password);
 }
 

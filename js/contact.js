@@ -1,3 +1,4 @@
+let contacts = [];
 
 function giveAlphabet(){
     let contactBox = document.getElementById('contactBox');
@@ -7,6 +8,30 @@ function giveAlphabet(){
         contactBox.innerHTML += giveContactListHTML(letter); //
     }
    
+}
+
+async function createNewContact(){
+  console.log('createNewContactclicked');
+  let name = document.getElementById("addName");
+  let email = document.getElementById("addMail");
+  let phone = document.getElementById("addTel");
+  await setNewID();
+  contacts.push({
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+    id: currentUserID
+  })
+  await setItem("contacts", JSON.stringify(contacts));
+  resetForm(name, email, phone);
+}
+
+function resetForm(name, email, phone) {
+  email.value = "";
+  phone.value = "";
+  name.value = "";
+
+  window.location.href = "success_signup.html";
 }
 
 function showCard(){
@@ -25,20 +50,28 @@ async function getContacts(){
   for (let i = 0; i < users.length; i++) {
     const name = users[i]['name'];
     const mail = users[i]['email'];
-    contactBox.innerHTML += giveContactListHTML(name, mail);
+    const id = users[i]['id'];
+    contactBox.innerHTML += giveContactListHTML(name, mail, id);
   }
 }
 
 
 
 
-function renderContactCard(){
-  
+function renderContactCard(id){
+  let contactDetailsContainer = document.getElementById('contactDetails');
+  let currentUser = users.find(user => user.id === id);
+  const name = currentUser['name'];
+  const mail = currentUser['email'];
+  initials = giveContactInitials(name);
+  contactDetailsContainer.innerHTML = giveContactDetailsHTML(name, mail, initials);
 }
 
-
-
-
+function giveContactInitials(name){
+  let initials = name.match(/\b(\w)/g);
+  initials = initials.join('');
+  return initials;
+}
 
 async function deleteAllUsersFromServer(){
   try {
@@ -55,11 +88,11 @@ async function deleteAllUsersFromServer(){
  * This function returns the HTML for a single letter in the contact list
  */
 
-function giveContactListHTML(name, mail){
+function giveContactListHTML(name, mail, id){
     return `
     <div class="contact-letter">
     <span class="contact-single-letter">A</span>
-    <div class="contact-letter-container" id="letter">
+    <div class="contact-letter-container" id="letter" onclick = "renderContactCard(${id})">
         <div class="initials-image" id="contactInitials">
           AM
         </div>
@@ -70,4 +103,40 @@ function giveContactListHTML(name, mail){
     </div>
   </div>
     `;
+}
+
+function giveContactDetailsHTML(name, mail, initials){
+  return `
+      <div class="flex-row gap-30 align-center">
+          <div id="nameCircle">${initials}</div>
+          <div class="flex-column">
+            <span id="nameDetailCard">${name}</span>
+            <div>
+              <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-row gap-30 align-center">
+          <span class="font-size-21">Contact Information</span>
+          <div class="flex-row gap-5 align-center">
+            <img src="assets/img/pen_black.svg" alt="" class="cursor-pointer" />
+            <span class="cursor-pointer">Edit Contact</span>
+          </div>
+        </div>
+
+        <div class="flex-column gap-15">
+          <span class="font-weight-700">Email</span>
+          <div id="mail">
+            <a href="mailto:${mail}" id="contactMailDetail">${mail}</a>
+          </div>
+        </div>
+
+        <div class="flex-column gap-15">
+          <span class="font-weight-700">Phone</span>
+          <div id="phone">
+            <a href="+49 1111 1111 11" id="phoneDetail">+49 1111 1111 11</a>
+          </div>
+        </div>
+  `;
 }

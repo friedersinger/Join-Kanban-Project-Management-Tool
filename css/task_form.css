@@ -111,7 +111,8 @@ body {
 
 .prio {
   display: flex;
-  gap: 10px;
+  gap: 17px;
+  padding: 10px;
 }
 
 .prio div {
@@ -167,7 +168,7 @@ body {
 input[type="date"]::-webkit-calendar-picker-indicator {
   width: 20px;
   height: 20px;
-  margin-left: 300px;
+  margin-left: 250px;
 }
 
 input[type="date"]::-webkit-datetime-edit-fields-wrapper {

@@ -77,26 +77,18 @@
 
           <label>Assigned to</label>
 
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-              "
-            >
-              Select contacts to assign
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
+          <select
+          class="form-select"
+          aria-label="Default select example"
+          onchange="getSelectedAssignment()"
+          id="assignMenu"
+        >
+          <option selected="">Select task category</option>
+          <option value="1">New category</option>
+          <option value="2">Sales</option>
+          <option value="3">Backoffice</option>
+        </select>
+
         </div>
         <div class="border"></div>
 
@@ -113,17 +105,17 @@
           <label>Prio</label>
 
           <div id="prio" class="prio">
-            <div class="prio-btn">
+            <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent()">
               Urgent
-              <img src="/assets/img/icon_up.png" alt="" />
+              <img id="imgUrgent" src="/assets/img/icon_up.png" alt="" />
             </div>
-            <div class="prio-btn">
+            <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium()">
               Medium
-              <img src="/assets/img/icon_medium.png" alt="" />
+              <img id="imgMedium" src="/assets/img/icon_medium.png" alt="" />
             </div>
-            <div class="prio-btn">
+            <div class="prio-btn" id="prioLow" onclick="TaskButtonLow()">
               Low
-              <img src="/assets/img/icon_down.png" alt="" />
+              <img id="imgLow" src="/assets/img/icon_down.png" alt="" />
             </div>
           </div>
 
@@ -141,7 +133,7 @@
           <div id="subtaskContent"></div>
 
           <div class="action-button-container">
-            <img id="clearTask" src="/assets/img/cancel-task.svg" />
+            <img id="clearTask" onclick="clearTaskForm()" src="/assets/img/cancel-task.svg" />
             <img
               id="addTask"
               src="/assets/img/create-task.svg"
