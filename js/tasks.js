@@ -1,4 +1,5 @@
 let tasks = [];
+let subtasks = [];
 
 async function initTasks() {
   loadTasks();
@@ -17,26 +18,23 @@ async function addNewTask() {
   tasks.push({
     title: taskTitle.value,
     description: taskDescription.value,
-    category: "taskCategory.value",
-    color: "taskColor.value",
-    assignments: "taskAssignments.value",
-    dueDate: taskDueDate.value,
+    category: 'taskCategory.value',
+    color: 'taskColor.value',
+    assignments: 'taskAssignments.value',
+    dueDate: 'taskDueDate.value',
     taskSub: taskSub.value,
   });
+
+  taskTitle.value = '';
+  taskDescription.value = '';
+  //taskCategory.value = '';
+  //taskColor.value = '';
+  //taskAssignments.value = '';
+  taskDueDate.value = '';
+  //taskPriority.value = '';
+  //taskSub.value = '';
+
   await setItem("tasks", JSON.stringify(tasks));
-
-  async function clearTaskForm();
-}
-
-async function clearTaskForm() {
-  document.getElementById("title").value = '';
-  document.getElementById("description").value = '';
-  document.getElementById("category").value = '';
-  document.getElementById("color").value = '';
-  document.getElementById("assignments").value = '';
-  document.getElementById("datePicker").value = '';
-  document.getElementById("priority").value = '';
-  document.getElementById("subtaskContent").value = '';
 }
 
 
@@ -53,4 +51,13 @@ function getSelectedOption() {
   var selectedOption = selectElement.options[selectElement.selectedIndex];
   var selectedValue = selectedOption.value;
   console.log("Selected value: " + selectedValue);
+}
+
+
+async function subTaskAddToJson() {
+  let taskSub = document.getElementById("subtask-input-content");
+
+  subtasks.push({
+    taskSub: taskSub.value,
+  });
 }
