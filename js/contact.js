@@ -18,17 +18,18 @@ async function createNewPseudoContact(){
     name: name.value,
     email: email.value,
     phone: phone.value,
+    id: currentUserID,
+    isPseudoContact: true
   })
   await setItem("contacts", JSON.stringify(contacts));
   resetForm(name, email, phone);
 }
 
 function resetForm(name, email, phone) {
-  email.value = "";
-  phone.value = "";
   name.value = "";
-
-  window.location.href = "success_signup.html";
+  phone.value = "";
+  email.value = "";
+  window.location.reload(); 
 }
 
 function showCard() {
@@ -43,20 +44,60 @@ function hideCard() {
 
 async function getContacts() {
   let contactBox = document.getElementById("contactBox");
-  await loadUsers();
-  for (let i = 0; i < users.length; i++) {
-    const name = users[i]["name"];
-    const mail = users[i]["email"];
-    const id = users[i]["id"];
-    contactBox.innerHTML += giveContactListHTML(name, mail, id);
+  await loadContacts();
+  await sortContacts();
+  for (let i = 0; i < contacts.length; i++) {
+    const name = contacts[i]["name"];
+    const mail = contacts[i]["email"];
+    const id = contacts[i]["id"];
+    contactBox.innerHTML += giveContactListHTML(name, mail,id);
   }
 }
 
+/**
+ * This function sorts the contacts by name by comparing the first letters
+ *
+ */
+async function sortContacts(){
+  contacts.sort(function(a, b) {
+    let nameA = a.name.toLowerCase();
+    let nameB = b.name.toLowerCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  })
+  createGroupsByInitialLetter(contacts)
+}
+let groupedContacts = {};
+function createGroupsByInitialLetter(sortedArray) {
+  for (let i = 0; i < sortedArray.length; i++) {
+    const name = sortedArray[i].name;
+    const firstLetter = name[0].toUpperCase();
+
+    if (!groupedContacts[firstLetter]) {
+      groupedContacts[firstLetter] = [];
+    }
+
+    groupedContacts[firstLetter].push(sortedArray[i]);
+  }
+  console.log(groupedContacts);
+  console.log(Object.keys(groupedContacts).length);
+  return groupedContacts;
+}
+
+//über object.keys(groupedContacts) lässt sich durch das array iterieren
+
+
+
 function renderContactCard(id) {
   let contactDetailsContainer = document.getElementById("contactDetails");
-  let currentUser = users.find((user) => user.id === id);
-  const name = currentUser["name"];
-  const mail = currentUser["email"];
+  let currentContact = contacts.find((contact) => contact.id === id);
+  const name = currentContact["name"];
+  const mail = currentContact["email"];
   initials = giveContactInitials(name);
   contactDetailsContainer.innerHTML = giveContactDetailsHTML(
     name,
@@ -65,10 +106,22 @@ function renderContactCard(id) {
   );
 }
 
+
+
 function giveContactInitials(name) {
   let initials = name.match(/\b(\w)/g);
   initials = initials.join("");
   return initials;
+}
+
+async function deleteAllContactsFromServer(){
+  try {
+    contacts = JSON.parse(await getItem("contacts"));
+    contacts = [];
+    await setItem("contacts", JSON.stringify(contacts));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
 }
 
 
@@ -80,7 +133,7 @@ function giveContactListHTML(name, mail, id) {
   return `
     <div class="contact-letter">
     <span class="contact-single-letter">A</span>
-    <div class="contact-letter-container" id="letter" onclick = "renderContactCard(${id}); showRenderContact()">
+    <div class="contact-letter-container" id="letter" onclick = "renderContactCard(${id})">
         <div class="initials-image" id="contactInitials">
           AM
         </div>
@@ -93,13 +146,13 @@ function giveContactListHTML(name, mail, id) {
     `;
 }
 
-function showRenderContact() {
-  let contactContainer = document.getElementById("contact-right");
+/*function showRenderContact() {
+  let contactContainer = document.getElementById("contactRight");
   let innerContent = document.getElementById("inner-content");
 
   contactContainer.style.display = "flex";
   innerContent.style.display = "none";
-}
+}*/
 
 function giveContactDetailsHTML(name, mail, initials) {
   return `

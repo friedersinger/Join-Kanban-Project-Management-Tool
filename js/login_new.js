@@ -3,6 +3,7 @@ let currentUserID = 0;
 
 async function init() {
   await loadUsers();
+  await loadContacts();
 }
 
 async function loadUsers() {
@@ -120,7 +121,8 @@ async function signUpNewUser() {
   contacts.push({
     name: name.value,
     email: email.value,
-    id: currentUserID
+    id: currentUserID,
+    isPseudoContact: false
   })
   await setItem("users", JSON.stringify(users));
   await setItem("contacts", JSON.stringify(contacts));

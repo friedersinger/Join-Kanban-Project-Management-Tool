@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="contact-right">
+      <div class="contact-right" id="contactRight">
         <div class="headline">
           <div class="headline-text-border">
             <span class="headline-text headline-text-container">Contacts</span>
@@ -47,6 +47,8 @@
             </span>
           </div>
         </div>
+
+        <div class="flex-column gap-50" id="contactDetails"></div>
 
         <div class="add-contact-btn" onclick="showCard()">
           <span>New Contact</span>
@@ -91,7 +93,7 @@
           <div class="flex-row align-center justify-between">
             <img src="assets/img/avatar_img.svg" class="avatar" />
             <div class="form">
-              <form onsubmit="createNewContact(); return false">
+              <form onsubmit="createNewPseudoContact(); return false">
                 <div>
                   <input required type="text" id="addName" placeholder="Name" />
                 </div>
@@ -106,7 +108,7 @@
                 <div>
                   <input required type="tel" id="addTel" placeholder="Phone" />
                 </div>
-              </form>
+              
             </div>
           </div>
           <div class="add-close-btn-container">
@@ -133,11 +135,12 @@
                 />
               </svg>
             </div>
-            <div class="create-btn" onclick="createNewContact()">
+            <button class="create-btn" type="submit"">
               <span class="font-weight-700 font-size-21">Create contact</span>
               <img src="assets/img/add_contact_icon.svg" alt="" />
-            </div>
+            </button>
           </div>
+        </form>
         </div>
       </div>
     </div>
