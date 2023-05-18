@@ -1,17 +1,16 @@
 let contacts = [];
 
-function giveAlphabet(){
-    let contactBox = document.getElementById('contactBox');
+function giveAlphabet() {
+  let contactBox = document.getElementById("contactBox");
 
-    for (let i = 0; i < alphabet.length; i++) {
-        const letter = alphabet[i];
-        contactBox.innerHTML += giveContactListHTML(letter); //
-    }
-   
+  for (let i = 0; i < alphabet.length; i++) {
+    const letter = alphabet[i];
+    contactBox.innerHTML += giveContactListHTML(letter); //
+  }
 }
 
-async function createNewContact(){
-  console.log('createNewContactclicked');
+async function createNewContact() {
+  console.log("createNewContactclicked");
   let name = document.getElementById("addName");
   let email = document.getElementById("addMail");
   let phone = document.getElementById("addTel");
@@ -20,8 +19,8 @@ async function createNewContact(){
     name: name.value,
     email: email.value,
     phone: phone.value,
-    id: currentUserID
-  })
+    id: currentUserID,
+  });
   await setItem("contacts", JSON.stringify(contacts));
   resetForm(name, email, phone);
 }
@@ -34,46 +33,47 @@ function resetForm(name, email, phone) {
   window.location.href = "success_signup.html";
 }
 
-function showCard(){
-  let overlay = document.getElementById('overlay-bg');
-  overlay.classList.remove('d-none');
+function showCard() {
+  let overlay = document.getElementById("overlay-bg");
+  overlay.classList.remove("d-none");
 }
 
-function hideCard(){
-  let overlay = document.getElementById('overlay-bg');
-  overlay.classList.add('d-none');
+function hideCard() {
+  let overlay = document.getElementById("overlay-bg");
+  overlay.classList.add("d-none");
 }
 
-async function getContacts(){
-  let contactBox = document.getElementById('contactBox');
+async function getContacts() {
+  let contactBox = document.getElementById("contactBox");
   await loadUsers();
   for (let i = 0; i < users.length; i++) {
-    const name = users[i]['name'];
-    const mail = users[i]['email'];
-    const id = users[i]['id'];
+    const name = users[i]["name"];
+    const mail = users[i]["email"];
+    const id = users[i]["id"];
     contactBox.innerHTML += giveContactListHTML(name, mail, id);
   }
 }
 
-
-
-
-function renderContactCard(id){
-  let contactDetailsContainer = document.getElementById('contactDetails');
-  let currentUser = users.find(user => user.id === id);
-  const name = currentUser['name'];
-  const mail = currentUser['email'];
+function renderContactCard(id) {
+  let contactDetailsContainer = document.getElementById("contactDetails");
+  let currentUser = users.find((user) => user.id === id);
+  const name = currentUser["name"];
+  const mail = currentUser["email"];
   initials = giveContactInitials(name);
-  contactDetailsContainer.innerHTML = giveContactDetailsHTML(name, mail, initials);
+  contactDetailsContainer.innerHTML = giveContactDetailsHTML(
+    name,
+    mail,
+    initials
+  );
 }
 
-function giveContactInitials(name){
+function giveContactInitials(name) {
   let initials = name.match(/\b(\w)/g);
-  initials = initials.join('');
+  initials = initials.join("");
   return initials;
 }
 
-async function deleteAllUsersFromServer(){
+async function deleteAllUsersFromServer() {
   try {
     users = JSON.parse(await getItem("users"));
     users = [];
@@ -83,13 +83,12 @@ async function deleteAllUsersFromServer(){
   }
 }
 
-
 /**
  * This function returns the HTML for a single letter in the contact list
  */
 
-function giveContactListHTML(name, mail, id){
-    return `
+function giveContactListHTML(name, mail, id) {
+  return `
     <div class="contact-letter">
     <span class="contact-single-letter">A</span>
     <div class="contact-letter-container" id="letter" onclick = "renderContactCard(${id})">
@@ -105,7 +104,7 @@ function giveContactListHTML(name, mail, id){
     `;
 }
 
-function giveContactDetailsHTML(name, mail, initials){
+function giveContactDetailsHTML(name, mail, initials) {
   return `
       <div class="flex-row gap-30 align-center">
           <div id="nameCircle">${initials}</div>
