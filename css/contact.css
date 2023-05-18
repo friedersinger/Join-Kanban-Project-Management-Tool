@@ -309,7 +309,6 @@
   justify-content: center;
   align-items: flex-start;
   width: 38%;
-  height: 100%;
   background-color: #2A3647;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -494,11 +493,11 @@
   color: white;
   background: #2a3647;
   border-radius: 10px;
-  width: 197.77px;
 }
 
 .create-btn:hover{
   background: #29ABE2;
+  outline: none;
 }
 
 .cancel-btn{

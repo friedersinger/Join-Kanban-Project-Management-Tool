@@ -124,8 +124,10 @@ async function signUpNewUser() {
   })
   await setItem("users", JSON.stringify(users));
   await setItem("contacts", JSON.stringify(contacts));
+
   resetForm(name, email, password);
 }
+
 
 async function setNewID(){
   let res = JSON.parse(await getItem("currentUserID"));

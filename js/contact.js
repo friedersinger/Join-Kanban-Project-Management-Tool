@@ -1,16 +1,15 @@
-let contacts = [];
+contacts = []
 
-function giveAlphabet() {
-  let contactBox = document.getElementById("contactBox");
-
-  for (let i = 0; i < alphabet.length; i++) {
-    const letter = alphabet[i];
-    contactBox.innerHTML += giveContactListHTML(letter); //
+async function loadContacts() {
+  try {
+    contacts = JSON.parse(await getItem("contacts"));
+  } catch (e) {
+    console.error("Loading error:", e);
   }
 }
 
-async function createNewContact() {
-  console.log("createNewContactclicked");
+
+async function createNewPseudoContact(){
   let name = document.getElementById("addName");
   let email = document.getElementById("addMail");
   let phone = document.getElementById("addTel");
@@ -19,8 +18,7 @@ async function createNewContact() {
     name: name.value,
     email: email.value,
     phone: phone.value,
-    id: currentUserID,
-  });
+  })
   await setItem("contacts", JSON.stringify(contacts));
   resetForm(name, email, phone);
 }
@@ -73,15 +71,7 @@ function giveContactInitials(name) {
   return initials;
 }
 
-async function deleteAllUsersFromServer() {
-  try {
-    users = JSON.parse(await getItem("users"));
-    users = [];
-    await setItem("users", JSON.stringify(users));
-  } catch (e) {
-    console.error("Loading error:", e);
-  }
-}
+
 
 /**
  * This function returns the HTML for a single letter in the contact list

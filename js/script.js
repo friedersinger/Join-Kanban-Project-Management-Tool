@@ -32,3 +32,13 @@ async function includeHTML() {
     }
   }
 }
+
+async function deleteAllUsersFromServer(){
+  try {
+    users = JSON.parse(await getItem("users"));
+    users = [];
+    await setItem("users", JSON.stringify(users));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
+}
