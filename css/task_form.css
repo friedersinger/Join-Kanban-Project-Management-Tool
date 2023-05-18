@@ -32,7 +32,9 @@ body {
   grid-column: 3/11;
   grid-row: 2/11;
   margin-left: 100px;
+  margin-right: 100px;
   margin-top: 60px;
+  margin-bottom: 150px;
 }
 
 .headline-text {
@@ -292,10 +294,101 @@ label {
   cursor: pointer;
 }
 
-
 .taskAdded {
   position: absolute;
-  right: 650px;
+  right: 350px;
   top: 800px;
   z-index: 10000;
+}
+
+/* ********* Scrollbar CSS ********* */
+/* Firefox */
+.task-card {
+  scrollbar-width: auto;
+  scrollbar-color: #2a3647 #f6f7f8;
+}
+
+/* Chrome, Edge, and Safari */
+.task-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.task-card::-webkit-scrollbar-track {
+  background: #f6f7f8;
+}
+
+.task-card::-webkit-scrollbar-thumb {
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
+@media screen and (max-width: 1190px) {
+  .border {
+    border-right: 2px solid #d1d1d1;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .column-container {
+    flex-direction: column;
+  }
+
+  .column-right {
+    margin-top: 18px;
+  }
+
+  .task-card {
+    width: 70%; /* Breite der Karte */
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .task-card {
+    width: 65%; /* Breite der Karte */
+  }
+}
+
+@media screen and (max-width: 756px) {
+  .task-card {
+    grid-column: 1/11;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 95%;
+  }
+
+  .taskAdded {
+    position: absolute;
+    right: 100px;
+    top: 600px;
+    z-index: 10000;
+  }
+
+  .action-button-container {
+    margin-top: 60px;
+  }
+
+  .action-button-container img {
+    height: 40px;
+  }
+
+  .prio {
+    gap: 10px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 456px) {
+  .headline-text {
+    font-size: 46px;
+  }
+
+  .taskAdded {
+    position: absolute;
+    right: 87px;
+    top: 600px;
+    z-index: 10000;
+  }
 }
