@@ -56,7 +56,6 @@ body {
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 60px;
-  margin-bottom: 150px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -360,6 +359,7 @@ label {
     margin-left: 10px;
     margin-right: 10px;
     width: 95%;
+    margin-bottom: 150px;
   }
 
   .action-button-container {
