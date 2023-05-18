@@ -36,17 +36,15 @@
       w3-include-html="/assets/templates_html/navbar_template.html"
     ></div>
 
-    <div class="task-card">
+    <div class="task-card task-card-scroll">
       <div class="margin-bottom-60">
         <span class="headline-text">Add Task</span>
       </div>
 
       <div>
-
-      <div id="taskAdded" class="taskAdded d-none">
-        <img src="/assets/img/task_Added.svg" alt="">
-      </div>
-
+        <div id="taskAdded" class="taskAdded d-none">
+          <img src="/assets/img/task_Added.svg" alt="" />
+        </div>
       </div>
 
       <form class="column-container">
@@ -78,17 +76,16 @@
           <label>Assigned to</label>
 
           <select
-          class="form-select"
-          aria-label="Default select example"
-          onchange="getSelectedAssignment()"
-          id="assignMenu"
-        >
-          <option selected="">Select task category</option>
-          <option value="1">New category</option>
-          <option value="2">Sales</option>
-          <option value="3">Backoffice</option>
-        </select>
-
+            class="form-select"
+            aria-label="Default select example"
+            onchange="getSelectedAssignment()"
+            id="assignMenu"
+          >
+            <option selected="">Select task category</option>
+            <option value="1">New category</option>
+            <option value="2">Sales</option>
+            <option value="3">Backoffice</option>
+          </select>
         </div>
         <div class="border"></div>
 
@@ -126,14 +123,22 @@
             <div id="subtaskOninput" style="display: flex">
               <img src="/assets/img/X.png" id="clearSubtaskInput" />
               <div class="border-subtask"></div>
-              <img src="/assets/img/icon_check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
+              <img
+                src="/assets/img/icon_check.svg"
+                onclick="subTaskAddToJson()"
+                id="finishEditingSubtask"
+              />
             </div>
           </div>
 
           <div id="subtaskContent"></div>
 
           <div class="action-button-container">
-            <img id="clearTask" onclick="clearTaskForm()" src="/assets/img/cancel-task.svg" />
+            <img
+              id="clearTask"
+              onclick="clearTaskForm()"
+              src="/assets/img/cancel-task.svg"
+            />
             <img
               id="addTask"
               src="/assets/img/create-task.svg"
