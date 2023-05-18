@@ -57,7 +57,8 @@ body {
   margin-right: 100px;
   margin-top: 60px;
   margin-bottom: 150px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .headline-text {
@@ -318,9 +319,10 @@ label {
 }
 
 .taskAdded {
-  position: absolute;
-  right: 350px;
-  top: 800px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10000;
 }
 
@@ -360,13 +362,6 @@ label {
     width: 95%;
   }
 
-  .taskAdded {
-    position: absolute;
-    right: 100px;
-    top: 600px;
-    z-index: 10000;
-  }
-
   .action-button-container {
     margin-top: 60px;
   }
@@ -384,12 +379,5 @@ label {
 @media screen and (max-width: 456px) {
   .headline-text {
     font-size: 46px;
-  }
-
-  .taskAdded {
-    position: absolute;
-    right: 87px;
-    top: 600px;
-    z-index: 10000;
   }
 }
