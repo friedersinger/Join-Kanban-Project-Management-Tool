@@ -62,3 +62,9 @@ function getDaytimeGreeting() {
     return "Good evening,";
   }
 }
+
+
+function redirectToBoard() {
+  window.location.href = "board.html";
+}
+

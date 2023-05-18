@@ -339,12 +339,54 @@ label {
     flex-direction: column;
   }
 
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 380px;
+  }
+
   .column-right {
     margin-top: 18px;
   }
 
   .task-card {
     width: 70%; /* Breite der Karte */
+  }
+}
+
+@media screen and (max-width: 1050px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 330px;
+  }
+}
+
+@media screen and (max-width: 970px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 290px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 250px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 200px;
   }
 }
 
@@ -363,6 +405,12 @@ label {
     margin-bottom: 150px;
   }
 
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 470px;
+  }
+
   .action-button-container {
     margin-top: 60px;
   }
@@ -374,6 +422,70 @@ label {
   .prio {
     gap: 10px;
     padding: 0;
+  }
+}
+
+
+@media screen and (max-width: 720px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 440px;
+  }
+}
+
+@media screen and (max-width: 685px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 380px;
+  }
+}
+
+@media screen and (max-width: 618px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 300px;
+  }
+}
+
+@media screen and (max-width: 535px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 250px;
+  }
+}
+
+@media screen and (max-width: 486px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 200px;
+  }
+}
+
+@media screen and (max-width: 434px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 150px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin-left: 100px;
   }
 }
 
