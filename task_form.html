@@ -51,13 +51,14 @@
         <div class="column-left">
           <label>Title</label>
 
-          <input type="text" id="title" placeholder="Enter a title" />
+          <input required type="text" id="title" placeholder="Enter a title" />
 
           <label>Description</label>
 
           <textarea
             id="description"
             placeholder="Enter a description"
+            required
           ></textarea>
 
           <label>Category</label>
@@ -65,6 +66,7 @@
           <select
             class="form-select"
             aria-label="Default select example"
+            required
             onchange="getSelectedOption()"
           >
             <option selected="">Select task category</option>
@@ -78,6 +80,7 @@
           <select
             class="form-select"
             aria-label="Default select example"
+            required
             onchange="getSelectedAssignment()"
             id="assignMenu"
           >
@@ -97,6 +100,7 @@
             id="datePicker"
             type="date"
             placeholder="Enter a description"
+            required
           /><br /><br />
 
           <label>Prio</label>
