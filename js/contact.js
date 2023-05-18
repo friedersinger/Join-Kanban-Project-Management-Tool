@@ -83,6 +83,13 @@ async function deleteAllUsersFromServer() {
   }
 }
 
+function showRenderContact() {
+  let contactDetailsContainer = document.getElementById("contactDetails");
+
+  contactDetailsContainer.style.display = "flex";
+  contactDetailsContainer.classList.remove("inner-content");
+}
+
 /**
  * This function returns the HTML for a single letter in the contact list
  */
@@ -91,7 +98,7 @@ function giveContactListHTML(name, mail, id) {
   return `
     <div class="contact-letter">
     <span class="contact-single-letter">A</span>
-    <div class="contact-letter-container" id="letter" onclick = "renderContactCard(${id})">
+    <div class="contact-letter-container" id="letter" onclick = "renderContactCard(${id}), showRenderContact()">
         <div class="initials-image" id="contactInitials">
           AM
         </div>
