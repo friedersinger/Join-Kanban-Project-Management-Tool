@@ -24,6 +24,7 @@ html {
   align-items: center;
   background-color: white;
   overflow: hidden; /* Verstecken des Inhalts, der das Header-Element überschneidet */
+  z-index: 5;
 }
 
 .header-logo {

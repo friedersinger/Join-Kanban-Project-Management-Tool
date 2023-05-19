@@ -29,7 +29,18 @@
       w3-include-html="./assets/templates_html/navbar_template.html"
     ></div>
 
-    <div class="contact-main-container">
+    <div class="content" id="content">
+      <div class="contact-mobile-details" id="contactMobileDetails"></div>
+    </div>
+
+      <div class="new-contact-mobile" id="newContactMobile">
+      <div class="mobile-content-btn" onclick="showCard()">
+        <span>New Contact</span>
+        <img src="assets/img/add_contact_icon.svg" alt="" />
+      </div>
+      </div>
+
+      <div class="contact-main-container" id="contentMainContainer">
       <div class="inner-content" id="inner-content">
         <div class="content-container">
           <div class="contacts-text" id="contactBox"></div>
@@ -55,9 +66,9 @@
           <img src="assets/img/add_contact_icon.svg" alt="" />
         </div>
       </div>
-    </div>
+      </div>
 
-    <div id="overlay-bg" class="overlay-bg d-none">
+      <div id="overlay-bg" class="overlay-bg d-none">
       <div id="overlay">
         <div class="overlay-left">
           <img src="assets/img/logo.svg" alt="" />
@@ -135,7 +146,7 @@
                 />
               </svg>
             </div>
-            <button class="create-btn" type="submit"">
+            <button class="create-btn" type="submit">
               <span class="font-weight-700 font-size-21">Create contact</span>
               <img src="assets/img/add_contact_icon.svg" alt="" />
             </button>
@@ -143,6 +154,13 @@
         </form>
         </div>
       </div>
-    </div>
+      
+
+
   </body>
 </html>
+
+
+
+
+
