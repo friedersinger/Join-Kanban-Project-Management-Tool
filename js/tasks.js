@@ -11,9 +11,7 @@ async function addNewTask() {
   await loadtoDos();
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
-  let taskCategory = document.getElementById("category");
   let taskColor = document.getElementById("color");
-  let taskAssignments = document.getElementById("assignments");
   let taskDueDate = document.getElementById("datePicker");
   let taskPriority = document.getElementById("priority");
   let taskSub = document.getElementById("subtaskContent");
@@ -24,9 +22,9 @@ async function addNewTask() {
   tasks.push({
     title: taskTitle.value,
     description: taskDescription.value,
-    category: 'taskCategory.value',
+    category: getSelectedOption(),
     color: 'taskColor.value',
-    assignments: 'taskAssignments.value',
+    assignments: getSelectedAssignment(),
     dueDate: 'taskDueDate.value',
     taskSub: taskSub.value,
     id: currentTaskID
@@ -44,6 +42,7 @@ async function addNewTask() {
 }, 3000); // Warte drei Sekunden (3000 Millisekunden) und führe dann den Code im setTimeout-Callback aus
 
   await setItem("tasks", JSON.stringify(tasks));
+  await setItem("toDo", JSON.stringify(toDo))
 }
 
 async function setNewTaskID(){
@@ -70,13 +69,13 @@ async function loadTasks() {
 function getSelectedOption() {
   var selectElement = document.querySelector(".form-select");
   var selectedOption = selectElement.options[selectElement.selectedIndex].text;
-  console.log("Selected value: " + selectedOption);
+  return selectedOption;
 }
 
 function getSelectedAssignment() {
   selectElement = document.getElementById("assignMenu");
-  var selectedCategory = selectElement.options[selectElement.selectedIndex].text;
-  console.log("Selected category: " + selectedCategory);
+  var selectedAssignment = selectElement.options[selectElement.selectedIndex].text;
+  return selectedAssignment;
 }
 
 
@@ -180,4 +179,17 @@ async function clearTaskForm(){
   buttonMedium.style.backgroundColor = "white";
   buttonLow.style.backgroundColor = "white";
 
+}
+
+function getSelectedOption() {
+  var dropdown = document.querySelector('.form-select');
+  var selectedValue = dropdown.value;
+  
+  var inputField = document.getElementById('inputField');
+  
+  if (selectedValue === '1') {
+    inputField.style.display = 'block';
+  } else {
+    inputField.style.display = 'none';
+  }
 }

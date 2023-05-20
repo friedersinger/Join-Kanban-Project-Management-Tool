@@ -13,6 +13,7 @@ function redirectToAddTask() {
   await loadInProgress();
   await loadFeedback();
   await loadDone();
+  renderTaskCardToDo();
  }
 
  async function loadtoDos() {
@@ -51,9 +52,17 @@ async function loadDone() {
 
   function renderTaskCardToDo(){
     let toDoContainer = document.getElementById('toDoContainer');
-    toDoContainer.innerHTML += `
-    <div class="board-task-card">
-      ${tasks[1]['title']}
-    </div>
-    `
+
+    for (let i = 0; i < toDo.length; i++) {
+      let currentTask = tasks.find((task) => task.id === toDo[i]);
+      toDoContainer.innerHTML += `
+        <div class="board-task-card">
+          ${currentTask['category']}
+          ${currentTask['title']}
+          ${currentTask['description']}
+        </div>
+      `
+    }
+
+    
   }

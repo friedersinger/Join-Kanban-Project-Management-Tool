@@ -314,7 +314,6 @@ label {
 }
 
 .action-button-container img {
-  margin-left: 20px;
   cursor: pointer;
 }
 
@@ -324,6 +323,33 @@ label {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10000;
+}
+
+.add-task-btn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 19px 15px;
+  gap: 10px;
+  border: 0;
+  color: white;
+  position: absolute;
+  right: 60px;
+  background: #2a3647;
+  border-radius: 10px;
+  width: 197.77px;
+}
+
+#clearTask {
+  margin-right: 140px;
+}
+
+@media screen and (max-width: 1445px) {
+  #clearTask {
+    margin-right: 190px;
+  }
 }
 
 @media screen and (max-width: 1190px) {
@@ -337,6 +363,15 @@ label {
 @media screen and (max-width: 1100px) {
   .column-container {
     flex-direction: column;
+  }
+
+  .add-task-btn{
+    position: unset;
+    margin-right: 30px;
+  }
+
+  #clearTask {
+    margin-right: 70px;
   }
 
   input[type="date"]::-webkit-calendar-picker-indicator {
@@ -405,6 +440,10 @@ label {
     margin-bottom: 150px;
   }
 
+  #clearTask {
+    margin-right: 70px;
+  }
+
   input[type="date"]::-webkit-calendar-picker-indicator {
     width: 20px;
     height: 20px;
@@ -415,9 +454,7 @@ label {
     margin-top: 60px;
   }
 
-  .action-button-container img {
-    height: 40px;
-  }
+ 
 
   .prio {
     gap: 10px;
@@ -486,6 +523,11 @@ label {
     width: 20px;
     height: 20px;
     margin-left: 100px;
+  }
+
+  .add-task-btn{
+    position: unset;
+    margin-right: 0px;
   }
 }
 
