@@ -3,7 +3,7 @@
   background-color: #091931;
 }
 
-.content{
+.content {
   grid-column: 3/11;
   grid-row: 2/11;
 }
@@ -68,21 +68,19 @@
   width: 90%;
 }
 
-.headline-mobile-container{
+.headline-mobile-container {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-.headline-mobile-container svg:hover{
+.headline-mobile-container svg:hover {
   cursor: pointer;
 }
 
-.headline-mobile-container svg{
+.headline-mobile-container svg {
   height: 60%;
 }
-
-
 
 .main-heading {
   font-size: 61px;
@@ -159,10 +157,11 @@
   line-height: 14.4px;
 }
 
-.contact-letter-container {
+/* .contact-letter-container {
   cursor: pointer;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 30px;
   padding: 15px 25px;
   border-radius: 10px;
@@ -170,6 +169,23 @@
 }
 
 .contact-letter-container:hover {
+  background-color: #2a3647;
+  color: white;
+} */
+
+/* new style */
+.contact-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.contact-item:hover {
   background-color: #2a3647;
   color: white;
 }
@@ -267,11 +283,11 @@
   cursor: pointer;
 }
 
-.margin-left-60{
+.margin-left-60 {
   margin-left: 60px;
 }
 
-.margin-bottom-20{
+.margin-bottom-20 {
   margin-bottom: 20px;
 }
 
@@ -579,12 +595,12 @@
   flex-grow: 0;
 }
 
-.mobile-content-btn:hover{
+.mobile-content-btn:hover {
   background: #29abe2;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.contact-mobile-details{
+.contact-mobile-details {
   display: flex;
   flex-direction: column;
   margin-left: 4.2vw;
@@ -593,19 +609,18 @@
   margin-right: 60px;
 }
 
-.mobile-btn-column{
+.mobile-btn-column {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: flex-end;
   margin-right: 60px;
-  gap: 20px
+  gap: 20px;
 }
 
-.mobile-btn-column svg{
+.mobile-btn-column svg {
   cursor: pointer;
 }
-
 
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
@@ -625,17 +640,16 @@
   border: 1px solid #ffffff;
 }
 
-
 /* ********* Breakpoints ********* */
 
 @media (max-width: 1214px) {
-  #overlay{
+  #overlay {
     flex-direction: column;
     align-items: center;
     top: 40%;
   }
 
-  .overlay-left{
+  .overlay-left {
     width: 40%;
     border-top-right-radius: 30px;
     padding: 13px;
@@ -657,10 +671,9 @@
     display: none;
   }
 
-  .add-close-btn-container{
+  .add-close-btn-container {
     justify-content: center;
     margin-bottom: 30px;
-
   }
 
   .justify-between {
@@ -668,7 +681,7 @@
     flex-direction: column;
   }
 
-  .overlay-right{
+  .overlay-right {
     width: 40%;
     border-bottom-left-radius: 30px;
     border-top-right-radius: 0px;
@@ -677,7 +690,7 @@
 }
 
 @media (max-width: 1024px) {
-  .content{
+  .content {
     grid-column: 3/11;
     grid-row: 2/11;
   }
@@ -714,7 +727,7 @@
     margin-left: 60px;
   }
 
-  .headline-text{
+  .headline-text {
     margin-bottom: 20px;
   }
 
@@ -735,7 +748,7 @@
     background-color: white;
   }
 
-  .contact-main-container{
+  .contact-main-container {
     grid-row: 3/11;
   }
 }
@@ -746,7 +759,7 @@
     grid-row: 3/10;
   }
 
-  .content{
+  .content {
     grid-column: 1/11;
     grid-row: 2/10;
   }

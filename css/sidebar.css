@@ -143,3 +143,9 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-height: 500px) {
+  .logo {
+    width: 25px;
+  }
+}

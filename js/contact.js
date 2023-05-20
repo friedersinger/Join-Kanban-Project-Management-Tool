@@ -1,5 +1,10 @@
-contacts = []
+contacts = [];
 
+/**
+ * Loads the contacts from the storage and assigns them to the 'contacts' array.
+ * If there is an error while loading, it logs the error to the console.
+ *
+ */
 async function loadContacts() {
   try {
     contacts = JSON.parse(await getItem("contacts"));
@@ -8,30 +13,38 @@ async function loadContacts() {
   }
 }
 
-window.addEventListener('resize', function() {
+window.addEventListener("resize", function () {
   var screenWidth = window.innerWidth;
-  var content = document.getElementById('content');
-  var contentMainContainer = document.getElementById('contentMainContainer');
-  var contactMobileDetails = this.document.getElementById('contactMobileDetails');
+  var content = document.getElementById("content");
+  var contentMainContainer = document.getElementById("contentMainContainer");
+  var contactMobileDetails = this.document.getElementById(
+    "contactMobileDetails"
+  );
 
   if (screenWidth > 1024) {
-    content.classList.add('d-none');
-    contentMainContainer.classList.remove('d-none');
-    contactMobileDetails.classList.add('d-none')
+    content.classList.add("d-none");
+    contentMainContainer.classList.remove("d-none");
+    contactMobileDetails.classList.add("d-none");
     location.reload();
-
   } else {
-    contentMainContainer.classList.add('d-none');
-    content.classList.remove('d-none');
-    contactMobileDetails.classList.remove('contactMobileDetails');
+    contentMainContainer.classList.add("d-none");
+    content.classList.remove("d-none");
+    contactMobileDetails.classList.remove("contactMobileDetails");
     location.reload();
-
   }
 });
 
-
-
-async function createNewPseudoContact(){
+/**
+ * Creates a new pseudo contact and adds it to the 'contacts' array.
+ * Sets a new ID for the contact, marks it as a pseudo contact,
+ * and stores the updated 'contacts' array in the storage.
+ * Resets the form inputs.
+ *
+ * @param {HTMLElement} name - The input element for the contact's name.
+ * @param {HTMLElement} email - The input element for the contact's email.
+ * @param {HTMLElement} phone - The input element for the contact's phone number.
+ */
+async function createNewPseudoContact() {
   let name = document.getElementById("addName");
   let email = document.getElementById("addMail");
   let phone = document.getElementById("addTel");
@@ -41,29 +54,49 @@ async function createNewPseudoContact(){
     email: email.value,
     phone: phone.value,
     id: currentUserID,
-    isPseudoContact: true
-  })
+    isPseudoContact: true,
+  });
   await setItem("contacts", JSON.stringify(contacts));
   resetForm(name, email, phone);
 }
 
+/**
+ * Resets the form inputs by clearing their values.
+ * Reloads the page.
+ *
+ * @param {HTMLElement} name - The input element for the contact's name.
+ * @param {HTMLElement} email - The input element for the contact's email.
+ * @param {HTMLElement} phone - The input element for the contact's phone number.
+ */
 function resetForm(name, email, phone) {
   name.value = "";
   phone.value = "";
   email.value = "";
-  window.location.reload(); 
+  window.location.reload();
 }
 
+/**
+ * Shows the contact card overlay by removing the 'd-none' class from the 'overlay-bg' element.
+ *
+ */
 function showCard() {
   let overlay = document.getElementById("overlay-bg");
   overlay.classList.remove("d-none");
 }
 
+/**
+ * Hides the contact card overlay by adding the 'd-none' class to the 'overlay-bg' element.
+ *
+ */
 function hideCard() {
   let overlay = document.getElementById("overlay-bg");
   overlay.classList.add("d-none");
 }
 
+/**
+ * Retrieves contacts and renders them in the contact box.
+ *
+ */
 async function getContacts() {
   let contactBox = document.getElementById("contactBox");
   await loadContacts();
@@ -76,11 +109,13 @@ async function getContacts() {
 }
 
 /**
- * This function sorts the contacts by name by comparing the first letters
+ *
+ * Sorts the contacts array by name in alphabetical order
+ * by comparing the first letters
  *
  */
-async function sortContacts(){
-  contacts.sort(function(a, b) {
+async function sortContacts() {
+  contacts.sort(function (a, b) {
     let nameA = a.name.toLowerCase();
     let nameB = b.name.toLowerCase();
     if (nameA < nameB) {
@@ -90,9 +125,15 @@ async function sortContacts(){
       return 1;
     }
     return 0;
-  })
-  createGroupsByInitialLetter(contacts)
+  });
+  createGroupsByInitialLetter(contacts);
 }
+
+/**
+ * Creates groups of contacts based on the first letter of their names.
+ * @param {Array} sortedArray - The array of contacts sorted by name.
+ * @returns {Object} - The grouped contacts.
+ */
 let groupedContacts = {};
 async function createGroupsByInitialLetter(sortedArray) {
   for (let i = 0; i < sortedArray.length; i++) {
@@ -110,44 +151,56 @@ async function createGroupsByInitialLetter(sortedArray) {
   return groupedContacts;
 }
 
-async function renderSortedContactGroups(){
-  let contactBox = document.getElementById('contactBox');
+/**
+ * Renders the groups of contacts in the contact box.
+ */
+async function renderSortedContactGroups() {
+  let contactBox = document.getElementById("contactBox");
   for (let i = 0; i < Object.keys(groupedContacts).length; i++) {
     const letter = Object.keys(groupedContacts)[i];
     console.log(letter);
-    contactBox.innerHTML += 
-    `<div class="contact-letter">
-      <span class="contact-single-letter" ">${letter}</span>
-      <div class="contact-letter-container" id="group${letter}"</div>
-   </div>`
-   showGroupedContacts(letter,i)
+    contactBox.innerHTML += `<div class="contact-letter">
+      <span class="contact-single-letter">${letter}</span>
+      <div class="contact-letter-container" id="group${letter}"></div>
+    </div>`;
+    showGroupedContacts(letter, i);
   }
 }
 
-function showGroupedContacts(letter,i){
-  let groupBox = document.getElementById('group'+ letter);
+/**
+ * Renders the contacts within a group.
+ * @param {string} letter - The letter representing the contact group.
+ * @param {number} i - The index of the contact group.
+ */
+function showGroupedContacts(letter, i) {
+  let groupBox = document.getElementById("group" + letter);
   for (let j = 0; j < Object.values(groupedContacts)[i].length; j++) {
     const contact = Object.values(groupedContacts)[i][j];
-    const id = contact['id'];
-    const name = contact['name'];
-    const mail = contact['email'];
+    const id = contact["id"];
+    const name = contact["name"];
+    const mail = contact["email"];
     groupBox.innerHTML += `
-    <div class="contact-letter-container" id="letter" onclick = "renderContactCard(${id})">
-    <div class="initials-image" id="contactInitials">
-      AM
-    </div>
-    <div class="contact-name-mail">
-      <span id="contactName">${name}</span>
-      <a href="mailto:${mail}" id="contactMail">${mail}</a>
-    </div>
-</div>`
+    <div class="contact-item" onclick="renderContactCard(${id})">
+      <div class="initials-image" id="contactInitials">
+        AM
+      </div>
+      <div class="contact-name-mail">
+        <span id="contactName">${name}</span>
+        <a href="mailto:${mail}" id="contactMail">${mail}</a>
+      </div>
+    </div>`;
   }
-  
 }
 
+/**
+ * Renders the contact card based on the provided ID.
+ * @param {*} id - The ID of the contact.
+ */
 function renderContactCard(id) {
   let contactDetailsContainer = document.getElementById("contactDetails");
-  let contactDetailsMobileContainer = document.getElementById("contactMobileDetails");
+  let contactDetailsMobileContainer = document.getElementById(
+    "contactMobileDetails"
+  );
   let currentContact = contacts.find((contact) => contact.id === id);
   const name = currentContact["name"];
   const mail = currentContact["email"];
@@ -157,8 +210,9 @@ function renderContactCard(id) {
       name,
       mail,
       initials
-    );} else {
-      contactDetailsMobileContainer.innerHTML = giveContactDetailsMobileHTML(
+    );
+  } else {
+    contactDetailsMobileContainer.innerHTML = giveContactDetailsMobileHTML(
       name,
       mail,
       initials
@@ -168,21 +222,30 @@ function renderContactCard(id) {
   }
 }
 
-
-function returnToContactList(){
+/**
+ * Removes the "d-none" class from the newContactMobile and contentMainContainer elements, returning to the contact list view.
+ *
+ */
+function returnToContactList() {
   document.getElementById("newContactMobile").classList.remove("d-none");
   document.getElementById("contentMainContainer").classList.remove("d-none");
 }
 
-
-
+/**
+ * Generates initials based on the provided name.
+ * @param {string} name - The name to generate initials from.
+ * @returns {string} - The generated initials.
+ */
 function giveContactInitials(name) {
   let initials = name.match(/\b(\w)/g);
   initials = initials.join("");
   return initials;
 }
 
-async function deleteAllContactsFromServer(){
+/**
+ * Deletes all contacts from the server.
+ */
+async function deleteAllContactsFromServer() {
   try {
     contacts = JSON.parse(await getItem("contacts"));
     contacts = [];
@@ -192,10 +255,12 @@ async function deleteAllContactsFromServer(){
   }
 }
 
-
-
 /**
- * This function returns the HTML for a single letter in the contact list
+ * Generates the HTML for a single contact in the contact list.
+ * @param {string} name - The name of the contact.
+ * @param {string} mail - The email of the contact.
+ * @param {*} id - The ID of the contact.
+ * @returns {string} - The generated HTML.
  */
 function giveContactListHTML(name, mail, id) {
   return `
@@ -214,14 +279,13 @@ function giveContactListHTML(name, mail, id) {
     `;
 }
 
-/*function showRenderContact() {
-  let contactContainer = document.getElementById("contactRight");
-  let innerContent = document.getElementById("inner-content");
-
-  contactContainer.style.display = "flex";
-  innerContent.style.display = "none";
-}*/
-
+/**
+ * Generates the HTML for the contact details.
+ * @param {string} name - The name of the contact.
+ * @param {string} mail - The email of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @returns {string} - The generated HTML.
+ */
 function giveContactDetailsHTML(name, mail, initials) {
   return `
       <div class="flex-row gap-30 align-center">
@@ -258,6 +322,13 @@ function giveContactDetailsHTML(name, mail, initials) {
   `;
 }
 
+/**
+ * Generates the HTML for the mobile contact details.
+ * @param {string} name - The name of the contact.
+ * @param {string} mail - The email of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @returns {string} - The generated HTML.
+ */
 function giveContactDetailsMobileHTML(name, mail, initials) {
   return `
   <div class="headline">
