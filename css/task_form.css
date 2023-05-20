@@ -346,6 +346,10 @@ label {
   margin-right: 140px;
 }
 
+.form-control::placeholder{
+  font-size: 16px;
+}
+
 @media screen and (max-width: 1445px) {
   #clearTask {
     margin-right: 190px;
