@@ -339,7 +339,7 @@
 .overlay-bg {
   background-color: rgba(0, 0, 0, 0.75);
   position: absolute;
-  z-index: 4444;
+  z-index: 999999;
   height: 100vh;
   width: 100vw;
 }
@@ -754,6 +754,11 @@
 }
 
 @media (max-width: 756px) {
+  #overlay {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .contact-main-container {
     grid-column: 1/11;
     grid-row: 3/10;
@@ -785,6 +790,58 @@
   }
 }
 
+@media (max-width: 530px) {
+  .overlay-left {
+    width: 35%;
+  }
+
+  .overlay-right {
+    width: 35%;
+  }
+
+  #addName {
+    width: 350px;
+  }
+
+  #addMail {
+    width: 350px;
+  }
+
+  #addTel {
+    width: 350px;
+  }
+
+  .add-close-btn-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+
+  .overlay-left {
+    padding-bottom: 32px;
+  }
+
+  .small-responsive {
+    font-size: 32px;
+  }
+
+  .small-responsive2 {
+    font-size: 21px;
+  }
+
+  .avatar {
+    width: 64px;
+    margin-top: -32px;
+  }
+}
+
 @media (max-width: 450px) {
   .main-heading {
     font-size: 37px;
@@ -792,6 +849,22 @@
 }
 
 @media (max-width: 450px) {
+  #overlay {
+    width: 800px;
+  }
+
+  #addName {
+    width: 275px;
+  }
+
+  #addMail {
+    width: 275px;
+  }
+
+  #addTel {
+    width: 275px;
+  }
+
   .back-overlay-btn {
     position: fixed;
     right: 0px;
