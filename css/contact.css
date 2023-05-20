@@ -538,7 +538,26 @@
   border: 0;
 }
 
+.create-edit-btn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 18px 41px;
+  gap: 10px;
+  color: white;
+  background: #2a3647;
+  border-radius: 10px;
+  border: 0;
+}
+
 .create-btn:hover {
+  background: #29abe2;
+  outline: none;
+}
+
+.create-edit-btn:hover {
   background: #29abe2;
   outline: none;
 }

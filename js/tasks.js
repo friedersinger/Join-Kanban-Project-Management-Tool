@@ -8,6 +8,7 @@ async function initTasks() {
 
 async function addNewTask() {
   await setNewTaskID();
+  await loadtoDos();
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskCategory = document.getElementById("category");
@@ -31,6 +32,8 @@ async function addNewTask() {
     id: currentTaskID
   });
 
+  toDo.push(currentTaskID);
+  
   clearTaskForm();
 
   const taskAddedElement = document.getElementById('taskAdded');

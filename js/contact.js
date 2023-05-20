@@ -176,7 +176,7 @@ function showGroupedContacts(letter, i) {
     groupBox.innerHTML += `
     <div class="contact-item" onclick="renderContactCard(${id})">
       <div class="initials-image" id="contactInitials">
-        AM
+        ${giveContactInitials(name)}
       </div>
       <div class="contact-name-mail">
         <span id="contactName">${name}</span>
@@ -232,7 +232,7 @@ function returnToContactList() {
  */
 function giveContactInitials(name) {
   let initials = name.match(/\b(\w)/g);
-  initials = initials.join("");
+  initials = initials.join("").toUpperCase();
   return initials;
 }
 
@@ -294,7 +294,7 @@ function giveContactDetailsHTML(name, mail, initials) {
 
         <div class="flex-row gap-30 align-center">
           <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center">
+          <div class="flex-row gap-5 align-center" onclick="showEditCard()">
             <img src="assets/img/pen_black.svg" alt="" class="cursor-pointer" />
             <span class="cursor-pointer">Edit Contact</span>
           </div>
@@ -353,7 +353,7 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
 
         <div class="flex-row gap-30 align-center margin-left-60 margin-bottom-20">
           <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center">
+          <div class="flex-row gap-5 align-center" onclick="showEditCard()">
             <img src="assets/img/pen_black.svg" alt="" class="cursor-pointer" />
             <span class="cursor-pointer">Edit Contact</span>
           </div>
@@ -399,4 +399,24 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
 </div>
 
   `;
+}
+
+
+
+/**
+ * Shows the contact card overlay by removing the 'd-none' class from the 'overlay-bg' element.
+ *
+ */
+ function showEditCard() {
+  let overlay = document.getElementById("overlay-edit-bg");
+  overlay.classList.remove("d-none");
+}
+
+/**
+ * Hides the contact card overlay by adding the 'd-none' class to the 'overlay-bg' element.
+ *
+ */
+function hideEditCard() {
+  let overlay = document.getElementById("overlay-edit-bg");
+  overlay.classList.add("d-none");
 }

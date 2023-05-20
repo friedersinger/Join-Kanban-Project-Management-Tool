@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="/css/navbar.css" />
 
     <script src="/js/navbar.js"></script>
+    <script src="backend_new/storage_new.js"></script>
     <script src="js/script.js"></script>
     <script src="js/board.js"></script>
+    <script src="js/tasks.js"></script>
   </head>
-  <body onload="includeHTML()">
+
+  <body onload="includeHTML();initBoard()">
     <div
       class="sidebar-container"
       w3-include-html="assets/templates_html/sidebar_template.html"
@@ -59,7 +62,7 @@
       </div>
 
       <div class="board-content">
-        <div class="board-content-element">
+        <div class="board-content-element" id="toDoContainer">
           <div class="task-type">
             <span>To Do</span>
             <svg onclick="redirectToAddTask()"
@@ -93,9 +96,9 @@
               />
             </svg>
           </div>
-          <div class="board-task-card"></div>
+          
         </div>
-        <div class="board-content-element">
+        <div class="board-content-element" id="progressContainer">
           <div class="task-type">
             <span>In progress</span>
             <svg onclick="redirectToAddTask()"
@@ -129,9 +132,10 @@
               />
             </svg>
           </div>
-          <div class="board-task-card"></div>
+
+
         </div>
-        <div class="board-content-element">
+        <div class="board-content-element" id="feedbackContainer">
           <div class="task-type">
             <span>Awaiting feedback</span>
             <svg onclick="redirectToAddTask()"
@@ -167,7 +171,7 @@
           </div>
           <div class="board-task-card"></div>
         </div>
-        <div class="board-content-element">
+        <div class="board-content-element" id="doneContainer">
           <div class="task-type">
             <span>Done</span>
             <svg onclick="redirectToAddTask()"
