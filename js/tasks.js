@@ -1,11 +1,13 @@
 let tasks = [];
 let subtasks = [];
+let currentTaskID = 0;
 
 async function initTasks() {
   loadTasks();
 }
 
 async function addNewTask() {
+  await setNewTaskID();
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskCategory = document.getElementById("category");
@@ -26,6 +28,7 @@ async function addNewTask() {
     assignments: 'taskAssignments.value',
     dueDate: 'taskDueDate.value',
     taskSub: taskSub.value,
+    id: currentTaskID
   });
 
   clearTaskForm();
@@ -37,8 +40,19 @@ async function addNewTask() {
   taskAddedElement.classList.add('d-none'); // Füge die Klasse "d-none" hinzu, um das Element auszublenden
 }, 3000); // Warte drei Sekunden (3000 Millisekunden) und führe dann den Code im setTimeout-Callback aus
 
-
   await setItem("tasks", JSON.stringify(tasks));
+}
+
+async function setNewTaskID(){
+  try{
+    let res = JSON.parse(await getItem("currentTaskID"));
+    currentTaskID = res + 1;
+    await setItem("currentTaskID", JSON.stringify(currentTaskID));
+  }
+  catch(e){
+    currentTaskID = 1; //problem: if some network error occurs, the current task id is set to 1 --> try/catch? // alternative: if(tasks.length <=1 ....)
+    await setItem("currentTaskID", JSON.stringify(currentTaskID));
+  }
 }
 
 

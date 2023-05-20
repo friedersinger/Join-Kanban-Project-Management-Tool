@@ -98,14 +98,8 @@ function hideCard() {
  *
  */
 async function getContacts() {
-  let contactBox = document.getElementById("contactBox");
   await loadContacts();
   await sortContacts();
-  for (let i = 0; i < contacts.length; i++) {
-    const name = contacts[i]["name"];
-    const mail = contacts[i]["email"];
-    const id = contacts[i]["id"];
-  }
 }
 
 /**
