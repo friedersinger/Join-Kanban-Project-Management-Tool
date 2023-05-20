@@ -48,7 +48,7 @@ html {
 .nav-profil {
   border-radius: 100px;
   border: 2px solid rgb(42, 54, 71);
-  padding: 2px;
+  padding: 12px;
 }
 
 .nav-profil:hover {
