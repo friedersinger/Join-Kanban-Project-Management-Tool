@@ -1,24 +1,39 @@
-function showLogout() {
+function toggleLogout() {
   var logoutButton = document.getElementById("logout-button");
-  if (logoutButton.classList.contains("d-none")) {
-    logoutButton.classList.remove("d-none");
+  var optionsMobile = document.getElementById("options-mobile");
+  if (window.innerWidth >= 756) {
+    logoutButton.classList.toggle("d-none");
   } else {
-    logoutButton.classList.add("d-none");
+    optionsMobile.classList.toggle("d-none");
   }
 }
 
-function hideLogout() {
+// Check display width on window resize
+window.addEventListener("resize", function () {
   var logoutButton = document.getElementById("logout-button");
-  logoutButton.classList.add("d-none");
-}
+  var optionsMobile = document.getElementById("options-mobile");
+  if (window.innerWidth >= 756) {
+    logoutButton.classList.remove("d-none");
+    optionsMobile.classList.add("d-none");
+  } else {
+    logoutButton.classList.add("d-none");
+    optionsMobile.classList.remove("d-none");
+  }
+});
 
-function logout() {
-  window.location.href = "index.html";
-}
+// Initial check on page load
+window.addEventListener("load", function () {
+  var logoutButton = document.getElementById("logout-button");
+  var optionsMobile = document.getElementById("options-mobile");
+  if (window.innerWidth >= 756) {
+    logoutButton.classList.remove("d-none");
+    optionsMobile.classList.add("d-none");
+  } else {
+    logoutButton.classList.add("d-none");
+    optionsMobile.classList.remove("d-none");
+  }
+});
 
-/**
- *
- */
 function renderUsername() {
   document.getElementById("userName").innerHTML = `${activeUser}`;
 }

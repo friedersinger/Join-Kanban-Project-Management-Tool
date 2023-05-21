@@ -10,11 +10,22 @@
     <img src="/assets/img/questionmark_topper.svg" alt="Question mark" />
   </a>
   <div class="profile-container">
-    <span class="nav-profil" alt="Profile" id="userName" onclick="showLogout()"
+    <span
+      class="nav-profil"
+      alt="Profile"
+      id="userName"
+      onclick="toggleLogout()"
       >User</span
     >
   </div>
 </div>
 <div class="logout-button d-none" id="logout-button">
-  <button onclick="logout()">Log out</button>
+  <button onclick="toggleLogout()">Log out</button>
+</div>
+<div class="options-mobile d-none" id="options-mobile" onclick="toggleLogout()">
+  <div class="center-mobile">
+    <a href="question.html">Help</a>
+    <a href="legal.html">Legal Notice</a>
+    <a href="index.html">Log out</a>
+  </div>
 </div>
