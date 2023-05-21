@@ -249,7 +249,6 @@
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
 .inner-content {
-  margin-bottom: 150px;
   scrollbar-width: auto;
   scrollbar-color: #2a3647 #f6f7f8;
 }
@@ -348,6 +347,10 @@
 @media only screen and (max-width: 756px) {
   .board-main-container {
     grid-column: 1/11;
+  }
+
+  .inner-content {
+    margin-bottom: 150px;
   }
 
   .headline-container {
