@@ -25,6 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+async function initSummary(){
+  await renderGreeting();
+  await loadTasks();
+  await loadtoDos();
+  countTasks();
+}
+
 // /**
 //  * shows name of logged in user at greeting
 //  */
@@ -68,3 +75,18 @@ function redirectToBoard() {
   window.location.href = "board.html";
 }
 
+
+function countTasks() {
+  
+  let toDoVar = toDo.length;
+  let inProgressVar = inProgress.length;
+  let feedbackVar = feedback.length;
+  let doneVar = done.length;
+
+  let totalTasks = toDoVar + inProgressVar + feedbackVar + doneVar;
+
+  // Anzeige der Variablen in HTML-Elementen
+  document.getElementById("counterInProgress").innerHTML = inProgressVar;
+  document.getElementById("counterFeedback").innerHTML = feedbackVar;
+  document.getElementById("counterAll").innerHTML = totalTasks;
+}

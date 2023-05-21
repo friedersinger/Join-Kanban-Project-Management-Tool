@@ -11,7 +11,8 @@ async function addNewTask() {
   await loadtoDos();
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
-  let taskColor = document.getElementById("color");
+  // let ownCategory = document.getElementById("textInput");
+  // let taskColor = document.getElementById("color");
   let taskDueDate = document.getElementById("datePicker");
   let taskPriority = document.getElementById("priority");
   let taskSub = document.getElementById("subtaskContent");
@@ -23,7 +24,8 @@ async function addNewTask() {
     title: taskTitle.value,
     description: taskDescription.value,
     category: getSelectedOption(),
-    color: 'taskColor.value',
+    // ownCategory: 'textInput.value',
+    // color: pickedColor(),
     assignments: getSelectedAssignment(),
     dueDate: 'taskDueDate.value',
     taskSub: taskSub.value,
@@ -79,7 +81,6 @@ function getSelectedAssignment() {
 }
 
 
-
 async function subTaskAddToJson() {
   let task = document.getElementById("subtask-input-content");
 
@@ -106,8 +107,11 @@ async function addNewSubTask() {
 async function deleteAllTasksFromServer(){
   try {
     tasks = JSON.parse(await getItem("tasks"));
+    toDo = JSON.parse(await getItem("toDo"));
     tasks = [];
+    toDo = [];
     await setItem("tasks", JSON.stringify(tasks));
+    await setItem("toDo", JSON.stringify(toDo));
   } catch (e) {
     console.error("Loading error:", e);
   }
@@ -153,7 +157,6 @@ async function TaskButtonLow(){
   buttonLow.style.color = "white";
 }
 
-
 async function clearTaskForm(){
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
@@ -193,3 +196,33 @@ function getSelectedOption() {
     inputField.style.display = 'none';
   }
 }
+
+function pickedColor(colorId) {
+  const selectedColorOption = document.getElementById(colorId);
+  
+  if (selectedColorOption.classList.contains('selected')) {
+    // If the clicked color option is already selected, remove the class
+    selectedColorOption.classList.remove('selected');
+  } else {
+    // Remove the class from the previously selected color option
+    const prevSelectedColorOption = document.querySelector('.color-option.selected');
+    if (prevSelectedColorOption) {
+      prevSelectedColorOption.classList.remove('selected');
+    }
+    
+    // Add the class to the clicked color option
+    selectedColorOption.classList.add('selected');
+      
+  console.log('Chosen color:', {
+    color: selectedColorOption.style.backgroundColor,
+  });
+  }
+
+
+  let selectedColor = selectedColorOption.style.backgroundColor;
+  
+  return {
+    selectedColor
+  };
+}
+

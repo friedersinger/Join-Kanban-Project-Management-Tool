@@ -75,13 +75,15 @@
             <option value="3">Backoffice</option>
           </select>
 
-          <div id="inputField" style="display: none">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter new category"
-            />
-            <input type="color" id="colorPicker" value="#000000" />
+          <div id="inputField" style="display: none;">
+            <input type="text" class="form-control" placeholder="Enter new category" id="textInput">
+            <div class="inputColorField" id="colorPicker">
+              <div onclick="pickedColor(`color1`)" id="color1" class="color-option" style="background-color: #FF0000;"></div> <!-- Red -->
+              <div onclick="pickedColor(`color2`)" id="color2" class="color-option" style="background-color: #00FF00;"></div> <!-- Green -->
+              <div onclick="pickedColor(`color3`)" id="color3" class="color-option" style="background-color: #0000FF;"></div> <!-- Blue -->
+              <div onclick="pickedColor(`color4`)" id="color4" class="color-option" style="background-color: #FFFF00;"></div> <!-- Yellow -->
+              <div onclick="pickedColor(`color5`)" id="color5" class="color-option" style="background-color: #FF00FF;"></div> <!-- Magenta -->
+            </div>
           </div>
 
           <label>Assigned to</label>

@@ -5,7 +5,7 @@
 function toggleLogout() {
   var logoutButton = document.getElementById("logout-button");
   var optionsMobile = document.getElementById("options-mobile");
-  if (window.innerWidth >= 756) {
+  if (window.innerWidth > 756) {
     logoutButton.classList.toggle("d-none");
   } else {
     optionsMobile.classList.toggle("d-none");
@@ -18,22 +18,7 @@ function toggleLogout() {
 window.addEventListener("resize", function () {
   var logoutButton = document.getElementById("logout-button");
   var optionsMobile = document.getElementById("options-mobile");
-  if (window.innerWidth >= 756) {
-    logoutButton.classList.remove("d-none");
-    optionsMobile.classList.add("d-none");
-  } else {
-    logoutButton.classList.add("d-none");
-    optionsMobile.classList.remove("d-none");
-  }
-});
-
-/**
- * Initial check on page load
- */
-window.addEventListener("load", function () {
-  var logoutButton = document.getElementById("logout-button");
-  var optionsMobile = document.getElementById("options-mobile");
-  if (window.innerWidth >= 756) {
+  if (window.innerWidth > 756) {
     logoutButton.classList.remove("d-none");
     optionsMobile.classList.add("d-none");
   } else {
