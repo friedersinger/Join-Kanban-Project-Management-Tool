@@ -18,7 +18,11 @@ function toggleLogout() {
 window.addEventListener("resize", function () {
   var logoutButton = document.getElementById("logout-button");
   var optionsMobile = document.getElementById("options-mobile");
+<<<<<<< Updated upstream
   if (window.innerWidth > 756) {
+=======
+  if (window.innerWidth >= 756) {
+>>>>>>> Stashed changes
     logoutButton.classList.remove("d-none");
     optionsMobile.classList.add("d-none");
   } else {
