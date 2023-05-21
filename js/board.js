@@ -16,6 +16,7 @@ async function initBoard() {
   await loadFeedback();
   await loadDone();
   renderTaskCardToDo();
+  renderTaskCardProgress()
 }
 
 async function loadtoDos() {
@@ -51,11 +52,17 @@ async function loadDone() {
 }
 
 function renderTaskCardToDo() {
-  let toDoContainer = document.getElementById("toDoContainer");
-  let progressContainer = document.getElementById("progressContainer");
+  let toDoContainer = document.getElementById("toDo");
   for (let i = 0; i < toDo.length; i++) {
     let currentTask = tasks.find((task) => task.id === toDo[i]);  //bisher nur für todos korrekt!
     toDoContainer.innerHTML += getTaskCardHTML(currentTask);
+  }
+}
+
+function renderTaskCardProgress(){
+  let progressContainer = document.getElementById("inProgress");
+  for (let i = 0; i < inProgress.length; i++) {
+    let currentTask = tasks.find((task) => task.id === inProgress[i]);  //bisher nur für todos korrekt!
     progressContainer.innerHTML += getTaskCardHTML(currentTask);
   }
 }
