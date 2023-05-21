@@ -176,7 +176,7 @@ html {
     font-size: 16px;
   }
 
-  img {
+  .header-right img {
     display: none;
   }
 }
