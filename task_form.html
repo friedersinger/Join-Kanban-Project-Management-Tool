@@ -48,11 +48,11 @@
         </div>
       </div>
 
-      <form class="column-container" onsubmit="addNewTask()"; return false>
+      <form class="column-container" onsubmit="addNewTask()" ; return false>
         <div class="column-left">
           <label>Title</label>
 
-          <input type="text" id="title" placeholder="Enter a title" required/>
+          <input type="text" id="title" placeholder="Enter a title" required />
 
           <label>Description</label>
 
@@ -63,16 +63,25 @@
 
           <label>Category</label>
 
-          <select class="form-select" aria-label="Default select example" required onchange="getSelectedOption()">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            required
+            onchange="getSelectedOption()"
+          >
             <option selected="">Select task category</option>
             <option value="1">New category</option>
             <option value="2">Sales</option>
             <option value="3">Backoffice</option>
           </select>
-          
-          <div id="inputField" style="display: none;">
-            <input type="text" class="form-control" placeholder="Enter new category">
-            <input type="color" id="colorPicker" value="#000000">
+
+          <div id="inputField" style="display: none">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter new category"
+            />
+            <input type="color" id="colorPicker" value="#000000" />
           </div>
 
           <label>Assigned to</label>
@@ -143,9 +152,11 @@
               onclick="clearTaskForm()"
               src="/assets/img/cancel-task.svg"
             />
-            <button id="addTask" class="add-task-btn" type="submit">Create Task</button>
+            <button id="addTask" class="add-task-btn" type="submit">
+              Create Task
+            </button>
           </div>
-        </div> 
+        </div>
       </form>
     </div>
   </body>
