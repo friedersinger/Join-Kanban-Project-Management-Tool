@@ -42,6 +42,10 @@ window.addEventListener("load", function () {
   }
 });
 
+function logout() {
+  window.location.href = "index.html";
+}
+
 function renderUsername() {
   document.getElementById("userName").innerHTML = `${activeUser}`;
 }
