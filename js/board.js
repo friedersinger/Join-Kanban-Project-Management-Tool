@@ -4,19 +4,19 @@ let feedback = [];
 let done = [];
 
 function redirectToAddTask() {
-    window.location.href = "task_form.html";
-  }
+  window.location.href = "task_form.html";
+}
 
- async function initBoard(){
+async function initBoard() {
   await loadTasks();
   await loadtoDos();
   await loadInProgress();
   await loadFeedback();
   await loadDone();
   renderTaskCardToDo();
- }
+}
 
- async function loadtoDos() {
+async function loadtoDos() {
   try {
     toDo = JSON.parse(await getItem("toDo"));
   } catch (e) {
@@ -48,21 +48,16 @@ async function loadDone() {
   }
 }
 
+function renderTaskCardToDo() {
+  let toDoContainer = document.getElementById("toDoContainer");
 
-
-  function renderTaskCardToDo(){
-    let toDoContainer = document.getElementById('toDoContainer');
-
-    for (let i = 0; i < toDo.length; i++) {
-      let currentTask = tasks.find((task) => task.id === toDo[i]);
-      toDoContainer.innerHTML += `
-        <div class="board-task-card">
-          ${currentTask['category']}
-          ${currentTask['title']}
-          ${currentTask['description']}
-        </div>
-      `
-    }
-
-    
+  for (let i = 0; i < toDo.length; i++) {
+    let currentTask = tasks.find((task) => task.id === toDo[i]);
+    toDoContainer.innerHTML += `
+      <div draggable="true" class="board-task-card">
+        ${currentTask["category"]} ${currentTask["title"]}
+        ${currentTask["description"]}
+      </div>
+    `;
   }
+}
