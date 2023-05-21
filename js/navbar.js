@@ -1,3 +1,7 @@
+/**
+ * Toggles the display of the logout button and options mobile based on the window width.
+ *
+ */
 function toggleLogout() {
   var logoutButton = document.getElementById("logout-button");
   var optionsMobile = document.getElementById("options-mobile");
@@ -8,7 +12,9 @@ function toggleLogout() {
   }
 }
 
-// Check display width on window resize
+/**
+ * Check display width on window resize
+ */
 window.addEventListener("resize", function () {
   var logoutButton = document.getElementById("logout-button");
   var optionsMobile = document.getElementById("options-mobile");
@@ -21,7 +27,9 @@ window.addEventListener("resize", function () {
   }
 });
 
-// Initial check on page load
+/**
+ * Initial check on page load
+ */
 window.addEventListener("load", function () {
   var logoutButton = document.getElementById("logout-button");
   var optionsMobile = document.getElementById("options-mobile");
