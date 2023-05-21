@@ -249,6 +249,7 @@
 .drop-area{
   display: flex;
   flex-direction: column;
+  min-height: 250px;
   border: 1px solid black
 }
 

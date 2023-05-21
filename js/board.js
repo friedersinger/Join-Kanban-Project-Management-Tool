@@ -16,7 +16,7 @@ async function initBoard() {
   await loadFeedback();
   await loadDone();
   renderTaskCardToDo();
-  renderTaskCardProgress()
+  //renderTaskCardProgress()
 }
 
 async function loadtoDos() {

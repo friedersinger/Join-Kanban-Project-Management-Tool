@@ -24,8 +24,6 @@ async function addNewTask() {
     title: taskTitle.value,
     description: taskDescription.value,
     category: getSelectedOption(),
-    // ownCategory: 'textInput.value',
-    // color: pickedColor(),
     assignments: getSelectedAssignment(),
     dueDate: 'taskDueDate.value',
     taskSub: taskSub.value,
@@ -108,10 +106,19 @@ async function deleteAllTasksFromServer(){
   try {
     tasks = JSON.parse(await getItem("tasks"));
     toDo = JSON.parse(await getItem("toDo"));
+    inProgress = JSON.parse(await getItem("inProgress"));
+    feedback = JSON.parse(await getItem("feedback"));
+    done = JSON.parse(await getItem("done"));
     tasks = [];
     toDo = [];
+    inProgress = [];
+    feedback = [];
+    done = [];
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
+    await setItem("inProgress", JSON.stringify(inProgress));
+    await setItem("feedback", JSON.stringify(feedback));
+    await setItem("done", JSON.stringify(done));
   } catch (e) {
     console.error("Loading error:", e);
   }
