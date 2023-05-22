@@ -69,13 +69,7 @@
       <div class="board-content">
         <div class="board-content-element" id="toDoContainer">
           <div class="task-type">
-            <div
-              class="drop-area"
-              id="toDo"
-              ondrop="moveTo('toDo')"
-              ondragleave="removeHighlight('toDo')"
-              ondragover="allowDrop(event); highlight('toDo')"
-            >
+            
               <span>To Do</span>
               <svg
                 onclick="redirectToAddTask()"
@@ -108,19 +102,21 @@
                   stroke-width="2"
                 />
               </svg>
+              
             </div>
+            <div
+              class="drop-area"
+              id="toDo"
+              ondrop="moveTo('toDo')"
+              ondragover="allowDrop(event)"
+            >
+            DropArea TO DO
           </div>
         </div>
 
         <div class="board-content-element" id="progressContainer">
           <div class="task-type">
-            <div
-              class="drop-area"
-              id="inProgress"
-              ondrop="moveTo('inProgress')"
-              ondragleave="removeHighlight('toDo')"
-              ondragover="allowDrop(event); highlight('toDo')"
-            >
+            
               <span>In progress</span>
               <svg
                 onclick="redirectToAddTask()"
@@ -154,6 +150,13 @@
                 />
               </svg>
             </div>
+            <div
+              class="drop-area"
+              id="inProgress"
+              ondrop="moveTo('inProgress')"
+              ondragover="allowDrop(event)"
+            >
+            DropArea IN PROGRESS
           </div>
         </div>
         <div class="board-content-element" id="feedbackContainer">
@@ -197,7 +200,7 @@
             ondragover="allowDrop(event)"
             ondrop="moveTo('done')"
           >
-            DropArea Feedback
+            DropArea FEEDBACK
           </div>
         </div>
         <div class="board-content-element" id="doneContainer">

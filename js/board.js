@@ -1,12 +1,11 @@
+//############### ONLOAD ###############//
+
 let toDo = [];
 let inProgress = [];
 let feedback = [];
 let done = [];
 let currentDraggedElement;
 
-function redirectToAddTask() {
-  window.location.href = "task_form.html";
-}
 
 async function initBoard() {
   await loadTasks();
@@ -15,8 +14,11 @@ async function initBoard() {
   await loadFeedback();
   await loadDone();
   renderTaskCardToDo();
-  //renderTaskCardProgress()
+  renderTaskCardProgress();
 }
+
+//############### LOADING FUNCTIONS ###############//
+
 
 async function loadtoDos() {
   try {
@@ -50,21 +52,37 @@ async function loadDone() {
   }
 }
 
+
+//############### RENDER FUNCTIONS ###############//
+
 function renderTaskCardToDo() {
   let toDoContainer = document.getElementById("toDo");
+  let renderedIDs = {};
   for (let i = 0; i < toDo.length; i++) {
-    let currentTask = tasks.find((task) => task.id === toDo[i]); //bisher nur für todos korrekt!
-    toDoContainer.innerHTML += getTaskCardHTML(currentTask);
+    let currentTask = tasks.find((task) => task.id === toDo[i]);
+    if (!renderedIDs[currentTask.id]) {
+      toDoContainer.innerHTML += getTaskCardHTML(currentTask);
+      renderedIDs[currentTask.id] = true;
+    }
   }
 }
 
 function renderTaskCardProgress() {
   let progressContainer = document.getElementById("inProgress");
+  let renderedIDs = {};
   for (let i = 0; i < inProgress.length; i++) {
-    let currentTask = tasks.find((task) => task.id === inProgress[i]); //bisher nur für todos korrekt!
-    progressContainer.innerHTML += getTaskCardHTML(currentTask);
+    let currentTask = tasks.find((task) => task.id === inProgress[i]);
+    if (!renderedIDs[currentTask.id]) {
+      progressContainer.innerHTML += getTaskCardHTML(currentTask);
+      renderedIDs[currentTask.id] = true;
+    }
   }
 }
+
+
+
+
+//############### HELP FUNCTIONS ###############//
 
 async function testPushToArrays() {
   inProgress.push("test");
@@ -75,9 +93,13 @@ async function testPushToArrays() {
   await setItem("done", JSON.stringify(done));
 }
 
+function redirectToAddTask() {
+  window.location.href = "task_form.html";
+}
+
 function getTaskCardHTML(currentTask) {
   return `
-  <div  draggable="true" ondragstart="startDragging(${currentTask["id"]})" class="board-task-card" id="task-card${currentTask["id"]}">
+  <div draggable="true" ondragstart="startDragging(${currentTask["id"]})" class="board-task-card">
     <div class="task-card-category" id="taskCategoryContainer">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
@@ -89,12 +111,4 @@ function getTaskCardHTML(currentTask) {
       <div class="task-card-prio">Urgent</div>
     </div>
   </div>`;
-}
-
-function highlight(id) {
-  document.getElementById(id).classList.add("dragarea-highlight");
-}
-
-function removeHighlight(id) {
-  document.getElementById(id).classList.remove("dragarea-highlight");
 }

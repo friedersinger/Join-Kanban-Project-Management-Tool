@@ -1,6 +1,6 @@
 function startDragging(id) {
-  let task = getTaskById(id);
-  currentDraggedElement = task;
+  currentDraggedElement = id;
+  //let task = getTaskById(id);
 }
 
 function allowDrop(ev) {

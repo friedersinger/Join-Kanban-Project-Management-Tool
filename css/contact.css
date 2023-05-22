@@ -157,24 +157,22 @@
   line-height: 14.4px;
 }
 
-/* .contact-letter-container {
+.contact-letter-container {
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 30px;
-  padding: 15px 25px;
   border-radius: 10px;
   margin-bottom: 30px;
+  width: 100%;
 }
 
-.contact-letter-container:hover {
-  background-color: #2a3647;
-  color: white;
-} */
+
 
 /* new style */
 .contact-item {
+  width: 100%;
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -216,10 +214,7 @@
   align-items: center;
 }
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
+
 
 .gap-5 {
   gap: 5px;
@@ -530,7 +525,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 18px 15px;
+  padding: 16px 15px;
   gap: 10px;
   color: white;
   background: #2a3647;
@@ -544,7 +539,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 18px 41px;
+  padding: 16px 41px;
   gap: 10px;
   color: white;
   background: #2a3647;
@@ -641,6 +636,11 @@
   cursor: pointer;
 }
 
+.flex-row{
+  display: flex;
+  flex-direction: row !important;
+}
+
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
 .inner-content {
@@ -659,6 +659,16 @@
   border: 1px solid #ffffff;
 }
 
+.form-Avatar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar{
+  margin-right: 50px;
+}
+
 /* ********* Breakpoints ********* */
 
 @media (max-width: 1214px) {
@@ -666,6 +676,13 @@
     flex-direction: column;
     align-items: center;
     top: 40%;
+  }
+
+  .form-Avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   .overlay-left {
@@ -680,10 +697,15 @@
   .avatar {
     padding-bottom: 37px;
     margin-top: -60px;
+    margin-right: 0;
   }
 
   .justify-end {
     display: none;
+  }
+
+  .flex-row {
+    align-items: center;
   }
 
   .overlay-left img {
