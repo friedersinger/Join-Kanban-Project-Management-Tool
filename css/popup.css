@@ -2,28 +2,6 @@ body {
   line-height: unset !important;
 }
 
-/* ********* Scrollbar CSS ********* */
-/* Firefox */
-.task-card-scroll {
-  scrollbar-width: auto;
-  scrollbar-color: #2a3647 #f6f7f8;
-}
-
-/* Chrome, Edge, and Safari */
-.task-card-scroll::-webkit-scrollbar {
-  width: 10px;
-}
-
-.task-card-scroll::-webkit-scrollbar-track {
-  background: #f6f7f8;
-}
-
-.task-card-scroll::-webkit-scrollbar-thumb {
-  background-color: #2a3647;
-  border-radius: 10px;
-  border: 1px solid #ffffff;
-}
-
 #add-task-link {
   background-color: #091931;
 }
@@ -375,6 +353,20 @@ label {
   }
 }
 
+@media (max-width: 1222px) {
+  .overlayBoardBg {
+    position: relative;
+    top: 50%;
+    background-color: white;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 886px;
+    height: 883px;
+    border-radius: 35px;
+  }
+}
+
 @media screen and (max-width: 1190px) {
   .border {
     border-right: 2px solid #d1d1d1;
@@ -544,4 +536,68 @@ label {
   .headline-text {
     font-size: 46px;
   }
+}
+
+/* Hier wird ein Board PopUp erstellt */
+
+.overlay-board-bg {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  z-index: 999999;
+  height: 100vh;
+  width: 100vw;
+}
+
+.overlayBoardBg {
+  position: relative;
+  top: 50%;
+  background-color: white;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 90vw;
+  max-width: 1260px;
+  height: 805px;
+  border-radius: 35px;
+}
+
+.border-margin {
+  border-right: 2px solid #d1d1d1;
+  margin-left: 104px;
+  margin-right: 76px;
+}
+
+.add-task-btn-board {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 3px;
+  gap: 10px;
+  border: 0;
+  color: white;
+  position: absolute;
+  right: 60px;
+  font-size: 19px;
+  background: #2a3647;
+  border-radius: 10px;
+  width: 197.77px;
+}
+
+#titleTaskPopUp {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 21px;
+  gap: 10px;
+  height: 51px;
+  width: 320px;
+  background: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
 }

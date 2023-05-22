@@ -16,6 +16,7 @@
     <script src="js/script.js"></script>
     <script src="js/tasks.js"></script>
     <script src="js/board.js"></script>
+    <script src="js/board_drag_drop.js"></script>
   </head>
 
   <body onload="includeHTML();initBoard()">
@@ -68,78 +69,92 @@
       <div class="board-content">
         <div class="board-content-element" id="toDoContainer">
           <div class="task-type">
-            <span>To Do</span>
-            <svg
-              onclick="redirectToAddTask()"
-              class="svg"
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="drop-area"
+              id="toDo"
+              ondrop="moveTo('toDo')"
+              ondragleave="removeHighlight('toDo')"
+              ondragover="allowDrop(event); highlight('toDo')"
             >
-              <path
-                d="M15 7.5V22.5"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M22.5 15.1416L7.5 15.1416"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <rect
-                x="1"
-                y="1"
-                width="28"
-                height="28"
-                rx="9"
-                stroke="#2A3647"
-                stroke-width="2"
-              />
-            </svg>
+              <span>To Do</span>
+              <svg
+                onclick="redirectToAddTask()"
+                class="svg"
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 7.5V22.5"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M22.5 15.1416L7.5 15.1416"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="1"
+                  y="1"
+                  width="28"
+                  height="28"
+                  rx="9"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                />
+              </svg>
+            </div>
           </div>
-          <div class="drop-area" id="toDo" ondragover="allowDrop(event)" ondrop="moveTo('toDo')">Drop Area ToDo</div>
         </div>
 
         <div class="board-content-element" id="progressContainer">
           <div class="task-type">
-            <span>In progress</span>
-            <svg
-              onclick="redirectToAddTask()"
-              class="svg"
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="drop-area"
+              id="inProgress"
+              ondrop="moveTo('inProgress')"
+              ondragleave="removeHighlight('toDo')"
+              ondragover="allowDrop(event); highlight('toDo')"
             >
-              <path
-                d="M15 7.5V22.5"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M22.5 15.1416L7.5 15.1416"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <rect
-                x="1"
-                y="1"
-                width="28"
-                height="28"
-                rx="9"
-                stroke="#2A3647"
-                stroke-width="2"
-              />
-            </svg>
+              <span>In progress</span>
+              <svg
+                onclick="redirectToAddTask()"
+                class="svg"
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 7.5V22.5"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M22.5 15.1416L7.5 15.1416"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="1"
+                  y="1"
+                  width="28"
+                  height="28"
+                  rx="9"
+                  stroke="#2A3647"
+                  stroke-width="2"
+                />
+              </svg>
+            </div>
           </div>
-          <div class="drop-area" id="inProgress" ondragover="allowDrop(event)" ondrop="moveTo('inProgress')">DropArea in Progress</div>
         </div>
         <div class="board-content-element" id="feedbackContainer">
           <div class="task-type">
@@ -176,7 +191,14 @@
               />
             </svg>
           </div>
-          <div class="drop-area" id="feedback" ondragover="allowDrop(event)" ondrop="moveTo('done')">DropArea Feedback</div>
+          <div
+            class="drop-area"
+            id="feedback"
+            ondragover="allowDrop(event)"
+            ondrop="moveTo('done')"
+          >
+            DropArea Feedback
+          </div>
         </div>
         <div class="board-content-element" id="doneContainer">
           <div class="task-type">
@@ -213,17 +235,16 @@
               />
             </svg>
           </div>
-          <div class="drop-area" id="done" ondragover="allowDrop(event)" ondrop="moveTo('done')">DropArea DONE</div>
+          <div
+            class="drop-area"
+            id="done"
+            ondragover="allowDrop(event)"
+            ondrop="moveTo('done')"
+          >
+            DropArea DONE
+          </div>
         </div>
       </div>
     </div>
-
-    
-
   </body>
 </html>
-
-
-
-
-

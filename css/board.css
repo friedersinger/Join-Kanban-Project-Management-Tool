@@ -246,11 +246,11 @@
   flex-grow: 0;
 }
 
-.drop-area{
+.drop-area {
   display: flex;
   flex-direction: column;
   min-height: 250px;
-  border: 1px solid black
+  border: 1px solid black;
 }
 
 /* ********* Scrollbar CSS ********* */
@@ -279,6 +279,10 @@
   border: none;
   width: 100%;
   outline: none;
+}
+
+.dragarea-highlight {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* ********* Scrollbar CSS ********* */
@@ -314,7 +318,7 @@
   }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1050px) {
   .board-content {
     flex-direction: column;
     align-items: center;
