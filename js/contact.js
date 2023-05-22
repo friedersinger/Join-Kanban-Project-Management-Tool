@@ -286,7 +286,7 @@ function giveContactDetailsHTML(name, mail, initials) {
           <div id="nameCircle">${initials}</div>
           <div class="flex-column">
             <span id="nameDetailCard">${name}</span>
-            <div>
+            <div id="addTaskPopUp" onclick="checkScreenWidth()">
               <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
             </div>
           </div>
@@ -345,7 +345,7 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
           <div id="nameCircle">${initials}</div>
           <div class="flex-column">
             <span id="nameDetailCard">${name}</span>
-            <div>
+            <div id="addTaskPopUp" onclick="checkScreenWidth()">
               <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
             </div>
           </div>
@@ -418,5 +418,16 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
  */
 function hideEditCard() {
   let overlay = document.getElementById("overlay-edit-bg");
+  overlay.classList.add("d-none");
+}
+
+
+function showAddTaskPopUp() {
+  let overlay = document.getElementById("overlayPopUpbg");
+  overlay.classList.remove("d-none");
+}
+
+function hideAddTaskPopUp() {
+  let overlay = document.getElementById("overlayPopUpbg");
   overlay.classList.add("d-none");
 }

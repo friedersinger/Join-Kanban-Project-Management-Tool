@@ -227,3 +227,35 @@ function pickedColor(colorId) {
     selectedColor,
   };
 }
+
+
+  // Überprüfe die Bildschirmbreite und öffne das Pop-up-Fenster oder leite weiter
+  function checkScreenWidth() {
+    document.getElementById("addTaskPopUp").addEventListener("click", checkScreenWidth);
+
+    var screenWidth = window.innerWidth;
+
+    // Definiere die gewünschte Bildschirmbreite, ab der weitergeleitet wird
+    var targetWidth = 1351;
+
+    // Überprüfe, ob die Bildschirmbreite größer oder gleich der Zielbreite ist
+    if (screenWidth >= targetWidth) {
+      // Öffne das Pop-up-Fenster hier
+      showAddTaskPopUp();
+    } else {
+      // Leite zur anderen Seite weiter
+      window.location.href = "task_form.html";
+    }
+  }
+
+  // Funktion, um das Pop-up-Fenster anzuzeigen
+  function showAddTaskPopUp() {
+    var overlay = document.getElementById("overlay-edit-bg");
+    overlay.style.display = "block";
+  }
+
+  // Funktion, um das Pop-up-Fenster zu verstecken
+  function hideAddTaskPopUp() {
+    var overlay = document.getElementById("overlay-edit-bg");
+    overlay.style.display = "none";
+  }

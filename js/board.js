@@ -61,7 +61,7 @@ function renderTaskCardToDo() {
   for (let i = 0; i < toDo.length; i++) {
     let currentTask = tasks.find((task) => task.id === toDo[i]);
     if (!renderedIDs[currentTask.id]) {
-      toDoContainer.innerHTML += getTaskCardHTML(currentTask);
+      toDoContainer.innerHTML += getTaskCardHTML(currentTask, 'toDo');
       renderedIDs[currentTask.id] = true;
     }
   }
@@ -73,7 +73,7 @@ function renderTaskCardProgress() {
   for (let i = 0; i < inProgress.length; i++) {
     let currentTask = tasks.find((task) => task.id === inProgress[i]);
     if (!renderedIDs[currentTask.id]) {
-      progressContainer.innerHTML += getTaskCardHTML(currentTask);
+      progressContainer.innerHTML += getTaskCardHTML(currentTask, 'inProgress');
       renderedIDs[currentTask.id] = true;
     }
   }
@@ -97,9 +97,9 @@ function redirectToAddTask() {
   window.location.href = "task_form.html";
 }
 
-function getTaskCardHTML(currentTask) {
+function getTaskCardHTML(currentTask, status) {
   return `
-  <div draggable="true" ondragstart="startDragging(${currentTask["id"]})" class="board-task-card">
+  <div draggable="true" ondragstart="startDragging(${currentTask["id"]}, ${status})" class="board-task-card">
     <div class="task-card-category" id="taskCategoryContainer">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
