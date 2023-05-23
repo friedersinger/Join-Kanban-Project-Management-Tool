@@ -1,6 +1,6 @@
-function startDragging(id, status) {
+async function startDragging(id, status) {
   currentDraggedElement = id;
-  getSourceArrayByStatus(status, id);
+  await getSourceArrayByStatus(status, id);
 }
 
 
@@ -9,14 +9,14 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-
+  ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
 function drop(ev) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+  var data = ev.dataTransfer.getData("text/plain"); // Retrieve the data transfer value (ID)
+  var element = document.getElementById(data); // Get the element using the ID
+  ev.target.appendChild(element); // Append the element to the drop target
 }
 
 async function moveTo(status) {
@@ -38,6 +38,16 @@ async function moveTo(status) {
           console.error("Invalid status:", status);
           return;
   }
+  await checkTargetArrayForID(targetArray, status)
+}
+
+async function checkTargetArrayForID(targetArray, status) {
+  const elementExists = targetArray.includes(currentDraggedElement);
+  if (elementExists) {
+    console.log("Element already exists in the array.");
+    return;
+  }
+
   targetArray.push(currentDraggedElement);
   await setItem(status, JSON.stringify(targetArray));
 }
@@ -53,33 +63,41 @@ function getTaskById(id) {
   return null;
 }
 
-function getSourceArrayByStatus(status, id) {
-  let originArray;
-  console.log(typeof(status));
+async function getSourceArrayByStatus(status, id) {
   switch (status) {
-      case "toDo":
-          originArray = toDo;
-          deleteTaskFromDragged(id, originArray);
-      case "inProgress":
-          originArray = inProgress;
-          deleteTaskFromDragged(id, originArray);
-      case "feedback":
-          originArray = feedback;
-          deleteTaskFromDragged(id, originArray);
-      case "done":
-          originArray = done;
-          deleteTaskFromDragged(id, originArray);
-      default:
-          console.error("Invalid status:", status);
-          return null;
+    case "toDo":
+      await deleteTaskFromDragged(id, toDo);
+      break;
+    case "inProgress":
+      await deleteTaskFromDragged(id, inProgress);
+      break;
+    case "feedback":
+      await deleteTaskFromDragged(id, feedback);
+      break;
+    case "done":
+      await deleteTaskFromDragged(id, done);
+      break;
+    default:
+      console.error("Invalid status:", status);
+      return null;
   }
 }
 
-function deleteTaskFromDragged(id, sourceArray) {
+async function deleteTaskFromDragged(id, sourceArray) {
+  console.log("deleted id: " + id);
+  console.log("source array:", sourceArray);
+  console.log(sourceArray.indexOf(id));
   let index = sourceArray.indexOf(id);
   if (index !== -1) {
-      sourceArray.splice(index, 1);
+    sourceArray.splice(index, 1);
+    await updateArrayInStorage(sourceArray); // Update the array in storage
   } else {
-      console.warn("No matching ID found in the array.");
+    console.warn("No matching ID found in the array.");
   }
+}
+
+async function updateArrayInStorage(array) {
+  // Logic to update the array in your storage (e.g., using setItem)
+  // Replace the following line with your actual implementation
+  await setItem(array, JSON.stringify(array));
 }

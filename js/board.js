@@ -98,7 +98,7 @@ function redirectToAddTask() {
 
 function getTaskCardHTML(currentTask, status) {
     return `
-  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'toDo')" class="board-task-card">
+  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card">
     <div class="task-card-category" id="taskCategoryContainer">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>

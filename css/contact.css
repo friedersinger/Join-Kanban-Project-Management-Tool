@@ -403,6 +403,11 @@
   stroke: #29abe2;
 }
 
+.close-btn {
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
 #addName {
   outline: none;
 

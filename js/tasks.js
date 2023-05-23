@@ -164,7 +164,7 @@ async function clearTaskForm() {
   let taskDescription = document.getElementById("description");
   let taskCategory = document.getElementById("category");
   let taskColor = document.getElementById("color");
-  let taskAssignments = document.getElementById("assignments");
+  let taskAssignments = document.getElementById("assignMenu");
   let taskDueDate = document.getElementById("datePicker");
   let taskPriority = document.getElementById("priority");
   let taskSub = document.getElementById("subtaskContent");
@@ -250,12 +250,12 @@ function pickedColor(colorId) {
 
   // Funktion, um das Pop-up-Fenster anzuzeigen
   function showAddTaskPopUp() {
-    var overlay = document.getElementById("overlay-edit-bg");
+    var overlay = document.getElementById("addTaskPopUp");
     overlay.style.display = "block";
   }
 
   // Funktion, um das Pop-up-Fenster zu verstecken
   function hideAddTaskPopUp() {
-    var overlay = document.getElementById("overlay-edit-bg");
+    var overlay = document.getElementById("addTaskPopUp");
     overlay.style.display = "none";
   }

@@ -286,7 +286,7 @@ function giveContactDetailsHTML(name, mail, initials) {
           <div id="nameCircle">${initials}</div>
           <div class="flex-column">
             <span id="nameDetailCard">${name}</span>
-            <div id="addTaskPopUp" onclick="checkScreenWidth()">
+            <div id="addTaskPopUp" onclick="showAddTaskPopUp()">
               <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
             </div>
           </div>
