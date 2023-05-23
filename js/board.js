@@ -14,6 +14,8 @@ async function initBoard() {
     await loadDone();
     renderTaskCardToDo();
     renderTaskCardProgress();
+    renderTaskCardFeedback();
+    renderTaskCardDone()
 }
 
 //############### LOADING FUNCTIONS ###############//
@@ -77,6 +79,31 @@ function renderTaskCardProgress() {
         }
     }
 }
+
+function renderTaskCardFeedback() {
+    let feedbackContainer = document.getElementById("feedback");
+    let renderedIDs = {};
+    for (let i = 0; i < feedback.length; i++) {
+        let currentTask = tasks.find((task) => task.id === feedback[i]);
+        if (!renderedIDs[currentTask.id]) {
+            feedbackContainer.innerHTML += getTaskCardHTML(currentTask, 'feedback');
+            renderedIDs[currentTask.id] = true;
+        }
+    }
+}
+
+function renderTaskCardDone() {
+    let doneContainer = document.getElementById("done");
+    let renderedIDs = {};
+    for (let i = 0; i < done.length; i++) {
+        let currentTask = tasks.find((task) => task.id === done[i]);
+        if (!renderedIDs[currentTask.id]) {
+            doneContainer.innerHTML += getTaskCardHTML(currentTask, 'done');
+            renderedIDs[currentTask.id] = true;
+        }
+    }
+}
+
 
 
 
