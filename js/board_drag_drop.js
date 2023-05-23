@@ -10,7 +10,7 @@ function allowDrop(ev) {
 
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
-  
+
 }
 
 function drop(ev) {
@@ -22,21 +22,21 @@ function drop(ev) {
 async function moveTo(status) {
   let targetArray;
   switch (status) {
-    case "toDo":
-      targetArray = toDo;
-      break;
-    case "inProgress":
-      targetArray = inProgress;
-      break;
-    case "feedback":
-      targetArray = feedback;
-      break;
-    case "done":
-      targetArray = done;
-      break;
-    default:
-      console.error("Invalid status:", status);
-      return;
+      case "toDo":
+          targetArray = toDo;
+          break;
+      case "inProgress":
+          targetArray = inProgress;
+          break;
+      case "feedback":
+          targetArray = feedback;
+          break;
+      case "done":
+          targetArray = done;
+          break;
+      default:
+          console.error("Invalid status:", status);
+          return;
   }
   targetArray.push(currentDraggedElement);
   await setItem(status, JSON.stringify(targetArray));
@@ -45,9 +45,9 @@ async function moveTo(status) {
 function getTaskById(id) {
   // Durchsuche alle Aufgaben nach der übergebenen ID
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].id === id) {
-      return tasks[i]; // Rückgabe des gefundenen Aufgabenobjekts
-    }
+      if (tasks[i].id === id) {
+          return tasks[i]; // Rückgabe des gefundenen Aufgabenobjekts
+      }
   }
   // Wenn keine Übereinstimmung gefunden wurde, gib null zurück oder wirf eine entsprechende Fehlermeldung
   return null;
@@ -55,30 +55,31 @@ function getTaskById(id) {
 
 function getSourceArrayByStatus(status, id) {
   let originArray;
+  console.log(typeof(status));
   switch (status) {
-    case 'toDo':
-      originArray = toDo;
-      deleteTaskFromDragged(id, originArray);
-    case 'inProgress':
-      originArray = inProgress;
-      deleteTaskFromDragged(id, originArray);
-    case "feedback":
-      originArray = feedback;
-      deleteTaskFromDragged(id, originArray);
-    case "done":
-      originArray = done;
-      deleteTaskFromDragged(id, originArray);
-    default:
-      console.error("Invalid status:", status);
-      return null;
+      case "toDo":
+          originArray = toDo;
+          deleteTaskFromDragged(id, originArray);
+      case "inProgress":
+          originArray = inProgress;
+          deleteTaskFromDragged(id, originArray);
+      case "feedback":
+          originArray = feedback;
+          deleteTaskFromDragged(id, originArray);
+      case "done":
+          originArray = done;
+          deleteTaskFromDragged(id, originArray);
+      default:
+          console.error("Invalid status:", status);
+          return null;
   }
 }
 
-function deleteTaskFromDragged(id, sourceArray){
+function deleteTaskFromDragged(id, sourceArray) {
   let index = sourceArray.indexOf(id);
-    if (index !== -1) {
+  if (index !== -1) {
       sourceArray.splice(index, 1);
-    } else {
+  } else {
       console.warn("No matching ID found in the array.");
-    }
+  }
 }
