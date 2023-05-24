@@ -133,7 +133,7 @@ function getTaskCardHTML(currentTask, status) {
       <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class="task-card-bottom-container">
-      <div class="avatar-container">Test</div>
+      <div class="avatar-container">AVATAR BILD</div>
       <div class="task-card-prio">Urgent</div>
     </div>
   </div>`;

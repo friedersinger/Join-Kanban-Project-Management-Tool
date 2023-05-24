@@ -131,8 +131,17 @@ async function TaskButtonUrgent() {
   buttonMedium.style.color = "black";
   buttonUrgent.style.color = "white";
   buttonLow.style.color = "black";
-  let image = document.getElementById("imgUrgent");
-  image.style.filter = "brightness(10000%) contrast(1000%)";
+
+  // Setze das Bild für "Medium" zurück
+  let imageMedium = document.getElementById("imgMedium");
+  imageMedium.style.filter = "none";
+
+  // Setze das Bild für "Low" zurück
+  let imageLow = document.getElementById("imgLow");
+  imageLow.style.filter = "none";
+
+  let imageUrgent = document.getElementById("imgUrgent");
+  imageUrgent.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
 async function TaskButtonMedium() {
@@ -145,6 +154,17 @@ async function TaskButtonMedium() {
   buttonUrgent.style.color = "black";
   buttonLow.style.color = "black";
   buttonLow.style.backgroundColor = "white";
+
+  // Setze das Bild für "Urgent" zurück
+  let imageUrgent = document.getElementById("imgUrgent");
+  imageUrgent.style.filter = "none";
+
+  // Setze das Bild für "Low" zurück
+  let imageLow = document.getElementById("imgLow");
+  imageLow.style.filter = "none";
+
+  let imageMedium = document.getElementById("imgMedium");
+  imageMedium.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
 async function TaskButtonLow() {
@@ -157,16 +177,28 @@ async function TaskButtonLow() {
   buttonMedium.style.color = "black";
   buttonUrgent.style.color = "black";
   buttonLow.style.color = "white";
+
+  // Setze das Bild für "Urgent" zurück
+  let imageUrgent = document.getElementById("imgUrgent");
+  imageUrgent.style.filter = "none";
+
+  // Setze das Bild für "Medium" zurück
+  let imageMedium = document.getElementById("imgMedium");
+  imageMedium.style.filter = "none";
+
+  let imageLow = document.getElementById("imgLow");
+  imageLow.style.filter = "brightness(10000%) contrast(1000%)";
 }
+
 
 async function clearTaskForm() {
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskCategory = document.getElementById("category");
-  let taskColor = document.getElementById("color");
+  //let taskColor = document.getElementById("color");
   let taskAssignments = document.getElementById("assignMenu");
   let taskDueDate = document.getElementById("datePicker");
-  let taskPriority = document.getElementById("priority");
+  //let taskPriority = document.getElementById("priority");
   let taskSub = document.getElementById("subtaskContent");
   let buttonUrgent = document.getElementById("prioUrgent");
   let buttonMedium = document.getElementById("prioMedium");
@@ -175,11 +207,12 @@ async function clearTaskForm() {
   taskTitle.value = "";
   taskDescription.value = "";
   taskCategory.value = "";
-  taskColor.value = "";
+  //taskColor.value = "";
   taskAssignments.value = "";
   taskDueDate.value = "";
-  taskPriority.value = "";
+  //taskPriority.value = "";
   taskSub.value = "";
+
   buttonUrgent.style.backgroundColor = "white";
   buttonMedium.style.backgroundColor = "white";
   buttonLow.style.backgroundColor = "white";
