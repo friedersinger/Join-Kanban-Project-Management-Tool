@@ -3,7 +3,9 @@ let subtasks = [];
 let currentTaskID = 0;
 
 async function initTasks() {
-  loadTasks();
+  await loadTasks();
+  await loadUsers();
+  renderAssignableContacts();
 }
 
 async function addNewTask() {
@@ -25,7 +27,7 @@ async function addNewTask() {
     description: taskDescription.value,
     category: getSelectedOption(),
     assignments: getSelectedAssignment(),
-    dueDate: "taskDueDate.value",
+    dueDate: taskDueDate.value,
     taskSub: taskSub.value,
     id: currentTaskID,
   });
@@ -292,3 +294,39 @@ function pickedColor(colorId) {
     var overlay = document.getElementById("addTaskPopUp");
     overlay.style.display = "none";
   }
+
+  async function renderAssignableContacts(){
+    let assignableContactsContainer = document.getElementById('dropdownContent');
+    for (let i = 0; i < users.length; i++) {
+      const name = users[i]['name'];
+      assignableContactsContainer.innerHTML += `
+      <div class="dropdown-object">
+        <span>${name}</span>
+        <input type="checkbox" value="${name}">
+      </div>
+      `
+    }
+  }
+
+
+  function toggleDropdown() {
+    var dropdownContent = document.getElementById('dropdownContent');
+    dropdownContent.classList.toggle('show');
+}
+
+// Funktion zum Auslesen der ausgewählten Checkbox-Werte
+function validateForm() {
+    var selectedValues = [];
+    var checkboxes = document.querySelectorAll('#dropdown-content input[type=checkbox]:checked');
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        selectedValues.push(checkboxes[i].value);
+    }
+
+    // Hier kannst du die ausgewählten Checkbox-Werte weiterverarbeiten
+    console.log(selectedValues);
+    
+    // Hier kannst du weitere Validierungslogik implementieren
+    
+    return false; // Formular wird nicht abgeschickt (nur zu Demonstrationszwecken)
+}

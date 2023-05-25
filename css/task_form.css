@@ -334,7 +334,6 @@ label {
   gap: 10px;
   border: 0;
   color: white;
-  position: absolute;
   right: 60px;
   background: #2a3647;
   border-radius: 10px;
@@ -357,17 +356,62 @@ label {
 }
 
 .color-option {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
   margin-right: 10px;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 2px solid white;
 }
 
 .selected {
   border: 2px solid black;
 }
+
+
+.dropdown-content {
+  display: none;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.dropdown-content.show {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+
+}
+
+/* Flexbox-Stil für den Namen und die Checkbox */
+.dropdown-object {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.dropdown-object input {
+  margin-right: 10px; /* Abstand zwischen dem Namen und der Checkbox */
+}
+
+.dropdown-min{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px
+}
+
+
+
+
+
+
 
 @media screen and (max-width: 1445px) {
   #clearTask {

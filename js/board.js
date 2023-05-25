@@ -129,9 +129,6 @@ function getTaskCardHTML(currentTask, status) {
     <div class="task-card-category" id="taskCategoryContainer">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
-    <div class="progress">
-      <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
     <div class="task-card-bottom-container">
       <div class="avatar-container">AVATAR BILD</div>
       <div class="task-card-prio">Urgent</div>

@@ -1,0 +1,53 @@
+.overlay-bg {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    z-index: 999999;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Task-Content {
+    height: 600px;
+    border-radius: 30px;
+    width: 500px;
+    background-color: white;
+}
+
+
+.Task-Bottom-Content{
+    position: absolute;
+    margin-left: 350px;
+    margin-top: 500px;
+}
+
+.Task-Bottom-Content svg{
+    cursor: pointer;
+}
+
+
+.trash-popUp {
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    border-radius: 8px;
+    border-top-right-radius: 0; /* Setze den Wert auf 0 oder einen anderen gewünschten Wert */
+    border-bottom-right-radius: 0; /* Setze den Wert auf 0 oder einen anderen gewünschten Wert */
+
+}
+
+
+.task-popup-bottom-trash-edit-line{
+    position: absolute;
+    margin-left: 44px;
+    margin-top: -54px;
+    border-top: 2px solid #2A3647;
+    height: 46px;
+    width: 15px;
+    border-bottom: 2px solid #2A3647;
+    background-color: rgba(255, 255, 255, 0);
+    
+}
