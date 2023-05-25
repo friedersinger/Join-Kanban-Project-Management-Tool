@@ -401,13 +401,11 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
   `;
 }
 
-
-
 /**
  * Shows the contact card overlay by removing the 'd-none' class from the 'overlay-bg' element.
  *
  */
- function showEditCard() {
+function showEditCard() {
   let overlay = document.getElementById("overlay-edit-bg");
   overlay.classList.remove("d-none");
 }
@@ -420,7 +418,6 @@ function hideEditCard() {
   let overlay = document.getElementById("overlay-edit-bg");
   overlay.classList.add("d-none");
 }
-
 
 function showAddTaskPopUp() {
   let overlay = document.getElementById("overlayPopUpbg");
