@@ -64,71 +64,24 @@
 
           <label>Category</label>
 
-          <select
-            class="form-select"
-            id="category"
-            aria-label="Default select example"
-            required
-            onchange="getSelectedOption()"
-          >
-            <option selected="">Select task category</option>
-            <option value="1">New category</option>
-            <option value="2">Sales</option>
-            <option value="3">Backoffice</option>
-          </select>
-
-          <div id="inputField" style="display: none">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter new category"
-              id="textInput"
-            />
-            <div class="inputColorField" id="colorPicker">
-              <div
-                onclick="pickedColor(`color1`)"
-                id="color1"
-                class="color-option"
-                style="background-color: #ff0000"
-              ></div>
-              <!-- Red -->
-              <div
-                onclick="pickedColor(`color2`)"
-                id="color2"
-                class="color-option"
-                style="background-color: #00ff00"
-              ></div>
-              <!-- Green -->
-              <div
-                onclick="pickedColor(`color3`)"
-                id="color3"
-                class="color-option"
-                style="background-color: #0000ff"
-              ></div>
-              <!-- Blue -->
-              <div
-                onclick="pickedColor(`color4`)"
-                id="color4"
-                class="color-option"
-                style="background-color: #ffff00"
-              ></div>
-              <!-- Yellow -->
-              <div
-                onclick="pickedColor(`color5`)"
-                id="color5"
-                class="color-option"
-                style="background-color: #ff00ff"
-              ></div>
-              <!-- Magenta -->
+          <label for="dropdown" onclick="toggleDropdownCategory()" >
+            <div class="dropdown-min" id="dropdownMinCategory">
+              <span>Select category</span>
+              <img src="assets/img/arrow_down_black.svg" alt="">
             </div>
-          </div>
+          </label>
+            
+            <div id="dropdownCategoryContent" class="dropdown-content">
+          
+        </div>
+
+          
 
           <label>Assigned to</label>
 
-
           <label for="dropdown" onclick="toggleDropdown()" >
-            <div class="dropdown-min">
-              <span> Select contacts to assign</span>
+            <div class="dropdown-min" id="dropdownMin">
+              <span id="categoryTextField"> Select contacts to assign</span>
               <img src="assets/img/arrow_down_black.svg" alt="">
             </div>
           </label>

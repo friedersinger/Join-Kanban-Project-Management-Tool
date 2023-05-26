@@ -381,17 +381,25 @@ label {
   flex-direction: column;
   margin-top: 0;
   padding-top: 10px;
-  padding-left: 10px;
   padding-bottom: 10px;
-
+  border: 1px solid #d1d1d1;
+  border-top: unset;
+  overflow: auto;
+  max-height: 200px;
 }
 
 /* Flexbox-Stil für den Namen und die Checkbox */
 .dropdown-object {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+  padding: 5px;
+  padding-left:10px
+}
+
+.dropdown-object:hover{
+  background-color: #D1D1D1;
 }
 
 .dropdown-object input {
@@ -399,18 +407,27 @@ label {
 }
 
 .dropdown-min{
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   background-color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  padding: 10px
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px solid #d1d1d1;
+  font-size: 1rem;
 }
 
-
-
-
-
+.dropdown-min.open{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: unset;
+}
 
 
 @media screen and (max-width: 1445px) {

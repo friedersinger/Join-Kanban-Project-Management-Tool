@@ -6,6 +6,7 @@ async function initTasks() {
   await loadTasks();
   await loadUsers();
   renderAssignableContacts();
+  renderCategoryList();
 }
 
 async function addNewTask() {
@@ -26,7 +27,7 @@ async function addNewTask() {
     title: taskTitle.value,
     description: taskDescription.value,
     category: getSelectedOption(),
-    assignments: getSelectedAssignment(),
+    assignments: validateForm(),
     dueDate: taskDueDate.value,
     taskSub: taskSub.value,
     id: currentTaskID,
@@ -70,13 +71,6 @@ function getSelectedOption() {
   var selectElement = document.querySelector(".form-select");
   var selectedOption = selectElement.options[selectElement.selectedIndex].text;
   return selectedOption;
-}
-
-function getSelectedAssignment() {
-  selectElement = document.getElementById("assignMenu");
-  var selectedAssignment =
-    selectElement.options[selectElement.selectedIndex].text;
-  return selectedAssignment;
 }
 
 async function subTaskAddToJson() {
@@ -192,13 +186,11 @@ async function TaskButtonLow() {
   imageLow.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
-
 async function clearTaskForm() {
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskCategory = document.getElementById("category");
   //let taskColor = document.getElementById("color");
-  let taskAssignments = document.getElementById("assignMenu");
   let taskDueDate = document.getElementById("datePicker");
   //let taskPriority = document.getElementById("priority");
   let taskSub = document.getElementById("subtaskContent");
@@ -210,8 +202,7 @@ async function clearTaskForm() {
   taskDescription.value = "";
   taskCategory.value = "";
   //taskColor.value = "";
-  taskAssignments.value = "";
-  taskDueDate.value = "";
+  clearCheckboxes(), (taskDueDate.value = "");
   //taskPriority.value = "";
   taskSub.value = "";
 
@@ -263,70 +254,110 @@ function pickedColor(colorId) {
   };
 }
 
+// Überprüfe die Bildschirmbreite und öffne das Pop-up-Fenster oder leite weiter
+function checkScreenWidth() {
+  document
+    .getElementById("addTaskPopUp")
+    .addEventListener("click", checkScreenWidth);
 
-  // Überprüfe die Bildschirmbreite und öffne das Pop-up-Fenster oder leite weiter
-  function checkScreenWidth() {
-    document.getElementById("addTaskPopUp").addEventListener("click", checkScreenWidth);
+  var screenWidth = window.innerWidth;
 
-    var screenWidth = window.innerWidth;
+  // Definiere die gewünschte Bildschirmbreite, ab der weitergeleitet wird
+  var targetWidth = 1351;
 
-    // Definiere die gewünschte Bildschirmbreite, ab der weitergeleitet wird
-    var targetWidth = 1351;
-
-    // Überprüfe, ob die Bildschirmbreite größer oder gleich der Zielbreite ist
-    if (screenWidth >= targetWidth) {
-      // Öffne das Pop-up-Fenster hier
-      showAddTaskPopUp();
-    } else {
-      // Leite zur anderen Seite weiter
-      window.location.href = "task_form.html";
-    }
+  // Überprüfe, ob die Bildschirmbreite größer oder gleich der Zielbreite ist
+  if (screenWidth >= targetWidth) {
+    // Öffne das Pop-up-Fenster hier
+    showAddTaskPopUp();
+  } else {
+    // Leite zur anderen Seite weiter
+    window.location.href = "task_form.html";
   }
+}
 
-  // Funktion, um das Pop-up-Fenster anzuzeigen
-  function showAddTaskPopUp() {
-    var overlay = document.getElementById("addTaskPopUp");
-    overlay.style.display = "block";
-  }
+// Funktion, um das Pop-up-Fenster anzuzeigen
+function showAddTaskPopUp() {
+  var overlay = document.getElementById("addTaskPopUp");
+  overlay.style.display = "block";
+}
 
-  // Funktion, um das Pop-up-Fenster zu verstecken
-  function hideAddTaskPopUp() {
-    var overlay = document.getElementById("addTaskPopUp");
-    overlay.style.display = "none";
-  }
+// Funktion, um das Pop-up-Fenster zu verstecken
+function hideAddTaskPopUp() {
+  var overlay = document.getElementById("addTaskPopUp");
+  overlay.style.display = "none";
+}
 
-  async function renderAssignableContacts(){
-    let assignableContactsContainer = document.getElementById('dropdownContent');
-    for (let i = 0; i < users.length; i++) {
-      const name = users[i]['name'];
-      assignableContactsContainer.innerHTML += `
+async function renderAssignableContacts() {
+  let assignableContactsContainer = document.getElementById("dropdownContent");
+  for (let i = 0; i < users.length; i++) {
+    const name = users[i]["name"];
+    assignableContactsContainer.innerHTML += `
       <div class="dropdown-object">
         <span>${name}</span>
         <input type="checkbox" value="${name}">
       </div>
-      `
-    }
+      `;
   }
+}
 
+function renderCategoryList(){
+  let categoryListContainer = document.getElementById('dropdownCategoryContent');
+  categoryListContainer.innerHTML += `
+  <div class="dropdown-object">
+        <div onclick="saveSelectedCategory(this) id="newCategory">New category</div>  
+  </div>
 
-  function toggleDropdown() {
-    var dropdownContent = document.getElementById('dropdownContent');
-    dropdownContent.classList.toggle('show');
+  <div class="dropdown-object">
+        <div onclick="saveSelectedCategory(this)">Backoffice</div>
+  </div>
+
+  <div class="dropdown-object">
+        <div onclick="saveSelectedCategory(this)">Sales</div>
+  </div>
+  `
+}
+
+function saveSelectedCategory(element) {
+  var selectedCategory = element.innerText;
+  var dropdownMin = document.getElementById('dropdownMinCategory');
+  dropdownMin.querySelector('span').innerText = selectedCategory;
+  toggleDropdownCategory();
+}
+
+function toggleDropdown() {
+  let dropdownContent = document.getElementById("dropdownContent");
+  let dropdownMin = document.getElementById("dropdownMin");
+  dropdownContent.classList.toggle("show");
+  dropdownMin.classList.toggle("open");
+}
+
+function toggleDropdownCategory() {
+  let dropdownContent = document.getElementById("dropdownCategoryContent");
+  let dropdownMin = document.getElementById("dropdownMinCategory");
+  dropdownContent.classList.toggle("show");
+  dropdownMin.classList.toggle("open");
 }
 
 // Funktion zum Auslesen der ausgewählten Checkbox-Werte
 function validateForm() {
-    var selectedValues = [];
-    var checkboxes = document.querySelectorAll('#dropdown-content input[type=checkbox]:checked');
+  let selectedValues = [];
+  let checkboxes = document.querySelectorAll(
+    "#dropdownContent input[type=checkbox]:checked"
+  );
 
-    for (var i = 0; i < checkboxes.length; i++) {
-        selectedValues.push(checkboxes[i].value);
-    }
+  for (var i = 0; i < checkboxes.length; i++) {
+    selectedValues.push(checkboxes[i].value);
+  }
+  return selectedValues;
+}
 
-    // Hier kannst du die ausgewählten Checkbox-Werte weiterverarbeiten
-    console.log(selectedValues);
-    
-    // Hier kannst du weitere Validierungslogik implementieren
-    
-    return false; // Formular wird nicht abgeschickt (nur zu Demonstrationszwecken)
+function clearCheckboxes() {
+  let checkboxes = document.querySelectorAll(
+    "#dropdownContent input[type=checkbox]:checked"
+  );
+
+  for (var i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = false;
+  }
+  toggleDropdown();
 }
