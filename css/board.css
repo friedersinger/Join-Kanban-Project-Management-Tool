@@ -10,8 +10,8 @@
 .board-main-container {
   grid-column: 3/11;
   grid-row: 2/11;
-  margin-left: 100px;
-  margin-right: 100px;
+  /*margin-left: 100px;*/
+  /*margin-right: 100px;*/
   margin-top: 60px;
   display: flex;
   flex-direction: column;
@@ -227,7 +227,7 @@
   display: flex;
   flex-direction: column;
   min-height: 250px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 /* ********* Scrollbar CSS ********* */
@@ -293,8 +293,9 @@
   align-items: flex-start;
   padding: 18px 19px;
   gap: 40px;
-
-  height: 20vh;
+  margin-bottom: 20px;
+  width: 19vh;
+  height: 23vh;
   /* white */
 
   background: #ffffff;
@@ -307,6 +308,12 @@
 
   flex: none;
   flex-grow: 0;
+  transition: all 0.3s ease;
+}
+
+.board-task-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .task-card-category{
@@ -314,6 +321,7 @@
     border-radius: 30px;
     width: 87px;
     margin-bottom: 10px;
+    padding: 5px;
     justify-content: center;
     display: flex;
     color: white;
@@ -329,12 +337,42 @@
 
 .task-card-description {
   display: flex;
-  margin-bottom: 40px; 
+  height: 90px;
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
 .task-card-bottom-container {
   display: flex;
   justify-content: space-between;
+}
+
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background: #0190E0;
+    border: 1px solid #FFFFFF;
+    border-radius: 58px;
+    margin: 0px -2px;
+    font-size: 13px;
+    color: white;
+}
+
+.avatar-Box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.task-card-prio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 1400px) {

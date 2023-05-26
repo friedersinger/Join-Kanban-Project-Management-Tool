@@ -1,6 +1,7 @@
 let tasks = [];
 let subtasks = [];
 let currentTaskID = 0;
+let selectedCategory;
 
 async function initTasks() {
   await loadTasks();
@@ -14,8 +15,8 @@ async function addNewTask() {
   await loadtoDos();
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
-  // let ownCategory = document.getElementById("textInput");
   // let taskColor = document.getElementById("color");
+  //let assignName = document.getElementById("AssignName");
   let taskDueDate = document.getElementById("datePicker");
   let taskPriority = document.getElementById("priority");
   let taskSub = document.getElementById("subtaskContent");
@@ -26,11 +27,12 @@ async function addNewTask() {
   tasks.push({
     title: taskTitle.value,
     description: taskDescription.value,
-    category: getSelectedOption(),
+    category: selectedCategory,
     assignments: validateForm(),
     dueDate: taskDueDate.value,
     taskSub: taskSub.value,
     id: currentTaskID,
+    /*assignName: assignName.value*/
   });
 
   toDo.push(currentTaskID);
@@ -65,12 +67,6 @@ async function loadTasks() {
   } catch (e) {
     console.error("Loading error:", e);
   }
-}
-
-function getSelectedOption() {
-  var selectElement = document.querySelector(".form-select");
-  var selectedOption = selectElement.options[selectElement.selectedIndex].text;
-  return selectedOption;
 }
 
 async function subTaskAddToJson() {
@@ -200,7 +196,7 @@ async function clearTaskForm() {
 
   taskTitle.value = "";
   taskDescription.value = "";
-  taskCategory.value = "";
+  //taskCategory.value = "";
   //taskColor.value = "";
   clearCheckboxes(), (taskDueDate.value = "");
   //taskPriority.value = "";
@@ -211,18 +207,7 @@ async function clearTaskForm() {
   buttonLow.style.backgroundColor = "white";
 }
 
-function getSelectedOption() {
-  var dropdown = document.querySelector(".form-select");
-  var selectedValue = dropdown.value;
 
-  var inputField = document.getElementById("inputField");
-
-  if (selectedValue === "1") {
-    inputField.style.display = "block";
-  } else {
-    inputField.style.display = "none";
-  }
-}
 
 function pickedColor(colorId) {
   const selectedColorOption = document.getElementById(colorId);
@@ -291,10 +276,11 @@ async function renderAssignableContacts() {
   let assignableContactsContainer = document.getElementById("dropdownContent");
   for (let i = 0; i < users.length; i++) {
     const name = users[i]["name"];
+    const id = users[i]["id"];
     assignableContactsContainer.innerHTML += `
       <div class="dropdown-object">
         <span>${name}</span>
-        <input type="checkbox" value="${name}">
+        <input id="${id}" type="checkbox" value="${name}">
       </div>
       `;
   }
@@ -302,9 +288,10 @@ async function renderAssignableContacts() {
 
 function renderCategoryList(){
   let categoryListContainer = document.getElementById('dropdownCategoryContent');
+  categoryListContainer.innerHTML = "";
   categoryListContainer.innerHTML += `
   <div class="dropdown-object">
-        <div onclick="saveSelectedCategory(this) id="newCategory">New category</div>  
+        <div onclick="renderNewCategoryField()" id="newCategory">New category</div>  
   </div>
 
   <div class="dropdown-object">
@@ -317,9 +304,33 @@ function renderCategoryList(){
   `
 }
 
+function renderNewCategoryField(){
+  let dropdownField = document.getElementById('dropdownMinCategory');
+  dropdownField.innerHTML =  `
+  <div class="flex-row space-between align-center">
+    <input placeholder="Enter new category" class="category-input">
+    <div class="flex-row align-center height-100">
+      <img src="assets/img/close-button-addtask.svg" onclick="renderNormalCategoryField();renderCategoryList(); toggleDropdownCategory()"></button>
+      <div class="vert-border"></div>
+      <img src="assets/img/check-addtask.svg">
+    </div>
+  </div>
+  `;
+  toggleDropdownCategory();
+}
+
+function renderNormalCategoryField(){
+  let dropdownField = document.getElementById('dropdownMinCategory');
+  dropdownField.innerHTML = "";
+  dropdownField.innerHTML = `
+    <span>Select category</span>
+    <img src="assets/img/arrow_down_black.svg" alt="">
+  `
+}
+
 function saveSelectedCategory(element) {
-  var selectedCategory = element.innerText;
-  var dropdownMin = document.getElementById('dropdownMinCategory');
+  selectedCategory = element.innerText;
+  let dropdownMin = document.getElementById('dropdownMinCategory');
   dropdownMin.querySelector('span').innerText = selectedCategory;
   toggleDropdownCategory();
 }
@@ -361,3 +372,26 @@ function clearCheckboxes() {
   }
   toggleDropdown();
 }
+
+function updateTaskCardIcons(id) {
+  const imgUrgentTask = document.getElementById("imgUrgentTask");
+  const imgMediumTask = document.getElementById("imgMediumTask");
+  const imgLowTask = document.getElementById("imgLowTask");
+
+  if (imgUrgentTask && imgMediumTask && imgLowTask) {
+    // Verstecke alle Icons
+    imgUrgentTask.classList.add("d-none");
+    imgMediumTask.classList.add("d-none");
+    imgLowTask.classList.add("d-none");
+
+    // Zeige das entsprechende Icon basierend auf prio
+    if (id === "urgent") {
+      imgUrgentTask.classList.remove("d-none");
+    } else if (id === "medium") {
+      imgMediumTask.classList.remove("d-none");
+    } else if (id === "low") {
+      imgLowTask.classList.remove("d-none");
+    }
+  }
+}
+

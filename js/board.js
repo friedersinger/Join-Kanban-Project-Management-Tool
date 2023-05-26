@@ -124,14 +124,25 @@ function redirectToAddTask() {
 }
 
 function getTaskCardHTML(currentTask, status) {
+    let prioPic ='';
+    if(prio=='high'){prioPic='assets/icon/prioUrgent.png'}else if(prio=='mid'){prioPic='assets/icon/prioMedium.png'}else{prioPic='assets/icon/prioLow.png'} 
     return `
   <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card">
     <div class="task-card-category" id="taskCategoryContainer">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
     <div class="task-card-bottom-container">
-      <div class="avatar-container">AVATAR BILD</div>
-      <div class="task-card-prio">Urgent</div>
+      <div class="avatar-Box">
+      <div class="avatar-container">PH</div>
+      <div class="avatar-container">PH</div>
+      </div>
+      <div class="task-card-prio">
+      <img id="imgUrgentTask" src="/assets/img/icon_up.png" alt="" />
+      <img id="imgMediumTask" src="/assets/img/icon_medium.png" alt="" />
+      <img id="imgLowTask" src="/assets/img/icon_down.png" alt="" />
+      </div>
     </div>
   </div>`;
 }
+
+

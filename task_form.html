@@ -107,19 +107,21 @@
           <label>Prio</label>
 
           <div id="prio" class="prio">
-            <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent()">
+            
+            <div class="prio-btn" id="prioUrgent" id="high" onclick="setPrio('high')" onclick="TaskButtonUrgent()">
               Urgent
               <img id="imgUrgent" src="/assets/img/icon_up.png" alt="" />
             </div>
-            <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium()">
+            <div class="prio-btn" id="prioMedium"  id="medium" onclick="setPrio('medium')" onclick="TaskButtonMedium()">
               Medium
               <img id="imgMedium" src="/assets/img/icon_medium.png" alt="" />
             </div>
-            <div class="prio-btn" id="prioLow" onclick="TaskButtonLow()">
+            <div class="prio-btn" id="prioLow" id="low" onclick="setPrio('low')" onclick="TaskButtonLow()">
               Low
               <img id="imgLow" src="/assets/img/icon_down.png" alt="" />
             </div>
           </div>
+          
 
           <label class="subtask">Subtasks</label>
           <div class="subtask-container">
