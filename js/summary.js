@@ -29,6 +29,9 @@ async function initSummary(){
   await renderGreeting();
   await loadTasks();
   await loadtoDos();
+  await loadInProgress();
+  await loadFeedback();
+  await loadDone();
   countTasks();
 }
 
@@ -89,4 +92,6 @@ function countTasks() {
   document.getElementById("counterInProgress").innerHTML = inProgressVar;
   document.getElementById("counterFeedback").innerHTML = feedbackVar;
   document.getElementById("counterAll").innerHTML = totalTasks;
+  document.getElementById("openToDo").innerHTML = toDoVar;
+  document.getElementById("doneToDos").innerHTML = doneVar;
 }

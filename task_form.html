@@ -108,15 +108,15 @@
 
           <div id="prio" class="prio">
             
-            <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent()">
+            <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent();getPrioStatus('up')">
               Urgent
               <img id="imgUrgent" src="/assets/img/icon_up.png" alt="" />
             </div>
-            <div class="prio-btn" id="prioMedium"  onclick="TaskButtonMedium()">
+            <div class="prio-btn" id="prioMedium"  onclick="TaskButtonMedium();getPrioStatus('medium')">
               Medium
               <img id="imgMedium" src="/assets/img/icon_medium.png" alt="" />
             </div>
-            <div class="prio-btn" id="prioLow" onclick="TaskButtonLow()">
+            <div class="prio-btn" id="prioLow" onclick="TaskButtonLow();getPrioStatus('down')">
               Low
               <img id="imgLow" src="/assets/img/icon_down.png" alt="" />
             </div>
@@ -143,7 +143,7 @@
           <div class="action-button-container">
             <img
               id="clearTask"
-              onclick="clearTaskForm()"
+              onclick="reloadPage()"
               src="/assets/img/cancel-task.svg"
             />
             <button id="addTask" class="add-task-btn" type="submit">

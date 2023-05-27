@@ -2,6 +2,7 @@ let tasks = [];
 let subtasks = [];
 let currentTaskID = 0;
 let selectedCategory;
+let currentPrioStatus;
 
 async function initTasks() {
   await loadTasks();
@@ -29,27 +30,36 @@ async function addNewTask() {
     title: taskTitle.value,
     description: taskDescription.value,
     category: selectedCategory,
+    prio: currentPrioStatus,
     assignments: validateForm(),
     dueDate: taskDueDate.value,
-    taskSub: taskSub.value,
+    taskSub: subTasksLoad(),
     id: currentTaskID,
     /*assignName: assignName.value*/
   });
 
   toDo.push(currentTaskID);
 
-  clearTaskForm();
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen
 
   setTimeout(() => {
     taskAddedElement.classList.add("d-none"); // Füge die Klasse "d-none" hinzu, um das Element auszublenden
-  }, 3000); // Warte drei Sekunden (3000 Millisekunden) und führe dann den Code im setTimeout-Callback aus
+    reloadPage(); // Rufe die Funktion zum Neuladen der Seite auf
+  }, 1000); // Warte vier Sekunden (4000 Millisekunden) und führe dann den Code im setTimeout-Callback aus
 
   await setItem("tasks", JSON.stringify(tasks));
   await setItem("toDo", JSON.stringify(toDo));
 }
+
+async function subTasksLoad(){
+  subtasks = [];
+  for (let i = 0; i < subtasks.length; i++) {
+    const subtask = subtasks[i];
+  }
+}
+
 
 async function setNewTaskID() {
   try {
@@ -137,17 +147,9 @@ async function TaskButtonUrgent() {
   imageUrgent.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
-async function ButtonHighPush(){
-  let prio = "up";
-  tasks.push(prio);
-}
-async function ButtonMediumPush(){
-  let prio = "medium";
-  tasks.push(prio);
-}
-async function ButtonLowPush(){
-  let prio = "down";
-  tasks.push(prio);
+
+function getPrioStatus(prioStatus){
+  currentPrioStatus = prioStatus;
 }
 
 async function TaskButtonMedium() {
@@ -196,7 +198,7 @@ async function TaskButtonLow() {
   imageLow.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
-async function clearTaskForm() {
+/*async function clearTaskForm() {
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskCategory = document.getElementById("category");
@@ -212,15 +214,19 @@ async function clearTaskForm() {
   taskDescription.value = "";
   //taskCategory.value = "";
   //taskColor.value = "";
-  clearCheckboxes(), (taskDueDate.value = "");
+  clearCheckboxes(), 
+  (taskDueDate.value = "");
   //taskPriority.value = "";
   taskSub.value = "";
 
   buttonUrgent.style.backgroundColor = "white";
   buttonMedium.style.backgroundColor = "white";
   buttonLow.style.backgroundColor = "white";
-}
+}*/
 
+function reloadPage(){
+  location.reload();
+}
 
 
 function pickedColor(colorId) {

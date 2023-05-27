@@ -110,15 +110,6 @@ function renderTaskCardDone() {
 
 //############### HELP FUNCTIONS ###############//
 
-async function testPushToArrays() {
-    inProgress.push("test");
-    feedback.push("test");
-    done.push("test");
-    await setItem("inProgress", JSON.stringify(inProgress));
-    await setItem("feedback", JSON.stringify(feedback));
-    await setItem("done", JSON.stringify(done));
-}
-
 function redirectToAddTask() {
     window.location.href = "task_form.html";
 }
