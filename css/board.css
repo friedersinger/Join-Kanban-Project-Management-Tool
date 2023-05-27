@@ -226,8 +226,17 @@
 .drop-area {
   display: flex;
   flex-direction: column;
-  min-height: 250px;
-  /*border: 1px solid black;*/
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 60px;;
+  border: 3px dotted transparent;
+  min-height: 15vh;
+}
+
+.add-border{
+  border: 3px dotted #d1d1d1;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 /* ********* Scrollbar CSS ********* */
@@ -309,12 +318,12 @@
   flex: none;
   flex-grow: 0;
   transition: all 0.3s ease;
+  cursor: grab;
 }
 
 .board-task-card:hover {
   transform: scale(1.05);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  cursor: grab;
 }
 
 .task-card-category{

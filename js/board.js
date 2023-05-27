@@ -7,6 +7,7 @@ let currentDraggedElement;
 
 
 async function initBoard() {
+    clearTasksContainer()
     await loadTasks();
     await loadtoDos();
     await loadInProgress();
@@ -102,6 +103,18 @@ function renderTaskCardDone() {
             renderedIDs[currentTask.id] = true;
         }
     }
+}
+
+function clearTasksContainer(){
+    let toDoContainer = document.getElementById("toDo");
+    let progressContainer = document.getElementById("inProgress");
+    let feedbackContainer = document.getElementById("feedback");
+    let doneContainer = document.getElementById("done");
+
+    toDoContainer.innerHTML = "";
+    progressContainer.innerHTML = "";
+    feedbackContainer.innerHTML = "";
+    doneContainer.innerHTML = "";
 }
 
 

@@ -1,5 +1,6 @@
 async function startDragging(id, status) {
   currentDraggedElement = id;
+  await  showDropArea(status);
   await getSourceArrayByStatus(status, id);
 }
 
@@ -23,17 +24,23 @@ async function moveTo(status) {
   switch (status) {
     case "toDo":
       targetArray = toDo;
+      getBorderRemoveFunctions();
+      initBoard();      
       break;
     case "inProgress":
       targetArray = inProgress;
+      getBorderRemoveFunctions();
+      initBoard();
       break;
     case "feedback":
       targetArray = feedback;
-      console.log("targetArray: feedback");
+      getBorderRemoveFunctions();
+      initBoard();
       break;
     case "done":
       targetArray = done;
-      console.log("targetArray: done");
+      getBorderRemoveFunctions();
+      initBoard();
       break;
     default:
       console.error("Invalid status:", status);
@@ -84,33 +91,65 @@ async function getSourceArrayByStatus(status, id) {
 }
 
 async function deleteTaskFromDragged(id, sourceArray) {
-  console.log("deleted id: " + id);
+  /*console.log("deleted id: " + id);
   console.log("source array:", sourceArray);
+  */
 
   switch (sourceArray) {
     case "toDo":
       let toDoIndex = toDo.indexOf(id);
-      console.log(toDo.indexOf(id));
       toDo.splice(toDoIndex, 1);
       await setItem("toDo", JSON.stringify(toDo));
       break;
     case "inProgress":
       let inProgressIndex = inProgress.indexOf(id);
-      console.log(inProgress.indexOf(id));
       inProgress.splice(inProgressIndex, 1);
       await setItem("inProgress", JSON.stringify(inProgress));
       break;
     case "feedback":
       let feedbackIndex = feedback.indexOf(id);
-      console.log(feedback.indexOf(id));
       feedback.splice(feedbackIndex, 1);
       await setItem("feedback", JSON.stringify(feedback));
       break;
     case "done":
       let doneIndex = done.indexOf(id);
-      console.log(done.indexOf(id));
       done.splice(doneIndex, 1);
       await setItem("done", JSON.stringify(done));
       break;
   }
+}
+
+async function showDropArea(status) {
+  console.log(status);
+  switch(status){
+    case "toDo":
+      document.getElementById('inProgress').classList.add("add-border");
+      document.getElementById('feedback').classList.add("add-border");
+      document.getElementById('done').classList.add("add-border");
+      break;
+    case "inProgress":
+      document.getElementById('toDo').classList.add("add-border");
+      document.getElementById('feedback').classList.add("add-border");
+      document.getElementById('done').classList.add("add-border");
+      break;
+    case "feedback":
+      document.getElementById('toDo').classList.add("add-border");
+      document.getElementById('inProgress').classList.add("add-border");
+      document.getElementById('done').classList.add("add-border");
+      break;
+    case "done":
+      document.getElementById('toDo').classList.add("add-border");
+      document.getElementById('feedback').classList.add("add-border");
+      document.getElementById('inProgress').classList.add("add-border");
+      break;
+  }
+
+}
+
+function getBorderRemoveFunctions(){
+  document.getElementById('toDo').classList.remove("add-border");
+  document.getElementById('inProgress').classList.remove("add-border");
+  document.getElementById('feedback').classList.remove("add-border");
+  document.getElementById('done').classList.remove("add-border");
+
 }
