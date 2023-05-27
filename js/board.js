@@ -124,8 +124,6 @@ function redirectToAddTask() {
 }
 
 function getTaskCardHTML(currentTask, status) {
-    let prioPic ='';
-    if(prio=='high'){prioPic='assets/icon/prioUrgent.png'}else if(prio=='mid'){prioPic='assets/icon/prioMedium.png'}else{prioPic='assets/icon/prioLow.png'} 
     return `
   <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card">
     <div class="task-card-category" id="taskCategoryContainer">${currentTask["category"]}</div>
