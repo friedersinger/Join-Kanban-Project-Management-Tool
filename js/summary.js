@@ -5,23 +5,23 @@ document.addEventListener("DOMContentLoaded", function () {
   BOTTOMCARD1.addEventListener("mouseenter", function () {
     document
       .getElementById("penIcon")
-      .setAttribute("src", "/assets/img/icon_pen_white.svg");
+      .setAttribute("src", "./assets/img/icon_pen_white.svg");
   });
   BOTTOMCARD1.addEventListener("mouseleave", function () {
     document
       .getElementById("penIcon")
-      .setAttribute("src", "/assets/img/icon_pen.svg");
+      .setAttribute("src", "./assets/img/icon_pen.svg");
   });
 
   BOTTOMCARD2.addEventListener("mouseenter", function () {
     document
       .getElementById("checkIcon")
-      .setAttribute("src", "/assets/img/icon_check_white.svg");
+      .setAttribute("src", "./assets/img/icon_check_white.svg");
   });
   BOTTOMCARD2.addEventListener("mouseleave", function () {
     document
       .getElementById("checkIcon")
-      .setAttribute("src", "/assets/img/icon_check.svg");
+      .setAttribute("src", "./assets/img/icon_check.svg");
   });
 });
 

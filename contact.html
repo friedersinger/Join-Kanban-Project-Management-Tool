@@ -8,9 +8,9 @@
 
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
-    <link rel="stylesheet" href="/css/contact.css" />
-    <link rel="stylesheet" href="/css/sidebar.css" />
-    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
 
    <!--Von hier sind es wichtige Links für das Add Task Pop Up-->
 
@@ -27,14 +27,14 @@
    />
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-   <script src="js/tasks.js"></script>
+   <script src="./js/tasks.js"></script>
 
     <!--bis hier sind es wichtige Links für das Add Task Pop Up-->
-    <script src="/backend_new/storage_new.js"></script>
-    <script src="/js/login_new.js"></script>
-    <script src="/js/navbar.js"></script>
-    <script src="/js/script.js"></script>
-    <script src="/js/contact.js"></script>
+    <script src="./backend_new/storage_new.js"></script>
+    <script src="./js/login_new.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/contact.js"></script>
   
   </head>
 
@@ -55,7 +55,7 @@
       <div class="new-contact-mobile" id="newContactMobile">
       <div class="mobile-content-btn" onclick="showCard()">
         <span>New Contact</span>
-        <img src="assets/img/add_contact_icon.svg" alt="" />
+        <img src="./assets/img/add_contact_icon.svg" alt="" />
       </div>
       </div>
 
@@ -82,7 +82,7 @@
 
         <div class="add-contact-btn" onclick="showCard()">
           <span>New Contact</span>
-          <img src="assets/img/add_contact_icon.svg" alt="" />
+          <img src="./assets/img/add_contact_icon.svg" alt="" />
         </div>
       </div>
       </div>
@@ -92,7 +92,7 @@
       <div id="overlay-bg" class="overlay-bg d-none">
       <div id="overlay">
         <div class="overlay-left">
-          <img src="assets/img/logo.svg" alt="" />
+          <img src="./assets/img/logo.svg" alt="" />
           <span class="font-size-61 font-weight-700 small-responsive">Add contact</span>
           <span class="font-size-27 small-responsive2">Tasks are better with a team!</span>
           <div class="border-overlay"></div>
@@ -123,7 +123,7 @@
             </div>
           </div>
           <div class="form-Avatar">
-            <img src="assets/img/avatar_img.svg" class="avatar" />
+            <img src="./assets/img/avatar_img.svg" class="avatar" />
             <div class="form center">
               <form onsubmit="createNewPseudoContact(); return false">
                 <div class="center">
@@ -169,7 +169,7 @@
             </div>
             <button class="create-btn" type="submit">
               <span class="font-weight-700 font-size-21">Create contact</span>
-              <img src="assets/img/add_contact_icon.svg" alt="" />
+              <img src="./assets/img/add_contact_icon.svg" alt="" />
             </button>
           </div>
         </form>
@@ -182,7 +182,7 @@
       <div id="overlay-edit-bg" class="overlay-bg d-none">
         <div id="overlay">
           <div class="overlay-left">
-            <img src="assets/img/logo.svg" alt="" />
+            <img src="./assets/img/logo.svg" alt="" />
             <span class="font-size-61 font-weight-700 small-responsive">Edit contact</span>
             
             <div class="border-overlay"></div>
@@ -213,7 +213,7 @@
               </div>
             </div>
             <div class="form-Avatar">
-              <img src="assets/img/avatar_img.svg" class="avatar" />
+              <img src="./assets/img/avatar_img.svg" class="avatar" />
               <div class="form center">
                 <form onsubmit="createNewPseudoContact(); return false">
                   <div class="center">
@@ -373,15 +373,15 @@
                   <div id="prio" class="prio">
                     <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent()">
                       Urgent
-                      <img id="imgUrgent" src="/assets/img/icon_up.png" alt="" />
+                      <img id="imgUrgent" src="./assets/img/icon_up.png" alt="" />
                     </div>
                     <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium()">
                       Medium
-                      <img id="imgMedium" src="/assets/img/icon_medium.png" alt="" />
+                      <img id="imgMedium" src="./assets/img/icon_medium.png" alt="" />
                     </div>
                     <div class="prio-btn" id="prioLow" onclick="TaskButtonLow()">
                       Low
-                      <img id="imgLow" src="/assets/img/icon_down.png" alt="" />
+                      <img id="imgLow" src="./assets/img/icon_down.png" alt="" />
                     </div>
                   </div>
         
@@ -390,10 +390,10 @@
                     <input type="text" id="subtask-input-content" />
         
                     <div id="subtaskOninput" style="display: flex">
-                      <img src="/assets/img/X.png" id="clearSubtaskInput" />
+                      <img src="./assets/img/X.png" id="clearSubtaskInput" />
                       <div class="border-subtask"></div>
                       <img
-                        src="/assets/img/icon_check.svg"
+                        src="./assets/img/icon_check.svg"
                         onclick="subTaskAddToJson()"
                         id="finishEditingSubtask"
                       />
@@ -406,7 +406,7 @@
                     <img
                       id="clearTask"
                       onclick="hideAddTaskPopUp()"
-                      src="/assets/img/cancel-task.svg"
+                      src="./assets/img/cancel-task.svg"
                     />
                     <button id="addTask" class="add-task-btn-board" type="submit">
                       Create Task
@@ -508,15 +508,15 @@
                         <div id="prio" class="prio">
                           <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent()">
                             Urgent
-                            <img id="imgUrgent" src="/assets/img/icon_up.png" alt="" />
+                            <img id="imgUrgent" src="./assets/img/icon_up.png" alt="" />
                           </div>
                           <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium()">
                             Medium
-                            <img id="imgMedium" src="/assets/img/icon_medium.png" alt="" />
+                            <img id="imgMedium" src="./assets/img/icon_medium.png" alt="" />
                           </div>
                           <div class="prio-btn" id="prioLow" onclick="TaskButtonLow()">
                             Low
-                            <img id="imgLow" src="/assets/img/icon_down.png" alt="" />
+                            <img id="imgLow" src="./assets/img/icon_down.png" alt="" />
                           </div>
                         </div>
               
@@ -525,10 +525,10 @@
                           <input type="text" id="subtask-input-content" />
               
                           <div id="subtaskOninput" style="display: flex">
-                            <img src="/assets/img/X.png" id="clearSubtaskInput" />
+                            <img src="./assets/img/X.png" id="clearSubtaskInput" />
                             <div class="border-subtask"></div>
                             <img
-                              src="/assets/img/icon_check.svg"
+                              src="./assets/img/icon_check.svg"
                               onclick="subTaskAddToJson()"
                               id="finishEditingSubtask"
                             />
@@ -541,7 +541,7 @@
                           <img
                             id="clearTask"
                             onclick="clearTaskForm()"
-                            src="/assets/img/cancel-task.svg"
+                            src="./assets/img/cancel-task.svg"
                           />
                           <button id="addTask" class="add-task-btn-board" type="submit">
                             Create Task

@@ -5,28 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
-    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
-    <link rel="stylesheet" href="/css/board.css" />
-    <link rel="stylesheet" href="/css/sidebar.css" />
-    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="./css/board.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
 
-    <script src="/js/navbar.js"></script>
-    <script src="/backend_new/storage_new.js"></script>
-    <script src="/js/script.js"></script>
-    <script src="/js/tasks.js"></script>
-    <script src="/js/board.js"></script>
-    <script src="/js/board_drag_drop.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./backend_new/storage_new.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/tasks.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/board_drag_drop.js"></script>
   </head>
 
   <body onload="includeHTML();initBoard()">
     <div
       class="sidebar-container"
-      w3-include-html="assets/templates_html/sidebar_template.html"
+      w3-include-html="./assets/templates_html/sidebar_template.html"
     ></div>
     <div
       class="navbar-container"
-      w3-include-html="assets/templates_html/navbar_template.html"
+      w3-include-html="./assets/templates_html/navbar_template.html"
     ></div>
 
     <div class="board-main-container inner-content">
@@ -38,7 +38,7 @@
           <span class="headline-text headline-text-container">Board</span>
           <div id="add-task-btn-board-mobile" class="add-task-btn-board-mobile">
             <button>
-              <img src="/assets/img/plus-icon.svg" alt="" />
+              <img src="./assets/img/plus-icon.svg" alt="" />
             </button>
           </div>
         </div>
@@ -49,7 +49,7 @@
             <div id="search-input-images" style="display: flex">
               <div class="border-subtask"></div>
               <img
-                src="/assets/img/search-icon.png"
+                src="./assets/img/search-icon.png"
                 id="finishEditingSubtask"
               />
             </div>
@@ -61,7 +61,7 @@
             class="add-task-btn-board"
           >
             <button>Add Task</button>
-            <img src="/assets/img/plus-icon.svg" alt="" />
+            <img src="./assets/img/plus-icon.svg" alt="" />
           </div>
         </div>
       </div>

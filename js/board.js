@@ -135,9 +135,7 @@ function getTaskCardHTML(currentTask, status) {
       <div class="avatar-container">PH</div>
       </div>
       <div class="task-card-prio">
-      <img id="imgUrgentTask" src="/assets/img/icon_up.png" alt="" />
-      <img id="imgMediumTask" src="/assets/img/icon_medium.png" alt="" />
-      <img id="imgLowTask" src="/assets/img/icon_down.png" alt="" />
+      <img id="imgUrgentTask" src="./assets/img/icon_${currentTask["prio"]}.png" alt="" />
       </div>
     </div>
   </div>`;

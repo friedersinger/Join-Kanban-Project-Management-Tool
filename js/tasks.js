@@ -24,6 +24,7 @@ async function addNewTask() {
   let buttonMedium = document.getElementById("prioMedium");
   let buttonLow = document.getElementById("prioLow");
 
+
   tasks.push({
     title: taskTitle.value,
     description: taskDescription.value,
@@ -134,6 +135,19 @@ async function TaskButtonUrgent() {
 
   let imageUrgent = document.getElementById("imgUrgent");
   imageUrgent.style.filter = "brightness(10000%) contrast(1000%)";
+}
+
+async function ButtonHighPush(){
+  let prio = "up";
+  tasks.push(prio);
+}
+async function ButtonMediumPush(){
+  let prio = "medium";
+  tasks.push(prio);
+}
+async function ButtonLowPush(){
+  let prio = "down";
+  tasks.push(prio);
 }
 
 async function TaskButtonMedium() {
@@ -310,9 +324,9 @@ function renderNewCategoryField(){
   <div class="flex-row space-between align-center">
     <input placeholder="Enter new category" class="category-input">
     <div class="flex-row align-center height-100">
-      <img src="assets/img/close-button-addtask.svg" onclick="renderNormalCategoryField();renderCategoryList(); toggleDropdownCategory()"></button>
+      <img src="./assets/img/close-button-addtask.svg" onclick="renderNormalCategoryField();renderCategoryList(); toggleDropdownCategory()"></button>
       <div class="vert-border"></div>
-      <img src="assets/img/check-addtask.svg">
+      <img src="./assets/img/check-addtask.svg">
     </div>
   </div>
   `;
@@ -324,7 +338,7 @@ function renderNormalCategoryField(){
   dropdownField.innerHTML = "";
   dropdownField.innerHTML = `
     <span>Select category</span>
-    <img src="assets/img/arrow_down_black.svg" alt="">
+    <img src="./assets/img/arrow_down_black.svg" alt="">
   `
 }
 

@@ -287,7 +287,7 @@ function giveContactDetailsHTML(name, mail, initials) {
           <div class="flex-column">
             <span id="nameDetailCard">${name}</span>
             <div id="addTaskPopUp" onclick="showAddTaskPopUp()">
-              <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
+              <img src="./assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
             </div>
           </div>
         </div>
@@ -295,7 +295,7 @@ function giveContactDetailsHTML(name, mail, initials) {
         <div class="flex-row gap-30 align-center">
           <span class="font-size-21">Contact Information</span>
           <div class="flex-row gap-5 align-center" onclick="showEditCard()">
-            <img src="assets/img/pen_black.svg" alt="" class="cursor-pointer" />
+            <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
             <span class="cursor-pointer">Edit Contact</span>
           </div>
         </div>
@@ -346,7 +346,7 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
           <div class="flex-column">
             <span id="nameDetailCard">${name}</span>
             <div id="addTaskPopUp" onclick="checkScreenWidth()">
-              <img src="assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
+              <img src="./assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
             </div>
           </div>
         </div>
@@ -354,7 +354,7 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
         <div class="flex-row gap-30 align-center margin-left-60 margin-bottom-20">
           <span class="font-size-21">Contact Information</span>
           <div class="flex-row gap-5 align-center" onclick="showEditCard()">
-            <img src="assets/img/pen_black.svg" alt="" class="cursor-pointer" />
+            <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
             <span class="cursor-pointer">Edit Contact</span>
           </div>
         </div>
