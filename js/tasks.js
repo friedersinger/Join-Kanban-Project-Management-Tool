@@ -3,6 +3,8 @@ let subtasks = [];
 let currentTaskID = 0;
 let selectedCategory;
 let currentPrioStatus;
+let selectedColor;
+let categories = [];
 
 async function initTasks() {
   await loadTasks();
@@ -25,7 +27,6 @@ async function addNewTask() {
   let buttonMedium = document.getElementById("prioMedium");
   let buttonLow = document.getElementById("prioLow");
 
-
   tasks.push({
     title: taskTitle.value,
     description: taskDescription.value,
@@ -35,11 +36,11 @@ async function addNewTask() {
     dueDate: taskDueDate.value,
     taskSub: subTasksLoad(),
     id: currentTaskID,
+    color: taskColor,
     /*assignName: assignName.value*/
   });
 
   toDo.push(currentTaskID);
-
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen
@@ -53,13 +54,12 @@ async function addNewTask() {
   await setItem("toDo", JSON.stringify(toDo));
 }
 
-async function subTasksLoad(){
+async function subTasksLoad() {
   subtasks = [];
   for (let i = 0; i < subtasks.length; i++) {
     const subtask = subtasks[i];
   }
 }
-
 
 async function setNewTaskID() {
   try {
@@ -147,8 +147,7 @@ async function TaskButtonUrgent() {
   imageUrgent.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
-
-function getPrioStatus(prioStatus){
+function getPrioStatus(prioStatus) {
   currentPrioStatus = prioStatus;
 }
 
@@ -224,39 +223,8 @@ async function TaskButtonLow() {
   buttonLow.style.backgroundColor = "white";
 }*/
 
-function reloadPage(){
+function reloadPage() {
   location.reload();
-}
-
-
-function pickedColor(colorId) {
-  const selectedColorOption = document.getElementById(colorId);
-
-  if (selectedColorOption.classList.contains("selected")) {
-    // If the clicked color option is already selected, remove the class
-    selectedColorOption.classList.remove("selected");
-  } else {
-    // Remove the class from the previously selected color option
-    const prevSelectedColorOption = document.querySelector(
-      ".color-option.selected"
-    );
-    if (prevSelectedColorOption) {
-      prevSelectedColorOption.classList.remove("selected");
-    }
-
-    // Add the class to the clicked color option
-    selectedColorOption.classList.add("selected");
-
-    console.log("Chosen color:", {
-      color: selectedColorOption.style.backgroundColor,
-    });
-  }
-
-  let selectedColor = selectedColorOption.style.backgroundColor;
-
-  return {
-    selectedColor,
-  };
 }
 
 // Überprüfe die Bildschirmbreite und öffne das Pop-up-Fenster oder leite weiter
@@ -306,52 +274,56 @@ async function renderAssignableContacts() {
   }
 }
 
-function renderCategoryList(){
-  let categoryListContainer = document.getElementById('dropdownCategoryContent');
+function renderCategoryList() {
+  let categoryListContainer = document.getElementById(
+    "dropdownCategoryContent"
+  );
   categoryListContainer.innerHTML = "";
   categoryListContainer.innerHTML += `
-  <div class="dropdown-object">
-        <div onclick="renderNewCategoryField()" id="newCategory">New category</div>  
-  </div>
+    <div class="dropdown-object">
+      <div onclick="renderNewCategoryField()" id="newCategory">New category</div>  
+    </div>
 
-  <div class="dropdown-object">
-        <div onclick="saveSelectedCategory(this)">Backoffice</div>
-  </div>
+    <div class="dropdown-object">
+      <div onclick="saveSelectedCategory(this)">Backoffice</div>
+    </div>
 
-  <div class="dropdown-object">
-        <div onclick="saveSelectedCategory(this)">Sales</div>
-  </div>
-  `
+    <div class="dropdown-object">
+      <div onclick="saveSelectedCategory(this)">Sales</div>
+    </div>
+  `;
 }
 
-function renderNewCategoryField(){
-  let dropdownField = document.getElementById('dropdownMinCategory');
-  dropdownField.innerHTML =  `
-  <div class="flex-row space-between align-center">
-    <input placeholder="Enter new category" class="category-input">
-    <div class="flex-row align-center height-100">
-      <img src="./assets/img/close-button-addtask.svg" onclick="renderNormalCategoryField();renderCategoryList(); toggleDropdownCategory()"></button>
-      <div class="vert-border"></div>
-      <img src="./assets/img/check-addtask.svg">
+function renderNewCategoryField() {
+  let dropdownField = document.getElementById("dropdownMinCategory");
+  document.getElementById("select-color-category").classList.remove("d-none");
+
+  dropdownField.innerHTML = /*html*/ `
+    <div class="flex-row space-between align-center">
+      <input placeholder="Enter new category" id="new-category" class="category-input">
+      <div class="flex-row align-center height-100">
+        <img src="./assets/img/close-button-addtask.svg" onclick="renderNormalCategoryField(); renderCategoryList(); toggleDropdownCategory()">
+        <div class="vert-border"></div>
+        <button onclick="checkNewCategory()" type="button"><img
+        src="assets/img/check-addtask.svg"></button>
+      </div>
     </div>
-  </div>
   `;
   toggleDropdownCategory();
 }
 
-function renderNormalCategoryField(){
-  let dropdownField = document.getElementById('dropdownMinCategory');
-  dropdownField.innerHTML = "";
+function renderNormalCategoryField() {
+  let dropdownField = document.getElementById("dropdownMinCategory");
   dropdownField.innerHTML = `
     <span>Select category</span>
     <img src="./assets/img/arrow_down_black.svg" alt="">
-  `
+  `;
 }
 
 function saveSelectedCategory(element) {
   selectedCategory = element.innerText;
-  let dropdownMin = document.getElementById('dropdownMinCategory');
-  dropdownMin.querySelector('span').innerText = selectedCategory;
+  let dropdownMin = document.getElementById("dropdownMinCategory");
+  dropdownMin.querySelector("span").innerText = selectedCategory;
   toggleDropdownCategory();
 }
 
@@ -415,3 +387,53 @@ function updateTaskCardIcons(id) {
   }
 }
 
+/**
+ * Selects a color.
+ *
+ * @param {number} id - The ID of the selected color.
+ */
+function selectColor(id) {
+  // Remove "selected-color" class from all colors
+  for (let i = 1; i < 8; i++) {
+    document.getElementById(`color${i}`).classList.remove("selected-color");
+  }
+  // Add "selected-color" class to the chosen color
+  document.getElementById(`color${id}`).classList.add("selected-color");
+  selectedColor = document.getElementById(`color${id}`).style.backgroundColor;
+}
+
+/**
+ * Checks if a new category can be created.
+ * Calls createNewCategory() if a color is selected and a category name is entered.
+ * Otherwise, displays an alert message and hides the label.
+ */
+function checkNewCategory() {
+  if (selectedColor && document.getElementById("new-category").value != "") {
+    createNewCategory();
+  } else {
+    alert("Please insert a category name and a color!");
+    hideLabel();
+  }
+  selectedColor = null;
+}
+
+/**
+ * Hides the label by setting its display property to "none".
+ */
+function hideLabel() {
+  document.getElementById("toggleDrop").style.display = "none";
+}
+
+/**
+ * Creates a new category.
+ * The category is created from the entered name and the selected color.
+ * The new category is added to the "categories" array and set as the selected category.
+ */
+async function createNewCategory() {
+  let category = {
+    name: document.getElementById("new-category").value,
+    color: selectedColor,
+  };
+  categories.push(category);
+  selectedCategory = categories[categories.length - 1];
+}

@@ -64,33 +64,66 @@
 
           <label>Category</label>
 
-          <label for="dropdown" onclick="toggleDropdownCategory()" >
+          <label
+            id="toggleDrop"
+            for="dropdown"
+            onclick="toggleDropdownCategory()"
+          >
             <div class="dropdown-min" id="dropdownMinCategory">
               <span>Select category</span>
-              <img src="assets/img/arrow_down_black.svg" alt="">
+              <img src="assets/img/arrow_down_black.svg" alt="" />
             </div>
           </label>
-            
-            <div id="dropdownCategoryContent" class="dropdown-content">
-          
-        </div>
+          <div id="dropdownCategoryContent" class="dropdown-content"></div>
 
-          
+          <div id="select-color-category" class="select-color-category d-none">
+            <div
+              onclick="selectColor(1)"
+              id="color1"
+              style="background-color: red"
+            ></div>
+            <div
+              onclick="selectColor(2)"
+              id="color2"
+              style="background-color: #fc71ff"
+            ></div>
+            <div
+              onclick="selectColor(3)"
+              id="color3"
+              style="background-color: #ff7a00"
+            ></div>
+            <div
+              onclick="selectColor(4)"
+              id="color4"
+              style="background-color: #1fd7c1"
+            ></div>
+            <div
+              onclick="selectColor(5)"
+              id="color5"
+              style="background-color: #2ad300"
+            ></div>
+            <div
+              onclick="selectColor(6)"
+              id="color6"
+              style="background-color: #8aa4ff"
+            ></div>
+            <div
+              onclick="selectColor(7)"
+              id="color7"
+              style="background-color: blue"
+            ></div>
+          </div>
 
           <label>Assigned to</label>
 
-          <label for="dropdown" onclick="toggleDropdown()" >
+          <label for="dropdown" onclick="toggleDropdown()">
             <div class="dropdown-min" id="dropdownMin">
               <span id="categoryTextField"> Select contacts to assign</span>
-              <img src="assets/img/arrow_down_black.svg" alt="">
+              <img src="assets/img/arrow_down_black.svg" alt="" />
             </div>
           </label>
-            
-            <div id="dropdownContent" class="dropdown-content">
-          
         </div>
-          
-        </div>
+        <div id="dropdownContent" class="dropdown-content"></div>
         <div class="border"></div>
 
         <div class="column-right">
@@ -107,21 +140,31 @@
           <label>Prio</label>
 
           <div id="prio" class="prio">
-            
-            <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent();getPrioStatus('up')">
+            <div
+              class="prio-btn"
+              id="prioUrgent"
+              onclick="TaskButtonUrgent();getPrioStatus('up')"
+            >
               Urgent
               <img id="imgUrgent" src="/assets/img/icon_up.png" alt="" />
             </div>
-            <div class="prio-btn" id="prioMedium"  onclick="TaskButtonMedium();getPrioStatus('medium')">
+            <div
+              class="prio-btn"
+              id="prioMedium"
+              onclick="TaskButtonMedium();getPrioStatus('medium')"
+            >
               Medium
               <img id="imgMedium" src="/assets/img/icon_medium.png" alt="" />
             </div>
-            <div class="prio-btn" id="prioLow" onclick="TaskButtonLow();getPrioStatus('down')">
+            <div
+              class="prio-btn"
+              id="prioLow"
+              onclick="TaskButtonLow();getPrioStatus('down')"
+            >
               Low
               <img id="imgLow" src="/assets/img/icon_down.png" alt="" />
             </div>
           </div>
-          
 
           <label class="subtask">Subtasks</label>
           <div class="subtask-container">
