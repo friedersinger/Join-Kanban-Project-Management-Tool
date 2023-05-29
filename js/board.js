@@ -139,7 +139,8 @@ function showDetailCard(id){
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
             const task = tasks[i];
-            getTaskDetailCardHTML(task)
+            console.log(task);
+            overlay.innerHTML += getTaskDetailCardHTML(task);
         }
     }
 }
@@ -176,10 +177,13 @@ function getTaskDetailCardHTML(task){
       <div class="Task-Content">
 
         <div class="Task-Content-Top">
-          <div></div>
-          <span class="headline-text-popup">${task['name']}</span>
-          <span>Beschreibung</span>
-          <span class="font-weight-700">Due date: </span>
+          <div class="flex-row justify-space-between">
+            <div class="task-card-category" style="background-color:${task["color"]}">${task["category"]}</div>
+            <div>X</div>
+          </div>
+          <span class="headline-text-popup">${task['title']}</span>
+          <span>${task['description']}</span>
+          <span class="font-weight-700">Due date: ${task['dueDate']}</span>
           <span class="font-weight-700">Priority: </span>
           <span class="font-weight-700">Assigned To:</span>
 
