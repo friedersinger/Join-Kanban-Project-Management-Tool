@@ -488,6 +488,20 @@ label {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
+.category-color{
+  width: 18px;
+  height: 18px;
+  border: 1px solid white;
+  border-radius: 100%;
+}
+
+.margin-left-10{
+  margin-left: 10px;
+}
+
+
+
+
 @media screen and (max-width: 1445px) {
   #clearTask {
     margin-right: 190px;

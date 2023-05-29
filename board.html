@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/board.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="css/board-task-popup.css">
 
     <script src="./js/navbar.js"></script>
     <script src="./backend_new/storage_new.js"></script>
@@ -20,6 +21,7 @@
   </head>
 
   <body onload="includeHTML();initBoard()">
+    <div class="overlay-bg d-none" id="overlay"></div>
     <div
       class="sidebar-container"
       w3-include-html="./assets/templates_html/sidebar_template.html"

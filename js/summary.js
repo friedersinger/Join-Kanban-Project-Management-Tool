@@ -33,6 +33,7 @@ async function initSummary(){
   await loadFeedback();
   await loadDone();
   countTasks();
+  countUrgent();
 }
 
 // /**
@@ -86,7 +87,7 @@ function countTasks() {
   let feedbackVar = feedback.length;
   let doneVar = done.length;
 
-  let totalTasks = toDoVar + inProgressVar + feedbackVar + doneVar;
+  let totalTasks = tasks.length;
 
   // Anzeige der Variablen in HTML-Elementen
   document.getElementById("counterInProgress").innerHTML = inProgressVar;
@@ -95,3 +96,17 @@ function countTasks() {
   document.getElementById("openToDo").innerHTML = toDoVar;
   document.getElementById("doneToDos").innerHTML = doneVar;
 }
+
+function countUrgent() {
+  let urgentCount = 0;
+
+  tasks.forEach(function (task) {
+    if (task.prio === "up") {
+      urgentCount++;
+    }
+  });
+
+  document.getElementById("urgent-counter").innerHTML = urgentCount;
+
+}
+

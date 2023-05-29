@@ -11,7 +11,7 @@
 
 
 .Task-Content {
-    height: 600px;
+    height: 700px;
     border-radius: 30px;
     width: 500px;
     background-color: white;
@@ -19,9 +19,9 @@
 
 
 .Task-Bottom-Content{
-    position: absolute;
+    position: fixed;
     margin-left: 350px;
-    margin-top: 500px;
+    margin-top: 281px;
 }
 
 .Task-Bottom-Content svg{
@@ -33,6 +33,7 @@
     border-top: 2px solid;
     border-left: 2px solid;
     border-bottom: 2px solid;
+    border-color: #2A3647;
     border-radius: 8px;
     border-top-right-radius: 0; /* Setze den Wert auf 0 oder einen anderen gewünschten Wert */
     border-bottom-right-radius: 0; /* Setze den Wert auf 0 oder einen anderen gewünschten Wert */
@@ -50,4 +51,29 @@
     border-bottom: 2px solid #2A3647;
     background-color: rgba(255, 255, 255, 0);
     
+}
+
+.Task-Content-Top {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+.User-Area{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.headline-text-popup{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+
+.font-weight-700 {
+    font-weight: 700;
 }

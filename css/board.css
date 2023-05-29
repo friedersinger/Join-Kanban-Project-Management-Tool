@@ -228,12 +228,12 @@
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
-  padding-bottom: 60px;;
+  padding-bottom: 60px;
   border: 3px dotted transparent;
   min-height: 15vh;
 }
 
-.add-border{
+.add-border {
   border: 3px dotted #d1d1d1;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.04);
@@ -296,12 +296,11 @@
 /*Board-Card Design*/
 
 .board-task-card {
-  display: inline-block;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 18px 19px;
-  gap: 40px;
   margin-bottom: 20px;
   width: 19vh;
   height: 23vh;
@@ -318,7 +317,7 @@
   flex: none;
   flex-grow: 0;
   transition: all 0.3s ease;
-  cursor: grab;
+  cursor: pointer;
 }
 
 .board-task-card:hover {
@@ -326,23 +325,23 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.task-card-category{
-    background: red;
-    border-radius: 30px;
-    width: 87px;
-    margin-bottom: 10px;
-    padding: 5px;
-    justify-content: center;
-    display: flex;
-    color: white;
+.task-card-category {
+  background: red;
+  border-radius: 30px;
+  width: 87px;
+  margin-bottom: 10px;
+  padding: 5px;
+  justify-content: center;
+  display: flex;
+  color: white;
 }
 
 .task-card-title {
- display: flex;
- font-weight: 700;
- font-size: 16px;
- margin-bottom: 20px;
- color: #2A3647;
+  display: flex;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #2a3647;
 }
 
 .task-card-description {
@@ -350,27 +349,28 @@
   height: 90px;
   font-size: 14px;
   margin-bottom: 15px;
+  overflow: auto;
 }
 
 .task-card-bottom-container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
-
 .avatar-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    background: #0190E0;
-    border: 1px solid #FFFFFF;
-    border-radius: 58px;
-    margin: 0px -2px;
-    font-size: 13px;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background: #0190e0;
+  border: 1px solid #ffffff;
+  border-radius: 58px;
+  margin: 0px -2px;
+  font-size: 13px;
+  color: white;
 }
 
 .avatar-Box {
@@ -383,6 +383,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.d-none{
+  display: none !important;
 }
 
 @media only screen and (max-width: 1400px) {

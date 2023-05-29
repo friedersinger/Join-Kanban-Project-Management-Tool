@@ -1028,7 +1028,7 @@ label {
 .overlayBoardBg {
   position: relative;
   top: 50%;
-  background-color: white;
+  background-color: #f3f3f3;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;

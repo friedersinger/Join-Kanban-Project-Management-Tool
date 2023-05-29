@@ -32,11 +32,12 @@ async function addNewTask() {
     description: taskDescription.value,
     category: selectedCategory,
     prio: currentPrioStatus,
+    color: selectedColor,
     assignments: validateForm(),
     dueDate: taskDueDate.value,
-    taskSub: subTasksLoad(),
+    taskSub: subtasks,
     id: currentTaskID,
-    color: taskColor,
+    
     /*assignName: assignName.value*/
   });
 
@@ -285,11 +286,18 @@ function renderCategoryList() {
     </div>
 
     <div class="dropdown-object">
-      <div onclick="saveSelectedCategory(this)">Backoffice</div>
+      <div onclick="saveSelectedCategory(this, '${'red'}')" class="flex-row">
+        <span>Backoffice</span>
+        <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
+      </div>
+      
     </div>
 
     <div class="dropdown-object">
-      <div onclick="saveSelectedCategory(this)">Sales</div>
+      <div onclick="saveSelectedCategory(this, '${'pink'}')" class="flex-row">
+        <span>Sales</span>
+        <div class="category-color margin-left-10" style="background-color: pink"></div>
+      </div>
     </div>
   `;
 }
@@ -320,10 +328,11 @@ function renderNormalCategoryField() {
   `;
 }
 
-function saveSelectedCategory(element) {
+function saveSelectedCategory(element, color) {
   selectedCategory = element.innerText;
   let dropdownMin = document.getElementById("dropdownMinCategory");
   dropdownMin.querySelector("span").innerText = selectedCategory;
+  selectedColor = color;
   toggleDropdownCategory();
 }
 
@@ -409,12 +418,12 @@ function selectColor(id) {
  */
 function checkNewCategory() {
   if (selectedColor && document.getElementById("new-category").value != "") {
-    createNewCategory();
+    selectedCategory = document.getElementById("new-category").value    
   } else {
     alert("Please insert a category name and a color!");
     hideLabel();
   }
-  selectedColor = null;
+  //selectedColor = null;
 }
 
 /**
@@ -424,16 +433,4 @@ function hideLabel() {
   document.getElementById("toggleDrop").style.display = "none";
 }
 
-/**
- * Creates a new category.
- * The category is created from the entered name and the selected color.
- * The new category is added to the "categories" array and set as the selected category.
- */
-async function createNewCategory() {
-  let category = {
-    name: document.getElementById("new-category").value,
-    color: selectedColor,
-  };
-  categories.push(category);
-  selectedCategory = categories[categories.length - 1];
-}
+
