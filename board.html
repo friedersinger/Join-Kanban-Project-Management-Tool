@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/board.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
-    <link rel="stylesheet" href="css/board-task-popup.css">
+    <link rel="stylesheet" href="css/board-task-popup.css" />
 
     <script src="./js/navbar.js"></script>
     <script src="./backend_new/storage_new.js"></script>
@@ -46,8 +46,6 @@
         </div>
         <div class="board-headline-right">
           <div class="subtask-container">
-            <input id="search-input" />
-
             <div id="search-input-images" style="display: flex">
               <div class="border-subtask"></div>
               <img
@@ -71,94 +69,91 @@
       <div class="board-content">
         <div class="board-content-element" id="toDoContainer">
           <div class="task-type">
-            
-              <span>To Do</span>
-              <svg
-                onclick="redirectToAddTask()"
-                class="svg"
-                width="30"
-                height="30"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15 7.5V22.5"
-                  stroke="#2A3647"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M22.5 15.1416L7.5 15.1416"
-                  stroke="#2A3647"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="1"
-                  y="1"
-                  width="28"
-                  height="28"
-                  rx="9"
-                  stroke="#2A3647"
-                  stroke-width="2"
-                />
-              </svg>
-              
-            </div>
-            <div
-              class="drop-area"
-              id="toDo"
-              ondrop="moveTo('toDo')"
-              ondragover="allowDrop(event)"
+            <span>To Do</span>
+            <svg
+              onclick="redirectToAddTask()"
+              class="svg"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div
+            class="drop-area"
+            id="toDo"
+            ondrop="moveTo('toDo')"
+            ondragover="allowDrop(event)"
+          >
             <!--DropArea TO DO-->
           </div>
         </div>
 
         <div class="board-content-element" id="progressContainer">
           <div class="task-type">
-            
-              <span>In progress</span>
-              <svg
-                onclick="redirectToAddTask()"
-                class="svg"
-                width="30"
-                height="30"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15 7.5V22.5"
-                  stroke="#2A3647"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M22.5 15.1416L7.5 15.1416"
-                  stroke="#2A3647"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="1"
-                  y="1"
-                  width="28"
-                  height="28"
-                  rx="9"
-                  stroke="#2A3647"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-            <div
-              class="drop-area"
-              id="inProgress"
-              ondrop="moveTo('inProgress')"
-              ondragover="allowDrop(event)"
+            <span>In progress</span>
+            <svg
+              onclick="redirectToAddTask()"
+              class="svg"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-             <!--DropArea IN PROGRESS-->
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div
+            class="drop-area"
+            id="inProgress"
+            ondrop="moveTo('inProgress')"
+            ondragover="allowDrop(event)"
+          >
+            <!--DropArea IN PROGRESS-->
           </div>
         </div>
         <div class="board-content-element" id="feedbackContainer">
@@ -202,7 +197,7 @@
             ondrop="moveTo('feedback')"
             ondragover="allowDrop(event)"
           >
-             <!--DropArea FEEDBACK-->
+            <!--DropArea FEEDBACK-->
           </div>
         </div>
         <div class="board-content-element" id="doneContainer">
@@ -246,7 +241,7 @@
             ondrop="moveTo('done')"
             ondragover="allowDrop(event)"
           >
-             <!--DropArea DONE-->
+            <!--DropArea DONE-->
           </div>
         </div>
       </div>
