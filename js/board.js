@@ -133,6 +133,10 @@ async function renderAvatars(currentTask) {
 function showDetailCard(id) {
   let overlay = document.getElementById("overlay");
   overlay.classList.remove("d-none");
+
+  // Clear the content of the overlay before adding the new popup
+  overlay.innerHTML = "";
+
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
       const task = tasks[i];
@@ -140,6 +144,14 @@ function showDetailCard(id) {
       overlay.innerHTML += getTaskDetailCardHTML(task);
     }
   }
+
+  // Add an event listener to the overlay to close it when clicked
+  overlay.addEventListener("click", function (event) {
+    if (event.target === overlay) {
+      overlay.classList.add("d-none");
+      overlay.innerHTML = ""; // Clear the content of the overlay
+    }
+  });
 }
 
 //############### HELP FUNCTIONS ###############//
