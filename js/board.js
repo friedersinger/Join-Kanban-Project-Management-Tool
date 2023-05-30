@@ -5,163 +5,157 @@ let feedback = [];
 let done = [];
 let currentDraggedElement;
 
-
 async function initBoard() {
-    clearTasksContainer()
-    await loadTasks();
-    await loadtoDos();
-    await loadInProgress();
-    await loadFeedback();
-    await loadDone();
-    renderTaskCardToDo();
-    renderTaskCardProgress();
-    renderTaskCardFeedback();
-    renderTaskCardDone();
+  clearTasksContainer();
+  await loadTasks();
+  await loadtoDos();
+  await loadInProgress();
+  await loadFeedback();
+  await loadDone();
+  renderTaskCardToDo();
+  renderTaskCardProgress();
+  renderTaskCardFeedback();
+  renderTaskCardDone();
 }
 
 //############### LOADING FUNCTIONS ###############//
 
-
 async function loadtoDos() {
-    try {
-        toDo = JSON.parse(await getItem("toDo"));
-    } catch (e) {
-        console.error("Loading error:", e);
-    }
+  try {
+    toDo = JSON.parse(await getItem("toDo"));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
 }
 
 async function loadInProgress() {
-    try {
-        inProgress = JSON.parse(await getItem("inProgress"));
-    } catch (e) {
-        console.error("Loading error:", e);
-    }
+  try {
+    inProgress = JSON.parse(await getItem("inProgress"));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
 }
 
 async function loadFeedback() {
-    try {
-        feedback = JSON.parse(await getItem("feedback"));
-    } catch (e) {
-        console.error("Loading error:", e);
-    }
+  try {
+    feedback = JSON.parse(await getItem("feedback"));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
 }
 
 async function loadDone() {
-    try {
-        done = JSON.parse(await getItem("done"));
-    } catch (e) {
-        console.error("Loading error:", e);
-    }
+  try {
+    done = JSON.parse(await getItem("done"));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
 }
-
 
 //############### RENDER FUNCTIONS ###############//
 
 function renderTaskCardToDo() {
-    let toDoContainer = document.getElementById("toDo");
-    let renderedIDs = {};
-    for (let i = 0; i < toDo.length; i++) {
-        let currentTask = tasks.find((task) => task.id === toDo[i]);
-        if (!renderedIDs[currentTask.id]) {
-            toDoContainer.innerHTML += getTaskCardHTML(currentTask, 'toDo');
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
-        }
+  let toDoContainer = document.getElementById("toDo");
+  let renderedIDs = {};
+  for (let i = 0; i < toDo.length; i++) {
+    let currentTask = tasks.find((task) => task.id === toDo[i]);
+    if (!renderedIDs[currentTask.id]) {
+      toDoContainer.innerHTML += getTaskCardHTML(currentTask, "toDo");
+      renderedIDs[currentTask.id] = true;
+      renderAvatars(currentTask);
     }
+  }
 }
 
 function renderTaskCardProgress() {
-    let progressContainer = document.getElementById("inProgress");
-    let renderedIDs = {};
-    for (let i = 0; i < inProgress.length; i++) {
-        let currentTask = tasks.find((task) => task.id === inProgress[i]);
-        if (!renderedIDs[currentTask.id]) {
-            progressContainer.innerHTML += getTaskCardHTML(currentTask, 'inProgress');
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
-        }
+  let progressContainer = document.getElementById("inProgress");
+  let renderedIDs = {};
+  for (let i = 0; i < inProgress.length; i++) {
+    let currentTask = tasks.find((task) => task.id === inProgress[i]);
+    if (!renderedIDs[currentTask.id]) {
+      progressContainer.innerHTML += getTaskCardHTML(currentTask, "inProgress");
+      renderedIDs[currentTask.id] = true;
+      renderAvatars(currentTask);
     }
+  }
 }
 
 function renderTaskCardFeedback() {
-    let feedbackContainer = document.getElementById("feedback");
-    let renderedIDs = {};
-    for (let i = 0; i < feedback.length; i++) {
-        let currentTask = tasks.find((task) => task.id === feedback[i]);
-        if (!renderedIDs[currentTask.id]) {
-            feedbackContainer.innerHTML += getTaskCardHTML(currentTask, 'feedback');
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
-        }
+  let feedbackContainer = document.getElementById("feedback");
+  let renderedIDs = {};
+  for (let i = 0; i < feedback.length; i++) {
+    let currentTask = tasks.find((task) => task.id === feedback[i]);
+    if (!renderedIDs[currentTask.id]) {
+      feedbackContainer.innerHTML += getTaskCardHTML(currentTask, "feedback");
+      renderedIDs[currentTask.id] = true;
+      renderAvatars(currentTask);
     }
+  }
 }
 
 function renderTaskCardDone() {
-    let doneContainer = document.getElementById("done");
-    let renderedIDs = {};
-    for (let i = 0; i < done.length; i++) {
-        let currentTask = tasks.find((task) => task.id === done[i]);
-        if (!renderedIDs[currentTask.id]) {
-            doneContainer.innerHTML += getTaskCardHTML(currentTask, 'done');
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
-        }
+  let doneContainer = document.getElementById("done");
+  let renderedIDs = {};
+  for (let i = 0; i < done.length; i++) {
+    let currentTask = tasks.find((task) => task.id === done[i]);
+    if (!renderedIDs[currentTask.id]) {
+      doneContainer.innerHTML += getTaskCardHTML(currentTask, "done");
+      renderedIDs[currentTask.id] = true;
+      renderAvatars(currentTask);
     }
+  }
 }
 
-function clearTasksContainer(){
-    let toDoContainer = document.getElementById("toDo");
-    let progressContainer = document.getElementById("inProgress");
-    let feedbackContainer = document.getElementById("feedback");
-    let doneContainer = document.getElementById("done");
+function clearTasksContainer() {
+  let toDoContainer = document.getElementById("toDo");
+  let progressContainer = document.getElementById("inProgress");
+  let feedbackContainer = document.getElementById("feedback");
+  let doneContainer = document.getElementById("done");
 
-    toDoContainer.innerHTML = "";
-    progressContainer.innerHTML = "";
-    feedbackContainer.innerHTML = "";
-    doneContainer.innerHTML = "";
+  toDoContainer.innerHTML = "";
+  progressContainer.innerHTML = "";
+  feedbackContainer.innerHTML = "";
+  doneContainer.innerHTML = "";
 }
 
-async function renderAvatars(currentTask){
-    let avatarBox = document.getElementById("avatarBox"+ currentTask['id']);
-    for (let i = 0; i < currentTask['assignments'].length; i++) {
-        const name = currentTask['assignments'][i];
-        let initials = name.match(/\b(\w)/g);
-        initials = initials.join("").toUpperCase();
-        avatarBox.innerHTML += `       
+async function renderAvatars(currentTask) {
+  let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
+  for (let i = 0; i < currentTask["assignments"].length; i++) {
+    const name = currentTask["assignments"][i];
+    let initials = name.match(/\b(\w)/g);
+    initials = initials.join("").toUpperCase();
+    avatarBox.innerHTML += `       
             <div class="avatar-container">${initials}</div>
-        `
-    }
+        `;
+  }
 }
 
-function showDetailCard(id){
-    let overlay = document.getElementById('overlay');
-    overlay.classList.remove('d-none');
-    for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].id === id) {
-            const task = tasks[i];
-            console.log(task);
-            overlay.innerHTML += getTaskDetailCardHTML(task);
-        }
+function showDetailCard(id) {
+  let overlay = document.getElementById("overlay");
+  overlay.classList.remove("d-none");
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id === id) {
+      const task = tasks[i];
+      console.log(task);
+      overlay.innerHTML += getTaskDetailCardHTML(task);
     }
+  }
 }
-
-
-
 
 //############### HELP FUNCTIONS ###############//
 
 function redirectToAddTask() {
-    window.location.href = "task_form.html";
+  window.location.href = "task_form.html";
 }
 
 function getTaskCardHTML(currentTask, status) {
-    return `
-  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask['id']})">
+  return `
+  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})">
     <div class="task-card-category" id="taskCategoryContainer" style="background-color:${currentTask["color"]} ">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
     <div class="task-card-bottom-container">
-      <div class="avatar-Box" id="avatarBox${currentTask['id']}">
+      <div class="avatar-Box" id="avatarBox${currentTask["id"]}">
         
       </div>
       <div class="task-card-prio">
@@ -171,23 +165,26 @@ function getTaskCardHTML(currentTask, status) {
   </div>`;
 }
 
-function getTaskDetailCardHTML(task){
-    return `
+function getTaskDetailCardHTML(task) {
+  return /*html*/ `
     
       <div class="Task-Content">
 
         <div class="Task-Content-Top">
           <div class="flex-row justify-space-between">
             <div class="task-card-category" style="background-color:${task["color"]}">${task["category"]}</div>
-            <div>X</div>
+            <button onclick="closePopup()">X</button>
           </div>
-          <span class="headline-text-popup">${task['title']}</span>
-          <span>${task['description']}</span>
-          <span class="font-weight-700">Due date: ${task['dueDate']}</span>
+          <span class="headline-text-popup">${task["title"]}</span>
+          <span>${task["description"]}</span>
+          <span class="font-weight-700">Due date: ${task["dueDate"]}</span>
           <span class="font-weight-700">Priority: </span>
           <span class="font-weight-700">Assigned To:</span>
 
           <div class="User-Area">User mit Avatar</div>
+          <div class="avatar-Box" id="avatarBox${task["id"]}">
+          <div class="User-Area">Hallo Test</div>
+          <div class="avatar-Box" id="avatarBox${task["id"]}">
         </div>
       
         <div class="Task-Bottom-Content">
@@ -218,4 +215,7 @@ function getTaskDetailCardHTML(task){
     `;
 }
 
-
+function closePopup() {
+  let overlay = document.getElementById("overlay");
+  overlay.classList.add("d-none");
+}
