@@ -112,23 +112,33 @@ async function signUpNewUser() {
   let email = document.getElementById("emailSignup");
   let password = document.getElementById("passwordSignup");
   await setNewID();
+
+  // Generate random RGB values for color
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+
   users.push({
     name: name.value,
     email: email.value,
     password: password.value,
-    id: currentUserID
+    id: currentUserID,
+    color: `rgb(${r}, ${g}, ${b})` // Add color property with the generated RGB values
   });
   contacts.push({
     name: name.value,
     email: email.value,
     id: currentUserID,
-    isPseudoContact: false
-  })
+    isPseudoContact: false,
+    color: `rgb(${r}, ${g}, ${b})` // Add color property with the generated RGB values
+  });
+
   await setItem("users", JSON.stringify(users));
   await setItem("contacts", JSON.stringify(contacts));
 
   resetForm(name, email, password);
 }
+
 
 
 async function setNewID(){

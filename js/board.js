@@ -4,6 +4,9 @@ let inProgress = [];
 let feedback = [];
 let done = [];
 let currentDraggedElement;
+let users = [];
+let currentUserID = 0;
+
 
 async function initBoard() {
   clearTasksContainer();
@@ -12,6 +15,7 @@ async function initBoard() {
   await loadInProgress();
   await loadFeedback();
   await loadDone();
+  await loadUsers();
   renderTaskCardToDo();
   renderTaskCardProgress();
   renderTaskCardFeedback();
@@ -47,6 +51,14 @@ async function loadFeedback() {
 async function loadDone() {
   try {
     done = JSON.parse(await getItem("done"));
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
+}
+
+async function loadUsers() {
+  try {
+    users = JSON.parse(await getItem("users"));
   } catch (e) {
     console.error("Loading error:", e);
   }
@@ -121,12 +133,27 @@ function clearTasksContainer() {
 async function renderAvatars(currentTask) {
   let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
   for (let i = 0; i < currentTask["assignments"].length; i++) {
-    const name = currentTask["assignments"][i];
+    const name = currentTask["assignments"][i]['name'];
+    let id = currentTask["assignments"][i]['id'];
+    let color = await getUserColor(id);
     let initials = name.match(/\b(\w)/g);
     initials = initials.join("").toUpperCase();
     avatarBox.innerHTML += `       
-            <div class="avatar-container">${initials}</div>
+            <div class="avatar-container" style="background-color:${color}">${initials}</div>
         `;
+  }
+}
+
+async function getUserColor(id){
+  let currentUser = users.find((user) => user.id === id);
+  if (currentUser) {
+    const color = currentUser.color;
+    console.log(color);
+    // Hier kannst du den Farbwert weiterverarbeiten oder verwenden
+    // z.B. die Farbe einem HTML-Element zuweisen, etc.
+    return color;
+  } else {
+    throw new Error(`Benutzer mit ID ${id} wurde nicht gefunden.`);
   }
 }
 
@@ -185,7 +212,7 @@ function getTaskDetailCardHTML(task) {
         <div class="Task-Content-Top">
           <div class="flex-row justify-space-between">
             <div class="task-card-category" style="background-color:${task["color"]}">${task["category"]}</div>
-            <button onclick="closePopup()">X</button>
+            <button class="close-btn" onclick="closePopup()">X</button>
           </div>
           <span class="headline-text-popup">${task["title"]}</span>
           <span>${task["description"]}</span>
@@ -194,9 +221,7 @@ function getTaskDetailCardHTML(task) {
           <span class="font-weight-700">Assigned To:</span>
 
           <div class="User-Area">User mit Avatar</div>
-          <div class="avatar-Box" id="avatarBox${task["id"]}">
-          <div class="User-Area">Hallo Test</div>
-          <div class="avatar-Box" id="avatarBox${task["id"]}">
+          <div class="avatar-Box" id="avatarBox${task.id}"></div>
         </div>
       
         <div class="Task-Bottom-Content">
@@ -223,7 +248,6 @@ function getTaskDetailCardHTML(task) {
 
         </div>
       </div>
-    
     `;
 }
 
@@ -231,3 +255,20 @@ function closePopup() {
   let overlay = document.getElementById("overlay");
   overlay.classList.add("d-none");
 }
+
+function searchForTaskByInput(){
+  clearTasksContainer();
+  let search = document.getElementById("search-input").value;
+  search = search.toLowerCase();
+  
+  for (let i = 0; i < tasks.length; i++) {
+    const title = tasks[i]['title'];
+    const description = tasks[i]['description'];
+
+    if(title.toLowerCase().includes(search) || description.toLowerCase().includes(search)){
+      console.log(tasks[i]['id']);
+    }
+  }
+}
+
+

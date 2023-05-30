@@ -408,7 +408,7 @@ body {
   margin-top: 30px;
 }
 
-#addName {
+.addName {
   outline: none;
 
   box-sizing: border-box;
@@ -451,7 +451,7 @@ body {
   cursor: pointer;
 }
 
-#addMail {
+.addMail {
   outline: none;
   box-sizing: border-box;
   width: 422px;
@@ -485,7 +485,7 @@ body {
   padding-right: 30px;
 }
 
-#addTel {
+.addTel {
   outline: none;
   box-sizing: border-box;
   width: 422px;
@@ -1444,15 +1444,15 @@ label {
     width: 35%;
   }
 
-  #addName {
+  .addName {
     width: 350px;
   }
 
-  #addMail {
+  .addMail {
     width: 350px;
   }
 
-  #addTel {
+  .addTel {
     width: 350px;
   }
 
@@ -1510,15 +1510,15 @@ label {
     width: 800px;
   }
 
-  #addName {
+  .addName {
     width: 275px;
   }
 
-  #addMail {
+  .addMail {
     width: 275px;
   }
 
-  #addTel {
+  .addTel {
     width: 275px;
   }
 

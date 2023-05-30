@@ -21,7 +21,7 @@
 .Task-Bottom-Content{
     position: fixed;
     margin-left: 350px;
-    margin-top: 15%
+    margin-top: 433px
 }
 
 .Task-Bottom-Content svg{
@@ -78,3 +78,34 @@
 .font-weight-700 {
     font-weight: 700;
 }
+
+.close-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+
+
+  @media (max-width: 530px) {
+    .Task-Content {
+        width: 400px;
+    }
+
+    .Task-Bottom-Content {
+        margin-left: 230px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .Task-Content {
+        width: 350px;
+    }
+
+    .Task-Bottom-Content {
+        margin-left: 183px;
+    }
+  }

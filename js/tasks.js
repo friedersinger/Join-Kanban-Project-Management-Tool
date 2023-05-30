@@ -269,7 +269,7 @@ async function renderAssignableContacts() {
     assignableContactsContainer.innerHTML += `
       <div class="dropdown-object">
         <span>${name}</span>
-        <input id="${id}" type="checkbox" value="${name}">
+        <input id="${id}" type="checkbox" value="${name}" data-id="${id}">
       </div>
       `;
   }
@@ -358,7 +358,9 @@ function validateForm() {
   );
 
   for (var i = 0; i < checkboxes.length; i++) {
-    selectedValues.push(checkboxes[i].value);
+    const value = checkboxes[i].value;
+    const id = checkboxes[i].dataset.id;
+    selectedValues.push({ id, name: value })
   }
   return selectedValues;
 }

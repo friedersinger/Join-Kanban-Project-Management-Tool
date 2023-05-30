@@ -203,13 +203,15 @@ function renderContactCard(id) {
     contactDetailsContainer.innerHTML = giveContactDetailsHTML(
       name,
       mail,
-      initials
+      initials,
+      id
     );
   } else {
     contactDetailsMobileContainer.innerHTML = giveContactDetailsMobileHTML(
       name,
       mail,
-      initials
+      initials,
+      id
     );
     document.getElementById("newContactMobile").classList.add("d-none");
     document.getElementById("contentMainContainer").classList.add("d-none");
@@ -280,7 +282,7 @@ function giveContactListHTML(name, mail, id) {
  * @param {string} initials - The initials of the contact.
  * @returns {string} - The generated HTML.
  */
-function giveContactDetailsHTML(name, mail, initials) {
+function giveContactDetailsHTML(name, mail, initials, id) {
   return `
       <div class="flex-row gap-30 align-center">
           <div id="nameCircle">${initials}</div>
@@ -294,7 +296,7 @@ function giveContactDetailsHTML(name, mail, initials) {
 
         <div class="flex-row gap-30 align-center">
           <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center" onclick="showEditCard()">
+          <div class="flex-row gap-5 align-center" onclick="showEditCard(${id})">
             <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
             <span class="cursor-pointer">Edit Contact</span>
           </div>
@@ -405,9 +407,10 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
  * Shows the contact card overlay by removing the 'd-none' class from the 'overlay-bg' element.
  *
  */
-function showEditCard() {
+function showEditCard(id) {
   let overlay = document.getElementById("overlay-edit-bg");
   overlay.classList.remove("d-none");
+  loadContactToEditPopUp(id);
 }
 
 /**
@@ -427,4 +430,132 @@ function showAddTaskPopUp() {
 function hideAddTaskPopUp() {
   let overlay = document.getElementById("overlayPopUpbg");
   overlay.classList.add("d-none");
+}
+
+/**
+ * @param {string} name - The name of the contact.
+ * @param {string} mail - The email of the contact.
+ * @param {string} tel - The initials of the contact.
+ * @returns {string} - The generated HTML.
+ */
+function loadContactToEditPopUp(id){
+  let overlayContainer = document.getElementById("overlay-edit-bg");
+  let currentContact = contacts.find((contact) => contact.id === id);
+  const name = currentContact["name"];
+  const mail = currentContact["email"];
+  let tel = currentContact["tel"];
+  if(!tel){
+    tel = "nicht vergeben";
+  }
+  else{
+    tel = currentContact["tel"];
+  }
+  overlayContainer.innerHTML = "";
+  overlayContainer.innerHTML += getEditHTML(name, mail, tel)
+  
+  
+}
+
+function getEditHTML(name, mail, tel, id){
+  return `
+  <div id="overlay">
+  <div class="overlay-left">
+    <img src="./assets/img/logo.svg" alt="" />
+    <span class="font-size-61 font-weight-700 small-responsive">Edit contact</span>
+    
+    <div class="border-overlay"></div>
+  </div>
+  <div class="overlay-right">
+    <div class="justify-end">
+      <div class="close-btn cursor-pointer" onclick="hideEditCard()">
+        <svg
+          width="31"
+          height="31"
+          viewBox="0 0 31 31"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22.9614 7.65381L7.65367 22.9616"
+            stroke="#2A3647"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M22.8169 23.106L7.50914 7.7982"
+            stroke="#2A3647"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+    </div>
+    <div class="form-Avatar">
+      <img src="./assets/img/avatar_img.svg" class="avatar" />
+      <div class="form center">
+        <form onsubmit="createNewPseudoContact(); return false">
+          <div class="center">
+            <input required type="text" class="addName" id="addNameID" placeholder="${name}" />
+          </div>
+          <div class="center">
+            <input required type="email" class="addMail" id="addMailID" placeholder="${mail}"
+            />
+          </div>
+          <div class="center">
+            <input required type="tel" class="addTel" id="addTelID" placeholder="${tel}" />
+          </div>
+        
+      </div>
+    </div>
+    <div class="add-close-btn-container">
+      <div class="cancel-btn" onclick="hideEditCard()">
+        <span class="font-size-21">Cancel</span>
+        <svg
+          width="31"
+          height="31"
+          viewBox="0 0 31 31"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22.9614 7.65381L7.65367 22.9616"
+            stroke="#2A3647"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M22.8169 23.106L7.50914 7.7982"
+            stroke="#2A3647"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+      <button class="create-edit-btn" onclick="saveEditContact('${id}')" "type="submit">
+        <span class="font-weight-700 font-size-21">Save</span>
+      </button>
+    </div>
+  </form>
+  </div>
+</div>
+  `;
+}
+
+
+async function saveEditContact(id) {
+  let currentContact = contacts.find((contact) => contact.id === id);
+  let editedName = document.getElementById("addNameID").value;
+  let editedMail = document.getElementById("addMailID").value;
+  let editedTel = document.getElementById("addTelID").value;
+
+  currentContact.name = editedName;
+  currentContact.email = editedMail;
+  currentContact.tel = editedTel;
+
+  
+
+  //await setItem("contacts", JSON.stringify(contacts));
+
+  // Schließe das Editierungs-Popup
+  hideEditCard();
 }
