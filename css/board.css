@@ -271,6 +271,47 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.prio-btn-low {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #7AE229;
+  color: white;
+  width: 25%;
+}
+
+.prio-btn-medium {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #FFA800;
+  color: white;
+  width: 25%;
+}
+
+.prio-btn-urgent {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #FF3D00;
+  color: white;
+  width: 25%;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.gap-15{
+  gap: 15px
+}
+
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
 .inner-content {
@@ -328,7 +369,7 @@
 .task-card-category {
   background: red;
   border-radius: 30px;
-  width: 87px;
+  min-width: 87px;
   margin-bottom: 10px;
   padding: 5px;
   justify-content: center;

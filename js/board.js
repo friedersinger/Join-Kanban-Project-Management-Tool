@@ -4,8 +4,6 @@ let inProgress = [];
 let feedback = [];
 let done = [];
 let currentDraggedElement;
-let users = [];
-let currentUserID = 0;
 
 
 async function initBoard() {
@@ -130,27 +128,29 @@ function clearTasksContainer() {
   doneContainer.innerHTML = "";
 }
 
+
+
 async function renderAvatars(currentTask) {
   let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
   for (let i = 0; i < currentTask["assignments"].length; i++) {
     const name = currentTask["assignments"][i]['name'];
     let id = currentTask["assignments"][i]['id'];
-    let color = await getUserColor(id);
+    let color = getUserColor(id);
     let initials = name.match(/\b(\w)/g);
     initials = initials.join("").toUpperCase();
     avatarBox.innerHTML += `       
-            <div class="avatar-container" style="background-color:${color}">${initials}</div>
-        `;
+        <div class="avatar-container" style="background-color:${color}">${initials}</div>
+    `;
   }
 }
 
-async function getUserColor(id){
-  let currentUser = users.find((user) => user.id === id);
+
+
+
+function getUserColor(id){
+  let currentUser = users.find((user) => user.id == id);
   if (currentUser) {
     const color = currentUser.color;
-    console.log(color);
-    // Hier kannst du den Farbwert weiterverarbeiten oder verwenden
-    // z.B. die Farbe einem HTML-Element zuweisen, etc.
     return color;
   } else {
     throw new Error(`Benutzer mit ID ${id} wurde nicht gefunden.`);
@@ -169,6 +169,8 @@ function showDetailCard(id) {
       const task = tasks[i];
       console.log(task);
       overlay.innerHTML += getTaskDetailCardHTML(task);
+      getTaskPrio(task);
+      getAssignedToDetailCard(task, id);
     }
   }
 
@@ -181,6 +183,60 @@ function showDetailCard(id) {
   });
 }
 
+async function getTaskPrio(task){
+  let prioContainer = document.getElementById("prioDetail");
+  switch(task["prio"]){
+    case "down":
+      prioContainer.innerHTML += `
+      <div
+      class="prio-btn-low" 
+    >
+      Low
+      <img id="imgUrgent" src="assets/img/prioLow.svg" alt="" />
+    </div>
+      `
+      break;
+    case "medium":
+      prioContainer.innerHTML += `
+      <div
+      class="prio-btn-medium"
+    >
+      Medium
+      <img id="imgUrgent" src="/assets/img/prioMedium.svg" alt="" />
+    </div>
+      `
+      break;
+    case "up":
+      prioContainer.innerHTML += `
+      <div
+      class="prio-btn-urgent"
+    >
+      Urgent
+      <img id="imgUrgent" src="/assets/img/prioUrgent.svg" alt="" />
+    </div>
+      `
+      break;
+  }
+}
+
+function getAssignedToDetailCard(task){
+  let assignContainer = document.getElementById("assignDetail");
+  for (let i = 0; i < task['assignments'].length; i++) {
+    const contact = task['assignments'][i]['name'];
+    const id = task['assignments'][i]['id'];
+    let color = getUserColor(id);
+    let initials = contact.match(/\b(\w)/g);
+    initials = initials.join("").toUpperCase();
+    assignContainer.innerHTML += `
+    <div class="flex-row align-center gap-15">
+      <div class="avatar-container" style="background-color:${color}">${initials}</div>
+      <div>${contact}</div>
+    </div>
+    `
+    
+  }
+}
+
 //############### HELP FUNCTIONS ###############//
 
 function redirectToAddTask() {
@@ -189,14 +245,12 @@ function redirectToAddTask() {
 
 function getTaskCardHTML(currentTask, status) {
   return `
-  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})">
+  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})" id="${currentTask['id']}">
     <div class="task-card-category" id="taskCategoryContainer" style="background-color:${currentTask["color"]} ">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
     <div class="task-card-bottom-container">
-      <div class="avatar-Box" id="avatarBox${currentTask["id"]}">
-        
-      </div>
+      <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
       <div class="task-card-prio">
       <img id="imgUrgentTask" src="./assets/img/icon_${currentTask["prio"]}.png" alt="" />
       </div>
@@ -217,10 +271,13 @@ function getTaskDetailCardHTML(task) {
           <span class="headline-text-popup">${task["title"]}</span>
           <span>${task["description"]}</span>
           <span class="font-weight-700">Due date: ${task["dueDate"]}</span>
-          <span class="font-weight-700">Priority: </span>
+          <div class="flex-row align-center gap-15" id="prioDetail">  
+            <span class="font-weight-700">Priority: </span>
+            
+          </div>
           <span class="font-weight-700">Assigned To:</span>
 
-          <div class="User-Area">User mit Avatar</div>
+          <div class="User-Area" id="assignDetail"></div>
           <div class="avatar-Box" id="avatarBox${task.id}"></div>
         </div>
       
@@ -268,7 +325,25 @@ function searchForTaskByInput(){
     if(title.toLowerCase().includes(search) || description.toLowerCase().includes(search)){
       console.log(tasks[i]['id']);
     }
+    removeTask();
   }
 }
 
+function searchForTaskByInput(){
+  let search = document.getElementById("search-input").value;
+  search = search.toLowerCase();
+  
+  for (let i = 0; i < tasks.length; i++) {
+    const title = tasks[i]['title'];
+    const description = tasks[i]['description'];
+    
+    if(title.toLowerCase().includes(search) || description.toLowerCase().includes(search)){
+      console.log(tasks[i]['id']);
+    } else {
+      // clearTasksContainer();
 
+      console.log("remove");
+    }
+    
+  }
+}

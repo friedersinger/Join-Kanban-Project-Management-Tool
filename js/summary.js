@@ -110,3 +110,26 @@ function countUrgent() {
 
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  getCurrentDay();
+});
+
+
+/**
+ * users date today
+*/
+function getCurrentDay(){
+  let currentDay = new Date().toLocaleString();
+  currentDay = currentDay.slice(0, 10);
+  let currentDayArray = currentDay.split(".");
+  let currentMonth = getCurrentMonth(currentDayArray[1]);
+  currentDay = currentMonth + " " + currentDayArray[0] + ", " + currentDayArray[2];
+  
+  document.getElementById('currentDate').innerHTML = `<strong>${currentDay}</strong>`;
+}
+
+function getCurrentMonth(i){
+  const date = new Date();
+  date.setMonth(i - 1);
+  return date.toLocaleString('en-us', {month: 'long'});
+}

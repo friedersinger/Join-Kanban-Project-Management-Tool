@@ -173,9 +173,10 @@ function showGroupedContacts(letter, i) {
     const id = contact["id"];
     const name = contact["name"];
     const mail = contact["email"];
+    const color = contact["color"];
     groupBox.innerHTML += `
     <div class="contact-item" onclick="renderContactCard(${id})">
-      <div class="initials-image" id="contactInitials">
+      <div class="initials-image" id="contactInitials" style="background-color: ${color}">
         ${giveContactInitials(name)}
       </div>
       <div class="contact-name-mail">
@@ -198,20 +199,26 @@ function renderContactCard(id) {
   let currentContact = contacts.find((contact) => contact.id === id);
   const name = currentContact["name"];
   const mail = currentContact["email"];
+  const color = currentContact["color"];
+  const phone = currentContact["phone"];
   initials = giveContactInitials(name);
   if (document.body.clientWidth > 1024) {
     contactDetailsContainer.innerHTML = giveContactDetailsHTML(
       name,
       mail,
       initials,
-      id
+      id,
+      color,
+      phone
     );
   } else {
     contactDetailsMobileContainer.innerHTML = giveContactDetailsMobileHTML(
       name,
       mail,
       initials,
-      id
+      id,
+      color,
+      phone
     );
     document.getElementById("newContactMobile").classList.add("d-none");
     document.getElementById("contentMainContainer").classList.add("d-none");
@@ -280,52 +287,64 @@ function giveContactListHTML(name, mail, id) {
  * @param {string} name - The name of the contact.
  * @param {string} mail - The email of the contact.
  * @param {string} initials - The initials of the contact.
+ * @param {string} phone - The name of the contact.
  * @returns {string} - The generated HTML.
  */
-function giveContactDetailsHTML(name, mail, initials, id) {
+ function giveContactDetailsHTML(name, mail, initials, id, color, phone) {
+  let phoneDisplay = ""; // Variable für das Display-Attribut des Telefonfelds
+
+  if (phone !== undefined && phone !== "") {
+
+    phoneDisplay = "block"; // Wenn das Telefonfeld nicht leer ist, anzeigen
+  } else {
+    phoneDisplay = "none"; // Wenn das Telefonfeld leer ist, ausblenden
+  }
+
   return `
-      <div class="flex-row gap-30 align-center">
-          <div id="nameCircle">${initials}</div>
-          <div class="flex-column">
-            <span id="nameDetailCard">${name}</span>
-            <div id="addTaskPopUp" onclick="showAddTaskPopUp()">
-              <img src="./assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
-            </div>
-          </div>
+    <div class="flex-row gap-30 align-center">
+      <div id="nameCircle" style="background-color: ${color}">${initials}</div>
+      <div class="flex-column">
+        <span id="nameDetailCard">${name}</span>
+        <div id="addTaskPopUp" onclick="showAddTaskPopUp()">
+          <img src="./assets/img/add_task_contacts.svg" alt="" class="cursor-pointer" />
         </div>
+      </div>
+    </div>
 
-        <div class="flex-row gap-30 align-center">
-          <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center" onclick="showEditCard(${id})">
-            <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
-            <span class="cursor-pointer">Edit Contact</span>
-          </div>
-        </div>
+    <div class="flex-row gap-30 align-center">
+      <span class="font-size-21">Contact Information</span>
+      <div class="flex-row gap-5 align-center" onclick="showEditCard(${id})">
+        <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
+        <span class="cursor-pointer">Edit Contact</span>
+      </div>
+    </div>
 
-        <div class="flex-column gap-15">
-          <span class="font-weight-700">Email</span>
-          <div id="mail">
-            <a href="mailto:${mail}" id="contactMailDetail">${mail}</a>
-          </div>
-        </div>
+    <div class="flex-column gap-15">
+      <span class="font-weight-700">Email</span>
+      <div id="mail">
+        <a href="mailto:${mail}" id="contactMailDetail">${mail}</a>
+      </div>
+    </div>
 
-        <div class="flex-column gap-15">
-          <span class="font-weight-700">Phone</span>
-          <div id="phone">
-            <a href="+49 1111 1111 11" id="phoneDetail">+49 1111 1111 11</a>
-          </div>
-        </div>
+    <div class="flex-column gap-15">
+      <span class="font-weight-700">Phone</span>
+      <div id="phone" style="display: ${phoneDisplay}">
+        <a href="${phone}" id="phoneDetail">${phone}</a>
+      </div>
+    </div>
   `;
 }
+
 
 /**
  * Generates the HTML for the mobile contact details.
  * @param {string} name - The name of the contact.
  * @param {string} mail - The email of the contact.
+ * @param {string} phone - The name of the contact.
  * @param {string} initials - The initials of the contact.
  * @returns {string} - The generated HTML.
  */
-function giveContactDetailsMobileHTML(name, mail, initials) {
+function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
   return `
   <div class="headline">
 
@@ -344,7 +363,7 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
 </div>
 
       <div class="flex-row gap-30 align-center margin-left-60 margin-bottom-20">
-          <div id="nameCircle">${initials}</div>
+          <div id="nameCircle" style="background-color: ${color}">${initials}</div>
           <div class="flex-column">
             <span id="nameDetailCard">${name}</span>
             <div id="addTaskPopUp" onclick="checkScreenWidth()">
@@ -355,7 +374,7 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
 
         <div class="flex-row gap-30 align-center margin-left-60 margin-bottom-20">
           <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center" onclick="showEditCard()">
+          <div class="flex-row gap-5 align-center" onclick="showEditCard(${id})">
             <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
             <span class="cursor-pointer">Edit Contact</span>
           </div>
@@ -371,7 +390,7 @@ function giveContactDetailsMobileHTML(name, mail, initials) {
         <div class="flex-column gap-15 margin-left-60">
           <span class="font-weight-700">Phone</span>
           <div id="phone">
-            <a href="+49 1111 1111 11" id="phoneDetail">+49 1111 1111 11</a>
+            <a href="${phone}" id="phoneDetail">${phone}</a>
           </div>
         </div>
 
@@ -440,7 +459,7 @@ function hideAddTaskPopUp() {
  */
 function loadContactToEditPopUp(id){
   let overlayContainer = document.getElementById("overlay-edit-bg");
-  let currentContact = contacts.find((contact) => contact.id === id);
+  let currentContact = contacts.find((contact) => contact.id == id);
   const name = currentContact["name"];
   const mail = currentContact["email"];
   let tel = currentContact["tel"];
@@ -451,7 +470,7 @@ function loadContactToEditPopUp(id){
     tel = currentContact["tel"];
   }
   overlayContainer.innerHTML = "";
-  overlayContainer.innerHTML += getEditHTML(name, mail, tel)
+  overlayContainer.innerHTML += getEditHTML(name, mail, tel, id);
   
   
 }
@@ -543,19 +562,30 @@ function getEditHTML(name, mail, tel, id){
 
 
 async function saveEditContact(id) {
-  let currentContact = contacts.find((contact) => contact.id === id);
-  let editedName = document.getElementById("addNameID").value;
-  let editedMail = document.getElementById("addMailID").value;
-  let editedTel = document.getElementById("addTelID").value;
+  let currentContact = contacts.find((contact) => contact.id == id);
 
-  currentContact.name = editedName;
-  currentContact.email = editedMail;
-  currentContact.tel = editedTel;
+  console.log("contacts:", contacts);
+  console.log("id:", id);
 
-  
 
-  //await setItem("contacts", JSON.stringify(contacts));
+  if (currentContact) {
+    let editedName = document.getElementById("addNameID").value;
+    let editedMail = document.getElementById("addMailID").value;
+    let editedTel = document.getElementById("addTelID").value;
 
-  // Schließe das Editierungs-Popup
-  hideEditCard();
+    currentContact.name = editedName;
+    currentContact.email = editedMail;
+    currentContact.phone = editedTel;
+
+    try {
+      await setItem("contacts", JSON.stringify(contacts));
+
+      // Schließe das Editierungs-Popup
+      hideEditCard();
+    } catch (error) {
+      console.error('Fehler beim Speichern des Kontakts:', error);
+    }
+  } else {
+    console.error(`Kontakt mit ID "${id}" wurde nicht gefunden.`);
+  }
 }
