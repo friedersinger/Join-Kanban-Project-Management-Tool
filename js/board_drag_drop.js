@@ -1,7 +1,13 @@
 async function startDragging(id, status) {
   currentDraggedElement = id;
-  await  showDropArea(status);
+  await showDropArea(status);
   await getSourceArrayByStatus(status, id);
+  await hideDraggedOrigin();
+}
+
+async function hideDraggedOrigin(){
+  let element = document.getElementById(currentDraggedElement);
+  element.classList.add('d-none');
 }
 
 function allowDrop(ev) {
@@ -91,9 +97,6 @@ async function getSourceArrayByStatus(status, id) {
 }
 
 async function deleteTaskFromDragged(id, sourceArray) {
-  /*console.log("deleted id: " + id);
-  console.log("source array:", sourceArray);
-  */
 
   switch (sourceArray) {
     case "toDo":

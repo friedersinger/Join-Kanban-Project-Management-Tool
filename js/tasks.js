@@ -18,8 +18,6 @@ async function addNewTask() {
   await loadtoDos();
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
-  // let taskColor = document.getElementById("color");
-  //let assignName = document.getElementById("AssignName");
   let taskDueDate = document.getElementById("datePicker");
   let taskPriority = document.getElementById("priority");
   let taskSub = document.getElementById("subtaskContent");
@@ -198,37 +196,10 @@ async function TaskButtonLow() {
   imageLow.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
-/*async function clearTaskForm() {
-  let taskTitle = document.getElementById("title");
-  let taskDescription = document.getElementById("description");
-  let taskCategory = document.getElementById("category");
-  //let taskColor = document.getElementById("color");
-  let taskDueDate = document.getElementById("datePicker");
-  //let taskPriority = document.getElementById("priority");
-  let taskSub = document.getElementById("subtaskContent");
-  let buttonUrgent = document.getElementById("prioUrgent");
-  let buttonMedium = document.getElementById("prioMedium");
-  let buttonLow = document.getElementById("prioLow");
-
-  taskTitle.value = "";
-  taskDescription.value = "";
-  //taskCategory.value = "";
-  //taskColor.value = "";
-  clearCheckboxes(), 
-  (taskDueDate.value = "");
-  //taskPriority.value = "";
-  taskSub.value = "";
-
-  buttonUrgent.style.backgroundColor = "white";
-  buttonMedium.style.backgroundColor = "white";
-  buttonLow.style.backgroundColor = "white";
-}*/
-
 function reloadPage() {
   location.reload();
 }
 
-// Überprüfe die Bildschirmbreite und öffne das Pop-up-Fenster oder leite weiter
 function checkScreenWidth() {
   document
     .getElementById("addTaskPopUp")

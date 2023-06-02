@@ -5,7 +5,6 @@ let feedback = [];
 let done = [];
 let currentDraggedElement;
 
-
 async function initBoard() {
   clearTasksContainer();
   await loadTasks();
@@ -128,13 +127,11 @@ function clearTasksContainer() {
   doneContainer.innerHTML = "";
 }
 
-
-
 async function renderAvatars(currentTask) {
   let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
   for (let i = 0; i < currentTask["assignments"].length; i++) {
-    const name = currentTask["assignments"][i]['name'];
-    let id = currentTask["assignments"][i]['id'];
+    const name = currentTask["assignments"][i]["name"];
+    let id = currentTask["assignments"][i]["id"];
     let color = getUserColor(id);
     let initials = name.match(/\b(\w)/g);
     initials = initials.join("").toUpperCase();
@@ -144,10 +141,7 @@ async function renderAvatars(currentTask) {
   }
 }
 
-
-
-
-function getUserColor(id){
+function getUserColor(id) {
   let currentUser = users.find((user) => user.id == id);
   if (currentUser) {
     const color = currentUser.color;
@@ -167,7 +161,6 @@ function showDetailCard(id) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
       const task = tasks[i];
-      console.log(task);
       overlay.innerHTML += getTaskDetailCardHTML(task);
       getTaskPrio(task);
       getAssignedToDetailCard(task, id);
@@ -183,9 +176,9 @@ function showDetailCard(id) {
   });
 }
 
-async function getTaskPrio(task){
+async function getTaskPrio(task) {
   let prioContainer = document.getElementById("prioDetail");
-  switch(task["prio"]){
+  switch (task["prio"]) {
     case "down":
       prioContainer.innerHTML += `
       <div
@@ -194,7 +187,7 @@ async function getTaskPrio(task){
       Low
       <img id="imgUrgent" src="assets/img/prioLow.svg" alt="" />
     </div>
-      `
+      `;
       break;
     case "medium":
       prioContainer.innerHTML += `
@@ -204,7 +197,7 @@ async function getTaskPrio(task){
       Medium
       <img id="imgUrgent" src="/assets/img/prioMedium.svg" alt="" />
     </div>
-      `
+      `;
       break;
     case "up":
       prioContainer.innerHTML += `
@@ -212,18 +205,18 @@ async function getTaskPrio(task){
       class="prio-btn-urgent"
     >
       Urgent
-      <img id="imgUrgent" src="/assets/img/prioUrgent.svg" alt="" />
+      <img id="imgUrgent" src="/assets/img/prioUrgent.svg" alt=""/>
     </div>
-      `
+      `;
       break;
   }
 }
 
-function getAssignedToDetailCard(task){
+function getAssignedToDetailCard(task) {
   let assignContainer = document.getElementById("assignDetail");
-  for (let i = 0; i < task['assignments'].length; i++) {
-    const contact = task['assignments'][i]['name'];
-    const id = task['assignments'][i]['id'];
+  for (let i = 0; i < task["assignments"].length; i++) {
+    const contact = task["assignments"][i]["name"];
+    const id = task["assignments"][i]["id"];
     let color = getUserColor(id);
     let initials = contact.match(/\b(\w)/g);
     initials = initials.join("").toUpperCase();
@@ -232,8 +225,7 @@ function getAssignedToDetailCard(task){
       <div class="avatar-container" style="background-color:${color}">${initials}</div>
       <div>${contact}</div>
     </div>
-    `
-    
+    `;
   }
 }
 
@@ -245,7 +237,7 @@ function redirectToAddTask() {
 
 function getTaskCardHTML(currentTask, status) {
   return `
-  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})" id="${currentTask['id']}">
+  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})" id="${currentTask["id"]}">
     <div class="task-card-category" id="taskCategoryContainer" style="background-color:${currentTask["color"]} ">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
@@ -313,37 +305,39 @@ function closePopup() {
   overlay.classList.add("d-none");
 }
 
-function searchForTaskByInput(){
-  clearTasksContainer();
+function searchForTaskByInput() {
   let search = document.getElementById("search-input").value;
   search = search.toLowerCase();
-  
-  for (let i = 0; i < tasks.length; i++) {
-    const title = tasks[i]['title'];
-    const description = tasks[i]['description'];
 
-    if(title.toLowerCase().includes(search) || description.toLowerCase().includes(search)){
-      console.log(tasks[i]['id']);
-    }
-    removeTask();
-  }
-}
-
-function searchForTaskByInput(){
-  let search = document.getElementById("search-input").value;
-  search = search.toLowerCase();
-  
   for (let i = 0; i < tasks.length; i++) {
-    const title = tasks[i]['title'];
-    const description = tasks[i]['description'];
-    
-    if(title.toLowerCase().includes(search) || description.toLowerCase().includes(search)){
-      console.log(tasks[i]['id']);
+    const title = tasks[i]["title"];
+    const description = tasks[i]["description"];
+
+    if (
+      title.toLowerCase().includes(search) ||
+      description.toLowerCase().includes(search)
+    ) {
+      showHiddenTask(tasks[i]["id"]);
     } else {
-      // clearTasksContainer();
-
-      console.log("remove");
+      console.log("removed task" + tasks[i]["id"]);
+      hideTask(tasks[i]["id"]);
     }
-    
   }
 }
+
+function hideTask(id) {
+  let taskCardContainer = document.getElementById(id);
+  taskCardContainer.style.opacity = '0'; // Setze die Opazität auf 0
+  setTimeout(() => {
+    taskCardContainer.classList.add("d-none");
+  }, 500); 
+}
+
+function showHiddenTask(id) {
+  let taskCardContainer = document.getElementById(id);
+  taskCardContainer.classList.remove("d-none");
+  setTimeout(() => {
+    taskCardContainer.style.opacity = '1'; 
+  }, 100); 
+}
+

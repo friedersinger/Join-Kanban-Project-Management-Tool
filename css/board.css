@@ -334,6 +334,30 @@
   border: 1px solid #ffffff;
 }
 
+
+/* Firefox */
+.task-card-description {
+  scrollbar-width: auto;
+  scrollbar-color: #2a3647 #f6f7f8;
+}
+
+/* Chrome, Edge, and Safari */
+.task-card-description::-webkit-scrollbar {
+  width: 10px;
+}
+
+.task-card-description::-webkit-scrollbar-track {
+  background: #f6f7f8;
+}
+
+.task-card-description::-webkit-scrollbar-thumb {
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
+
+
 /*Board-Card Design*/
 
 .board-task-card {
@@ -343,7 +367,7 @@
   align-items: flex-start;
   padding: 18px 19px;
   margin-bottom: 20px;
-  width: 19vh;
+  width: 15vw;
   height: 23vh;
   /* white */
 
@@ -428,6 +452,8 @@
 
 .d-none {
   display: none !important;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 .flex-row {
@@ -440,24 +466,28 @@
   align-items: center;
 }
 
+.rotate{
+  transform: rotateZ(10deg);
+}
+
 @media only screen and (max-width: 1777px) {
   .drop-area {
     align-items: flex-start;
   }
   .board-task-card {
-    width: 17vh;
+    width: 12vw;
   }
 }
 
 @media only screen and (max-width: 1555px) {
   .board-task-card {
-    width: 15vh;
+    width: 15vw;
   }
 }
 
 @media only screen and (max-width: 1400px) {
   .board-task-card {
-    width: 13vh;
+    width: 10vw;
   }
 
   .board-main-container {
@@ -472,7 +502,7 @@
 
 @media only screen and (max-width: 1200px) {
   .board-task-card {
-    width: 11vh;
+    width: 10vw;
   }
 }
 
@@ -481,7 +511,7 @@
     align-items: center;
   }
   .board-task-card {
-    width: 20vh;
+    width: 40vw;
   }
 
   .board-content {
