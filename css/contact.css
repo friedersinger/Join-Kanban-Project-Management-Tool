@@ -217,7 +217,7 @@ body {
 }
 
 .gap-5 {
-  gap: 5px;
+  gap: 5px !important;
 }
 
 .gap-15 {
@@ -397,6 +397,7 @@ body {
   align-items: center;
   justify-content: flex-end;
   gap: 30px;
+  padding-right: 20px;
 }
 
 .close-btn:hover path {
@@ -544,7 +545,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 16px 41px;
+  padding: 19px 41px;
   gap: 10px;
   color: white;
   background: #2a3647;
@@ -622,16 +623,17 @@ body {
 .contact-mobile-details {
   display: flex;
   flex-direction: column;
-  margin-left: 4.2vw;
+  margin-left: -8.21vw;
   margin-top: 5.9vh;
   flex: 1;
-  margin-right: 60px;
+  margin-right: 43px;
 }
 
 .mobile-btn-column {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   width: 100%;
+  justify-content: end;
   align-items: flex-end;
   margin-right: 60px;
   gap: 20px;
@@ -664,6 +666,24 @@ body {
   border: 1px solid #ffffff;
 }
 
+/* Firefox */
+.task-card {
+  scrollbar-width: auto;
+  scrollbar-color: #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+.task-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.task-card::-webkit-scrollbar-thumb {
+  background-color: #a8a8a8;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
+
 .form-Avatar {
   display: flex;
   justify-content: center;
@@ -672,17 +692,22 @@ body {
 
 .center {
   display: flex;
-  margin-bottom: 10px;
+  justify-content: center;
+  width: 100%;
 }
 
 .avatar {
   margin-right: 50px;
+  margin-left: 50px;
 }
 
 .input-add {
   padding: 8px;
   border-radius: 10px;
   border-width: 1px;
+  width: 100%;
+  padding-left: 20px;
+  height: 50px;
 }
 
 ::placeholder {
@@ -1095,6 +1120,13 @@ label {
   flex-grow: 0;
 }
 
+.new-contact-form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 /* ********* Breakpoints ********* */
 
 @media screen and (max-width: 1445px) {
@@ -1151,7 +1183,7 @@ label {
   #overlay {
     flex-direction: column;
     align-items: center;
-    top: 40%;
+    top: 41%;
   }
 
   .action-button-container {
@@ -1167,7 +1199,7 @@ label {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 300px;
+    height: 382px;
   }
 
   .overlay-left {
@@ -1331,6 +1363,15 @@ label {
     margin-left: 290px;
   }
 
+  .contact-mobile-details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4.8vw;
+    margin-top: 55px;
+    flex: 1;
+    margin-right: 43px;
+}
+
   .overlayBoardBg {
     width: 90%;
   }
@@ -1380,6 +1421,15 @@ label {
   .action-button-container {
     margin-top: 60px;
   }
+
+  .contact-mobile-details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-top: 20px;
+    flex: 1;
+    margin-right: 43px;
+}
 
   .prio {
     gap: 10px;
@@ -1475,8 +1525,11 @@ label {
     width: 350px;
   }
 
+  .create-edit-btn{
+    padding: 19px 41px;
+  }
+
   .add-close-btn-container {
-    flex-direction: column;
     gap: 8px;
   }
 
@@ -1484,6 +1537,7 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     align-content: center;
     flex-wrap: wrap;
   }
@@ -1512,6 +1566,15 @@ label {
     height: 20px;
     margin-left: 200px;
   }
+
+  .contact-mobile-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: -30px;
+    margin-top: 20px;
+    flex: 1;
+    margin-right: 43px;
+}
 }
 
 @media screen and (max-width: 456px) {
@@ -1526,7 +1589,8 @@ label {
   }
 
   #overlay {
-    width: 800px;
+    width: 1044px;
+    margin-top: 50px;
   }
 
   .addName {
@@ -1553,6 +1617,52 @@ label {
   }
 }
 
+@media screen and (max-width: 426px) {
+ 
+  .contact-mobile-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+    margin-top: 20px;
+    flex: 1;
+    margin-right: 43px;
+}
+
+.headline-text {
+  font-size: 40px;
+}
+
+.font-size-27 {
+  font-size: 20px;
+}
+
+#nameCircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  min-width: 100px;
+  min-height: 100px;
+  border-radius: 100%;
+  padding: 1px;
+  background-color: orange;
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+}
+
+#nameDetailCard {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 56.4px;
+}
+
+.font-size-21 {
+  font-size: 18px;
+}
+  
+}
+
 @media screen and (max-width: 434px) {
   input[type="date"]::-webkit-calendar-picker-indicator {
     width: 20px;
@@ -1567,6 +1677,15 @@ label {
     height: 20px;
     margin-left: 100px;
   }
+
+  .contact-mobile-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+    margin-top: 20px;
+    flex: 1;
+    margin-right: 43px;
+}
 
   .add-task-btn {
     position: unset;
