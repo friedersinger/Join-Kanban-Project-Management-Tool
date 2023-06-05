@@ -309,35 +309,47 @@ function searchForTaskByInput() {
   let search = document.getElementById("search-input").value;
   search = search.toLowerCase();
 
-  for (let i = 0; i < tasks.length; i++) {
-    const title = tasks[i]["title"];
-    const description = tasks[i]["description"];
-
-    if (
-      title.toLowerCase().includes(search) ||
-      description.toLowerCase().includes(search)
-    ) {
+  if (search.trim() === "") {
+    // Wenn das Suchfeld leer ist, zeige alle Aufgaben
+    for (let i = 0; i < tasks.length; i++) {
       showHiddenTask(tasks[i]["id"]);
-    } else {
-      console.log("removed task" + tasks[i]["id"]);
-      hideTask(tasks[i]["id"]);
+    }
+  } else {
+    for (let i = 0; i < tasks.length; i++) {
+      const title = tasks[i]["title"];
+      const description = tasks[i]["description"];
+
+      if (
+        title.toLowerCase().includes(search) ||
+        description.toLowerCase().includes(search)
+      ) {
+        showHiddenTask(tasks[i]["id"]);
+      } else {
+        console.log("removed task" + tasks[i]["id"]);
+        hideTask(tasks[i]["id"]);
+      }
     }
   }
 }
 
 function hideTask(id) {
   let taskCardContainer = document.getElementById(id);
-  taskCardContainer.style.opacity = '0'; // Setze die Opazität auf 0
-  setTimeout(() => {
-    taskCardContainer.classList.add("d-none");
-  }, 500); 
+
+  if (taskCardContainer) {
+    taskCardContainer.style.opacity = "0";
+    setTimeout(() => {
+      taskCardContainer.classList.add("d-none");
+    }, 500);
+  }
 }
 
 function showHiddenTask(id) {
   let taskCardContainer = document.getElementById(id);
-  taskCardContainer.classList.remove("d-none");
-  setTimeout(() => {
-    taskCardContainer.style.opacity = '1'; 
-  }, 100); 
-}
 
+  if (taskCardContainer) {
+    taskCardContainer.classList.remove("d-none");
+    setTimeout(() => {
+      taskCardContainer.style.opacity = "1";
+    }, 100);
+  }
+}
