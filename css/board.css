@@ -470,6 +470,18 @@
   transform: rotateZ(10deg);
 }
 
+
+.subtask-container{
+  margin: unset !important;
+}
+
+
+
+
+
+
+/* ********* Breakpoints ********* */
+
 @media only screen and (max-width: 1777px) {
   .drop-area {
     align-items: flex-start;

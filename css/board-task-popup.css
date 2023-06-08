@@ -21,7 +21,7 @@
 .Task-Bottom-Content{
     position: fixed;
     margin-left: 350px;
-    margin-top: 433px
+    margin-top: 40px
 }
 
 .Task-Bottom-Content svg{
@@ -78,6 +78,10 @@
 
 .font-weight-700 {
     font-weight: 700;
+}
+
+.font-weight-500{
+    font-weight: 500;
 }
 
 .close-btn {

@@ -164,6 +164,7 @@ function showDetailCard(id) {
       overlay.innerHTML += getTaskDetailCardHTML(task);
       getTaskPrio(task);
       getAssignedToDetailCard(task, id);
+      showSubtasks(task);
     }
   }
 
@@ -185,7 +186,7 @@ async function getTaskPrio(task) {
       class="prio-btn-low" 
     >
       Low
-      <img id="imgUrgent" src="assets/img/prioLow.svg" alt="" />
+      <img id="imgUrgent" src="./assets/img/prioLow.svg" alt="" />
     </div>
       `;
       break;
@@ -195,7 +196,7 @@ async function getTaskPrio(task) {
       class="prio-btn-medium"
     >
       Medium
-      <img id="imgUrgent" src="/assets/img/prioMedium.svg" alt="" />
+      <img id="imgUrgent" src="./assets/img/prioMedium.svg" alt="" />
     </div>
       `;
       break;
@@ -205,7 +206,7 @@ async function getTaskPrio(task) {
       class="prio-btn-urgent"
     >
       Urgent
-      <img id="imgUrgent" src="/assets/img/prioUrgent.svg" alt=""/>
+      <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt=""/>
     </div>
       `;
       break;
@@ -223,7 +224,7 @@ function getAssignedToDetailCard(task) {
     assignContainer.innerHTML += `
     <div class="flex-row align-center gap-15">
       <div class="avatar-container" style="background-color:${color}">${initials}</div>
-      <div>${contact}</div>
+      <div class="font-weight-500">${contact}</div>
     </div>
     `;
   }
@@ -270,12 +271,16 @@ function getTaskDetailCardHTML(task) {
           <span class="font-weight-700">Assigned To:</span>
 
           <div class="User-Area" id="assignDetail"></div>
-          <div class="avatar-Box" id="avatarBox${task.id}"></div>
+          <div>
+            <span class="font-weight-700">Subtasks:</span>
+            <ul class="subtasks-container" id="subtasksContainer"></ul>
+          </div>
+
         </div>
       
         <div class="Task-Bottom-Content">
 
-          <svg class="trash-popUp" width="45" height="46" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg onclick="deleteTask(${task.id})" class="trash-popUp" width="45" height="46" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_57121_3508" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
             <rect width="32" height="32" fill="#D9D9D9"/>
             </mask>
@@ -304,6 +309,64 @@ function closePopup() {
   let overlay = document.getElementById("overlay");
   overlay.classList.add("d-none");
 }
+
+async function deleteTask(id){
+  deleteObjectById(id);
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i]['id'] == id) {
+      tasks.splice(i, 1);
+      await setItem("tasks", JSON.stringify(tasks));
+      break;
+    }
+  }
+  closePopup();
+  initBoard();
+}
+
+async function deleteObjectById(id) {
+  for (var i = 0; i < toDo.length; i++) {
+    if (toDo[i] == id) {
+      toDo.splice(i, 1);
+      await setItem("toDo", JSON.stringify(toDo));
+      return; 
+    }
+  }
+
+  for (var i = 0; i < inProgress.length; i++) {
+    if (inProgress[i] == id) {
+      inProgress.splice(i, 1);
+      await setItem("inProgress", JSON.stringify(inProgress));
+      return;
+    }
+  }
+
+  for (var i = 0; i < feedback.length; i++) {
+    if (feedback[i] == id) {
+      feedback.splice(i, 1);
+      await setItem("feedback", JSON.stringify(feedback));
+      return;
+    }
+  }
+
+  for (var i = 0; i < done.length; i++) {
+    if (done[i] == id) {
+      done.splice(i, 1);
+      await setItem("done", JSON.stringify(done));
+      return;
+    }
+  }
+}
+
+function showSubtasks(task){
+  let container = document.getElementById('subtasksContainer');
+  for (let i = 0; i < task['taskSub'].length; i++) {
+    const subTask = task['taskSub'][i]['task'];
+    container.innerHTML += `<li>${subTask}</li>`
+    
+  }
+}
+
+
 
 function searchForTaskByInput() {
   let search = document.getElementById("search-input").value;
