@@ -121,6 +121,18 @@
     margin-left: 0;
     grid-column: 2/11;
   }
+
+  .big-numbers-list {
+    counter-reset: item;
+    list-style: none;
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+  }
 }
 
 @media (max-width: 650px) {
