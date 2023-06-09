@@ -35,7 +35,7 @@ async function addNewTask() {
     dueDate: taskDueDate.value,
     taskSub: subtasks,
     id: currentTaskID,
-    
+
     /*assignName: assignName.value*/
   });
 
@@ -257,7 +257,7 @@ function renderCategoryList() {
     </div>
 
     <div class="dropdown-object">
-      <div onclick="saveSelectedCategory(this, '${'red'}')" class="flex-row">
+      <div onclick="saveSelectedCategory(this, '${"red"}')" class="flex-row">
         <span>Backoffice</span>
         <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
       </div>
@@ -265,7 +265,7 @@ function renderCategoryList() {
     </div>
 
     <div class="dropdown-object">
-      <div onclick="saveSelectedCategory(this, '${'pink'}')" class="flex-row">
+      <div onclick="saveSelectedCategory(this, '${"pink"}')" class="flex-row">
         <span>Sales</span>
         <div class="category-color margin-left-10" style="background-color: pink"></div>
       </div>
@@ -331,7 +331,7 @@ function validateForm() {
   for (var i = 0; i < checkboxes.length; i++) {
     const value = checkboxes[i].value;
     const id = checkboxes[i].dataset.id;
-    selectedValues.push({ id, name: value })
+    selectedValues.push({ id, name: value });
   }
   return selectedValues;
 }
@@ -391,7 +391,7 @@ function selectColor(id) {
  */
 function checkNewCategory() {
   if (selectedColor && document.getElementById("new-category").value != "") {
-    selectedCategory = document.getElementById("new-category").value    
+    selectedCategory = document.getElementById("new-category").value;
   } else {
     alert("Please insert a category name and a color!");
     hideLabel();
@@ -406,4 +406,10 @@ function hideLabel() {
   document.getElementById("toggleDrop").style.display = "none";
 }
 
-
+document.addEventListener("DOMContentLoaded", function () {
+  const datePicker = document.getElementById("datePicker");
+  if (datePicker) {
+    const currentDate = new Date().toISOString().split("T")[0];
+    datePicker.setAttribute("min", currentDate);
+  }
+});
