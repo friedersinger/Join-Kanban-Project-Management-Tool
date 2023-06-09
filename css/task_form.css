@@ -163,6 +163,11 @@ body {
   margin-left: 7px;
 }
 
+.newCategory {
+  border: none;
+  background-color: white;
+}
+
 #datePicker {
   box-sizing: border-box;
   font-size: 21px;

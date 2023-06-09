@@ -279,11 +279,13 @@ function renderNewCategoryField() {
 
   dropdownField.innerHTML = /*html*/ `
     <div class="flex-row space-between align-center">
-      <input placeholder="Enter new category" id="new-category" class="category-input">
+    <input placeholder="Enter new category" id="new-category" class="category-input" onclick="stopDropdown(event)">
+
       <div class="flex-row align-center height-100">
-        <img src="./assets/img/close-button-addtask.svg" onclick="renderNormalCategoryField(); renderCategoryList(); toggleDropdownCategory()">
+      <img src="./assets/img/close-button-addtask.svg" onclick="clearSelections()">
+
         <div class="vert-border"></div>
-        <button onclick="checkNewCategory()" type="button"><img
+        <button class="newCategory" onclick="checkNewCategory(); stopDropdown(event);" type="button"><img
         src="assets/img/check-addtask.svg"></button>
       </div>
     </div>
@@ -291,7 +293,35 @@ function renderNewCategoryField() {
   toggleDropdownCategory();
 }
 
+function stopDropdown(event) {
+  event.stopPropagation();
+}
+
+function clearSelections() {
+  renderNormalCategoryField();
+  renderCategoryList();
+  toggleDropdownCategory();
+  hideSelectColor();
+  hideErrorMessage();
+  hideCategoryDisplay();
+}
+
+function hideSelectColor() {
+  document.getElementById("select-color-category").classList.add("d-none");
+}
+
+function hideErrorMessage() {
+  document.getElementById("errorMessage").textContent = "";
+}
+
+function hideCategoryDisplay() {
+  document.getElementById("categoryDisplay").style.display = "none";
+  document.getElementById("categoryDisplay").textContent = "";
+}
+
 function renderNormalCategoryField() {
+  document.getElementById("categoryDisplay").style.display = "none";
+
   let dropdownField = document.getElementById("dropdownMinCategory");
   dropdownField.innerHTML = `
     <span>Select category</span>
@@ -390,21 +420,57 @@ function selectColor(id) {
  * Otherwise, displays an alert message and hides the label.
  */
 function checkNewCategory() {
-  if (selectedColor && document.getElementById("new-category").value != "") {
-    selectedCategory = document.getElementById("new-category").value;
+  const newCategoryInput = document.getElementById("new-category");
+  const categoryDisplay = document.getElementById("categoryDisplay");
+
+  if (selectedColor && newCategoryInput.value !== "") {
+    selectedCategory = newCategoryInput.value;
+    displayCategory(selectedCategory);
   } else {
-    alert("Please insert a category name and a color!");
-    hideLabel();
+    displayErrorMessage("Please insert a category name and a color!");
   }
-  //selectedColor = null;
+
+  // Clear category display if input is empty
+  if (newCategoryInput.value === "") {
+    hideCategoryDisplay(categoryDisplay);
+  }
 }
 
-/**
- * Hides the label by setting its display property to "none".
- */
-function hideLabel() {
-  document.getElementById("toggleDrop").style.display = "none";
+function displayCategory(category) {
+  const categoryDisplay = document.getElementById("categoryDisplay");
+  const selectedCategory = categoryDisplay.textContent;
+
+  // Check if the selected category is different from the new category
+  if (selectedCategory !== category) {
+    hideCategoryDisplay(categoryDisplay);
+  }
+
+  categoryDisplay.style.display = "block";
+  categoryDisplay.textContent = category;
 }
+
+function displayErrorMessage(message) {
+  const errorMessage = document.createElement("span");
+  errorMessage.textContent = message;
+  document.getElementById("errorMessage").appendChild(errorMessage);
+}
+
+function hideLabel() {
+  document.getElementById("errorMessage").textContent = "";
+}
+
+function hideCategoryDisplay() {
+  const categoryDisplay = document.getElementById("categoryDisplay");
+  categoryDisplay.style.display = "none";
+  categoryDisplay.textContent = "";
+}
+
+// /**
+//  * Hides the label by setting its display property to "none".
+//  */
+// function hideLabel() {
+//   document.getElementById("toggleDrop").style.display = "none";
+// }
 
 document.addEventListener("DOMContentLoaded", function () {
   const datePicker = document.getElementById("datePicker");
