@@ -4,6 +4,7 @@ input {
 
 .d-none {
   display: none;
+  visibility: hidden;
 }
 
 .df-w {

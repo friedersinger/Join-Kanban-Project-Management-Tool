@@ -123,14 +123,14 @@ async function signUpNewUser() {
     email: email.value,
     password: password.value,
     id: currentUserID,
-    color: `rgb(${r}, ${g}, ${b})` // Add color property with the generated RGB values
+    color: `rgb(${r}, ${g}, ${b})`, // Add color property with the generated RGB values
   });
   contacts.push({
     name: name.value,
     email: email.value,
     id: currentUserID,
     isPseudoContact: false,
-    color: `rgb(${r}, ${g}, ${b})` // Add color property with the generated RGB values
+    color: `rgb(${r}, ${g}, ${b})`, // Add color property with the generated RGB values
   });
 
   await setItem("users", JSON.stringify(users));
@@ -139,15 +139,12 @@ async function signUpNewUser() {
   resetForm(name, email, password);
 }
 
-
-
-async function setNewID(){
+async function setNewID() {
   let res = JSON.parse(await getItem("currentUserID"));
-  if(res){
+  if (res) {
     currentUserID = res + 1;
     await setItem("currentUserID", JSON.stringify(currentUserID));
-  }
-  else{
+  } else {
     currentUserID = 1; //problem: if some network error occurs, the current user id is set to 1 --> try/catch? // alternative: if(users.length <=1 ....)
     await setItem("currentUserID", JSON.stringify(currentUserID));
   }
@@ -219,7 +216,6 @@ function goToLogin() {
 function closeSignUp() {
   document.getElementById("login").classList.remove("d-none");
   document.getElementById("signUp").classList.add("d-none");
-  document.getElementById("signUpMobileButton").classList.remove("d-none");
   document.getElementById("signUpButton").classList.remove("d-none");
 }
 
@@ -230,7 +226,6 @@ function closeSignUp() {
 function openForgotPassword() {
   document.getElementById("forgotPassword").classList.remove("d-none");
   document.getElementById("login").classList.add("d-none");
-  document.getElementById("signUpMobileButton").classList.add("d-none");
   document.getElementById("signUpButton").classList.add("d-none");
 }
 
@@ -241,9 +236,9 @@ function openForgotPassword() {
 function openSignUp() {
   document.getElementById("login").classList.add("d-none");
   document.getElementById("signUp").classList.remove("d-none");
-  document.getElementById("signUpMobileButton").classList.add("d-none");
   document.getElementById("signUpButton").classList.add("d-none");
   document.getElementById("forgotPassword").classList.add("d-none");
+  document.getElementById("goToLoginBtn").classList.remove("d-none");
 }
 
 /**
@@ -253,7 +248,6 @@ function openSignUp() {
 function closeForgotPassword() {
   document.getElementById("forgotPassword").classList.add("d-none");
   document.getElementById("login").classList.remove("d-none");
-  document.getElementById("signUpMobileButton").classList.remove("d-none");
   document.getElementById("signUpButton").classList.remove("d-none");
 }
 
