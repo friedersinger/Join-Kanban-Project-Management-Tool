@@ -356,13 +356,17 @@ body {
   padding-left: 40px;
 }
 
+.imgJoin {
+  display: flex;
+}
+
 .overlay-left span {
   color: white;
   margin-top: 20px;
 }
 
 .overlay-left img {
-  position: absolute;
+  /* position: absolute; */
   left: 3.04%;
   top: 30%;
   width: 55px;
@@ -682,7 +686,6 @@ body {
   border-radius: 10px;
   border: 1px solid #ffffff;
 }
-
 
 .form-Avatar {
   display: flex;
@@ -1120,7 +1123,7 @@ label {
   flex-grow: 0;
 }
 
-.new-contact-form{
+.new-contact-form {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -1215,6 +1218,7 @@ label {
     padding-bottom: 37px;
     margin-top: -60px;
     margin-right: 0;
+    margin-left: 0;
   }
 
   .justify-end {
@@ -1363,14 +1367,14 @@ label {
     margin-left: 290px;
   }
 
-  .contact-mobile-details{
+  .contact-mobile-details {
     display: flex;
     flex-direction: column;
     margin-left: 4.8vw;
     margin-top: 55px;
     flex: 1;
     margin-right: 43px;
-}
+  }
 
   .overlayBoardBg {
     width: 90%;
@@ -1422,14 +1426,14 @@ label {
     margin-top: 60px;
   }
 
-  .contact-mobile-details{
+  .contact-mobile-details {
     display: flex;
     flex-direction: column;
     margin-left: 0;
     margin-top: 20px;
     flex: 1;
     margin-right: 43px;
-}
+  }
 
   .prio {
     gap: 10px;
@@ -1525,7 +1529,7 @@ label {
     width: 350px;
   }
 
-  .create-edit-btn{
+  .create-edit-btn {
     padding: 19px 41px;
   }
 
@@ -1574,7 +1578,7 @@ label {
     margin-top: 20px;
     flex: 1;
     margin-right: 43px;
-}
+  }
 }
 
 @media screen and (max-width: 456px) {
@@ -1618,7 +1622,6 @@ label {
 }
 
 @media screen and (max-width: 426px) {
- 
   .contact-mobile-details {
     display: flex;
     flex-direction: column;
@@ -1626,41 +1629,40 @@ label {
     margin-top: 20px;
     flex: 1;
     margin-right: 43px;
-}
+  }
 
-.headline-text {
-  font-size: 40px;
-}
+  .headline-text {
+    font-size: 40px;
+  }
 
-.font-size-27 {
-  font-size: 20px;
-}
+  .font-size-27 {
+    font-size: 20px;
+  }
 
-#nameCircle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  min-width: 100px;
-  min-height: 100px;
-  border-radius: 100%;
-  padding: 1px;
-  background-color: orange;
-  font-size: 47px;
-  font-weight: 500;
-  line-height: 56.4px;
-}
+  #nameCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 100%;
+    padding: 1px;
+    background-color: orange;
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+  }
 
-#nameDetailCard {
-  font-size: 40px;
-  font-weight: 500;
-  line-height: 56.4px;
-}
+  #nameDetailCard {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 56.4px;
+  }
 
-.font-size-21 {
-  font-size: 18px;
-}
-  
+  .font-size-21 {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 434px) {
@@ -1685,7 +1687,7 @@ label {
     margin-top: 20px;
     flex: 1;
     margin-right: 43px;
-}
+  }
 
   .add-task-btn {
     position: unset;
