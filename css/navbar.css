@@ -37,6 +37,7 @@ html {
   display: flex;
   align-items: center;
   gap: 25px;
+  vertical-align: unset;
 }
 
 .profile-container {

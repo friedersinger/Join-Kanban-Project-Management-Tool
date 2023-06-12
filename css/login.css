@@ -2,6 +2,11 @@ input {
   padding-right: 35px;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  margin-top: 0 !important;
+}
+
 .d-none {
   display: none;
   visibility: hidden;

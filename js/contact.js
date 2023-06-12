@@ -290,11 +290,10 @@ function giveContactListHTML(name, mail, id) {
  * @param {string} phone - The name of the contact.
  * @returns {string} - The generated HTML.
  */
- function giveContactDetailsHTML(name, mail, initials, id, color, phone) {
+function giveContactDetailsHTML(name, mail, initials, id, color, phone) {
   let phoneDisplay = ""; // Variable für das Display-Attribut des Telefonfelds
 
   if (phone !== undefined && phone !== "") {
-
     phoneDisplay = "block"; // Wenn das Telefonfeld nicht leer ist, anzeigen
   } else {
     phoneDisplay = "none"; // Wenn das Telefonfeld leer ist, ausblenden
@@ -312,12 +311,12 @@ function giveContactListHTML(name, mail, id) {
     </div>
 
     <div class="flex-row gap-30 align-center">
-      <span class="font-size-21">Contact Information</span>
-      <div class="flex-row gap-5 align-center" onclick="showEditCard(${id})">
-        <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
-        <span class="cursor-pointer">Edit Contact</span>
-      </div>
+    <span class="font-size-21">Contact Information</span>
+    <div class="flex-row gap-5 align-center" onclick="showEditCard(${id})">
+      <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
+      <span class="cursor-pointer">Edit Contact</span>
     </div>
+  </div>
 
     <div class="flex-column gap-15">
       <span class="font-weight-700">Email</span>
@@ -335,7 +334,6 @@ function giveContactListHTML(name, mail, id) {
   `;
 }
 
-
 /**
  * Generates the HTML for the mobile contact details.
  * @param {string} name - The name of the contact.
@@ -345,7 +343,7 @@ function giveContactListHTML(name, mail, id) {
  * @returns {string} - The generated HTML.
  */
 function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
-  return `
+  return /*html*/ `
   <div class="headline">
 
   <div class="headline-mobile-container">
@@ -374,10 +372,6 @@ function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
 
         <div class="flex-row gap-30 align-center margin-left-60 margin-bottom-20">
           <span class="font-size-21">Contact Information</span>
-          <div class="flex-row gap-5 align-center" onclick="showEditCard(${id})">
-            <img src="./assets/img/pen_black.svg" alt="" class="cursor-pointer" />
-            <span class="cursor-pointer">Edit Contact</span>
-          </div>
         </div>
 
         <div class="flex-column gap-15 margin-left-60 margin-bottom-20">
@@ -395,7 +389,7 @@ function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
         </div>
 
         <div class="mobile-btn-column">
-  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg   onclick="deleteCard(${id}); returnToContactList() " width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M10 0.5H30C35.2467 0.5 39.5 4.75329 39.5 10V30C39.5 35.2467 35.2467 39.5 30 39.5H10C4.75329 39.5 0.5 35.2467 0.5 30V10C0.5 4.75329 4.75329 0.5 10 0.5Z" fill="url(#paint0_linear_48008_5258)"/>
     <mask id="mask0_48008_5258" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="32" height="32">
     <rect x="4" y="4" width="32" height="32" fill="#D9D9D9"/>
@@ -412,7 +406,7 @@ function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
     </defs>
     </svg>
 
-    <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg onclick="showEditCard(${id})" width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="50" height="50" rx="10" fill="#2A3647"/>
       <path d="M17.4445 32.0155L22.2638 34.9404L34.907 14.1083C35.1935 13.6362 35.043 13.0211 34.5709 12.7346L31.4613 10.8474C30.9892 10.5608 30.3742 10.7113 30.0876 11.1834L17.4445 32.0155Z" fill="white"/>
       <path d="M16.8604 32.9794L21.6797 35.9043L16.9511 38.1892L16.8604 32.9794Z" fill="white"/>
@@ -420,6 +414,20 @@ function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
 </div>
 
   `;
+}
+
+async function deleteCard(id) {
+  try {
+    let contacts = await getItem("contacts");
+    if (contacts) {
+      contacts = JSON.parse(contacts);
+      const updatedContacts = contacts.filter((contact) => contact.id !== id);
+      await setItem("contacts", JSON.stringify(updatedContacts));
+      location.reload();
+    }
+  } catch (e) {
+    console.error("Deleting error:", e);
+  }
 }
 
 /**
@@ -457,25 +465,22 @@ function hideAddTaskPopUp() {
  * @param {string} tel - The initials of the contact.
  * @returns {string} - The generated HTML.
  */
-function loadContactToEditPopUp(id){
+function loadContactToEditPopUp(id) {
   let overlayContainer = document.getElementById("overlay-edit-bg");
   let currentContact = contacts.find((contact) => contact.id == id);
   const name = currentContact["name"];
   const mail = currentContact["email"];
   let tel = currentContact["tel"];
-  if(!tel){
+  if (!tel) {
     tel = "nicht vergeben";
-  }
-  else{
+  } else {
     tel = currentContact["tel"];
   }
   overlayContainer.innerHTML = "";
   overlayContainer.innerHTML += getEditHTML(name, mail, tel, id);
-  
-  
 }
 
-function getEditHTML(name, mail, tel, id){
+function getEditHTML(name, mail, tel, id) {
   return `
   <div id="overlay">
   <div class="overlay-left">
@@ -560,13 +565,11 @@ function getEditHTML(name, mail, tel, id){
   `;
 }
 
-
 async function saveEditContact(id) {
   let currentContact = contacts.find((contact) => contact.id == id);
 
   console.log("contacts:", contacts);
   console.log("id:", id);
-
 
   if (currentContact) {
     let editedName = document.getElementById("addNameID").value;
@@ -582,8 +585,9 @@ async function saveEditContact(id) {
 
       // Schließe das Editierungs-Popup
       hideEditCard();
+      location.reload();
     } catch (error) {
-      console.error('Fehler beim Speichern des Kontakts:', error);
+      console.error("Fehler beim Speichern des Kontakts:", error);
     }
   } else {
     console.error(`Kontakt mit ID "${id}" wurde nicht gefunden.`);
