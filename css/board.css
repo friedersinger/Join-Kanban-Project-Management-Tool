@@ -277,7 +277,7 @@
   padding: 5px;
   align-items: center;
   border-radius: 10px;
-  background-color: #7AE229;
+  background-color: #7ae229;
   color: white;
   width: 25%;
 }
@@ -288,7 +288,7 @@
   padding: 5px;
   align-items: center;
   border-radius: 10px;
-  background-color: #FFA800;
+  background-color: #ffa800;
   color: white;
   width: 25%;
 }
@@ -299,7 +299,7 @@
   padding: 5px;
   align-items: center;
   border-radius: 10px;
-  background-color: #FF3D00;
+  background-color: #ff3d00;
   color: white;
   width: 25%;
 }
@@ -308,8 +308,8 @@
   align-items: center;
 }
 
-.gap-15{
-  gap: 15px
+.gap-15 {
+  gap: 15px;
 }
 
 /* ********* Scrollbar CSS ********* */
@@ -334,7 +334,6 @@
   border: 1px solid #ffffff;
 }
 
-
 /* Firefox */
 .task-card-description {
   scrollbar-width: auto;
@@ -355,8 +354,6 @@
   border-radius: 10px;
   border: 1px solid #ffffff;
 }
-
-
 
 /*Board-Card Design*/
 
@@ -466,19 +463,13 @@
   align-items: center;
 }
 
-.rotate{
+.rotate {
   transform: rotateZ(10deg);
 }
 
-
-.subtask-container{
+.subtask-container {
   margin: unset !important;
 }
-
-
-
-
-
 
 /* ********* Breakpoints ********* */
 

@@ -81,6 +81,12 @@
 
 /*Responsive Design*/
 
+@media screen and (min-width: 2000px) {
+  .sidebar-container {
+    grid-column: span 1;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .mini-logo {
     margin-left: 61px;

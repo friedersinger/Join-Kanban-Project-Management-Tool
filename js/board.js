@@ -293,7 +293,7 @@ function getTaskDetailCardHTML(task) {
           <div class="task-popup-bottom-trash-edit-line"></div> 
             
 
-          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg  onclick="editTask(${task.id})" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="50" height="50" rx="10" fill="#2A3647"/>
             <path d="M17.4445 32.0155L22.2638 34.9404L34.907 14.1083C35.1935 13.6362 35.043 13.0211 34.5709 12.7346L31.4613 10.8474C30.9892 10.5608 30.3742 10.7113 30.0876 11.1834L17.4445 32.0155Z" fill="white"/>
             <path d="M16.8604 32.9794L21.6797 35.9043L16.9511 38.1892L16.8604 32.9794Z" fill="white"/>
@@ -310,10 +310,10 @@ function closePopup() {
   overlay.classList.add("d-none");
 }
 
-async function deleteTask(id){
+async function deleteTask(id) {
   deleteObjectById(id);
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['id'] == id) {
+    if (tasks[i]["id"] == id) {
       tasks.splice(i, 1);
       await setItem("tasks", JSON.stringify(tasks));
       break;
@@ -323,12 +323,16 @@ async function deleteTask(id){
   initBoard();
 }
 
+function editTask(id) {
+  alert("Popup zum Bearbeiten des Tasks " + id);
+}
+
 async function deleteObjectById(id) {
   for (var i = 0; i < toDo.length; i++) {
     if (toDo[i] == id) {
       toDo.splice(i, 1);
       await setItem("toDo", JSON.stringify(toDo));
-      return; 
+      return;
     }
   }
 
@@ -357,16 +361,13 @@ async function deleteObjectById(id) {
   }
 }
 
-function showSubtasks(task){
-  let container = document.getElementById('subtasksContainer');
-  for (let i = 0; i < task['taskSub'].length; i++) {
-    const subTask = task['taskSub'][i]['task'];
-    container.innerHTML += `<li>${subTask}</li>`
-    
+function showSubtasks(task) {
+  let container = document.getElementById("subtasksContainer");
+  for (let i = 0; i < task["taskSub"].length; i++) {
+    const subTask = task["taskSub"][i]["task"];
+    container.innerHTML += `<li>${subTask}</li>`;
   }
 }
-
-
 
 function searchForTaskByInput() {
   let search = document.getElementById("search-input").value;

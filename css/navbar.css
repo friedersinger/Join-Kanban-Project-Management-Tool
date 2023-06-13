@@ -167,6 +167,12 @@ html {
 
 /*Responsive Design*/
 
+@media screen and (min-width: 2000px) {
+  .navbar-container {
+    grid-column: span 9;
+  }
+}
+
 @media screen and (max-width: 756px) {
   .navbar-container {
     grid-column: 1/11;
