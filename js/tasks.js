@@ -101,6 +101,44 @@ async function addNewSubTask() {
   }
 }
 
+async function editTaskBoard(currentTaskID) {
+  deleteTask(currentTaskID);
+  addNewTask(currentTaskID);
+  let taskTitle = document.getElementById("title");
+  let taskDescription = document.getElementById("description");
+  let taskDueDate = document.getElementById("datePicker");
+  let taskPriority = document.getElementById("priority");
+  let taskSub = document.getElementById("subtaskContent");
+  let buttonUrgent = document.getElementById("prioUrgent");
+  let buttonMedium = document.getElementById("prioMedium");
+  let buttonLow = document.getElementById("prioLow");
+
+  tasks.push({
+    title: taskTitle.value,
+    description: taskDescription.value,
+    category: selectedCategory,
+    prio: currentPrioStatus,
+    color: selectedColor,
+    assignments: validateForm(),
+    dueDate: taskDueDate.value,
+    taskSub: subtasks,
+    id: currentTaskID,
+  });
+
+  toDo.push(currentTaskID);
+
+  const taskAddedElement = document.getElementById("taskAdded");
+  taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen
+
+  setTimeout(() => {
+    taskAddedElement.classList.add("d-none"); // Füge die Klasse "d-none" hinzu, um das Element auszublenden
+    reloadPage(); // Rufe die Funktion zum Neuladen der Seite auf
+  }, 1000);
+
+  await setItem("tasks", JSON.stringify(tasks));
+  await setItem("toDo", JSON.stringify(toDo));
+}
+
 async function deleteAllTasksFromServer() {
   try {
     tasks = JSON.parse(await getItem("tasks"));

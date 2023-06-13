@@ -324,24 +324,26 @@ async function deleteTask(id) {
 }
 
 function editTask(id) {
+  currentTaskID = id;
+
   document.getElementById("taskContent").innerHTML = /*html*/ `
   
-      <div id="overlayPopUpbg" class="overlay-board-bg" style="padding:21px">
-              
-        <div class="overlayBoardBg">
-          <div class="justify-end">
-          <div class="task-card task-card-scroll">
-      <div class="margin-bottom-60">
-        <span class="headline-text">Edit Task</span>
-      </div>
-
+  <div id="overlayPopUpbg" class="overlay-board-bg" style="padding:21px">
+    
+    <div class="overlayBoardBg">
+      <div class="justify-end">
+          <div class="margin-bottom-60">
+            <span class="headline-text">Edit Task</span>
+          </div>
+          
+          <div class="inner-content scroll">
       <div>
         <div id="taskAdded" class="taskAdded d-none">
           <img src="./assets/img/task_Added.svg" alt="" />
         </div>
       </div>
 
-      <form class="column-container" onsubmit="addNewTask() ; return false">
+      <form class="column-container" onsubmit="editTaskBoard(currentTaskID) ; return false">
         <div class="column-left">
           <label>Title</label>
 
@@ -483,12 +485,12 @@ function editTask(id) {
               onclick="reloadPage()"
               src="./assets/img/cancel-task.svg"
             />
-            <button id="id" class="add-task-btn" type="submit">
+            <button id="addTask" class="add-task-btn" type="submit">
               Edit Task
             </button>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>`;
 }
 
@@ -524,6 +526,13 @@ async function deleteObjectById(id) {
       return;
     }
   }
+}
+
+function toggleDropdownCategory() {
+  let dropdownContent = document.getElementById("dropdownCategoryContent");
+  let dropdownMin = document.getElementById("dropdownMinCategory");
+  dropdownContent.classList.toggle("show");
+  dropdownMin.classList.toggle("open");
 }
 
 function showSubtasks(task) {

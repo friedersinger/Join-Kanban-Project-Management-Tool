@@ -240,6 +240,12 @@
 }
 
 /* ********* Scrollbar CSS ********* */
+
+.scroll {
+  height: 460px;
+  overflow: auto;
+}
+
 /* Firefox */
 .inner-content {
   scrollbar-width: auto;

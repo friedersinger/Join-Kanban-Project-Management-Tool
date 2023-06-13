@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/board.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/task_form.css" />
     <link rel="stylesheet" href="./css/board-task-popup.css" />
 
     <script src="./js/navbar.js"></script>
@@ -38,7 +39,11 @@
       <div class="headline-container">
         <div class="headline-left">
           <span class="headline-text headline-text-container">Board</span>
-          <div id="add-task-btn-board-mobile" class="add-task-btn-board-mobile">
+          <div
+            onclick="redirectToAddTask()"
+            id="add-task-btn-board-mobile"
+            class="add-task-btn-board-mobile"
+          >
             <button>
               <img src="./assets/img/plus-icon.svg" alt="" />
             </button>
