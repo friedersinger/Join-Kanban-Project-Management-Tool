@@ -254,7 +254,7 @@ function getTaskCardHTML(currentTask, status) {
 function getTaskDetailCardHTML(task) {
   return /*html*/ `
     
-      <div class="Task-Content">
+      <div class="Task-Content" id="taskContent">
 
         <div class="Task-Content-Top">
           <div class="flex-row justify-space-between">
@@ -324,7 +324,172 @@ async function deleteTask(id) {
 }
 
 function editTask(id) {
-  alert("Popup zum Bearbeiten des Tasks " + id);
+  document.getElementById("taskContent").innerHTML = /*html*/ `
+  
+      <div id="overlayPopUpbg" class="overlay-board-bg" style="padding:21px">
+              
+        <div class="overlayBoardBg">
+          <div class="justify-end">
+          <div class="task-card task-card-scroll">
+      <div class="margin-bottom-60">
+        <span class="headline-text">Edit Task</span>
+      </div>
+
+      <div>
+        <div id="taskAdded" class="taskAdded d-none">
+          <img src="./assets/img/task_Added.svg" alt="" />
+        </div>
+      </div>
+
+      <form class="column-container" onsubmit="addNewTask() ; return false">
+        <div class="column-left">
+          <label>Title</label>
+
+          <input type="text" id="title" placeholder="Enter a title" required />
+
+          <label>Description</label>
+
+          <textarea
+            id="description"
+            placeholder="Enter a description"
+          ></textarea>
+
+          <label>Category</label>
+
+          <label
+            id="toggleDrop"
+            for="dropdown"
+            onclick="toggleDropdownCategory()"
+          >
+            <div class="dropdown-min" id="dropdownMinCategory">
+              <span>Select category</span>
+              <img src="./assets/img/arrow_down_black.svg" alt="" />
+            </div>
+          </label>
+          <div id="dropdownCategoryContent" class="dropdown-content"></div>
+
+          <div id="select-color-category" class="select-color-category d-none">
+            <div
+              onclick="selectColor(1)"
+              id="color1"
+              style="background-color: red"
+            ></div>
+            <div
+              onclick="selectColor(2)"
+              id="color2"
+              style="background-color: #fc71ff"
+            ></div>
+            <div
+              onclick="selectColor(3)"
+              id="color3"
+              style="background-color: #ff7a00"
+            ></div>
+            <div
+              onclick="selectColor(4)"
+              id="color4"
+              style="background-color: #1fd7c1"
+            ></div>
+            <div
+              onclick="selectColor(5)"
+              id="color5"
+              style="background-color: #2ad300"
+            ></div>
+            <div
+              onclick="selectColor(6)"
+              id="color6"
+              style="background-color: #8aa4ff"
+            ></div>
+            <div
+              onclick="selectColor(7)"
+              id="color7"
+              style="background-color: blue"
+            ></div>
+          </div>
+          <div id="errorMessage" style="color: red"></div>
+          <div id="categoryDisplay" style="display: none; color: green"></div>
+
+          <label>Assigned to</label>
+
+          <label for="dropdown" onclick="toggleDropdown()">
+            <div class="dropdown-min" id="dropdownMin">
+              <span id="categoryTextField"> Select contacts to assign</span>
+              <img src="./assets/img/arrow_down_black.svg" alt="" />
+            </div>
+          </label>
+          <div id="dropdownContent" class="dropdown-content"></div>
+        </div>
+
+        <div class="border"></div>
+
+        <div class="column-right">
+          <label>Due Date</label>
+
+          <input
+            id="datePicker"
+            type="date"
+            placeholder="Enter a description"
+            required
+          /><br /><br />
+
+          <label>Prio</label>
+
+          <div id="prio" class="prio">
+            <div
+              class="prio-btn"
+              id="prioUrgent"
+              onclick="TaskButtonUrgent();getPrioStatus('up')"
+            >
+              Urgent
+              <img id="imgUrgent" src="./assets/img/icon_up.png" alt="" />
+            </div>
+            <div
+              class="prio-btn"
+              id="prioMedium"
+              onclick="TaskButtonMedium();getPrioStatus('medium')"
+            >
+              Medium
+              <img id="imgMedium" src="./assets/img/icon_medium.png" alt="" />
+            </div>
+            <div
+              class="prio-btn"
+              id="prioLow"
+              onclick="TaskButtonLow();getPrioStatus('down')"
+            >
+              Low
+              <img id="imgLow" src="./assets/img/icon_down.png" alt="" />
+            </div>
+          </div>
+
+          <label class="subtask">Subtasks</label>
+          <div class="subtask-container">
+            <input type="text" id="subtask-input-content" />
+
+            <div id="subtaskOninput" style="display: flex">
+              <img src="./assets/img/X.png" id="clearSubtaskInput" />
+              <div class="border-subtask"></div>
+              <img
+                src="./assets/img/icon_check.svg"
+                onclick="subTaskAddToJson()"
+                id="finishEditingSubtask"
+              />
+            </div>
+          </div>
+
+          <div id="subtaskContent"></div>
+
+          <div class="action-button-container">
+            <img
+              id="clearTask"
+              onclick="reloadPage()"
+              src="./assets/img/cancel-task.svg"
+            />
+            <button id="id" class="add-task-btn" type="submit">
+              Edit Task
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>`;
 }
 
 async function deleteObjectById(id) {
