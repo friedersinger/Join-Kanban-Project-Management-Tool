@@ -102,8 +102,8 @@ async function addNewSubTask() {
 }
 
 async function editTaskBoard(currentTaskID) {
-  deleteTask(currentTaskID);
-  addNewTask(currentTaskID);
+  //deleteTask(currentTaskID); //override values? --> keep same id?
+  //addNewTask(currentTaskID); // following code represents addNewTask() method
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskDueDate = document.getElementById("datePicker");

@@ -325,6 +325,7 @@ async function deleteTask(id) {
 
 function editTask(id) {
   currentTaskID = id;
+  let currentTask = tasks.find((task) => task.id == id);
 
   document.getElementById("taskContent").innerHTML = /*html*/ `
   
@@ -347,14 +348,14 @@ function editTask(id) {
         <div class="column-left">
           <label>Title</label>
 
-          <input type="text" id="title" placeholder="Enter a title" required />
+          <input type="text" id="title" placeholder="${currentTask['title']}" value="${currentTask['title']}" required />
 
           <label>Description</label>
 
           <textarea
             id="description"
-            placeholder="Enter a description"
-          ></textarea>
+            placeholder="${currentTask['description']}"
+          >${currentTask['description']}</textarea>
 
           <label>Category</label>
 
@@ -364,7 +365,7 @@ function editTask(id) {
             onclick="toggleDropdownCategory()"
           >
             <div class="dropdown-min" id="dropdownMinCategory">
-              <span>Select category</span>
+              <span>${currentTask['category']}</span>
               <img src="./assets/img/arrow_down_black.svg" alt="" />
             </div>
           </label>
@@ -429,7 +430,7 @@ function editTask(id) {
           <input
             id="datePicker"
             type="date"
-            placeholder="Enter a description"
+            value = "${currentTask['dueDate']}"
             required
           /><br /><br />
 
@@ -477,7 +478,8 @@ function editTask(id) {
             </div>
           </div>
 
-          <div id="subtaskContent"></div>
+          <div id="subtaskContent"> test
+          </div>
 
           <div class="action-button-container">
             <img
