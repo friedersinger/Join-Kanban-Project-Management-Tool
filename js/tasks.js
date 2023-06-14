@@ -166,6 +166,9 @@ async function TaskButtonUrgent() {
   let buttonMedium = document.getElementById("prioMedium");
   let buttonLow = document.getElementById("prioLow");
   buttonUrgent.style.backgroundColor = "#FF3D00";
+  buttonUrgent.style.filter = "contrast(1)";
+  buttonMedium.style.filter = "contrast(1)";
+  buttonLow.style.filter = "contrast(1)";
   buttonMedium.style.backgroundColor = "white";
   buttonLow.style.backgroundColor = "white";
   buttonMedium.style.color = "black";
@@ -194,6 +197,9 @@ async function TaskButtonMedium() {
   let buttonLow = document.getElementById("prioLow");
   buttonUrgent.style.backgroundColor = "white";
   buttonMedium.style.backgroundColor = "#FFA800";
+  buttonUrgent.style.filter = "contrast(1)";
+  buttonMedium.style.filter = "contrast(1)";
+  buttonLow.style.filter = "contrast(1)";
   buttonMedium.style.color = "white";
   buttonUrgent.style.color = "black";
   buttonLow.style.color = "black";
