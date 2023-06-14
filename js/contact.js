@@ -576,9 +576,16 @@ async function saveEditContact(id) {
     let editedMail = document.getElementById("addMailID").value;
     let editedTel = document.getElementById("addTelID").value;
 
-    currentContact.name = editedName;
-    currentContact.email = editedMail;
-    currentContact.phone = editedTel;
+    // Überprüfe, ob die Werte geändert wurden
+    if (editedName.trim() !== "") {
+      currentContact.name = editedName;
+    }
+    if (editedMail.trim() !== "") {
+      currentContact.email = editedMail;
+    }
+    if (editedTel.trim() !== "") {
+      currentContact.phone = editedTel;
+    }
 
     try {
       await setItem("contacts", JSON.stringify(contacts));
@@ -593,3 +600,4 @@ async function saveEditContact(id) {
     console.error(`Kontakt mit ID "${id}" wurde nicht gefunden.`);
   }
 }
+
