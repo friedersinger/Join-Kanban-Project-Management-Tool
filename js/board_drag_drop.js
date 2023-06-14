@@ -18,13 +18,6 @@ function drag(ev) {
   ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text/plain"); // Retrieve the data transfer value (ID)
-  var element = document.getElementById(data); // Get the element using the ID
-  ev.target.appendChild(element); // Append the element to the drop target
-}
-
 async function moveTo(status) {
   let targetArray;
   switch (status) {

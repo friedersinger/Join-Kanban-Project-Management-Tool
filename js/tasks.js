@@ -101,31 +101,20 @@ async function addNewSubTask() {
   }
 }
 
-async function editTaskBoard(currentTaskID) {
-  //deleteTask(currentTaskID); //override values? --> keep same id?
-  //addNewTask(currentTaskID); // following code represents addNewTask() method
+async function editTaskBoard(id) {
+  let currentTask = tasks.find((task) => task.id == id);
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskDueDate = document.getElementById("datePicker");
-  let taskPriority = document.getElementById("priority");
-  let taskSub = document.getElementById("subtaskContent");
-  let buttonUrgent = document.getElementById("prioUrgent");
-  let buttonMedium = document.getElementById("prioMedium");
-  let buttonLow = document.getElementById("prioLow");
-
-  tasks.push({
-    title: taskTitle.value,
-    description: taskDescription.value,
-    category: selectedCategory,
-    prio: currentPrioStatus,
-    color: selectedColor,
-    assignments: validateForm(),
-    dueDate: taskDueDate.value,
-    taskSub: subtasks,
-    id: currentTaskID,
-  });
-
-  toDo.push(currentTaskID);
+ 
+  currentTask['title'] = taskTitle.value;
+  currentTask['description'] = taskDescription.value;
+  currentTask['category'] = document.getElementById('categoryEdit').innerText;
+  currentTask['prio'] = document.getElementById('prioValue').innerText;
+  currentTask['color'] = selectedColor;
+  currentTask['assignments'] = validateForm();
+  currentTask['dueDate'] = taskDueDate.value;
+  currentTask['taskSub'] = subtasks;
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen
@@ -137,6 +126,10 @@ async function editTaskBoard(currentTaskID) {
 
   await setItem("tasks", JSON.stringify(tasks));
   await setItem("toDo", JSON.stringify(toDo));
+}
+
+function setCategory(){
+
 }
 
 async function deleteAllTasksFromServer() {
@@ -189,6 +182,11 @@ async function TaskButtonUrgent() {
 
 function getPrioStatus(prioStatus) {
   currentPrioStatus = prioStatus;
+}
+
+function setPrioStatus(prioStatus){
+  let prioValue = document.getElementById('prioValue');
+  prioValue.innerText = prioStatus;
 }
 
 async function TaskButtonMedium() {
@@ -378,11 +376,14 @@ function renderNormalCategoryField() {
 
 function saveSelectedCategory(element, color) {
   selectedCategory = element.innerText;
+  let dataField = document.getElementById('categoryEdit')
+  dataField.innerText = selectedCategory;
   let dropdownMin = document.getElementById("dropdownMinCategory");
   dropdownMin.querySelector("span").innerText = selectedCategory;
   selectedColor = color;
   toggleDropdownCategory();
 }
+
 
 function toggleDropdown() {
   let dropdownContent = document.getElementById("dropdownContent");
@@ -469,9 +470,11 @@ function selectColor(id) {
 function checkNewCategory() {
   const newCategoryInput = document.getElementById("new-category");
   const categoryDisplay = document.getElementById("categoryDisplay");
+  const dataField = document.getElementById('categoryEdit');
 
   if (selectedColor && newCategoryInput.value !== "") {
     selectedCategory = newCategoryInput.value;
+    dataField.innerText = newCategoryInput.value;
     displayCategory(selectedCategory);
   } else {
     displayErrorMessage("Please insert a category name and a color!");

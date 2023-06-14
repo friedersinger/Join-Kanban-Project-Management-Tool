@@ -361,6 +361,8 @@ function editTask(id) {
 
           <label>Category</label>
 
+          <div class="d-none" id = "categoryEdit"></div>
+
           <label
             id="toggleDrop"
             for="dropdown"
@@ -439,24 +441,24 @@ function editTask(id) {
 
 
           <label>Prio</label>
-          <div id="prioValue">${currentTask["prio"]}</div>
+          <div class="d-none" id="prioValue">${currentTask["prio"]}</div>
 
           <div id="prio" class="prio">
             <div class="prio-btn ${
               currentTask["prio"] === "up" ? "active" : ""
-            }" id="prioUrgent" onclick="TaskButtonUrgent(); getPrioStatus('up')">
+            }" id="prioUrgent" onclick="TaskButtonUrgent(); setPrioStatus('up')">
               Urgent
               <img id="imgUrgent" src="./assets/img/icon_up.png" alt="" />
             </div>
             <div class="prio-btn ${
               currentTask["prio"] === "medium" ? "active" : ""
-            }" id="prioMedium" onclick="TaskButtonMedium(); getPrioStatus('medium')">
+            }" id="prioMedium" onclick="TaskButtonMedium(); setPrioStatus('medium')">
               Medium
               <img id="imgMedium" src="./assets/img/icon_medium.png" alt="" />
             </div>
             <div class="prio-btn ${
               currentTask["prio"] === "down" ? "active" : ""
-            }" id="prioLow" onclick="TaskButtonLow(); getPrioStatus('down')">
+            }" id="prioLow" onclick="TaskButtonLow(); setPrioStatus('down')">
               Low
               <img id="imgLow" src="./assets/img/icon_down.png" alt="" />
             </div>
@@ -493,7 +495,38 @@ function editTask(id) {
         </form>
       </div>
     </div>`;
+      renderCategoryList();
+      showAssignedContacts(currentTask);
 }
+
+function showAssignedContacts(currentTask) {
+  let assignableContactsContainer = document.getElementById("dropdownContent");
+  const assignedContacts = currentTask['assignments'].map((assignment) => assignment['name']);
+
+  for (let i = 0; i < users.length; i++) {
+    const name = users[i]["name"];
+    const id = users[i]["id"];
+    const checkbox = document.createElement("input");
+    checkbox.id = id;
+    checkbox.type = "checkbox";
+    checkbox.value = name;
+    checkbox.dataset.id = id;
+
+    // Überprüfe, ob der Kontakt ausgewählt ist
+    if (assignedContacts.includes(name)) {
+      checkbox.checked = true;
+    }
+
+    const div = document.createElement("div");
+    div.className = "dropdown-object";
+    div.innerHTML = `<span>${name}</span>`;
+    div.appendChild(checkbox);
+
+    assignableContactsContainer.appendChild(div);
+  }
+}
+
+
 
 function getCurrentDate() {
   const today = new Date();
