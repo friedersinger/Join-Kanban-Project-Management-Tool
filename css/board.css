@@ -7,6 +7,10 @@
   background-color: #091931;
 }
 
+.active {
+  filter: contrast(0.5);
+}
+
 .board-main-container {
   grid-column: 3/11;
   grid-row: 2/11;

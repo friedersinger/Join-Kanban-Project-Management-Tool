@@ -218,6 +218,9 @@ async function TaskButtonLow() {
   buttonUrgent.style.backgroundColor = "white";
   buttonMedium.style.backgroundColor = "white";
   buttonLow.style.backgroundColor = "#7AE229";
+  buttonUrgent.style.filter = "contrast(1)";
+  buttonMedium.style.filter = "contrast(1)";
+  buttonLow.style.filter = "contrast(1)";
   buttonMedium.style.color = "black";
   buttonUrgent.style.color = "black";
   buttonLow.style.color = "white";

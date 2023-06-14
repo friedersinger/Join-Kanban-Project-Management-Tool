@@ -348,14 +348,16 @@ function editTask(id) {
         <div class="column-left">
           <label>Title</label>
 
-          <input type="text" id="title" placeholder="${currentTask['title']}" value="${currentTask['title']}" required />
+          <input type="text" id="title" placeholder="${
+            currentTask["title"]
+          }" value="${currentTask["title"]}" required />
 
           <label>Description</label>
 
           <textarea
             id="description"
-            placeholder="${currentTask['description']}"
-          >${currentTask['description']}</textarea>
+            placeholder="${currentTask["description"]}"
+          >${currentTask["description"]}</textarea>
 
           <label>Category</label>
 
@@ -365,7 +367,7 @@ function editTask(id) {
             onclick="toggleDropdownCategory()"
           >
             <div class="dropdown-min" id="dropdownMinCategory">
-              <span>${currentTask['category']}</span>
+              <span>${currentTask["category"]}</span>
               <img src="./assets/img/arrow_down_black.svg" alt="" />
             </div>
           </label>
@@ -430,34 +432,29 @@ function editTask(id) {
           <input
             id="datePicker"
             type="date"
-            value = "${currentTask['dueDate']}"
+            value = "${currentTask["dueDate"]}"
             required
           /><br /><br />
 
           <label>Prio</label>
+          <div id="prioValue">${currentTask["prio"]}</div>
 
           <div id="prio" class="prio">
-            <div
-              class="prio-btn"
-              id="prioUrgent"
-              onclick="TaskButtonUrgent();getPrioStatus('up')"
-            >
+            <div class="prio-btn ${
+              currentTask["prio"] === "up" ? "active" : ""
+            }" id="prioUrgent" onclick="TaskButtonUrgent(); getPrioStatus('up')">
               Urgent
               <img id="imgUrgent" src="./assets/img/icon_up.png" alt="" />
             </div>
-            <div
-              class="prio-btn"
-              id="prioMedium"
-              onclick="TaskButtonMedium();getPrioStatus('medium')"
-            >
+            <div class="prio-btn ${
+              currentTask["prio"] === "medium" ? "active" : ""
+            }" id="prioMedium" onclick="TaskButtonMedium(); getPrioStatus('medium')">
               Medium
               <img id="imgMedium" src="./assets/img/icon_medium.png" alt="" />
             </div>
-            <div
-              class="prio-btn"
-              id="prioLow"
-              onclick="TaskButtonLow();getPrioStatus('down')"
-            >
+            <div class="prio-btn ${
+              currentTask["prio"] === "down" ? "active" : ""
+            }" id="prioLow" onclick="TaskButtonLow(); getPrioStatus('down')">
               Low
               <img id="imgLow" src="./assets/img/icon_down.png" alt="" />
             </div>
