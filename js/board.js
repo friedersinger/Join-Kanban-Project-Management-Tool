@@ -510,6 +510,9 @@ function showAssignedContacts(currentTask) {
     checkbox.type = "checkbox";
     checkbox.value = name;
     checkbox.dataset.id = id;
+    checkbox.onclick = function (event) {
+      event.stopPropagation(); // Stoppe das Event-Bubbling
+    };
 
     // Überprüfe, ob der Kontakt ausgewählt ist
     if (assignedContacts.includes(name)) {
@@ -518,11 +521,19 @@ function showAssignedContacts(currentTask) {
 
     const div = document.createElement("div");
     div.className = "dropdown-object";
+    div.onclick = function () {
+      toggleCheckbox(id);
+    };
     div.innerHTML = `<span>${name}</span>`;
     div.appendChild(checkbox);
 
     assignableContactsContainer.appendChild(div);
   }
+}
+
+function toggleCheckbox(checkboxId) {
+  var checkbox = document.getElementById(checkboxId);
+  checkbox.checked = !checkbox.checked;
 }
 
 function getCurrentDate() {

@@ -313,11 +313,19 @@ async function renderAssignableContacts() {
     const name = users[i]["name"];
     const id = users[i]["id"];
     assignableContactsContainer.innerHTML += `
-      <div class="dropdown-object">
-        <span>${name}</span>
-        <input id="${id}" type="checkbox" value="${name}" data-id="${id}">
-      </div>
-      `;
+    <div class="dropdown-object" onclick="toggleCheckbox(event, '${id}')">
+    <span>${name}</span>
+    <input id="${id}" type="checkbox" value="${name}" data-id="${id}" onclick="event.stopPropagation()">
+  </div>
+  `;
+  }
+}
+
+function toggleCheckbox(event, checkboxId) {
+  // Überprüfe, ob das Anklicken der Checkbox selbst erfolgt ist
+  if (event.target.tagName !== "INPUT") {
+    var checkbox = document.getElementById(checkboxId);
+    checkbox.checked = !checkbox.checked;
   }
 }
 
