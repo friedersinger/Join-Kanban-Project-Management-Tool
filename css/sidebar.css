@@ -155,3 +155,9 @@
     width: 25px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .sidebar-container {
+    font-size: 12px;
+  }
+}
