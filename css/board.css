@@ -502,8 +502,9 @@
   .drop-area {
     align-items: center;
   }
+
   .board-task-card {
-    width: 40vw;
+    width: 58vw;
   }
 
   .board-content {
@@ -554,6 +555,10 @@
 @media only screen and (max-width: 756px) {
   .board-main-container {
     grid-column: 1/11;
+  }
+
+  .board-task-card {
+    width: 78vw;
   }
 
   .inner-content {
