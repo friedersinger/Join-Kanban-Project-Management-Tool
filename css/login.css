@@ -411,12 +411,6 @@ input[type="checkbox"] {
   align-items: center;
 }
 
-@media (min-width: 550px) {
-  .login-head-mobile {
-    display: none;
-  }
-}
-
 @media (max-width: 550px) {
   .start-join-logo img {
     height: 60px;
@@ -455,29 +449,13 @@ input[type="checkbox"] {
   }
 
   .login-head {
-    display: none;
-  }
-
-  .login-head-mobile {
     display: flex;
-    margin-top: 20px;
+    margin-top: 700px;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding-right: 6%;
     font-size: 17px;
-  }
-
-  .login-head-mobile button {
-    width: 75px;
-    height: 45px;
-    font-size: 14px;
-    font-weight: 600;
-    background-color: rgb(42, 54, 71);
-    color: rgb(255, 255, 255);
-    border-radius: 5px;
-    margin-left: 5%;
-    border: none;
   }
 
   .headline {

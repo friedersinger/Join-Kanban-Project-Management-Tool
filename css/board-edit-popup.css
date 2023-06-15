@@ -346,10 +346,6 @@ label {
   width: 197.77px;
 }
 
-#clearTask {
-  margin-right: 140px;
-}
-
 .form-control::placeholder {
   font-size: 16px;
 }
@@ -535,10 +531,6 @@ label {
   font-size: larger;
 }
 
-#clearTask {
-  margin-right: 70px !important;
-}
-
 input[type="date"]::-webkit-calendar-picker-indicator {
   width: 20px !important;
   height: 20px !important;
@@ -590,7 +582,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #clearTask {
-  margin-right: 70px !important;
+  margin-right: 70px;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -648,4 +640,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 20px !important;
   height: 20px !important;
   margin-left: 100px !important;
+}
+
+@media (max-height: 850px) {
+  #clearTask {
+    margin-right: 10px;
+  }
+
+  .prio div {
+    width: 200px;
+    font-size: 14px;
+  }
 }
