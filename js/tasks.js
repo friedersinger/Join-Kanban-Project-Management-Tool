@@ -312,21 +312,34 @@ async function renderAssignableContacts() {
   for (let i = 0; i < users.length; i++) {
     const name = users[i]["name"];
     const id = users[i]["id"];
-    assignableContactsContainer.innerHTML += `
-    <div class="dropdown-object" onclick="toggleCheckbox(event, '${id}')">
-    <span>${name}</span>
-    <input id="${id}" type="checkbox" value="${name}" data-id="${id}" onclick="event.stopPropagation()">
-  </div>
-  `;
+
+    const div = document.createElement("div");
+    div.className = "dropdown-object";
+    div.addEventListener("click", function () {
+      toggleCheckbox(id);
+    });
+
+    const span = document.createElement("span");
+    span.innerText = name;
+    div.appendChild(span);
+
+    const checkbox = document.createElement("input");
+    checkbox.id = id;
+    checkbox.type = "checkbox";
+    checkbox.value = name;
+    checkbox.dataset.id = id;
+    checkbox.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
+    div.appendChild(checkbox);
+    assignableContactsContainer.appendChild(div);
   }
 }
 
-function toggleCheckbox(event, checkboxId) {
-  // Überprüfe, ob das Anklicken der Checkbox selbst erfolgt ist
-  if (event.target.tagName !== "INPUT") {
-    var checkbox = document.getElementById(checkboxId);
-    checkbox.checked = !checkbox.checked;
-  }
+function toggleCheckbox(checkboxId) {
+  var checkbox = document.getElementById(checkboxId);
+  checkbox.checked = !checkbox.checked;
 }
 
 function renderCategoryList() {
