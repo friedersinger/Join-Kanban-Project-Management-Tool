@@ -326,7 +326,6 @@ async function deleteTask(id) {
 function editTask(id) {
   currentTaskID = id;
   let currentTask = tasks.find((task) => task.id == id);
-
   document.getElementById("taskContent").innerHTML = /*html*/ `
   
   <div id="overlayPopUpbg" class="overlay-board-bg" style="padding:21px">
@@ -426,8 +425,6 @@ function editTask(id) {
           <div id="dropdownContent" class="dropdown-content"></div>
         </div>
 
-        <div class="border"></div>
-
         <div class="column-right">
           <label>Due Date</label>
           <input
@@ -436,7 +433,7 @@ function editTask(id) {
             value="${currentTask["dueDate"]}"
             min="${getCurrentDate()}"
             required
-          /><br /><br />
+          />
         </div>
 
 
@@ -466,7 +463,7 @@ function editTask(id) {
 
           <label class="subtask">Subtasks</label>
           <div class="subtask-container">
-            <input type="text" id="subtask-input-content" />
+            <input type="text" id="subtask-input-content" placeholder="Subtasks .."/>
 
             <div id="subtaskOninput" style="display: flex">
               <img src="./assets/img/X.png" id="clearSubtaskInput" />
@@ -479,7 +476,7 @@ function editTask(id) {
             </div>
           </div>
 
-          <div id="subtaskContent"> test
+          <div id="subtaskContent" class="subCon">
           </div>
 
           <div class="action-button-container">
@@ -488,20 +485,22 @@ function editTask(id) {
               onclick="reloadPage()"
               src="./assets/img/cancel-task.svg"
             />
-            <button id="addTask" class="add-task-btn" type="submit">
+            <button id="editTask" class="add-task-btn" type="submit">
               Edit Task
             </button>
           </div>
         </form>
       </div>
     </div>`;
-      renderCategoryList();
-      showAssignedContacts(currentTask);
+  renderCategoryList();
+  showAssignedContacts(currentTask);
 }
 
 function showAssignedContacts(currentTask) {
   let assignableContactsContainer = document.getElementById("dropdownContent");
-  const assignedContacts = currentTask['assignments'].map((assignment) => assignment['name']);
+  const assignedContacts = currentTask["assignments"].map(
+    (assignment) => assignment["name"]
+  );
 
   for (let i = 0; i < users.length; i++) {
     const name = users[i]["name"];
@@ -525,8 +524,6 @@ function showAssignedContacts(currentTask) {
     assignableContactsContainer.appendChild(div);
   }
 }
-
-
 
 function getCurrentDate() {
   const today = new Date();

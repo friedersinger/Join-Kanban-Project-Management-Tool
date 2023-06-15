@@ -106,15 +106,15 @@ async function editTaskBoard(id) {
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskDueDate = document.getElementById("datePicker");
- 
-  currentTask['title'] = taskTitle.value;
-  currentTask['description'] = taskDescription.value;
-  currentTask['category'] = document.getElementById('categoryEdit').innerText;
-  currentTask['prio'] = document.getElementById('prioValue').innerText;
-  currentTask['color'] = selectedColor;
-  currentTask['assignments'] = validateForm();
-  currentTask['dueDate'] = taskDueDate.value;
-  currentTask['taskSub'] = subtasks;
+
+  currentTask["title"] = taskTitle.value;
+  currentTask["description"] = taskDescription.value;
+  currentTask["category"] = document.getElementById("categoryEdit").innerText;
+  currentTask["prio"] = document.getElementById("prioValue").innerText;
+  currentTask["color"] = selectedColor;
+  currentTask["assignments"] = validateForm();
+  currentTask["dueDate"] = taskDueDate.value;
+  currentTask["taskSub"] = subtasks;
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen
@@ -128,9 +128,7 @@ async function editTaskBoard(id) {
   await setItem("toDo", JSON.stringify(toDo));
 }
 
-function setCategory(){
-
-}
+function setCategory() {}
 
 async function deleteAllTasksFromServer() {
   try {
@@ -184,8 +182,8 @@ function getPrioStatus(prioStatus) {
   currentPrioStatus = prioStatus;
 }
 
-function setPrioStatus(prioStatus){
-  let prioValue = document.getElementById('prioValue');
+function setPrioStatus(prioStatus) {
+  let prioValue = document.getElementById("prioValue");
   prioValue.innerText = prioStatus;
 }
 
@@ -274,6 +272,38 @@ function showAddTaskPopUp() {
 // Funktion, um das Pop-up-Fenster zu verstecken
 function hideAddTaskPopUp() {
   var overlay = document.getElementById("addTaskPopUp");
+  overlay.style.display = "none";
+}
+
+function checkScreenWidth() {
+  document
+    .getElementById("editTaskPopUp")
+    .addEventListener("click", checkScreenWidth);
+
+  var screenWidth = window.innerWidth;
+
+  // Definiere die gewünschte Bildschirmbreite, ab der weitergeleitet wird
+  var targetWidth = 1351;
+
+  // Überprüfe, ob die Bildschirmbreite größer oder gleich der Zielbreite ist
+  if (screenWidth >= targetWidth) {
+    // Öffne das Pop-up-Fenster hier
+    showEditTaskPopUp();
+  } else {
+    // Leite zur anderen Seite weiter
+    window.location.href = "task_form.html";
+  }
+}
+
+// Funktion, um das Pop-up-Fenster anzuzeigen
+function showEditTaskPopUp() {
+  var overlay = document.getElementById("editTaskPopUp");
+  overlay.style.display = "block";
+}
+
+// Funktion, um das Pop-up-Fenster zu verstecken
+function hideEditTaskPopUp() {
+  var overlay = document.getElementById("editTaskPopUp");
   overlay.style.display = "none";
 }
 
@@ -376,14 +406,13 @@ function renderNormalCategoryField() {
 
 function saveSelectedCategory(element, color) {
   selectedCategory = element.innerText;
-  let dataField = document.getElementById('categoryEdit')
+  let dataField = document.getElementById("categoryEdit");
   dataField.innerText = selectedCategory;
   let dropdownMin = document.getElementById("dropdownMinCategory");
   dropdownMin.querySelector("span").innerText = selectedCategory;
   selectedColor = color;
   toggleDropdownCategory();
 }
-
 
 function toggleDropdown() {
   let dropdownContent = document.getElementById("dropdownContent");
@@ -470,7 +499,7 @@ function selectColor(id) {
 function checkNewCategory() {
   const newCategoryInput = document.getElementById("new-category");
   const categoryDisplay = document.getElementById("categoryDisplay");
-  const dataField = document.getElementById('categoryEdit');
+  const dataField = document.getElementById("categoryEdit");
 
   if (selectedColor && newCategoryInput.value !== "") {
     selectedCategory = newCategoryInput.value;
