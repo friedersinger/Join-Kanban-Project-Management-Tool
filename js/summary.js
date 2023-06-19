@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-async function initSummary(){
+async function initSummary() {
   await renderGreeting();
   await loadTasks();
   await loadtoDos();
@@ -35,17 +35,6 @@ async function initSummary(){
   countTasks();
   countUrgent();
 }
-
-// /**
-//  * shows name of logged in user at greeting
-//  */
-// function renderGreeting() {
-//   document.getElementById("greeting-sentence").innerText = getDaytimeGreeting();
-//   document.getElementById("greeting_name").innerText = "Guest";
-//   if (activeUser != "Guest") {
-//     document.getElementById("greeting_name").innerText = activeUser;
-//   }
-// }
 
 async function renderGreeting() {
   document.getElementById("greeting_sentence").innerText = getDaytimeGreeting();
@@ -74,14 +63,11 @@ function getDaytimeGreeting() {
   }
 }
 
-
 function redirectToBoard() {
   window.location.href = "board.html";
 }
 
-
 function countTasks() {
-  
   let toDoVar = toDo.length;
   let inProgressVar = inProgress.length;
   let feedbackVar = feedback.length;
@@ -107,29 +93,30 @@ function countUrgent() {
   });
 
   document.getElementById("urgent-counter").innerHTML = urgentCount;
-
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   getCurrentDay();
 });
 
-
 /**
  * users date today
-*/
-function getCurrentDay(){
+ */
+function getCurrentDay() {
   let currentDay = new Date().toLocaleString();
   currentDay = currentDay.slice(0, 10);
   let currentDayArray = currentDay.split(".");
   let currentMonth = getCurrentMonth(currentDayArray[1]);
-  currentDay = currentMonth + " " + currentDayArray[0] + ", " + currentDayArray[2];
-  
-  document.getElementById('currentDate').innerHTML = `<strong>${currentDay}</strong>`;
+  currentDay =
+    currentMonth + " " + currentDayArray[0] + ", " + currentDayArray[2];
+
+  document.getElementById(
+    "currentDate"
+  ).innerHTML = `<strong>${currentDay}</strong>`;
 }
 
-function getCurrentMonth(i){
+function getCurrentMonth(i) {
   const date = new Date();
   date.setMonth(i - 1);
-  return date.toLocaleString('en-us', {month: 'long'});
+  return date.toLocaleString("en-us", { month: "long" });
 }
