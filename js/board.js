@@ -438,11 +438,10 @@ function showHiddenTask(id) {
   }
 }
 
-function showTickableSubtasks(currentTask){
+async function showTickableSubtasks(currentTask){
   let subtasksContainer = document.getElementById('subtaskContent');
   for (let i = 0; i < currentTask['taskSub'].length; i++) {
     const subtask = currentTask['taskSub'][i]['task'];
-    const id = users[i]["id"];
     const checkbox = document.createElement("input");
     checkbox.id = id;
     checkbox.type = "checkbox";
@@ -455,8 +454,29 @@ function showTickableSubtasks(currentTask){
     subtasksContainer.appendChild(div)
 
   }
+  await getSubtasks();
 }
 
-function getSubtasks(){
+async function setSubtasks(){
+  await setItem("subtasksClosed", JSON.stringify(subtasksClosed));
+  await setItem("subtasksOpened", JSON.stringify(subtasksOpened));
+}
 
+async function getSubtasks(){
+  subtasksClosed = JSON.parse(await getItem("subtasksClosed"));
+  subtasksOpened = JSON.parse(await getItem("subtasksOpened"));
+}
+
+// Funktion zum Auslesen der ausgewählten Checkbox-Werte
+function validateSubtasksForm() {
+  let selectedSubtasks = [];
+  let checkboxes = document.querySelectorAll(
+    "#subtaskContent input[type=checkbox]:checked"
+  );
+
+  for (var i = 0; i < checkboxes.length; i++) {
+    const value = checkboxes[i].value;
+    selectedSubtasks.push({ name: value });
+  }
+  return selectedValues;
 }

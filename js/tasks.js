@@ -31,7 +31,7 @@ async function addNewTask() {
     category: selectedCategory,
     prio: currentPrioStatus,
     color: selectedColor,
-    assignments: validateForm(),
+    assignments: validateAssignmentForm(),
     dueDate: taskDueDate.value,
     taskSub: subtasks,
     id: currentTaskID,
@@ -112,7 +112,7 @@ async function editTaskBoard(id) {
   currentTask["category"] = document.getElementById("categoryEdit").innerText;
   currentTask["prio"] = document.getElementById("prioValue").innerText;
   currentTask["color"] = selectedColor;
-  currentTask["assignments"] = validateForm();
+  currentTask["assignments"] = validateAssignmentForm();
   currentTask["dueDate"] = taskDueDate.value;
   currentTask["taskSub"] = subtasks;
 
@@ -454,7 +454,7 @@ function toggleDropdownCategory() {
 }
 
 // Funktion zum Auslesen der ausgewählten Checkbox-Werte
-function validateForm() {
+function validateAssignmentForm() {
   let selectedValues = [];
   let checkboxes = document.querySelectorAll(
     "#dropdownContent input[type=checkbox]:checked"
