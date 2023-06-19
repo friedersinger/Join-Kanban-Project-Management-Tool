@@ -396,7 +396,7 @@
 .board-task-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   padding: 18px 19px;
   margin-bottom: 20px;
