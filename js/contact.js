@@ -305,11 +305,13 @@ function giveContactDetailsHTML(name, mail, initials, id, color, phone) {
     </div>
 
     <div class="flex-column gap-15">
-      <span class="font-weight-700">Phone</span>
-      <div id="phone" style="display: ${phoneDisplay}">
-        <a href="${phone}" id="phoneDetail">${phone}</a>
-      </div>
+    <span class="font-weight-700">Phone</span>
+    <div id="phone" style="display: ${phoneDisplay}">
+      <a href="${phone || "add Details"}" id="phoneDetail">${
+    phone || "add Details"
+  }</a>
     </div>
+  </div>
   `;
 }
 
@@ -361,11 +363,14 @@ function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
         </div>
 
         <div class="flex-column gap-15 margin-left-60">
-          <span class="font-weight-700">Phone</span>
-          <div id="phone">
-            <a href="${phone}" id="phoneDetail">${phone}</a>
-          </div>
-        </div>
+  <span class="font-weight-700">Phone</span>
+  <div id="phone">
+    <a href="${phone || "add Details"}" id="phoneDetail">${
+    phone || "add Details"
+  }</a>
+  </div>
+</div>
+
 
         <div class="mobile-btn-column">
   <svg   onclick="deleteCard(${id}); returnToContactList() " width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -469,11 +474,11 @@ function loadContactToEditPopUp(id) {
   let currentContact = contacts.find((contact) => contact.id == id);
   const name = currentContact["name"];
   const mail = currentContact["email"];
-  let tel = currentContact["tel"];
+  let tel = currentContact["phone"];
   if (!tel) {
     tel = "nicht vergeben";
   } else {
-    tel = currentContact["tel"];
+    tel = currentContact["phone"];
   }
   overlayContainer.innerHTML = "";
   overlayContainer.innerHTML += getEditHTML(name, mail, tel, id);
