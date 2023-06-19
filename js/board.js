@@ -281,6 +281,7 @@ function editTask(id) {
   document.getElementById("taskContent").innerHTML = editTaskHTML(currentTask);
   renderCategoryList();
   showAssignedContacts(currentTask);
+  showTickableSubtasks(currentTask);
 }
 
 function showAssignedContacts(currentTask) {
@@ -435,4 +436,27 @@ function showHiddenTask(id) {
       taskCardContainer.style.opacity = "1";
     }, 100);
   }
+}
+
+function showTickableSubtasks(currentTask){
+  let subtasksContainer = document.getElementById('subtaskContent');
+  for (let i = 0; i < currentTask['taskSub'].length; i++) {
+    const subtask = currentTask['taskSub'][i]['task'];
+    const id = users[i]["id"];
+    const checkbox = document.createElement("input");
+    checkbox.id = id;
+    checkbox.type = "checkbox";
+    checkbox.value = subtask;
+    
+    const div = document.createElement("div");
+    div.innerHTML = `<span>${subtask}</span>`;
+    div.appendChild(checkbox);
+    
+    subtasksContainer.appendChild(div)
+
+  }
+}
+
+function getSubtasks(){
+
 }

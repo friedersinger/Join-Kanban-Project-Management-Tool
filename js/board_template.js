@@ -149,7 +149,8 @@ function editTaskHTML(currentTask) {
               </div>
             </div>
   
-            <div id="subtaskContent" class="subCon">
+            <div class="subCon">
+              <ul id="subtaskContent"></ul>
             </div>
   
             <div class="action-button-container">
