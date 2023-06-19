@@ -271,6 +271,32 @@
   border: 1px solid #ffffff;
 }
 
+/* Firefox */
+.inner-content2 {
+  overflow: auto;
+  height: 440px;
+  gap: 20px;
+  display: grid;
+  align-items: start;
+  scrollbar-width: auto;
+  scrollbar-color: #2a3647 #f6f7f8;
+}
+
+/* Chrome, Edge, and Safari */
+.inner-content2::-webkit-scrollbar {
+  width: 10px;
+}
+
+.inner-content2::-webkit-scrollbar-track {
+  background-color: #f6f7f8;
+}
+
+.inner-content2::-webkit-scrollbar-thumb {
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
 .subtask-container input {
   border: none;
   width: 100%;
@@ -395,6 +421,28 @@
 .board-task-card:hover {
   transform: scale(1.05);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Firefox */
+.board-task-card {
+  overflow: auto;
+  scrollbar-width: auto;
+  scrollbar-color: #2a3647 #f6f7f8;
+}
+
+/* Chrome, Edge, and Safari */
+.board-task-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.board-task-card::-webkit-scrollbar-track {
+  background-color: #f6f7f8;
+}
+
+.board-task-card::-webkit-scrollbar-thumb {
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
 }
 
 .task-card-category {

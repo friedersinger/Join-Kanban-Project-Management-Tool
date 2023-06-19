@@ -178,6 +178,7 @@ function getTaskDetailCardHTML(task) {
               <button class="close-btn" onclick="closePopup()">X</button>
             </div>
             <span class="headline-text-popup">${task["title"]}</span>
+            <div class="inner-content2">
             <span>${task["description"]}</span>
             <span class="font-weight-700">Due date: ${task["dueDate"]}</span>
             <div class="flex-row align-center gap-15" id="prioDetail">  
@@ -191,31 +192,31 @@ function getTaskDetailCardHTML(task) {
               <span class="font-weight-700">Subtasks:</span>
               <ul class="subtasks-container" id="subtasksContainer"></ul>
             </div>
-  
           </div>
-        
+        </div>
+          
           <div class="Task-Bottom-Content">
-  
+            
             <svg onclick="deleteTask(${task.id})" class="trash-popUp" width="45" height="46" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_57121_3508" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
-              <rect width="32" height="32" fill="#D9D9D9"/>
+                <rect width="32" height="32" fill="#D9D9D9"/>
               </mask>
               <g mask="url(#mask0_57121_3508)">
-              <path d="M9.33289 28C8.59955 28 7.97177 27.7389 7.44955 27.2167C6.92733 26.6944 6.66622 26.0667 6.66622 25.3333V8H5.33289V5.33333H11.9996V4H19.9996V5.33333H26.6662V8H25.3329V25.3333C25.3329 26.0667 25.0718 26.6944 24.5496 27.2167C24.0273 27.7389 23.3996 28 22.6662 28H9.33289ZM22.6662 8H9.33289V25.3333H22.6662V8ZM11.9996 22.6667H14.6662V10.6667H11.9996V22.6667ZM17.3329 22.6667H19.9996V10.6667H17.3329V22.6667Z" fill="#2A3647"/>
+                <path d="M9.33289 28C8.59955 28 7.97177 27.7389 7.44955 27.2167C6.92733 26.6944 6.66622 26.0667 6.66622 25.3333V8H5.33289V5.33333H11.9996V4H19.9996V5.33333H26.6662V8H25.3329V25.3333C25.3329 26.0667 25.0718 26.6944 24.5496 27.2167C24.0273 27.7389 23.3996 28 22.6662 28H9.33289ZM22.6662 8H9.33289V25.3333H22.6662V8ZM11.9996 22.6667H14.6662V10.6667H11.9996V22.6667ZM17.3329 22.6667H19.9996V10.6667H17.3329V22.6667Z" fill="#2A3647"/>
               </g>
-              </svg>
-  
-              
+            </svg>
+            
+            
             <div class="task-popup-bottom-trash-edit-line"></div> 
-              
-  
+            
+            
             <svg  onclick="editTask(${task.id})" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="50" height="50" rx="10" fill="#2A3647"/>
               <path d="M17.4445 32.0155L22.2638 34.9404L34.907 14.1083C35.1935 13.6362 35.043 13.0211 34.5709 12.7346L31.4613 10.8474C30.9892 10.5608 30.3742 10.7113 30.0876 11.1834L17.4445 32.0155Z" fill="white"/>
               <path d="M16.8604 32.9794L21.6797 35.9043L16.9511 38.1892L16.8604 32.9794Z" fill="white"/>
-              </svg>
-              
-  
+            </svg>
+            
+            
           </div>
         </div>
       `;
