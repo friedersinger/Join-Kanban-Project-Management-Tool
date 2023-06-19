@@ -237,11 +237,17 @@ function redirectToAddTask() {
 }
 
 function getTaskCardHTML(currentTask, status) {
-  return `
+  return /*html*/`
   <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})" id="${currentTask["id"]}">
     <div class="task-card-category" id="taskCategoryContainer" style="background-color:${currentTask["color"]} ">${currentTask["category"]}</div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
+    <div class="task-card-bottom-container align-center margin-bottom-10">
+      <div class="subtasks-border">
+        <div id="subtasksStatus" class="subtasks-status"></div>
+      </div>
+      <span id="subtasksCounter">Test</span>
+    </div>
     <div class="task-card-bottom-container">
       <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
       <div class="task-card-prio">

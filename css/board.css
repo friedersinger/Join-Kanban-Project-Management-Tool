@@ -348,6 +348,20 @@
   gap: 15px;
 }
 
+.subtasks-status{
+  width: 75%;
+  background-color: #29ABE2;
+  border-radius: 10px;
+  color: white;
+  height: 10px;
+}
+
+.subtasks-border{
+  width: 80%;
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
 .inner-content {
@@ -516,6 +530,10 @@
   flex-direction: row;
 }
 
+.width-100{
+  width: 100%;
+}
+
 .justify-space-between {
   justify-content: space-between;
   align-items: center;
@@ -527,6 +545,14 @@
 
 .subtask-container {
   margin: unset !important;
+}
+
+#subtasksCounter{
+  font-size: 12px;
+}
+
+.margin-bottom-10{
+  margin-bottom: 10px;
 }
 
 /* ********* Breakpoints ********* */
@@ -543,6 +569,7 @@
 @media only screen and (max-width: 1555px) {
   .board-task-card {
     width: 15vw;
+    overflow: hidden;
   }
 }
 
