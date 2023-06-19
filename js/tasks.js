@@ -46,7 +46,7 @@ async function addNewTask() {
 
   setTimeout(() => {
     taskAddedElement.classList.add("d-none"); // Füge die Klasse "d-none" hinzu, um das Element auszublenden
-    reloadPage(); // Rufe die Funktion zum Neuladen der Seite auf
+    redirectToBoard(); // Rufe die Funktion zum Neuladen der Seite auf
   }, 1000); // Warte vier Sekunden (4000 Millisekunden) und führe dann den Code im setTimeout-Callback aus
 
   await setItem("tasks", JSON.stringify(tasks));
@@ -241,6 +241,10 @@ async function TaskButtonLow() {
 
 function reloadPage() {
   location.reload();
+}
+
+function redirectToBoard() {
+  window.location.href = "board.html";
 }
 
 function checkScreenWidth() {

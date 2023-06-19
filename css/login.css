@@ -450,7 +450,7 @@ input[type="checkbox"] {
 
   .login-head {
     display: flex;
-    margin-top: 700px;
+    margin-top: 962px;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -620,4 +620,52 @@ input[type="checkbox"] {
   font-size: 14px;
   margin-top: 12px;
   transition: all 225ms ease-in-out;
+}
+
+@media (max-height: 1100px) {
+  .login-head {
+    margin-top: 900px !important;
+  }
+}
+
+@media (max-height: 1000px) {
+  .login-head {
+    margin-top: 800px !important;
+  }
+}
+
+@media (max-height: 900px) {
+  .login-head {
+    margin-top: 700px !important;
+  }
+}
+
+@media (max-height: 800px) {
+  .login-head {
+    margin-top: 650px !important;
+  }
+}
+
+@media (max-height: 750px) {
+  .login-head {
+    margin-top: 600px !important;
+  }
+}
+
+@media (max-height: 700px) {
+  .login-head {
+    margin-top: 570px !important;
+  }
+}
+
+@media (max-height: 650px) {
+  .login-head {
+    margin-top: 540px !important;
+  }
+}
+
+@media (max-height: 600px) {
+  .login-head {
+    margin-top: 500px !important;
+  }
 }

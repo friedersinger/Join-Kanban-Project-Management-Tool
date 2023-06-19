@@ -416,6 +416,26 @@ function giveContactDetailsMobileHTML(name, mail, initials, id, color, phone) {
   `;
 }
 
+function checkScreenWidth() {
+  document
+    .getElementById("addTaskPopUp")
+    .addEventListener("click", checkScreenWidth);
+
+  var screenWidth = window.innerWidth;
+
+  // Definiere die gewünschte Bildschirmbreite, ab der weitergeleitet wird
+  var targetWidth = 1351;
+
+  // Überprüfe, ob die Bildschirmbreite größer oder gleich der Zielbreite ist
+  if (screenWidth >= targetWidth) {
+    // Öffne das Pop-up-Fenster hier
+    showAddTaskPopUp();
+  } else {
+    // Leite zur anderen Seite weiter
+    window.location.href = "task_form.html";
+  }
+}
+
 async function deleteCard(id) {
   try {
     let contacts = await getItem("contacts");
@@ -600,4 +620,3 @@ async function saveEditContact(id) {
     console.error(`Kontakt mit ID "${id}" wurde nicht gefunden.`);
   }
 }
-
