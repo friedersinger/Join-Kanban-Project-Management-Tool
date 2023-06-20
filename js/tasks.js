@@ -117,6 +117,7 @@ async function addNewSubTask() {
   }
 }
 
+
 async function editTaskBoard(id) {
   let currentTask = tasks.find((task) => task.id == id);
   let taskTitle = document.getElementById("title");
@@ -130,11 +131,12 @@ async function editTaskBoard(id) {
   currentTask["color"] = selectedColor;
   currentTask["assignments"] = validateAssignmentForm();
   currentTask["dueDate"] = taskDueDate.value;
-  //currentTask["taskSub"] = subtasks;
   validateSubtasksForm(currentTask);
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen
+
+  setCategoryForEdit(currentTask);
 
   setTimeout(() => {
     taskAddedElement.classList.add("d-none"); // Füge die Klasse "d-none" hinzu, um das Element auszublenden
@@ -143,6 +145,10 @@ async function editTaskBoard(id) {
 
   await setItem("tasks", JSON.stringify(tasks));
   await setItem("toDo", JSON.stringify(toDo));
+}
+
+async function setCategoryForEdit(currentTask) {
+  document.getElementById("categoryEdit").innerText = currentTask['category'];
 }
 
 async function deleteAllTasksFromServer() {

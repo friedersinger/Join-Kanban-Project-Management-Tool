@@ -282,6 +282,7 @@ function editTask(id) {
   renderCategoryList();
   showAssignedContacts(currentTask);
   showTickableSubtasks(currentTask);
+  setCategoryForEdit(currentTask);
 }
 
 function showAssignedContacts(currentTask) {
