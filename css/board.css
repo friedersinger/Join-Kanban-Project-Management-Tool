@@ -348,15 +348,15 @@
   gap: 15px;
 }
 
-.subtasks-status{
+.subtasks-status {
   width: 75%;
-  background-color: #29ABE2;
+  background-color: #29abe2;
   border-radius: 10px;
   color: white;
   height: 10px;
 }
 
-.subtasks-border{
+.subtasks-border {
   width: 80%;
   background-color: lightgray;
   border-radius: 10px;
@@ -530,13 +530,19 @@
   flex-direction: row;
 }
 
-.width-100{
+.width-100 {
   width: 100%;
 }
 
 .justify-space-between {
   justify-content: space-between;
   align-items: center;
+}
+
+.subtasks-row {
+  align-items: center;
+  display: flex;
+  gap: 15px;
 }
 
 .rotate {
@@ -547,11 +553,11 @@
   margin: unset !important;
 }
 
-#subtasksCounter{
+#subtasksCounter {
   font-size: 12px;
 }
 
-.margin-bottom-10{
+.margin-bottom-10 {
   margin-bottom: 10px;
 }
 

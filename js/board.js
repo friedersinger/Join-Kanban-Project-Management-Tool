@@ -244,9 +244,9 @@ function getTaskCardHTML(currentTask, status) {
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
     <div class="task-card-bottom-container align-center margin-bottom-10">
       <div class="subtasks-border">
-        <div id="subtasksStatus" class="subtasks-status"></div>
+        <div id="subtasksStatus" style="width:${(currentTask['subtasksClosed'].length / currentTask['taskSub'].length) * 100}%" class="subtasks-status"></div>
       </div>
-      <span id="subtasksCounter">Test</span>
+      <span id="subtasksCounter">${currentTask['subtasksClosed'].length}/${currentTask['taskSub'].length} done</span>
     </div>
     <div class="task-card-bottom-container">
       <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
@@ -286,7 +286,7 @@ function editTask(id) {
 
 function showAssignedContacts(currentTask) {
   let assignableContactsContainer = document.getElementById("dropdownContent");
-  const assignedContacts = currentTask["assignments"].map(
+  const assignedContacts = currentTask["assignments"].map(  //erstellt ein neues Array nur mit "Name"s aus assignments-Array
     (assignment) => assignment["name"]
   );
 
@@ -438,44 +438,48 @@ function showHiddenTask(id) {
   }
 }
 
-async function showTickableSubtasks(currentTask){
+async function showTickableSubtasks(currentTask) {
   let subtasksContainer = document.getElementById('subtaskContent');
+  subtasksContainer.innerHTML = "";
+
   for (let i = 0; i < currentTask['taskSub'].length; i++) {
     const subtask = currentTask['taskSub'][i]['task'];
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.value = subtask;
-    
+
+    const isClosed = currentTask['subtasksClosed'].some((sub) => sub.name === subtask);
+    checkbox.checked = isClosed;
+
     const div = document.createElement("div");
+    div.classList.add('subtasks-row');
     div.innerHTML = `<span>${subtask}</span>`;
-    div.appendChild(checkbox);
-    
-    subtasksContainer.appendChild(div)
+    div.insertBefore(checkbox, div.firstChild);
 
+    subtasksContainer.appendChild(div);
   }
-  //await getSubtasks();
 }
 
-async function setSubtasks(){
-  await setItem("subtasksClosed", JSON.stringify(subtasksClosed));
-  await setItem("subtasksOpened", JSON.stringify(subtasksOpened));
-}
 
-async function getSubtasks(){
-  subtasksClosed = JSON.parse(await getItem("subtasksClosed"));
-  subtasksOpened = JSON.parse(await getItem("subtasksOpened"));
-}
 
 // Funktion zum Auslesen der ausgewählten Checkbox-Werte
-function validateSubtasksForm() {
-  let selectedSubtasks = [];
+function validateSubtasksForm(currentTask) {
+  currentTask['subtasksClosed'] = [];
+  currentTask['subtasksOpened'] = [];
+
   let checkboxes = document.querySelectorAll(
     "#subtaskContent input[type=checkbox]:checked"
+  );
+  let NullCheckboxes = document.querySelectorAll(
+    "#subtaskContent input[type=checkbox]:not(:checked)"
   );
 
   for (var i = 0; i < checkboxes.length; i++) {
     const value = checkboxes[i].value;
-    selectedSubtasks.push({ name: value });
+    currentTask['subtasksClosed'].push({ name: value });
   }
-  return selectedSubtasks;
+  for (var i = 0; i < NullCheckboxes.length; i++) {
+    const value = NullCheckboxes[i].value;
+    currentTask['subtasksOpened'].push({ name: value });
+  }
 }

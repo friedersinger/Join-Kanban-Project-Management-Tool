@@ -88,7 +88,21 @@ async function subTaskAddToJson() {
     task: task.value,
   });
 
+
   addNewSubTask();
+  task.value = "";
+}
+
+async function addSubtaskFromEdit(id) {
+  let currentTask = tasks.find((task) => task.id == id);
+  let task = document.getElementById("subtask-input-content");
+  currentTask['taskSub'].push({
+    task: task.value,
+  });
+  currentTask['subtasksOpened'].push({
+    task: task.value,
+  });
+  await showTickableSubtasks(currentTask);
   task.value = "";
 }
 
@@ -116,7 +130,8 @@ async function editTaskBoard(id) {
   currentTask["color"] = selectedColor;
   currentTask["assignments"] = validateAssignmentForm();
   currentTask["dueDate"] = taskDueDate.value;
-  currentTask["taskSub"] = subtasks;
+  //currentTask["taskSub"] = subtasks;
+  validateSubtasksForm(currentTask);
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen

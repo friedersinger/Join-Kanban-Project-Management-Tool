@@ -143,14 +143,14 @@ function editTaskHTML(currentTask) {
                 <div class="border-subtask"></div>
                 <img
                   src="./assets/img/icon_check.svg"
-                  onclick="subTaskAddToJson()"
+                  onclick="addSubtaskFromEdit('${currentTask['id']}')"
                   id="finishEditingSubtask"
                 />
               </div>
             </div>
   
-            <div class="subCon">
-              <ul id="subtaskContent"></ul>
+            <div class="subCon" id="subtaskContent">
+              
             </div>
   
             <div class="action-button-container">
