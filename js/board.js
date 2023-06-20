@@ -443,7 +443,6 @@ async function showTickableSubtasks(currentTask){
   for (let i = 0; i < currentTask['taskSub'].length; i++) {
     const subtask = currentTask['taskSub'][i]['task'];
     const checkbox = document.createElement("input");
-    checkbox.id = id;
     checkbox.type = "checkbox";
     checkbox.value = subtask;
     
@@ -454,7 +453,7 @@ async function showTickableSubtasks(currentTask){
     subtasksContainer.appendChild(div)
 
   }
-  await getSubtasks();
+  //await getSubtasks();
 }
 
 async function setSubtasks(){
@@ -478,5 +477,5 @@ function validateSubtasksForm() {
     const value = checkboxes[i].value;
     selectedSubtasks.push({ name: value });
   }
-  return selectedValues;
+  return selectedSubtasks;
 }

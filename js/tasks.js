@@ -34,6 +34,8 @@ async function addNewTask() {
     assignments: validateAssignmentForm(),
     dueDate: taskDueDate.value,
     taskSub: subtasks,
+    subtasksOpened: subtasks,
+    subtasksClosed: [],
     id: currentTaskID,
 
     /*assignName: assignName.value*/
@@ -127,8 +129,6 @@ async function editTaskBoard(id) {
   await setItem("tasks", JSON.stringify(tasks));
   await setItem("toDo", JSON.stringify(toDo));
 }
-
-function setCategory() {}
 
 async function deleteAllTasksFromServer() {
   try {
