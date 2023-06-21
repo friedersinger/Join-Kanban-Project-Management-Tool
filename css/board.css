@@ -561,6 +561,13 @@
   margin-bottom: 10px;
 }
 
+
+.task-card-top-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 120px;
+}
+
 /* ********* Breakpoints ********* */
 
 @media only screen and (max-width: 1777px) {

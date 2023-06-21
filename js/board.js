@@ -239,7 +239,18 @@ function redirectToAddTask() {
 function getTaskCardHTML(currentTask, status) {
   return /*html*/`
   <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})" id="${currentTask["id"]}">
-    <div class="task-card-category" id="taskCategoryContainer" style="background-color:${currentTask["color"]} ">${currentTask["category"]}</div>
+    <div class="task-card-top-div">
+      <div class="task-card-category" id="taskCategoryContainer" style="background-color:${currentTask["color"]} ">${currentTask["category"]}</div>
+    <div>
+      <select class="dropdown-menu">
+        <option>Status</option>
+        <option onclick="updateTaskStatus(${currentTask["id"]}, 'To Do')" value="To Do">To Do</option>
+        <option onclick="updateTaskStatus(${currentTask["id"]}, 'In progress')" value="In progress">In progress</option>
+        <option onclick="updateTaskStatus(${currentTask["id"]}, 'Awaiting feedback')" value="Awaiting feedback">Awaiting feedback</option>
+        <option onclick="updateTaskStatus(${currentTask["id"]}, 'Done'); window.location.reload();" value="Done">Done</option>
+      </select>
+     </div>
+   </div>
     <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
     <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
     <div class="task-card-bottom-container align-center margin-bottom-10">
@@ -251,11 +262,59 @@ function getTaskCardHTML(currentTask, status) {
     <div class="task-card-bottom-container">
       <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
       <div class="task-card-prio">
-      <img id="imgUrgentTask" src="./assets/img/icon_${currentTask["prio"]}.png" alt="" />
+        <img id="imgUrgentTask" src="./assets/img/icon_${currentTask["prio"]}.png" alt="" />
       </div>
     </div>
   </div>`;
 }
+
+
+function updateTaskStatus(taskId, newStatus) {
+  const task = findTaskById(taskId); // Funktion, um den Task anhand der taskId zu finden
+  if (!task) {
+    return; // Task nicht gefunden, beende die Funktion
+  }
+
+  // Entferne den Task aus dem vorherigen Array basierend auf dem aktuellen Status
+  switch (task.status) {
+    case "To Do":
+      toDo = toDo.filter((t) => t.id !== taskId);
+      break;
+    case "In progress":
+      inProgress = inProgress.filter((t) => t.id !== taskId);
+      break;
+    case "Awaiting feedback":
+      feedback = feedback.filter((t) => t.id !== taskId);
+      break;
+    case "Done":
+      done = done.filter((t) => t.id !== taskId);
+      break;
+    default:
+      break;
+  }
+
+  // Aktualisiere den Status des Tasks und füge ihn in das entsprechende Array ein
+  task.status = newStatus;
+  switch (newStatus) {
+    case "To Do":
+      toDo.push(task);
+      break;
+    case "In progress":
+      inProgress.push(task);
+      break;
+    case "Awaiting feedback":
+      feedback.push(task);
+      break;
+    case "Done":
+      done.push(task);
+      break;
+    default:
+      break;
+  }
+
+  initBoard();
+}
+
 
 function closePopup() {
   let overlay = document.getElementById("overlay");
