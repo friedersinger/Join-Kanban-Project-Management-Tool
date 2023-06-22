@@ -24,6 +24,164 @@
   </head>
 
   <body onload="includeHTML();initBoard()">
+
+    <!--AddTask PopUp -->
+
+    <div id="overlayPopUpbg" class="overlay-board-bg d-none">
+              
+      <div class="overlayBoardBg">
+        <div class="justify-end">
+          <div class="close-btn cursor-pointer" onclick="hideAddTaskPopUp()">
+            <svg
+            width="31"
+            height="31"
+            viewBox="0 0 31 31"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.9614 7.65381L7.65367 22.9616"
+              stroke="#2A3647"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M22.8169 23.106L7.50914 7.7982"
+              stroke="#2A3647"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          </div>
+        </div>
+        <div class="task-card task-card-scroll">
+          <div class="margin-bottom-60">
+            <span class="headline-text">Add Task</span>
+          </div>
+        <div class="flex-row align-center justify-between">
+          <div class="form center">
+            <form class="column-container-addTask" onsubmit="" ; return false>
+              <div class="column-left">
+                <label>Title</label>
+      
+                <input type="text" id="titleTaskPopUp" placeholder="Enter a title" required />
+      
+                <label>Description</label>
+      
+                <textarea
+                  id="description"
+                  placeholder="Enter a description"
+                ></textarea>
+      
+                <label>Category</label>
+      
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                  onchange="getSelectedOption()"
+                >
+                  <option selected="">Select task category</option>
+                  <option value="1">New category</option>
+                  <option value="2">Sales</option>
+                  <option value="3">Backoffice</option>
+                </select>
+      
+                <div id="inputField" style="display: none;">
+                  <input type="text" class="form-control" placeholder="Enter new category" id="textInput">
+                  <div class="inputColorField" id="colorPicker">
+                    <div onclick="pickedColor(`color1`)" id="color1" class="color-option" style="background-color: #FF0000;"></div> <!-- Red -->
+                    <div onclick="pickedColor(`color2`)" id="color2" class="color-option" style="background-color: #00FF00;"></div> <!-- Green -->
+                    <div onclick="pickedColor(`color3`)" id="color3" class="color-option" style="background-color: #0000FF;"></div> <!-- Blue -->
+                    <div onclick="pickedColor(`color4`)" id="color4" class="color-option" style="background-color: #FFFF00;"></div> <!-- Yellow -->
+                    <div onclick="pickedColor(`color5`)" id="color5" class="color-option" style="background-color: #FF00FF;"></div> <!-- Magenta -->
+                  </div>
+                </div>
+      
+                <label>Assigned to</label>
+      
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                  onchange="getSelectedAssignment()"
+                  id="assignMenu"
+                >
+                  <option selected="">Select task category</option>
+                  <option value="1">New category</option>
+                  <option value="2">Sales</option>
+                  <option value="3">Backoffice</option>
+                </select>
+              </div>
+              <div class="border-margin"></div>
+      
+              <div class="column-right">
+                <label>Due Date</label>
+      
+                <input
+                  min="2023-05-08"
+                  id="datePicker"
+                  type="date"
+                  placeholder="Enter a description"
+                  required
+                /><br /><br />
+      
+                <label>Prio</label>
+      
+                <div id="prio" class="prio">
+                  <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent()">
+                    Urgent
+                    <img id="imgUrgent" src="./assets/img/icon_up.png" alt="" />
+                  </div>
+                  <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium()">
+                    Medium
+                    <img id="imgMedium" src="./assets/img/icon_medium.png" alt="" />
+                  </div>
+                  <div class="prio-btn" id="prioLow" onclick="TaskButtonLow()">
+                    Low
+                    <img id="imgLow" src="./assets/img/icon_down.png" alt="" />
+                  </div>
+                </div>
+      
+                <label class="subtask">Subtasks</label>
+                <div class="subtask-container">
+                  <input type="text" id="subtask-input-content" />
+      
+                  <div id="subtaskOninput" style="display: flex">
+                    <img src="./assets/img/X.png" id="clearSubtaskInput" />
+                    <div class="border-subtask"></div>
+                    <img
+                      src="./assets/img/icon_check.svg"
+                      onclick="subTaskAddToJson()"
+                      id="finishEditingSubtask"
+                    />
+                  </div>
+                </div>
+      
+                <div id="subtaskContent"></div>
+      
+                <div class="action-button-container">
+                  <img
+                    id="clearTask"
+                    onclick="hideAddTaskPopUp()"
+                    src="./assets/img/cancel-task.svg"
+                  />
+                  <button id="addTask" class="add-task-btn-board" type="submit">
+                    Create Task
+                  </button>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
     <div class="overlay-bg d-none" id="overlay"></div>
     <div
       class="sidebar-container"
@@ -38,6 +196,7 @@
       <span id="headline-mobile" class="headline-text-mobile"
         >Kanban Project Management Tool</span
       >
+
       <div class="headline-container">
         <div class="headline-left">
           <span class="headline-text headline-text-container">Board</span>
@@ -84,7 +243,7 @@
           <div class="task-type">
             <span>To Do</span>
             <svg
-              onclick="redirectToAddTask()"
+              onclick="showAddTaskPopUp()"
               class="svg"
               width="30"
               height="30"
@@ -129,7 +288,7 @@
           <div class="task-type">
             <span>In progress</span>
             <svg
-              onclick="redirectToAddTask()"
+              onclick="showAddTaskPopUp()"
               class="svg"
               width="30"
               height="30"
@@ -173,7 +332,7 @@
           <div class="task-type">
             <span>Awaiting feedback</span>
             <svg
-              onclick="redirectToAddTask()"
+              onclick="showAddTaskPopUp()"
               class="svg"
               width="30"
               height="30"
@@ -217,7 +376,7 @@
           <div class="task-type">
             <span>Done</span>
             <svg
-              onclick="redirectToAddTask()"
+              onclick="showAddTaskPopUp()"
               class="svg"
               width="30"
               height="30"

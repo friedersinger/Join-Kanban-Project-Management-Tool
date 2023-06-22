@@ -525,3 +525,14 @@ function validateSubtasksForm(currentTask) {
     currentTask["subtasksOpened"].push({ name: value });
   }
 }
+
+
+function showAddTaskPopUp() {
+  let overlay = document.getElementById("overlayPopUpbg");
+  overlay.classList.remove("d-none");
+}
+
+function hideAddTaskPopUp() {
+  let overlay = document.getElementById("overlayPopUpbg");
+  overlay.classList.add("d-none");
+}

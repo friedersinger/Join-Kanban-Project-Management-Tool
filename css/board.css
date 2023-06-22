@@ -599,6 +599,181 @@
   width: 100%;
 }
 
+/* Hier wird ein Board PopUp erstellt */
+
+.overlay-board-bg {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  z-index: 999999;
+  height: 100vh;
+  width: 100vw;
+}
+
+.overlayBoardBg {
+  position: relative;
+  top: 50%;
+  background-color: #fbf9f9;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 90vw;
+  max-width: 1260px;
+  height: 805px;
+  border-radius: 35px;
+}
+
+.justify-end {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.close-btn:hover path {
+  stroke: #29abe2;
+}
+
+.close-btn {
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ********* Scrollbar CSS ********* */
+/* Firefox */
+.inner-content {
+  scrollbar-width: auto;
+  scrollbar-color: #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+.inner-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.inner-content::-webkit-scrollbar-thumb {
+  background-color: #a8a8a8;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
+/* Firefox */
+.task-card {
+  scrollbar-width: auto;
+  scrollbar-color: #ffffff;
+  grid-column: 1/11 !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    width: 95% !important;
+    margin-bottom: 150px !important;
+}
+
+
+/* Chrome, Edge, and Safari */
+.task-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.task-card::-webkit-scrollbar-thumb {
+  background-color: #a8a8a8;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
+
+.margin-bottom-60 {
+  margin-bottom: 60px;
+}
+
+.headline-text-border {
+  padding-right: 20px;
+  border-right: 3px solid rgb(41, 171, 226);
+}
+
+.headline-text-border-padding {
+  padding-left: 20px;
+}
+
+.headline-text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 61px;
+  line-height: 120%;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.column-container-addTask {
+  display: flex !important; /* Verwende Flexbox-Layout */
+  flex-direction: row !important; /* Spalten nebeneinander */
+  justify-content: space-between !important; /* Abstand zwischen Spalten */
+}
+
+.column-left,
+.column-right {
+  flex-basis: 40%; /* Breite der Spalten */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Füge Abstand zwischen den Inhalten hinzu */
+.column-left > * + *,
+.column-right > * + * {
+  margin-top: 10px;
+}
+
+#titleTaskPopUp {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 21px;
+  gap: 10px;
+  height: 51px;
+  width: 320px;
+  background: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+#description {
+  resize: vertical;
+  max-height: 200px;
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 18px 21px;
+  gap: 10px;
+  isolation: isolate;
+
+  height: 119px;
+
+  background: #ffffff;
+  /* Style */
+
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+
 /* ********* Breakpoints ********* */
 
 @media only screen and (max-width: 1777px) {
