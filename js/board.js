@@ -297,52 +297,6 @@ function getTaskCardHTML(currentTask, status) {
     </div>`;
 }
 
-// function updateTaskStatus(taskId, newStatus) {
-//   const task = taskId; // Funktion, um den Task anhand der taskId zu finden
-//   if (!task) {
-//     return; // Task nicht gefunden, beende die Funktion
-//   }
-
-//   // Entferne den Task aus dem vorherigen Array basierend auf dem aktuellen Status
-//   switch (task.status) {
-//     case "To Do":
-//       toDo = toDo.filter((t) => t.id !== taskId);
-//       break;
-//     case "In progress":
-//       inProgress = inProgress.filter((t) => t.id !== taskId);
-//       break;
-//     case "Awaiting feedback":
-//       feedback = feedback.filter((t) => t.id !== taskId);
-//       break;
-//     case "Done":
-//       done = done.filter((t) => t.id !== taskId);
-//       break;
-//     default:
-//       break;
-//   }
-
-//   // Aktualisiere den Status des Tasks und füge ihn in das entsprechende Array ein
-//   task.status = newStatus;
-//   switch (newStatus) {
-//     case "To Do":
-//       toDo.push(task);
-//       break;
-//     case "In progress":
-//       inProgress.push(task);
-//       break;
-//     case "Awaiting feedback":
-//       feedback.push(task);
-//       break;
-//     case "Done":
-//       done.push(task);
-//       break;
-//     default:
-//       break;
-//   }
-
-//   initBoard();
-// }
-
 function closePopup() {
   let overlay = document.getElementById("overlay");
   overlay.classList.add("d-none");
