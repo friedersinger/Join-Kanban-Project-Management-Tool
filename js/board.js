@@ -238,57 +238,63 @@ function redirectToAddTask() {
 
 function getTaskCardHTML(currentTask, status) {
   return /*html*/ `
-  <div draggable="true" ondragstart="startDragging(${
-    currentTask["id"]
-  },'${status}')" class="board-task-card" id="${currentTask["id"]}">
-    <div class="task-card-top-div">
-      <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
-        currentTask["color"]
-      } ">${currentTask["category"]}</div>
-    <div class=dropdown-position>
-    <select class="dropdown-style" onchange="startDragging(${
+    <div draggable="true" ondragstart="startDragging(${
       currentTask["id"]
-    }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
+    },'${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
+    currentTask["id"]
+  })" id="${currentTask["id"]}">
+      <div class="task-card-top-div">
+        <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
+          currentTask["color"]
+        }">${currentTask["category"]}</div>
+<div class="dropdown-position" onclick="event.stopPropagation();">
+          <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
+            currentTask["id"]
+          }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
     currentTask["id"]
   }, '${status}')">
-      <option value="toDo" ${status === "toDo" ? "selected" : ""}>To Do</option>
-      <option value="inProgress" ${
-        status === "inProgress" ? "selected" : ""
-      }>In progress</option>
-      <option value="feedback" ${
-        status === "feedback" ? "selected" : ""
-      }>Awaiting feedback</option>
-      <option value="done" ${status === "done" ? "selected" : ""}>Done</option>
-    </select>
-     </div>
-   </div>
-    <span class="task-card-title" id="taskTitleContainer">${
-      currentTask["title"]
-    }</span>
-    <div class="task-card-description" id="taskDescriptionContainer">${
-      currentTask["description"]
-    }</div>
-    <div class="task-card-bottom-container align-center margin-bottom-10">
-      <div class="subtasks-border">
-        <div id="subtasksStatus" style="width:${
-          (currentTask["subtasksClosed"].length /
-            currentTask["taskSub"].length) *
-          100
-        }%" class="subtasks-status"></div>
+            <option value="toDo" ${
+              status === "toDo" ? "selected" : ""
+            }>To Do</option>
+            <option value="inProgress" ${
+              status === "inProgress" ? "selected" : ""
+            }>In progress</option>
+            <option value="feedback" ${
+              status === "feedback" ? "selected" : ""
+            }>Awaiting feedback</option>
+            <option value="done" ${
+              status === "done" ? "selected" : ""
+            }>Done</option>
+          </select>
+        </div>
       </div>
-      <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
+      <span class="task-card-title" id="taskTitleContainer">${
+        currentTask["title"]
+      }</span>
+      <div class="task-card-description" id="taskDescriptionContainer">${
+        currentTask["description"]
+      }</div>
+      <div class="task-card-bottom-container align-center margin-bottom-10">
+        <div class="subtasks-border">
+          <div id="subtasksStatus" style="width:${
+            (currentTask["subtasksClosed"].length /
+              currentTask["taskSub"].length) *
+            100
+          }%" class="subtasks-status"></div>
+        </div>
+        <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
     currentTask["taskSub"].length
   } done</span>
-    </div>
-    <div class="task-card-bottom-container">
-      <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
-      <div class="task-card-prio">
-        <img id="imgUrgentTask" src="./assets/img/icon_${
-          currentTask["prio"]
-        }.png" alt="" />
       </div>
-    </div>
-  </div>`;
+      <div class="task-card-bottom-container">
+        <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
+        <div class="task-card-prio">
+          <img id="imgUrgentTask" src="./assets/img/icon_${
+            currentTask["prio"]
+          }.png" alt="" />
+        </div>
+      </div>
+    </div>`;
 }
 
 // function updateTaskStatus(taskId, newStatus) {
