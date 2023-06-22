@@ -88,7 +88,6 @@ async function subTaskAddToJson() {
     task: task.value,
   });
 
-
   addNewSubTask();
   task.value = "";
 }
@@ -96,10 +95,10 @@ async function subTaskAddToJson() {
 async function addSubtaskFromEdit(id) {
   let currentTask = tasks.find((task) => task.id == id);
   let task = document.getElementById("subtask-input-content");
-  currentTask['taskSub'].push({
+  currentTask["taskSub"].push({
     task: task.value,
   });
-  currentTask['subtasksOpened'].push({
+  currentTask["subtasksOpened"].push({
     task: task.value,
   });
   await showTickableSubtasks(currentTask);
@@ -116,7 +115,6 @@ async function addNewSubTask() {
     <div>${task}</div>`;
   }
 }
-
 
 async function editTaskBoard(id) {
   let currentTask = tasks.find((task) => task.id == id);
@@ -148,7 +146,7 @@ async function editTaskBoard(id) {
 }
 
 async function setCategoryForEdit(currentTask) {
-  document.getElementById("categoryEdit").innerText = currentTask['category'];
+  document.getElementById("categoryEdit").innerText = currentTask["category"];
 }
 
 async function deleteAllTasksFromServer() {
@@ -373,24 +371,25 @@ function renderCategoryList() {
   );
   categoryListContainer.innerHTML = "";
   categoryListContainer.innerHTML += `
-    <div class="dropdown-object">
-      <div onclick="renderNewCategoryField()" id="newCategory">New category</div>  
-    </div>
+  <div class="dropdown-object" onclick="renderNewCategoryField()">
+    <div id="newCategory">New category</div>  
+  </div>
 
-    <div class="dropdown-object">
-      <div onclick="saveSelectedCategory(this, '${"red"}')" class="flex-row">
-        <span>Backoffice</span>
-        <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
-      </div>
-      
-    </div>
 
-    <div class="dropdown-object">
-      <div onclick="saveSelectedCategory(this, '${"pink"}')" class="flex-row">
-        <span>Sales</span>
-        <div class="category-color margin-left-10" style="background-color: pink"></div>
-      </div>
+    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"red"}')">
+    <div class="flex-row">
+      <span>Backoffice</span>
+      <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
     </div>
+  </div>
+  
+  <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"pink"}')">
+    <div class="flex-row">
+      <span>Sales</span>
+      <div class="category-color margin-left-10" style="background-color: pink"></div>
+    </div>
+  </div>
+  
   `;
 }
 

@@ -136,14 +136,14 @@ function editTaskHTML(currentTask) {
   
             <label class="subtask">Subtasks</label>
             <div class="subtask-container">
-              <input type="text" id="subtask-input-content" placeholder="Subtasks .."/>
+              <input type="text" id="subtask-input-content" placeholder="Enter Subtask..."/>
   
               <div id="subtaskOninput" style="display: flex">
                 <img src="./assets/img/X.png" id="clearSubtaskInput" />
                 <div class="border-subtask"></div>
                 <img
                   src="./assets/img/icon_check.svg"
-                  onclick="addSubtaskFromEdit('${currentTask['id']}')"
+                  onclick="addSubtaskFromEdit('${currentTask["id"]}')"
                   id="finishEditingSubtask"
                 />
               </div>

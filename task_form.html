@@ -53,13 +53,18 @@
         <div class="column-left">
           <label>Title</label>
 
-          <input type="text" id="title" placeholder="Enter a title" required />
+          <input
+            type="text"
+            id="title"
+            placeholder="Enter a title..."
+            required
+          />
 
           <label>Description</label>
 
           <textarea
             id="description"
-            placeholder="Enter a description"
+            placeholder="Enter a description..."
           ></textarea>
 
           <label>Category</label>
@@ -75,8 +80,8 @@
               <span>Select category</span>
               <img src="./assets/img/arrow_down_black.svg" alt="" />
             </div>
+            <div id="dropdownCategoryContent" class="dropdown-content"></div>
           </label>
-          <div id="dropdownCategoryContent" class="dropdown-content"></div>
 
           <div id="select-color-category" class="select-color-category d-none">
             <div
@@ -172,7 +177,11 @@
 
           <label class="subtask">Subtasks</label>
           <div class="subtask-container">
-            <input type="text" id="subtask-input-content" />
+            <input
+              type="text"
+              id="subtask-input-content"
+              placeholder="Enter Subtask..."
+            />
 
             <div id="subtaskOninput" style="display: flex">
               <img src="./assets/img/X.png" id="clearSubtaskInput" />
