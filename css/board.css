@@ -243,6 +243,38 @@
   background-color: rgba(0, 0, 0, 0.04);
 }
 
+.dropdown-position {
+  display: none;
+}
+
+.dropdown-style {
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 1px solid #dddddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: 172px;
+}
+
+.dropdown-style:hover {
+  border-color: #aaaaaa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-style:focus {
+  outline: none;
+  border-color: #999999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-style option {
+  background-color: #ffffff;
+  color: #333333;
+}
+
 /* ********* Scrollbar CSS ********* */
 
 .scroll {
@@ -561,11 +593,10 @@
   margin-bottom: 10px;
 }
 
-
 .task-card-top-div {
   display: flex;
   justify-content: space-between;
-  gap: 120px;
+  width: 100%;
 }
 
 /* ********* Breakpoints ********* */
@@ -690,6 +721,10 @@
 
 @media only screen and (max-width: 500px) {
   #headline-mobile {
+    display: flex;
+  }
+
+  .dropdown-position {
     display: flex;
   }
 }

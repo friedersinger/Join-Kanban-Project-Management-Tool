@@ -240,29 +240,26 @@ function getTaskCardHTML(currentTask, status) {
   return /*html*/ `
   <div draggable="true" ondragstart="startDragging(${
     currentTask["id"]
-  },'${status}')" class="board-task-card" onclick="showDetailCard(${
-    currentTask["id"]
-  })" id="${currentTask["id"]}">
+  },'${status}')" class="board-task-card" id="${currentTask["id"]}">
     <div class="task-card-top-div">
       <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
         currentTask["color"]
       } ">${currentTask["category"]}</div>
-    <div>
-      <select class="dropdown-menu">
-        <option>Status</option>
-        <option onclick="updateTaskStatus(${
-          currentTask["id"]
-        }, 'To Do')" value="To Do">To Do</option>
-        <option onclick="updateTaskStatus(${
-          currentTask["id"]
-        }, 'In progress')" value="In progress">In progress</option>
-        <option onclick="updateTaskStatus(${
-          currentTask["id"]
-        }, 'Awaiting feedback')" value="Awaiting feedback">Awaiting feedback</option>
-        <option onclick="updateTaskStatus(${
-          currentTask["id"]
-        }, 'Done'); window.location.reload();" value="Done">Done</option>
-      </select>
+    <div class=dropdown-position>
+    <select class="dropdown-style" onchange="startDragging(${
+      currentTask["id"]
+    }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
+    currentTask["id"]
+  }, '${status}')">
+      <option value="toDo" ${status === "toDo" ? "selected" : ""}>To Do</option>
+      <option value="inProgress" ${
+        status === "inProgress" ? "selected" : ""
+      }>In progress</option>
+      <option value="feedback" ${
+        status === "feedback" ? "selected" : ""
+      }>Awaiting feedback</option>
+      <option value="done" ${status === "done" ? "selected" : ""}>Done</option>
+    </select>
      </div>
    </div>
     <span class="task-card-title" id="taskTitleContainer">${
@@ -294,51 +291,51 @@ function getTaskCardHTML(currentTask, status) {
   </div>`;
 }
 
-function updateTaskStatus(taskId, newStatus) {
-  const task = findTaskById(taskId); // Funktion, um den Task anhand der taskId zu finden
-  if (!task) {
-    return; // Task nicht gefunden, beende die Funktion
-  }
+// function updateTaskStatus(taskId, newStatus) {
+//   const task = taskId; // Funktion, um den Task anhand der taskId zu finden
+//   if (!task) {
+//     return; // Task nicht gefunden, beende die Funktion
+//   }
 
-  // Entferne den Task aus dem vorherigen Array basierend auf dem aktuellen Status
-  switch (task.status) {
-    case "To Do":
-      toDo = toDo.filter((t) => t.id !== taskId);
-      break;
-    case "In progress":
-      inProgress = inProgress.filter((t) => t.id !== taskId);
-      break;
-    case "Awaiting feedback":
-      feedback = feedback.filter((t) => t.id !== taskId);
-      break;
-    case "Done":
-      done = done.filter((t) => t.id !== taskId);
-      break;
-    default:
-      break;
-  }
+//   // Entferne den Task aus dem vorherigen Array basierend auf dem aktuellen Status
+//   switch (task.status) {
+//     case "To Do":
+//       toDo = toDo.filter((t) => t.id !== taskId);
+//       break;
+//     case "In progress":
+//       inProgress = inProgress.filter((t) => t.id !== taskId);
+//       break;
+//     case "Awaiting feedback":
+//       feedback = feedback.filter((t) => t.id !== taskId);
+//       break;
+//     case "Done":
+//       done = done.filter((t) => t.id !== taskId);
+//       break;
+//     default:
+//       break;
+//   }
 
-  // Aktualisiere den Status des Tasks und füge ihn in das entsprechende Array ein
-  task.status = newStatus;
-  switch (newStatus) {
-    case "To Do":
-      toDo.push(task);
-      break;
-    case "In progress":
-      inProgress.push(task);
-      break;
-    case "Awaiting feedback":
-      feedback.push(task);
-      break;
-    case "Done":
-      done.push(task);
-      break;
-    default:
-      break;
-  }
+//   // Aktualisiere den Status des Tasks und füge ihn in das entsprechende Array ein
+//   task.status = newStatus;
+//   switch (newStatus) {
+//     case "To Do":
+//       toDo.push(task);
+//       break;
+//     case "In progress":
+//       inProgress.push(task);
+//       break;
+//     case "Awaiting feedback":
+//       feedback.push(task);
+//       break;
+//     case "Done":
+//       done.push(task);
+//       break;
+//     default:
+//       break;
+//   }
 
-  initBoard();
-}
+//   initBoard();
+// }
 
 function closePopup() {
   let overlay = document.getElementById("overlay");

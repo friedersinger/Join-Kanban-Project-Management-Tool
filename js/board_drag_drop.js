@@ -5,9 +5,11 @@ async function startDragging(id, status) {
   await hideDraggedOrigin();
 }
 
-async function hideDraggedOrigin(){
+async function hideDraggedOrigin() {
   let element = document.getElementById(currentDraggedElement);
-  element.classList.add('d-none');
+  if (element) {
+    element.classList.add("d-none");
+  }
 }
 
 function allowDrop(ev) {
@@ -24,7 +26,7 @@ async function moveTo(status) {
     case "toDo":
       targetArray = toDo;
       getBorderRemoveFunctions();
-      initBoard();      
+      initBoard();
       break;
     case "inProgress":
       targetArray = inProgress;
@@ -90,7 +92,6 @@ async function getSourceArrayByStatus(status, id) {
 }
 
 async function deleteTaskFromDragged(id, sourceArray) {
-
   switch (sourceArray) {
     case "toDo":
       let toDoIndex = toDo.indexOf(id);
@@ -117,35 +118,33 @@ async function deleteTaskFromDragged(id, sourceArray) {
 
 async function showDropArea(status) {
   console.log(status);
-  switch(status){
+  switch (status) {
     case "toDo":
-      document.getElementById('inProgress').classList.add("add-border");
-      document.getElementById('feedback').classList.add("add-border");
-      document.getElementById('done').classList.add("add-border");
+      document.getElementById("inProgress").classList.add("add-border");
+      document.getElementById("feedback").classList.add("add-border");
+      document.getElementById("done").classList.add("add-border");
       break;
     case "inProgress":
-      document.getElementById('toDo').classList.add("add-border");
-      document.getElementById('feedback').classList.add("add-border");
-      document.getElementById('done').classList.add("add-border");
+      document.getElementById("toDo").classList.add("add-border");
+      document.getElementById("feedback").classList.add("add-border");
+      document.getElementById("done").classList.add("add-border");
       break;
     case "feedback":
-      document.getElementById('toDo').classList.add("add-border");
-      document.getElementById('inProgress').classList.add("add-border");
-      document.getElementById('done').classList.add("add-border");
+      document.getElementById("toDo").classList.add("add-border");
+      document.getElementById("inProgress").classList.add("add-border");
+      document.getElementById("done").classList.add("add-border");
       break;
     case "done":
-      document.getElementById('toDo').classList.add("add-border");
-      document.getElementById('feedback').classList.add("add-border");
-      document.getElementById('inProgress').classList.add("add-border");
+      document.getElementById("toDo").classList.add("add-border");
+      document.getElementById("feedback").classList.add("add-border");
+      document.getElementById("inProgress").classList.add("add-border");
       break;
   }
-
 }
 
-function getBorderRemoveFunctions(){
-  document.getElementById('toDo').classList.remove("add-border");
-  document.getElementById('inProgress').classList.remove("add-border");
-  document.getElementById('feedback').classList.remove("add-border");
-  document.getElementById('done').classList.remove("add-border");
-
+function getBorderRemoveFunctions() {
+  document.getElementById("toDo").classList.remove("add-border");
+  document.getElementById("inProgress").classList.remove("add-border");
+  document.getElementById("feedback").classList.remove("add-border");
+  document.getElementById("done").classList.remove("add-border");
 }
