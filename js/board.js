@@ -237,37 +237,62 @@ function redirectToAddTask() {
 }
 
 function getTaskCardHTML(currentTask, status) {
-  return /*html*/`
-  <div draggable="true" ondragstart="startDragging(${currentTask["id"]},'${status}')" class="board-task-card" onclick="showDetailCard(${currentTask["id"]})" id="${currentTask["id"]}">
+  return /*html*/ `
+  <div draggable="true" ondragstart="startDragging(${
+    currentTask["id"]
+  },'${status}')" class="board-task-card" onclick="showDetailCard(${
+    currentTask["id"]
+  })" id="${currentTask["id"]}">
     <div class="task-card-top-div">
-      <div class="task-card-category" id="taskCategoryContainer" style="background-color:${currentTask["color"]} ">${currentTask["category"]}</div>
+      <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
+        currentTask["color"]
+      } ">${currentTask["category"]}</div>
     <div>
       <select class="dropdown-menu">
         <option>Status</option>
-        <option onclick="updateTaskStatus(${currentTask["id"]}, 'To Do')" value="To Do">To Do</option>
-        <option onclick="updateTaskStatus(${currentTask["id"]}, 'In progress')" value="In progress">In progress</option>
-        <option onclick="updateTaskStatus(${currentTask["id"]}, 'Awaiting feedback')" value="Awaiting feedback">Awaiting feedback</option>
-        <option onclick="updateTaskStatus(${currentTask["id"]}, 'Done'); window.location.reload();" value="Done">Done</option>
+        <option onclick="updateTaskStatus(${
+          currentTask["id"]
+        }, 'To Do')" value="To Do">To Do</option>
+        <option onclick="updateTaskStatus(${
+          currentTask["id"]
+        }, 'In progress')" value="In progress">In progress</option>
+        <option onclick="updateTaskStatus(${
+          currentTask["id"]
+        }, 'Awaiting feedback')" value="Awaiting feedback">Awaiting feedback</option>
+        <option onclick="updateTaskStatus(${
+          currentTask["id"]
+        }, 'Done'); window.location.reload();" value="Done">Done</option>
       </select>
      </div>
    </div>
-    <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
-    <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
+    <span class="task-card-title" id="taskTitleContainer">${
+      currentTask["title"]
+    }</span>
+    <div class="task-card-description" id="taskDescriptionContainer">${
+      currentTask["description"]
+    }</div>
     <div class="task-card-bottom-container align-center margin-bottom-10">
       <div class="subtasks-border">
-        <div id="subtasksStatus" style="width:${(currentTask['subtasksClosed'].length / currentTask['taskSub'].length) * 100}%" class="subtasks-status"></div>
+        <div id="subtasksStatus" style="width:${
+          (currentTask["subtasksClosed"].length /
+            currentTask["taskSub"].length) *
+          100
+        }%" class="subtasks-status"></div>
       </div>
-      <span id="subtasksCounter">${currentTask['subtasksClosed'].length}/${currentTask['taskSub'].length} done</span>
+      <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
+    currentTask["taskSub"].length
+  } done</span>
     </div>
     <div class="task-card-bottom-container">
       <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
       <div class="task-card-prio">
-        <img id="imgUrgentTask" src="./assets/img/icon_${currentTask["prio"]}.png" alt="" />
+        <img id="imgUrgentTask" src="./assets/img/icon_${
+          currentTask["prio"]
+        }.png" alt="" />
       </div>
     </div>
   </div>`;
 }
-
 
 function updateTaskStatus(taskId, newStatus) {
   const task = findTaskById(taskId); // Funktion, um den Task anhand der taskId zu finden
@@ -315,7 +340,6 @@ function updateTaskStatus(taskId, newStatus) {
   initBoard();
 }
 
-
 function closePopup() {
   let overlay = document.getElementById("overlay");
   overlay.classList.add("d-none");
@@ -346,7 +370,8 @@ function editTask(id) {
 
 function showAssignedContacts(currentTask) {
   let assignableContactsContainer = document.getElementById("dropdownContent");
-  const assignedContacts = currentTask["assignments"].map(  //erstellt ein neues Array nur mit "Name"s aus assignments-Array
+  const assignedContacts = currentTask["assignments"].map(
+    //erstellt ein neues Array nur mit "Name"s aus assignments-Array
     (assignment) => assignment["name"]
   );
 
@@ -499,20 +524,22 @@ function showHiddenTask(id) {
 }
 
 async function showTickableSubtasks(currentTask) {
-  let subtasksContainer = document.getElementById('subtaskContent');
+  let subtasksContainer = document.getElementById("subtaskContent");
   subtasksContainer.innerHTML = "";
 
-  for (let i = 0; i < currentTask['taskSub'].length; i++) {
-    const subtask = currentTask['taskSub'][i]['task'];
+  for (let i = 0; i < currentTask["taskSub"].length; i++) {
+    const subtask = currentTask["taskSub"][i]["task"];
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.value = subtask;
 
-    const isClosed = currentTask['subtasksClosed'].some((sub) => sub.name === subtask);
+    const isClosed = currentTask["subtasksClosed"].some(
+      (sub) => sub.name === subtask
+    );
     checkbox.checked = isClosed;
 
     const div = document.createElement("div");
-    div.classList.add('subtasks-row');
+    div.classList.add("subtasks-row");
     div.innerHTML = `<span>${subtask}</span>`;
     div.insertBefore(checkbox, div.firstChild);
 
@@ -520,12 +547,10 @@ async function showTickableSubtasks(currentTask) {
   }
 }
 
-
-
 // Funktion zum Auslesen der ausgewählten Checkbox-Werte
 function validateSubtasksForm(currentTask) {
-  currentTask['subtasksClosed'] = [];
-  currentTask['subtasksOpened'] = [];
+  currentTask["subtasksClosed"] = [];
+  currentTask["subtasksOpened"] = [];
 
   let checkboxes = document.querySelectorAll(
     "#subtaskContent input[type=checkbox]:checked"
@@ -536,10 +561,10 @@ function validateSubtasksForm(currentTask) {
 
   for (var i = 0; i < checkboxes.length; i++) {
     const value = checkboxes[i].value;
-    currentTask['subtasksClosed'].push({ name: value });
+    currentTask["subtasksClosed"].push({ name: value });
   }
   for (var i = 0; i < NullCheckboxes.length; i++) {
     const value = NullCheckboxes[i].value;
-    currentTask['subtasksOpened'].push({ name: value });
+    currentTask["subtasksOpened"].push({ name: value });
   }
 }
