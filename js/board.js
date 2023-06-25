@@ -208,6 +208,275 @@ function getTaskDetailCardHTML(task) {
 
         </div>
       </div>
+<<<<<<< Updated upstream
     
     `;
+=======
+      <span class="task-card-title" id="taskTitleContainer">${
+        currentTask["title"]
+      }</span>
+      <div class="task-card-description" id="taskDescriptionContainer">${
+        currentTask["description"]
+      }</div>
+      <div class="task-card-bottom-container align-center margin-bottom-10">
+        <div class="subtasks-border">
+          <div id="subtasksStatus" style="width:${
+            (currentTask["subtasksClosed"].length /
+              currentTask["taskSub"].length) *
+            100
+          }%" class="subtasks-status"></div>
+        </div>
+        <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
+    currentTask["taskSub"].length
+  } done</span>
+      </div>
+      <div class="task-card-bottom-container">
+        <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
+        <div class="task-card-prio">
+          <img id="imgUrgentTask" src="./assets/img/icon_${
+            currentTask["prio"]
+          }.png" alt="" />
+        </div>
+      </div>
+    </div>`;
+}
+
+function closePopup() {
+  let overlay = document.getElementById("overlay");
+  overlay.classList.add("d-none");
+}
+
+async function deleteTask(id) {
+  deleteObjectById(id);
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i]["id"] == id) {
+      tasks.splice(i, 1);
+      await setItem("tasks", JSON.stringify(tasks));
+      break;
+    }
+  }
+  closePopup();
+  initBoard();
+}
+
+function showAddTaskPopUpBoard() {
+  let overlay = document.getElementById("overlayPopUpBo");
+  overlay.classList.remove("d-none");
+}
+
+function hideAddTaskPopUpBoard() {
+  let overlay = document.getElementById("overlayPopUpBo");
+  overlay.classList.add("d-none");
+}
+
+function editTask(id) {
+  currentTaskID = id;
+  let currentTask = tasks.find((task) => task.id == id);
+  document.getElementById("taskContent").innerHTML = editTaskHTML(currentTask);
+  renderCategoryList();
+  showAssignedContacts(currentTask);
+  showTickableSubtasks(currentTask);
+  setCategoryForEdit(currentTask);
+}
+
+function showAssignedContacts(currentTask) {
+  let assignableContactsContainer = document.getElementById("dropdownContent");
+  const assignedContacts = currentTask["assignments"].map(
+    //erstellt ein neues Array nur mit "Name"s aus assignments-Array
+    (assignment) => assignment["name"]
+  );
+
+  for (let i = 0; i < users.length; i++) {
+    const name = users[i]["name"];
+    const id = users[i]["id"];
+    const checkbox = document.createElement("input");
+    checkbox.id = id;
+    checkbox.type = "checkbox";
+    checkbox.value = name;
+    checkbox.dataset.id = id;
+    checkbox.onclick = function (event) {
+      event.stopPropagation(); // Stoppe das Event-Bubbling
+    };
+
+    // Überprüfe, ob der Kontakt ausgewählt ist
+    if (assignedContacts.includes(name)) {
+      checkbox.checked = true;
+    }
+
+    const div = document.createElement("div");
+    div.className = "dropdown-object";
+    div.onclick = function () {
+      toggleCheckbox(id);
+    };
+    div.innerHTML = `<span>${name}</span>`;
+    div.appendChild(checkbox);
+
+    assignableContactsContainer.appendChild(div);
+  }
+}
+
+function toggleCheckbox(checkboxId) {
+  var checkbox = document.getElementById(checkboxId);
+  checkbox.checked = !checkbox.checked;
+}
+
+function getCurrentDate() {
+  const today = new Date();
+  let day = today.getDate();
+  let month = today.getMonth() + 1;
+  const year = today.getFullYear();
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  return `${year}-${month}-${day}`;
+}
+
+async function deleteObjectById(id) {
+  for (var i = 0; i < toDo.length; i++) {
+    if (toDo[i] == id) {
+      toDo.splice(i, 1);
+      await setItem("toDo", JSON.stringify(toDo));
+      return;
+    }
+  }
+
+  for (var i = 0; i < inProgress.length; i++) {
+    if (inProgress[i] == id) {
+      inProgress.splice(i, 1);
+      await setItem("inProgress", JSON.stringify(inProgress));
+      return;
+    }
+  }
+
+  for (var i = 0; i < feedback.length; i++) {
+    if (feedback[i] == id) {
+      feedback.splice(i, 1);
+      await setItem("feedback", JSON.stringify(feedback));
+      return;
+    }
+  }
+
+  for (var i = 0; i < done.length; i++) {
+    if (done[i] == id) {
+      done.splice(i, 1);
+      await setItem("done", JSON.stringify(done));
+      return;
+    }
+  }
+}
+
+function toggleDropdownCategory() {
+  let dropdownContent = document.getElementById("dropdownCategoryContent");
+  let dropdownMin = document.getElementById("dropdownMinCategory");
+  dropdownContent.classList.toggle("show");
+  dropdownMin.classList.toggle("open");
+}
+
+function showSubtasks(task) {
+  let container = document.getElementById("subtasksContainer");
+  for (let i = 0; i < task["taskSub"].length; i++) {
+    const subTask = task["taskSub"][i]["task"];
+    container.innerHTML += `<li>${subTask}</li>`;
+  }
+}
+
+function searchForTaskByInput() {
+  let search = document.getElementById("search-input").value;
+  search = search.toLowerCase();
+
+  if (search.trim() === "") {
+    // Wenn das Suchfeld leer ist, zeige alle Aufgaben
+    for (let i = 0; i < tasks.length; i++) {
+      showHiddenTask(tasks[i]["id"]);
+    }
+  } else {
+    for (let i = 0; i < tasks.length; i++) {
+      const title = tasks[i]["title"];
+      const description = tasks[i]["description"];
+
+      if (
+        title.toLowerCase().includes(search) ||
+        description.toLowerCase().includes(search)
+      ) {
+        showHiddenTask(tasks[i]["id"]);
+      } else {
+        console.log("removed task" + tasks[i]["id"]);
+        hideTask(tasks[i]["id"]);
+      }
+    }
+  }
+}
+
+function hideTask(id) {
+  let taskCardContainer = document.getElementById(id);
+
+  if (taskCardContainer) {
+    taskCardContainer.style.opacity = "0";
+    setTimeout(() => {
+      taskCardContainer.classList.add("d-none");
+    }, 500);
+  }
+}
+
+function showHiddenTask(id) {
+  let taskCardContainer = document.getElementById(id);
+
+  if (taskCardContainer) {
+    taskCardContainer.classList.remove("d-none");
+    setTimeout(() => {
+      taskCardContainer.style.opacity = "1";
+    }, 100);
+  }
+}
+
+async function showTickableSubtasks(currentTask) {
+  let subtasksContainer = document.getElementById("subtaskContent");
+  subtasksContainer.innerHTML = "";
+
+  for (let i = 0; i < currentTask["taskSub"].length; i++) {
+    const subtask = currentTask["taskSub"][i]["task"];
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = subtask;
+
+    const isClosed = currentTask["subtasksClosed"].some(
+      (sub) => sub.name === subtask
+    );
+    checkbox.checked = isClosed;
+
+    const div = document.createElement("div");
+    div.classList.add("subtasks-row");
+    div.innerHTML = `<span>${subtask}</span>`;
+    div.insertBefore(checkbox, div.firstChild);
+
+    subtasksContainer.appendChild(div);
+  }
+}
+
+// Funktion zum Auslesen der ausgewählten Checkbox-Werte
+function validateSubtasksForm(currentTask) {
+  currentTask["subtasksClosed"] = [];
+  currentTask["subtasksOpened"] = [];
+
+  let checkboxes = document.querySelectorAll(
+    "#subtaskContent input[type=checkbox]:checked"
+  );
+  let NullCheckboxes = document.querySelectorAll(
+    "#subtaskContent input[type=checkbox]:not(:checked)"
+  );
+
+  for (var i = 0; i < checkboxes.length; i++) {
+    const value = checkboxes[i].value;
+    currentTask["subtasksClosed"].push({ name: value });
+  }
+  for (var i = 0; i < NullCheckboxes.length; i++) {
+    const value = NullCheckboxes[i].value;
+    currentTask["subtasksOpened"].push({ name: value });
+  }
+>>>>>>> Stashed changes
 }
