@@ -345,6 +345,10 @@ label {
   width: 197.77px;
 }
 
+.add-task-btn:hover {
+  background: #485d7a;
+}
+
 #clearTask {
   margin-right: 140px;
 }
