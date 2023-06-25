@@ -59,7 +59,12 @@
 
           <textarea
             id="description"
+<<<<<<< Updated upstream
             placeholder="Enter a description"
+=======
+            placeholder="Enter a description..."
+            required
+>>>>>>> Stashed changes
           ></textarea>
 
           <label>Category</label>
@@ -68,11 +73,20 @@
             id="toggleDrop"
             for="dropdown"
             onclick="toggleDropdownCategory()"
+            required
           >
             <div class="dropdown-min" id="dropdownMinCategory">
               <span>Select category</span>
               <img src="assets/img/arrow_down_black.svg" alt="" />
             </div>
+<<<<<<< Updated upstream
+=======
+            <div
+              id="dropdownCategoryContent"
+              class="dropdown-content"
+              required
+            ></div>
+>>>>>>> Stashed changes
           </label>
           <div id="dropdownCategoryContent" class="dropdown-content"></div>
 
@@ -145,6 +159,7 @@
               class="prio-btn"
               id="prioUrgent"
               onclick="TaskButtonUrgent();getPrioStatus('up')"
+              required
             >
               Urgent
               <img id="imgUrgent" src="/assets/img/icon_up.png" alt="" />

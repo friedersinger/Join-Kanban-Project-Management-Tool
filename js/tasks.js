@@ -37,8 +37,11 @@ async function addNewTask() {
     dueDate: taskDueDate.value,
     taskSub: subtasks,
     id: currentTaskID,
+<<<<<<< Updated upstream
     
     /*assignName: assignName.value*/
+=======
+>>>>>>> Stashed changes
   });
 
   toDo.push(currentTaskID);
