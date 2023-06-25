@@ -36,6 +36,11 @@ async function initSummary() {
   countUrgent();
 }
 
+/**
+ * Renders the greeting on the page based on the current user and time of day.
+ *
+ * @returns {Promise<void>} A promise that resolves once the greeting is rendered.
+ */
 async function renderGreeting() {
   document.getElementById("greeting_sentence").innerText = getDaytimeGreeting();
   document.getElementById("greeting_name").innerText = `Guest`;

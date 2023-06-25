@@ -6,6 +6,11 @@ let currentPrioStatus;
 let selectedColor;
 let categories = [];
 
+/**
+ * Initializes the tasks by loading data, rendering assignable contacts, and rendering the category list.
+ *
+ * @returns {Promise<void>} A promise that resolves once the tasks are initialized.
+ */
 async function initTasks() {
   await loadTasks();
   await loadUsers();
@@ -13,6 +18,12 @@ async function initTasks() {
   renderCategoryList();
 }
 
+/**
+ * Adds a new task by setting its properties based on user input, updating relevant data,
+ * and performing necessary actions like redirecting or reloading the page.
+ *
+ * @returns {Promise<void>} A promise that resolves once the new task is added.
+ */
 async function addNewTask() {
   await setNewTaskID();
   await loadtoDos();
@@ -55,6 +66,11 @@ async function addNewTask() {
   await setItem("toDo", JSON.stringify(toDo));
 }
 
+/**
+ * Loads the subtasks from the subtasks array and performs actions on each subtask.
+ *
+ * @returns {Promise<void>} A promise that resolves once the subtasks are loaded.
+ */
 async function subTasksLoad() {
   subtasks = [];
   for (let i = 0; i < subtasks.length; i++) {
@@ -62,6 +78,11 @@ async function subTasksLoad() {
   }
 }
 
+/**
+ * Sets a new task ID by retrieving the current ID, incrementing it, and saving it.
+ *
+ * @returns {Promise<void>} A promise that resolves once the new task ID is set.
+ */
 async function setNewTaskID() {
   try {
     let res = JSON.parse(await getItem("currentTaskID"));
@@ -73,6 +94,11 @@ async function setNewTaskID() {
   }
 }
 
+/**
+ * Loads tasks from storage by retrieving and parsing the "tasks" item.
+ *
+ * @returns {Promise<void>} A promise that resolves once the tasks are loaded.
+ */
 async function loadTasks() {
   try {
     tasks = JSON.parse(await getItem("tasks"));
@@ -81,6 +107,11 @@ async function loadTasks() {
   }
 }
 
+/**
+ * Adds a subtask to the subtasks array based on user input.
+ *
+ * @returns {Promise<void>} A promise that resolves once the new subtask is added.
+ */
 async function subTaskAddToJson() {
   let task = document.getElementById("subtask-input-content");
 
@@ -92,6 +123,12 @@ async function subTaskAddToJson() {
   task.value = "";
 }
 
+/**
+ * Adds a subtask to the subtasks and subtasksOpened arrays of a task specified by ID.
+ *
+ * @param {number} id - The ID of the task to add the subtask to.
+ * @returns {Promise<void>} A promise that resolves once the new subtask is added.
+ */
 async function addSubtaskFromEdit(id) {
   let currentTask = tasks.find((task) => task.id == id);
   let task = document.getElementById("subtask-input-content");
@@ -105,6 +142,11 @@ async function addSubtaskFromEdit(id) {
   task.value = "";
 }
 
+/**
+ * Adds the newly created subtasks to the subtask content area.
+ *
+ * @returns {Promise<void>} A promise that resolves once the new subtasks are added.
+ */
 async function addNewSubTask() {
   let subtaskContent = document.getElementById("subtaskContent");
   subtaskContent.innerHTML = "";
@@ -116,6 +158,12 @@ async function addNewSubTask() {
   }
 }
 
+/**
+ * Edits a task's properties based on user input and performs necessary actions like reloading the page.
+ *
+ * @param {number} id - The ID of the task to edit.
+ * @returns {Promise<void>} A promise that resolves once the task is edited.
+ */
 async function editTaskBoard(id) {
   let currentTask = tasks.find((task) => task.id == id);
   let taskTitle = document.getElementById("title");
@@ -145,10 +193,21 @@ async function editTaskBoard(id) {
   await setItem("toDo", JSON.stringify(toDo));
 }
 
+/**
+ * Sets the category for editing a task.
+ *
+ * @param {object} currentTask - The current task being edited.
+ * @returns {Promise<void>} A promise that resolves once the category is set.
+ */
 async function setCategoryForEdit(currentTask) {
   document.getElementById("categoryEdit").innerText = currentTask["category"];
 }
 
+/**
+ * Deletes all tasks from the server by clearing relevant data arrays and updating storage.
+ *
+ * @returns {Promise<void>} A promise that resolves once all tasks are deleted.
+ */
 async function deleteAllTasksFromServer() {
   try {
     tasks = JSON.parse(await getItem("tasks"));
@@ -171,6 +230,11 @@ async function deleteAllTasksFromServer() {
   }
 }
 
+/**
+ * Sets the priority status of a task to "Urgent".
+ *
+ * @returns {void}
+ */
 async function TaskButtonUrgent() {
   let buttonUrgent = document.getElementById("prioUrgent");
   let buttonMedium = document.getElementById("prioMedium");
@@ -206,6 +270,11 @@ function setPrioStatus(prioStatus) {
   prioValue.innerText = prioStatus;
 }
 
+/**
+ * Sets the priority status of a task to "Medium".
+ *
+ * @returns {void}
+ */
 async function TaskButtonMedium() {
   let buttonUrgent = document.getElementById("prioUrgent");
   let buttonMedium = document.getElementById("prioMedium");
@@ -232,6 +301,11 @@ async function TaskButtonMedium() {
   imageMedium.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
+/**
+ * Sets the priority status of a task to "Low".
+ *
+ * @returns {void}
+ */
 async function TaskButtonLow() {
   let buttonUrgent = document.getElementById("prioUrgent");
   let buttonMedium = document.getElementById("prioMedium");
@@ -258,14 +332,23 @@ async function TaskButtonLow() {
   imageLow.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
+/**
+ * Function to reload the current page.
+ */
 function reloadPage() {
   location.reload();
 }
 
+/**
+ * Function to redirect to the "board.html" page.
+ */
 function redirectToBoard() {
   window.location.href = "board.html";
 }
 
+/**
+ * Function to check the screen width and perform corresponding actions.
+ */
 function checkScreenWidth() {
   document
     .getElementById("addTaskPopUp")
@@ -286,13 +369,17 @@ function checkScreenWidth() {
   }
 }
 
-// Funktion, um das Pop-up-Fenster anzuzeigen
+/**
+ * Function to show the add task pop-up window.
+ */
 function showAddTaskPopUp() {
   var overlay = document.getElementById("addTaskPopUp");
   overlay.style.display = "block";
 }
 
-// Funktion, um das Pop-up-Fenster zu verstecken
+/**
+ * Function to hide the add task pop-up window.
+ */
 function hideAddTaskPopUp() {
   var overlay = document.getElementById("addTaskPopUp");
   overlay.style.display = "none";
@@ -318,18 +405,25 @@ function checkScreenWidth() {
   }
 }
 
-// Funktion, um das Pop-up-Fenster anzuzeigen
+/**
+ * Function to show the edit task pop-up window.
+ */
 function showEditTaskPopUp() {
   var overlay = document.getElementById("editTaskPopUp");
   overlay.style.display = "block";
 }
 
-// Funktion, um das Pop-up-Fenster zu verstecken
+/**
+ * Function to hide the edit task pop-up window.
+ */
 function hideEditTaskPopUp() {
   var overlay = document.getElementById("editTaskPopUp");
   overlay.style.display = "none";
 }
 
+/**
+ * Function to render the assignable contacts.
+ */
 async function renderAssignableContacts() {
   let assignableContactsContainer = document.getElementById("dropdownContent");
   for (let i = 0; i < users.length; i++) {
@@ -360,11 +454,19 @@ async function renderAssignableContacts() {
   }
 }
 
+/**
+ * Function to toggle the state of a checkbox.
+ *
+ * @param {string} checkboxId - The ID of the checkbox.
+ */
 function toggleCheckbox(checkboxId) {
   var checkbox = document.getElementById(checkboxId);
   checkbox.checked = !checkbox.checked;
 }
 
+/**
+ * Function to render the category list.
+ */
 function renderCategoryList() {
   let categoryListContainer = document.getElementById(
     "dropdownCategoryContent"
@@ -393,6 +495,9 @@ function renderCategoryList() {
   `;
 }
 
+/**
+ * Renders a new category field in the dropdown menu.
+ */
 function renderNewCategoryField() {
   let dropdownField = document.getElementById("dropdownMinCategory");
   document.getElementById("select-color-category").classList.remove("d-none");
@@ -413,10 +518,18 @@ function renderNewCategoryField() {
   toggleDropdownCategory();
 }
 
+/**
+ * Stops the propagation of the event to parent elements.
+ *
+ * @param {Event} event - The event object.
+ */
 function stopDropdown(event) {
   event.stopPropagation();
 }
 
+/**
+ * Clears the selections made in the dropdown menu.
+ */
 function clearSelections() {
   renderNormalCategoryField();
   renderCategoryList();
@@ -426,19 +539,31 @@ function clearSelections() {
   hideCategoryDisplay();
 }
 
+/**
+ * Hides the select color section in the dropdown menu.
+ */
 function hideSelectColor() {
   document.getElementById("select-color-category").classList.add("d-none");
 }
 
+/**
+ * Hides the error message.
+ */
 function hideErrorMessage() {
   document.getElementById("errorMessage").textContent = "";
 }
 
+/**
+ * Hides the category display section.
+ */
 function hideCategoryDisplay() {
   document.getElementById("categoryDisplay").style.display = "none";
   document.getElementById("categoryDisplay").textContent = "";
 }
 
+/**
+ * Renders the normal category field in the dropdown menu.
+ */
 function renderNormalCategoryField() {
   document.getElementById("categoryDisplay").style.display = "none";
 
@@ -449,6 +574,12 @@ function renderNormalCategoryField() {
   `;
 }
 
+/**
+ * Saves the selected category and its color.
+ *
+ * @param {Element} element - The selected category element.
+ * @param {string} color - The selected color.
+ */
 function saveSelectedCategory(element, color) {
   selectedCategory = element.innerText;
   let dataField = document.getElementById("categoryEdit");
@@ -459,6 +590,9 @@ function saveSelectedCategory(element, color) {
   toggleDropdownCategory();
 }
 
+/**
+ * Toggles the visibility of the dropdown menu.
+ */
 function toggleDropdown() {
   let dropdownContent = document.getElementById("dropdownContent");
   let dropdownMin = document.getElementById("dropdownMin");
@@ -466,6 +600,9 @@ function toggleDropdown() {
   dropdownMin.classList.toggle("open");
 }
 
+/**
+ * Toggles the visibility of the category dropdown menu.
+ */
 function toggleDropdownCategory() {
   let dropdownContent = document.getElementById("dropdownCategoryContent");
   let dropdownMin = document.getElementById("dropdownMinCategory");
@@ -473,7 +610,11 @@ function toggleDropdownCategory() {
   dropdownMin.classList.toggle("open");
 }
 
-// Funktion zum Auslesen der ausgewählten Checkbox-Werte
+/**
+ * Validates the assignment form and returns the selected checkbox values.
+ *
+ * @returns {Array} - An array of selected checkbox values.
+ */
 function validateAssignmentForm() {
   let selectedValues = [];
   let checkboxes = document.querySelectorAll(
@@ -488,6 +629,9 @@ function validateAssignmentForm() {
   return selectedValues;
 }
 
+/**
+ * Clears the checked state of all checkboxes in the dropdown menu.
+ */
 function clearCheckboxes() {
   let checkboxes = document.querySelectorAll(
     "#dropdownContent input[type=checkbox]:checked"
@@ -499,6 +643,11 @@ function clearCheckboxes() {
   toggleDropdown();
 }
 
+/**
+ * Updates the task card icons based on the provided ID.
+ *
+ * @param {string} id - The ID of the task.
+ */
 function updateTaskCardIcons(id) {
   const imgUrgentTask = document.getElementById("imgUrgentTask");
   const imgMediumTask = document.getElementById("imgMediumTask");
@@ -560,6 +709,11 @@ function checkNewCategory() {
   }
 }
 
+/**
+ * Displays the selected category.
+ *
+ * @param {string} category - The selected category.
+ */
 function displayCategory(category) {
   const categoryDisplay = document.getElementById("categoryDisplay");
   const selectedCategory = categoryDisplay.textContent;
@@ -573,6 +727,11 @@ function displayCategory(category) {
   categoryDisplay.textContent = category;
 }
 
+/**
+ * Displays an error message.
+ *
+ * @param {string} message - The error message to display.
+ */
 function displayErrorMessage(message) {
   const errorMessage = document.createElement("span");
   errorMessage.textContent = message;
@@ -583,19 +742,18 @@ function hideLabel() {
   document.getElementById("errorMessage").textContent = "";
 }
 
+/**
+ * Hides the category display section.
+ */
 function hideCategoryDisplay() {
   const categoryDisplay = document.getElementById("categoryDisplay");
   categoryDisplay.style.display = "none";
   categoryDisplay.textContent = "";
 }
 
-// /**
-//  * Hides the label by setting its display property to "none".
-//  */
-// function hideLabel() {
-//   document.getElementById("toggleDrop").style.display = "none";
-// }
-
+/**
+ * Event listener that executes the specified code when the DOM is fully loaded.
+ */
 document.addEventListener("DOMContentLoaded", function () {
   const datePicker = document.getElementById("datePicker");
   if (datePicker) {

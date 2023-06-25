@@ -569,6 +569,12 @@ function getEditHTML(name, mail, tel, id) {
   `;
 }
 
+/**
+ * Saves the edited contact details for the specified ID.
+ *
+ * @param {number} id - The ID of the contact to edit.
+ * @returns {Promise<void>} A promise that resolves once the contact is successfully edited and saved.
+ */
 async function saveEditContact(id) {
   let currentContact = contacts.find((contact) => contact.id == id);
 
