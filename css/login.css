@@ -356,7 +356,6 @@ input[type="checkbox"] {
   height: 300px;
   background-color: rgb(255, 255, 255);
   border-radius: 25px;
-  box-shadow: 3px 6px 6px lightgray;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -376,7 +375,6 @@ input[type="checkbox"] {
   height: 400px;
   background-color: rgb(255, 255, 255);
   border-radius: 25px;
-  box-shadow: 3px 6px 6px lightgray;
   display: flex;
   flex-direction: column;
   align-items: center;
