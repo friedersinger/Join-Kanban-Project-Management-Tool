@@ -1,5 +1,7 @@
 body {
   line-height: unset !important;
+  overflow-x: hidden;
+  overflow-x: unset;
 }
 
 /* ********* Scrollbar CSS ********* */
@@ -650,5 +652,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .prio div {
     width: 200px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .subtask-container {
+    width: 95%;
   }
 }
