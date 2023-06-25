@@ -63,6 +63,9 @@ async function loadUsers() {
 
 //############### RENDER FUNCTIONS ###############//
 
+/**
+ * Renders the task cards for the "To Do" status.
+ */
 function renderTaskCardToDo() {
   let toDoContainer = document.getElementById("toDo");
   let renderedIDs = {};
@@ -76,6 +79,9 @@ function renderTaskCardToDo() {
   }
 }
 
+/**
+ * Renders the task cards for the "In Progress" status.
+ */
 function renderTaskCardProgress() {
   let progressContainer = document.getElementById("inProgress");
   let renderedIDs = {};
@@ -89,6 +95,9 @@ function renderTaskCardProgress() {
   }
 }
 
+/**
+ * Renders the task cards for the "Feedback" status.
+ */
 function renderTaskCardFeedback() {
   let feedbackContainer = document.getElementById("feedback");
   let renderedIDs = {};
@@ -115,6 +124,9 @@ function renderTaskCardDone() {
   }
 }
 
+/**
+ * Renders the task cards for the "Done" status.
+ */
 function clearTasksContainer() {
   let toDoContainer = document.getElementById("toDo");
   let progressContainer = document.getElementById("inProgress");
@@ -127,6 +139,11 @@ function clearTasksContainer() {
   doneContainer.innerHTML = "";
 }
 
+/**
+ * Renders avatars for a given task.
+ *
+ * @param {*} currentTask - The current task.
+ */
 async function renderAvatars(currentTask) {
   let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
   for (let i = 0; i < currentTask["assignments"].length; i++) {
@@ -141,6 +158,13 @@ async function renderAvatars(currentTask) {
   }
 }
 
+/**
+ * Returns the color of a user based on their ID.
+ *
+ * @param {*} id - The ID of the user.
+ * @returns The color of the user.
+ * @throws Error if the user is not found.
+ */
 function getUserColor(id) {
   let currentUser = users.find((user) => user.id == id);
   if (currentUser) {
@@ -151,6 +175,11 @@ function getUserColor(id) {
   }
 }
 
+/**
+ * Shows the detail card of a task.
+ *
+ * @param {*} id - The ID of the task.
+ */
 function showDetailCard(id) {
   let overlay = document.getElementById("overlay");
   overlay.classList.remove("d-none");
@@ -177,6 +206,11 @@ function showDetailCard(id) {
   });
 }
 
+/**
+ * Renders the priority of a task.
+ *
+ * @param {*} task - The task.
+ */
 async function getTaskPrio(task) {
   let prioContainer = document.getElementById("prioDetail");
   switch (task["prio"]) {
@@ -213,6 +247,11 @@ async function getTaskPrio(task) {
   }
 }
 
+/**
+ * Renders the assigned contacts of a task in the detail card.
+ *
+ * @param {*} task - The task.
+ */
 function getAssignedToDetailCard(task) {
   let assignContainer = document.getElementById("assignDetail");
   for (let i = 0; i < task["assignments"].length; i++) {
@@ -236,6 +275,13 @@ function redirectToAddTask() {
   window.location.href = "task_form.html";
 }
 
+/**
+ * Returns the HTML code for a task card.
+ *
+ * @param {*} currentTask - The current task.
+ * @param {*} status - The status of the task.
+ * @returns The HTML code of the task card.
+ */
 function getTaskCardHTML(currentTask, status) {
   return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${
@@ -302,6 +348,11 @@ function closePopup() {
   overlay.classList.add("d-none");
 }
 
+/**
+ * Deletes a task.
+ *
+ * @param {*} id - The ID of the task.
+ */
 async function deleteTask(id) {
   deleteObjectById(id);
   for (let i = 0; i < tasks.length; i++) {
@@ -325,6 +376,11 @@ function editTask(id) {
   setCategoryForEdit(currentTask);
 }
 
+/**
+ * Shows the assigned contacts in the edit view of a task.
+ *
+ * @param {*} currentTask - The current task.
+ */
 function showAssignedContacts(currentTask) {
   let assignableContactsContainer = document.getElementById("dropdownContent");
   const assignedContacts = currentTask["assignments"].map(
@@ -361,11 +417,21 @@ function showAssignedContacts(currentTask) {
   }
 }
 
+/**
+ * Toggles the state of a checkbox.
+ *
+ * @param {string} checkboxId - The ID of the checkbox.
+ */
 function toggleCheckbox(checkboxId) {
   var checkbox = document.getElementById(checkboxId);
   checkbox.checked = !checkbox.checked;
 }
 
+/**
+ * Retrieves the current date in the format "YYYY-MM-DD".
+ *
+ * @returns {string} The current date in "YYYY-MM-DD" format.
+ */
 function getCurrentDate() {
   const today = new Date();
   let day = today.getDate();
@@ -382,6 +448,11 @@ function getCurrentDate() {
   return `${year}-${month}-${day}`;
 }
 
+/**
+ * Deletes an object by its ID from the appropriate arrays.
+ *
+ * @param {*} id - The ID of the object.
+ */
 async function deleteObjectById(id) {
   for (var i = 0; i < toDo.length; i++) {
     if (toDo[i] == id) {
@@ -416,6 +487,9 @@ async function deleteObjectById(id) {
   }
 }
 
+/**
+ * Toggles the visibility of the dropdown category content.
+ */
 function toggleDropdownCategory() {
   let dropdownContent = document.getElementById("dropdownCategoryContent");
   let dropdownMin = document.getElementById("dropdownMinCategory");
@@ -423,6 +497,11 @@ function toggleDropdownCategory() {
   dropdownMin.classList.toggle("open");
 }
 
+/**
+ * Displays the subtasks of a task in the designated container.
+ *
+ * @param {*} task - The task object.
+ */
 function showSubtasks(task) {
   let container = document.getElementById("subtasksContainer");
   for (let i = 0; i < task["taskSub"].length; i++) {
@@ -431,6 +510,9 @@ function showSubtasks(task) {
   }
 }
 
+/**
+ * Searches for a task based on the input value and shows/hides tasks accordingly.
+ */
 function searchForTaskByInput() {
   let search = document.getElementById("search-input").value;
   search = search.toLowerCase();
@@ -458,6 +540,11 @@ function searchForTaskByInput() {
   }
 }
 
+/**
+ * Hides a task card with the given ID.
+ *
+ * @param {*} id - The ID of the task card.
+ */
 function hideTask(id) {
   let taskCardContainer = document.getElementById(id);
 
@@ -469,6 +556,11 @@ function hideTask(id) {
   }
 }
 
+/**
+ * Shows a hidden task card with the given ID.
+ *
+ * @param {*} id - The ID of the task card.
+ */
 function showHiddenTask(id) {
   let taskCardContainer = document.getElementById(id);
 
@@ -480,6 +572,11 @@ function showHiddenTask(id) {
   }
 }
 
+/**
+ * Displays the tickable subtasks for the current task in the designated container.
+ *
+ * @param {*} currentTask - The current task.
+ */
 async function showTickableSubtasks(currentTask) {
   let subtasksContainer = document.getElementById("subtaskContent");
   subtasksContainer.innerHTML = "";
@@ -504,7 +601,11 @@ async function showTickableSubtasks(currentTask) {
   }
 }
 
-// Funktion zum Auslesen der ausgewählten Checkbox-Werte
+/**
+ * Validates the subtasks form and updates the subtasksClosed and subtasksOpened properties of the current task.
+ *
+ * @param {*} currentTask - The current task.
+ */
 function validateSubtasksForm(currentTask) {
   currentTask["subtasksClosed"] = [];
   currentTask["subtasksOpened"] = [];
