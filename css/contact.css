@@ -1545,7 +1545,7 @@ label {
   }
 
   .overlay-left {
-    padding-bottom: 32px;
+    padding-bottom: 12px;
   }
 
   .small-responsive {
@@ -1690,5 +1690,20 @@ label {
   .add-task-btn {
     position: unset;
     margin-right: 0px;
+  }
+}
+
+@media (max-height: 700px) {
+  #overlay {
+    height: 628px;
+  }
+
+  .avatar {
+    margin-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .add-close-btn-container {
+    margin-top: 12px;
   }
 }
