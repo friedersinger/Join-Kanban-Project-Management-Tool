@@ -2,6 +2,16 @@ body {
   line-height: unset !important;
 }
 
+.task-Alert {
+  width: 350px;
+  height: 50px;
+  margin-left: -15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ********* Scrollbar CSS ********* */
 /* Firefox */
 .task-card-scroll {
