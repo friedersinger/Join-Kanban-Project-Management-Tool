@@ -1,0 +1,80 @@
+<div id="overlay">
+    <div class="overlay-left">
+      <img src="./assets/img/logo.svg" alt="" />
+      <span class="font-size-61 font-weight-700 small-responsive">Edit contact</span>
+      
+      <div class="border-overlay"></div>
+    </div>
+    <div class="overlay-right">
+      <div class="justify-end">
+        <div class="close-btn cursor-pointer" onclick="hideEditCard()">
+          <svg
+            width="31"
+            height="31"
+            viewBox="0 0 31 31"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.9614 7.65381L7.65367 22.9616"
+              stroke="#2A3647"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M22.8169 23.106L7.50914 7.7982"
+              stroke="#2A3647"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="form-Avatar">
+        <img src="./assets/img/avatar_img.svg" class="avatar" />
+        <div class="form center">
+          <form onsubmit="saveEditContact('${id}'); return false">
+            <div class="center">
+              <input required type="text" class="addName" id="addNameID" placeholder="${name}" />
+            </div>
+            <div class="center">
+              <input required type="email" class="addMail" id="addMailID" placeholder="${mail}"
+              />
+            </div>
+            <div class="center">
+              <input required type="tel" class="addTel" id="addTelID" placeholder="${tel}" />
+            </div>
+        </div>
+      
+  
+      <div class="add-close-btn-container">
+        <div class="cancel-btn" onclick="hideEditCard()">
+          <span class="font-size-21">Cancel</span>
+          <svg
+            width="31"
+            height="31"
+            viewBox="0 0 31 31"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.9614 7.65381L7.65367 22.9616"
+              stroke="#2A3647"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M22.8169 23.106L7.50914 7.7982"
+              stroke="#2A3647"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <button class="create-edit-btn" type="submit">
+          <span class="font-weight-700 font-size-21">Save</span>
+        </button>
+      </div>
+    </form>
+    </div></div>
+  </div>

@@ -485,7 +485,7 @@ function loadContactToEditPopUp(id) {
 }
 
 function getEditHTML(name, mail, tel, id) {
-  return `
+  return /*html*/ `
   <div id="overlay">
   <div class="overlay-left">
     <img src="./assets/img/logo.svg" alt="" />
@@ -521,7 +521,7 @@ function getEditHTML(name, mail, tel, id) {
     <div class="form-Avatar">
       <img src="./assets/img/avatar_img.svg" class="avatar" />
       <div class="form center">
-        <form onsubmit="createNewPseudoContact(); return false">
+        <form onsubmit="saveEditContact('${id}'); return false">
           <div class="center">
             <input required type="text" class="addName" id="addNameID" placeholder="${name}" />
           </div>
@@ -532,9 +532,9 @@ function getEditHTML(name, mail, tel, id) {
           <div class="center">
             <input required type="tel" class="addTel" id="addTelID" placeholder="${tel}" />
           </div>
-        
       </div>
     </div>
+
     <div class="add-close-btn-container">
       <div class="cancel-btn" onclick="hideEditCard()">
         <span class="font-size-21">Cancel</span>
@@ -559,7 +559,7 @@ function getEditHTML(name, mail, tel, id) {
           />
         </svg>
       </div>
-      <button class="create-edit-btn" onclick="saveEditContact('${id}')" "type="submit">
+      <button class="create-edit-btn" type="submit">
         <span class="font-weight-700 font-size-21">Save</span>
       </button>
     </div>
@@ -576,6 +576,7 @@ function getEditHTML(name, mail, tel, id) {
  * @returns {Promise<void>} A promise that resolves once the contact is successfully edited and saved.
  */
 async function saveEditContact(id) {
+  console.log("Saving contact");
   let currentContact = contacts.find((contact) => contact.id == id);
 
   console.log("contacts:", contacts);
