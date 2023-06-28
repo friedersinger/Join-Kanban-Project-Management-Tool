@@ -1,13 +1,15 @@
 let isDropSuccessful = false;
+let sourceID;
+let sourceArray;
 
 async function startDragging(id, status) {
   currentDraggedElement = id;
   await showDropArea(status);
-  //await getSourceArrayByStatus(status, id);
-  //await hideDraggedOrigin();
+  await getSourceArrayByStatus(status, id);
+  //await hideDraggedOrigin(currentDraggedElement);
 }
 
-async function hideDraggedOrigin() {
+async function hideDraggedOrigin(currentDraggedElement) {
   let element = document.getElementById(currentDraggedElement);
   if (element) {
     element.classList.add("d-none");
@@ -23,31 +25,34 @@ function drag(ev) {
 }
 
 async function moveTo(status) {
-  console.log(status);
   let targetArray;
   switch (status) {
     case "toDo":
       targetArray = toDo;
       getBorderRemoveFunctions();
       isDropSuccessful = true;
+      deleteTaskFromDragged();
       initBoard();
       break;
     case "inProgress":
       targetArray = inProgress;
       getBorderRemoveFunctions();
       isDropSuccessful = true;
+      deleteTaskFromDragged();
       initBoard();
       break;
     case "feedback":
       targetArray = feedback;
       getBorderRemoveFunctions();
       isDropSuccessful = true;
+      deleteTaskFromDragged();
       initBoard();
       break;
     case "done":
       targetArray = done;
       getBorderRemoveFunctions();
       isDropSuccessful = true;
+      deleteTaskFromDragged();
       initBoard();
       break;
     default:
@@ -81,16 +86,24 @@ function getTaskById(id) {
 async function getSourceArrayByStatus(status, id) {
   switch (status) {
     case "toDo":
-      await deleteTaskFromDragged(id, "toDo");
+      sourceID = id;
+      sourceArray = "toDo"
+      //await deleteTaskFromDragged(id, "toDo");
       break;
     case "inProgress":
-      await deleteTaskFromDragged(id, "inProgress");
+      sourceID = id;
+      sourceArray = "inProgress"  
+    //await deleteTaskFromDragged(id, "inProgress");
       break;
     case "feedback":
-      await deleteTaskFromDragged(id, "feedback");
+      sourceID = id;
+      sourceArray = "feedback"  
+      //await deleteTaskFromDragged(id, "feedback");
       break;
     case "done":
-      await deleteTaskFromDragged(id, "done");
+      sourceID = id;
+      sourceArray = "done"  
+      //await deleteTaskFromDragged(id, "done");
       break;
     default:
       console.error("Invalid status:", status);
@@ -98,31 +111,31 @@ async function getSourceArrayByStatus(status, id) {
   }
 }
 
-async function deleteTaskFromDragged(id, sourceArray) {
+async function deleteTaskFromDragged() {
   if (isDropSuccessful == true) {
     switch (sourceArray) {
       case "toDo":
-        let toDoIndex = toDo.indexOf(id);
+        let toDoIndex = toDo.indexOf(sourceID);
         toDo.splice(toDoIndex, 1);
         await setItem("toDo", JSON.stringify(toDo));
         isDropSuccessful = false;
         break;
       case "inProgress":
-        let inProgressIndex = inProgress.indexOf(id);
+        let inProgressIndex = inProgress.indexOf(sourceID);
         inProgress.splice(inProgressIndex, 1);
         await setItem("inProgress", JSON.stringify(inProgress));
         isDropSuccessful = false;
 
         break;
       case "feedback":
-        let feedbackIndex = feedback.indexOf(id);
+        let feedbackIndex = feedback.indexOf(sourceID);
         feedback.splice(feedbackIndex, 1);
         await setItem("feedback", JSON.stringify(feedback));
         isDropSuccessful = false;
 
         break;
       case "done":
-        let doneIndex = done.indexOf(id);
+        let doneIndex = done.indexOf(sourceID);
         done.splice(doneIndex, 1);
         await setItem("done", JSON.stringify(done));
         isDropSuccessful = false;

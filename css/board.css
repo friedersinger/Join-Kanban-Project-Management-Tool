@@ -234,7 +234,11 @@
   padding-top: 10px;
   padding-bottom: 60px;
   border: 3px dotted transparent;
-  min-height: 1vh;
+  min-height: 30vh;
+}
+
+.drop-area.dragover{
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .add-border {
