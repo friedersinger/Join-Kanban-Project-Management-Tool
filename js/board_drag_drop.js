@@ -1,8 +1,10 @@
+let isDropSuccessful = false;
+
 async function startDragging(id, status) {
   currentDraggedElement = id;
   await showDropArea(status);
-  await getSourceArrayByStatus(status, id);
-  await hideDraggedOrigin();
+  //await getSourceArrayByStatus(status, id);
+  //await hideDraggedOrigin();
 }
 
 async function hideDraggedOrigin() {
@@ -21,30 +23,35 @@ function drag(ev) {
 }
 
 async function moveTo(status) {
+  console.log(status);
   let targetArray;
   switch (status) {
     case "toDo":
       targetArray = toDo;
       getBorderRemoveFunctions();
+      isDropSuccessful = true;
       initBoard();
       break;
     case "inProgress":
       targetArray = inProgress;
       getBorderRemoveFunctions();
+      isDropSuccessful = true;
       initBoard();
       break;
     case "feedback":
       targetArray = feedback;
       getBorderRemoveFunctions();
+      isDropSuccessful = true;
       initBoard();
       break;
     case "done":
       targetArray = done;
       getBorderRemoveFunctions();
+      isDropSuccessful = true;
       initBoard();
       break;
     default:
-      console.error("Invalid status:", status);
+      console.log("Invalid status:", status);
       return;
   }
   await checkTargetArrayForID(targetArray, status);
@@ -92,32 +99,41 @@ async function getSourceArrayByStatus(status, id) {
 }
 
 async function deleteTaskFromDragged(id, sourceArray) {
-  switch (sourceArray) {
-    case "toDo":
-      let toDoIndex = toDo.indexOf(id);
-      toDo.splice(toDoIndex, 1);
-      await setItem("toDo", JSON.stringify(toDo));
-      break;
-    case "inProgress":
-      let inProgressIndex = inProgress.indexOf(id);
-      inProgress.splice(inProgressIndex, 1);
-      await setItem("inProgress", JSON.stringify(inProgress));
-      break;
-    case "feedback":
-      let feedbackIndex = feedback.indexOf(id);
-      feedback.splice(feedbackIndex, 1);
-      await setItem("feedback", JSON.stringify(feedback));
-      break;
-    case "done":
-      let doneIndex = done.indexOf(id);
-      done.splice(doneIndex, 1);
-      await setItem("done", JSON.stringify(done));
-      break;
+  if (isDropSuccessful == true) {
+    switch (sourceArray) {
+      case "toDo":
+        let toDoIndex = toDo.indexOf(id);
+        toDo.splice(toDoIndex, 1);
+        await setItem("toDo", JSON.stringify(toDo));
+        isDropSuccessful = false;
+        break;
+      case "inProgress":
+        let inProgressIndex = inProgress.indexOf(id);
+        inProgress.splice(inProgressIndex, 1);
+        await setItem("inProgress", JSON.stringify(inProgress));
+        isDropSuccessful = false;
+
+        break;
+      case "feedback":
+        let feedbackIndex = feedback.indexOf(id);
+        feedback.splice(feedbackIndex, 1);
+        await setItem("feedback", JSON.stringify(feedback));
+        isDropSuccessful = false;
+
+        break;
+      case "done":
+        let doneIndex = done.indexOf(id);
+        done.splice(doneIndex, 1);
+        await setItem("done", JSON.stringify(done));
+        isDropSuccessful = false;
+
+        break;
+    }
   }
 }
 
 async function showDropArea(status) {
-  console.log(status);
+  //console.log(status);
   switch (status) {
     case "toDo":
       document.getElementById("inProgress").classList.add("add-border");

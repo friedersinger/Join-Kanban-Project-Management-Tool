@@ -309,7 +309,24 @@ function giveContactDetailsHTML(name, mail, initials, id, color, phone) {
     <div id="phone" style="display: ${phoneDisplay}">
       <a href="${phone || "add Details"}" id="phoneDetail">${
     phone || "add Details"
-  }</a>
+  }</a></div>     
+  <div class="desktop-btn-column">
+    <svg   onclick="deleteCard(${id}); returnToContactList() " width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 0.5H30C35.2467 0.5 39.5 4.75329 39.5 10V30C39.5 35.2467 35.2467 39.5 30 39.5H10C4.75329 39.5 0.5 35.2467 0.5 30V10C0.5 4.75329 4.75329 0.5 10 0.5Z" fill="url(#paint0_linear_48008_5258)"/>
+      <mask id="mask0_48008_5258" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="32" height="32">
+      <rect x="4" y="4" width="32" height="32" fill="#D9D9D9"/>
+      </mask>
+      <g mask="url(#mask0_48008_5258)">
+      <path d="M13.333 32C12.5997 32 11.9719 31.7389 11.4497 31.2167C10.9275 30.6944 10.6663 30.0667 10.6663 29.3333V12H9.33301V9.33333H15.9997V8H23.9997V9.33333H30.6663V12H29.333V29.3333C29.333 30.0667 29.0719 30.6944 28.5497 31.2167C28.0275 31.7389 27.3997 32 26.6663 32H13.333ZM26.6663 12H13.333V29.3333H26.6663V12ZM15.9997 26.6667H18.6663V14.6667H15.9997V26.6667ZM21.333 26.6667H23.9997V14.6667H21.333V26.6667Z" fill="#2A3647"/>
+      </g>
+      <path d="M10 0.5H30C35.2467 0.5 39.5 4.75329 39.5 10V30C39.5 35.2467 35.2467 39.5 30 39.5H10C4.75329 39.5 0.5 35.2467 0.5 30V10C0.5 4.75329 4.75329 0.5 10 0.5Z" stroke="#2A3647"/>
+      <defs>
+      <linearGradient id="paint0_linear_48008_5258" x1="20" y1="0" x2="20" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9F9F9"/>
+      <stop offset="1" stop-color="#F0F0F0"/>
+      </linearGradient>
+      </defs>
+      </svg>
     </div>
   </div>
   `;
@@ -486,86 +503,83 @@ function loadContactToEditPopUp(id) {
 
 function getEditHTML(name, mail, tel, id) {
   return /*html*/ `
-  <div id="overlay">
-  <div class="overlay-left">
-    <img src="./assets/img/logo.svg" alt="" />
-    <span class="font-size-61 font-weight-700 small-responsive">Edit contact</span>
-    
-    <div class="border-overlay"></div>
-  </div>
-  <div class="overlay-right">
-    <div class="justify-end">
-      <div class="close-btn cursor-pointer" onclick="hideEditCard()">
-        <svg
-          width="31"
-          height="31"
-          viewBox="0 0 31 31"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M22.9614 7.65381L7.65367 22.9616"
-            stroke="#2A3647"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-          <path
-            d="M22.8169 23.106L7.50914 7.7982"
-            stroke="#2A3647"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-        </svg>
+    <div id="overlay">
+      <div class="overlay-left">
+        <img src="./assets/img/logo.svg" alt="" />
+        <span class="font-size-61 font-weight-700 small-responsive">Edit contact</span>
+        <div class="border-overlay"></div>
+      </div>
+      <div class="overlay-right">
+        <div class="justify-end">
+          <div class="close-btn cursor-pointer" onclick="hideEditCard()">
+            <svg
+              width="31"
+              height="31"
+              viewBox="0 0 31 31"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22.9614 7.65381L7.65367 22.9616"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.8169 23.106L7.50914 7.7982"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="form-Avatar">
+          <img src="./assets/img/avatar_img.svg" class="avatar" />
+          <div class="form center">
+            <form onsubmit="saveEditContact('${id}'); return false">
+              <div class="center">
+                <input required type="text" class="addName" id="addNameID" placeholder="${name}" />
+              </div>
+              <div class="center">
+                <input required type="email" class="addMail" id="addMailID" placeholder="${mail}" />
+              </div>
+              <div class="center">
+                <input required type="number" class="addTel" id="addTelID" placeholder="${tel}" />
+              </div>
+              <div class="add-close-btn-container">
+                <div class="cancel-btn" onclick="hideEditCard()">
+                  <span class="font-size-21">Cancel</span>
+                  <svg
+                    width="31"
+                    height="31"
+                    viewBox="0 0 31 31"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M22.9614 7.65381L7.65367 22.9616"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M22.8169 23.106L7.50914 7.7982"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <button class="create-edit-btn" type="submit">
+                  <span class="font-weight-700 font-size-21">Save</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="form-Avatar">
-      <img src="./assets/img/avatar_img.svg" class="avatar" />
-      <div class="form center">
-        <form onsubmit="saveEditContact('${id}'); return false">
-          <div class="center">
-            <input required type="text" class="addName" id="addNameID" placeholder="${name}" />
-          </div>
-          <div class="center">
-            <input required type="email" class="addMail" id="addMailID" placeholder="${mail}"
-            />
-          </div>
-          <div class="center">
-            <input required type="tel" class="addTel" id="addTelID" placeholder="${tel}" />
-          </div>
-      </div>
-    </div>
-
-    <div class="add-close-btn-container">
-      <div class="cancel-btn" onclick="hideEditCard()">
-        <span class="font-size-21">Cancel</span>
-        <svg
-          width="31"
-          height="31"
-          viewBox="0 0 31 31"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M22.9614 7.65381L7.65367 22.9616"
-            stroke="#2A3647"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-          <path
-            d="M22.8169 23.106L7.50914 7.7982"
-            stroke="#2A3647"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-        </svg>
-      </div>
-      <button class="create-edit-btn" type="submit">
-        <span class="font-weight-700 font-size-21">Save</span>
-      </button>
-    </div>
-  </form>
-  </div>
-</div>
   `;
 }
 

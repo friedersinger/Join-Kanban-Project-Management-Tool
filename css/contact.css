@@ -647,6 +647,15 @@ body {
   cursor: pointer;
 }
 
+.desktop-btn-column {
+  margin-right: 60px;
+  margin-top: 60px;
+}
+
+.desktop-btn-column svg {
+  cursor: pointer;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row !important;
