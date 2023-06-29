@@ -24,7 +24,7 @@ async function initTasks() {
  *
  * @returns {Promise<void>} A promise that resolves once the new task is added.
  */
- async function addNewTask() {
+async function addNewTask() {
   await setNewTaskID();
   await loadtoDos();
   let taskTitle = document.getElementById("title");
@@ -48,12 +48,19 @@ async function initTasks() {
     // Zeige den Text im Div an, welches Feld ausgefüllt werden muss
     let taskAlert = document.getElementById("taskAlert");
     taskAlert.innerHTML = ""; // Leere den vorherigen Text
-    if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
-    if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
-    if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
-    if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
-    if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
-    if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
+    if (taskTitle.value === "")
+      taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
+    if (taskDescription.value === "")
+      taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
+    if (taskDueDate.value === "")
+      taskAlert.innerHTML +=
+        "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
+    if (currentPrioStatus === undefined)
+      taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
+    if (selectedCategory === undefined)
+      taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
+    if (taskSub.value === "")
+      taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
     return; // Beende die Funktion, da nicht alle Felder ausgefüllt sind
   }
 
@@ -84,10 +91,6 @@ async function initTasks() {
   await setItem("tasks", JSON.stringify(tasks));
   await setItem("toDo", JSON.stringify(toDo));
 }
-
-
-
-
 
 /**
  * Loads the subtasks from the subtasks array and performs actions on each subtask.
@@ -144,6 +147,12 @@ async function subTaskAddToJson() {
 
   addNewSubTask();
   task.value = "";
+}
+
+function subTaskDelete() {
+  document.getElementById("subtask-input-content").value = "";
+  subtasks = [];
+  document.getElementById("subtaskContent").innerHTML = "";
 }
 
 /**
