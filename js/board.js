@@ -271,8 +271,9 @@ function getAssignedToDetailCard(task) {
 
 //############### HELP FUNCTIONS ###############//
 
-function redirectToAddTask() {
-  window.location.href = "task_form.html";
+function redirectToAddTask(status) {
+  // Hier wird der Wert 'status' an die URL angehängt
+  window.location.href = "task_form.html?status=" + status;
 }
 
 /**
