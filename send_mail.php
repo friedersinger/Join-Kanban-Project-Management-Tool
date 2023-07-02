@@ -23,10 +23,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         header("Access-Control-Allow-Origin: *");
 
         $email = $_POST['email'];           //getting email from inputfield and putting it in a variable
-
+        
         $message = "Hello,\n                            
         \nPlease click the following link to reset your password for your Join account:\n
-        \nhttp://gruppe-557.developerakademie.net/reset_password.html?email={$email}\n   
+        \nhttps://frieder-singer.developerakademie.net/reset_password.html?email={$email}\n   
         \nIf you didn't request to reset your password, please disregard this email.\n
         \nBest regards,\n
         \nJoin team\n";
