@@ -78,7 +78,18 @@ async function addNewTask() {
     id: currentTaskID,
   });
 
-  toDo.push(currentTaskID);
+  let status = "toDo"; // Standardwert: toDo
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlStatus = urlParams.get("status");
+  if (
+    urlStatus === "feedback" ||
+    urlStatus === "inProgress" ||
+    urlStatus === "done"
+  ) {
+    status = urlStatus;
+  }
+
+  eval(status).push(currentTaskID);
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none"); // Entferne die Klasse "d-none", um das Element anzuzeigen
@@ -89,7 +100,7 @@ async function addNewTask() {
   }, 1000); // Warte vier Sekunden (4000 Millisekunden) und führe dann den Code im setTimeout-Callback aus
 
   await setItem("tasks", JSON.stringify(tasks));
-  await setItem("toDo", JSON.stringify(toDo));
+  await setItem(status, JSON.stringify(eval(status)));
 }
 
 /**
